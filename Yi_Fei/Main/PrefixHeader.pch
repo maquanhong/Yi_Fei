@@ -1,0 +1,58 @@
+//
+//  PrefixHeader.pch
+//  Yi_Fei
+//
+//  Created by yons on 16/11/8.
+//  Copyright © 2016年 ZMJPersonal. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "FMDBOneList.h" //建的第一张表
+#import "shopData.h"
+#import "ProductionData.h"
+#import "NewTwoList.h" //建的第二张表
+
+
+#import "Masonry.h"
+#import "BackButton.h"
+#import "UIView+Layout.h"
+#import "SDCycleScrollView.h"
+#import "SSPopup.h"
+#import "TapButton.h"
+#import "UIView+Frame.h"
+#import "HYActivityView.h"
+#import "ZZPhotoKit.h"
+#import "FMDB.h"
+//#import "GDataXMLNode.h"
+#import "PopView.h"
+#import "SVProgressHUD.h"
+
+
+#pragma mark 颜色的的设置
+
+#define  BACKCOLOR [UIColor colorWithRed:58/255.0 green:165/255.0 blue:245/255.0 alpha:1.0]
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+#define COLOR [UIColor colorWithRed:70/255.0 green:201/255.0 blue:250/255.0 alpha:1.0]
+#define NAVCOLOR [UIColor colorWithRed:48/255.0 green:127/255.0 blue:205/255.0 alpha:1.0]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+
+
+#endif /* PrefixHeader_pch */
