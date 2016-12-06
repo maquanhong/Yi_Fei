@@ -11,9 +11,7 @@
 
 @interface CentralBlueTooth : NSObject
 
-
 +(instancetype)shareManager;
-
 
 
 @end

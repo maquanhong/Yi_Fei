@@ -89,12 +89,8 @@
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
 {
     NSLog(@"Central subscribed to characteristic");
-    
     // 准备数据
-
-    
-    
-    
+    self.dataToSend = [NSData dataWithContentsOfFile:_path];
     // 发送标记至0
     self.sendDataIndex = 0;
     // 发送数据

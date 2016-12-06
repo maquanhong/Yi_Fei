@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BUYHomeControl.h"
 #import "NavigationControl.h"
+#import "CentralBlueTooth.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     BUYHomeControl *login = [[BUYHomeControl alloc] init];
     NavigationControl *nav = [[NavigationControl alloc] initWithRootViewController:login];
+    [CentralBlueTooth shareManager];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     

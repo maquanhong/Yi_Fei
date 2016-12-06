@@ -94,15 +94,6 @@
 		E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC011DF5E9F2002A6E60 /* AppDelegate.m */; };
 		E416CC081DF5E9F2002A6E60 /* NavigationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC051DF5E9F2002A6E60 /* NavigationControl.m */; };
 		E416CCE01DF5E9F8002A6E60 /* ZMJProviderController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */; };
-		E416CCE11DF5E9F8002A6E60 /* BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC631DF5E9F8002A6E60 /* BackButton.m */; };
-		E416CCE21DF5E9F8002A6E60 /* CCZSegementController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC651DF5E9F8002A6E60 /* CCZSegementController.m */; };
-		E416CCE31DF5E9F8002A6E60 /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC671DF5E9F8002A6E60 /* HYActivityView.m */; };
-		E416CCE41DF5E9F8002A6E60 /* PopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC691DF5E9F8002A6E60 /* PopView.m */; };
-		E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC6B1DF5E9F8002A6E60 /* SelectTableViewCell.m */; };
-		E416CCE61DF5E9F8002A6E60 /* SSPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC6D1DF5E9F8002A6E60 /* SSPopup.m */; };
-		E416CCE71DF5E9F8002A6E60 /* TapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC6F1DF5E9F8002A6E60 /* TapButton.m */; };
-		E416CCE81DF5E9F8002A6E60 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC711DF5E9F8002A6E60 /* UIView+Frame.m */; };
-		E416CCE91DF5E9F8002A6E60 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC731DF5E9F8002A6E60 /* UIView+Layout.m */; };
 		E416CCEA1DF5E9F8002A6E60 /* ZZAlumAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC781DF5E9F8002A6E60 /* ZZAlumAnimation.m */; };
 		E416CCEB1DF5E9F8002A6E60 /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = E416CC7A1DF5E9F8002A6E60 /* back_button_normal.png */; };
 		E416CCEC1DF5E9F8002A6E60 /* back_button_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E416CC7B1DF5E9F8002A6E60 /* back_button_normal@2x.png */; };
@@ -215,6 +206,15 @@
 		E49352461DF719DC00145486 /* BuyerOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352451DF719DC00145486 /* BuyerOutForm.m */; };
 		E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352481DF7200000145486 /* CentralBlueTooth.m */; };
 		E493524C1DF7200000145486 /* PeripheralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E493524A1DF7200000145486 /* PeripheralBlueTooth.m */; };
+		E49352661DF7267300145486 /* BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352521DF7267300145486 /* BackButton.m */; };
+		E49352671DF7267300145486 /* TapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352541DF7267300145486 /* TapButton.m */; };
+		E49352681DF7267300145486 /* CCZSegementController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352571DF7267300145486 /* CCZSegementController.m */; };
+		E49352691DF7267300145486 /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352591DF7267300145486 /* HYActivityView.m */; };
+		E493526A1DF7267300145486 /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493525B1DF7267300145486 /* SelectTableViewCell.m */; };
+		E493526B1DF7267300145486 /* PopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E493525E1DF7267300145486 /* PopView.m */; };
+		E493526C1DF7267300145486 /* SSPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352601DF7267300145486 /* SSPopup.m */; };
+		E493526D1DF7267300145486 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352631DF7267300145486 /* UIView+Frame.m */; };
+		E493526E1DF7267300145486 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352651DF7267300145486 /* UIView+Layout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,24 +387,6 @@
 		E416CC061DF5E9F2002A6E60 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E416CC5E1DF5E9F8002A6E60 /* ZMJProviderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJProviderController.h; sourceTree = "<group>"; };
 		E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJProviderController.m; sourceTree = "<group>"; };
-		E416CC621DF5E9F8002A6E60 /* BackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButton.h; sourceTree = "<group>"; };
-		E416CC631DF5E9F8002A6E60 /* BackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButton.m; sourceTree = "<group>"; };
-		E416CC641DF5E9F8002A6E60 /* CCZSegementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCZSegementController.h; sourceTree = "<group>"; };
-		E416CC651DF5E9F8002A6E60 /* CCZSegementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCZSegementController.m; sourceTree = "<group>"; };
-		E416CC661DF5E9F8002A6E60 /* HYActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYActivityView.h; sourceTree = "<group>"; };
-		E416CC671DF5E9F8002A6E60 /* HYActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYActivityView.m; sourceTree = "<group>"; };
-		E416CC681DF5E9F8002A6E60 /* PopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopView.h; sourceTree = "<group>"; };
-		E416CC691DF5E9F8002A6E60 /* PopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView.m; sourceTree = "<group>"; };
-		E416CC6A1DF5E9F8002A6E60 /* SelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTableViewCell.h; sourceTree = "<group>"; };
-		E416CC6B1DF5E9F8002A6E60 /* SelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTableViewCell.m; sourceTree = "<group>"; };
-		E416CC6C1DF5E9F8002A6E60 /* SSPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPopup.h; sourceTree = "<group>"; };
-		E416CC6D1DF5E9F8002A6E60 /* SSPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPopup.m; sourceTree = "<group>"; };
-		E416CC6E1DF5E9F8002A6E60 /* TapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapButton.h; sourceTree = "<group>"; };
-		E416CC6F1DF5E9F8002A6E60 /* TapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapButton.m; sourceTree = "<group>"; };
-		E416CC701DF5E9F8002A6E60 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		E416CC711DF5E9F8002A6E60 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
-		E416CC721DF5E9F8002A6E60 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
-		E416CC731DF5E9F8002A6E60 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		E416CC771DF5E9F8002A6E60 /* ZZAlumAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAlumAnimation.h; sourceTree = "<group>"; };
 		E416CC781DF5E9F8002A6E60 /* ZZAlumAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAlumAnimation.m; sourceTree = "<group>"; };
 		E416CC7A1DF5E9F8002A6E60 /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
@@ -614,6 +596,24 @@
 		E49352481DF7200000145486 /* CentralBlueTooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralBlueTooth.m; sourceTree = "<group>"; };
 		E49352491DF7200000145486 /* PeripheralBlueTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralBlueTooth.h; sourceTree = "<group>"; };
 		E493524A1DF7200000145486 /* PeripheralBlueTooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralBlueTooth.m; sourceTree = "<group>"; };
+		E49352511DF7267300145486 /* BackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButton.h; sourceTree = "<group>"; };
+		E49352521DF7267300145486 /* BackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButton.m; sourceTree = "<group>"; };
+		E49352531DF7267300145486 /* TapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapButton.h; sourceTree = "<group>"; };
+		E49352541DF7267300145486 /* TapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapButton.m; sourceTree = "<group>"; };
+		E49352561DF7267300145486 /* CCZSegementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCZSegementController.h; sourceTree = "<group>"; };
+		E49352571DF7267300145486 /* CCZSegementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCZSegementController.m; sourceTree = "<group>"; };
+		E49352581DF7267300145486 /* HYActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYActivityView.h; sourceTree = "<group>"; };
+		E49352591DF7267300145486 /* HYActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYActivityView.m; sourceTree = "<group>"; };
+		E493525A1DF7267300145486 /* SelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTableViewCell.h; sourceTree = "<group>"; };
+		E493525B1DF7267300145486 /* SelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTableViewCell.m; sourceTree = "<group>"; };
+		E493525D1DF7267300145486 /* PopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopView.h; sourceTree = "<group>"; };
+		E493525E1DF7267300145486 /* PopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopView.m; sourceTree = "<group>"; };
+		E493525F1DF7267300145486 /* SSPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPopup.h; sourceTree = "<group>"; };
+		E49352601DF7267300145486 /* SSPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPopup.m; sourceTree = "<group>"; };
+		E49352621DF7267300145486 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		E49352631DF7267300145486 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		E49352641DF7267300145486 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		E49352651DF7267300145486 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1066,24 +1066,10 @@
 		E416CC611DF5E9F8002A6E60 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				E416CC621DF5E9F8002A6E60 /* BackButton.h */,
-				E416CC631DF5E9F8002A6E60 /* BackButton.m */,
-				E416CC641DF5E9F8002A6E60 /* CCZSegementController.h */,
-				E416CC651DF5E9F8002A6E60 /* CCZSegementController.m */,
-				E416CC661DF5E9F8002A6E60 /* HYActivityView.h */,
-				E416CC671DF5E9F8002A6E60 /* HYActivityView.m */,
-				E416CC681DF5E9F8002A6E60 /* PopView.h */,
-				E416CC691DF5E9F8002A6E60 /* PopView.m */,
-				E416CC6A1DF5E9F8002A6E60 /* SelectTableViewCell.h */,
-				E416CC6B1DF5E9F8002A6E60 /* SelectTableViewCell.m */,
-				E416CC6C1DF5E9F8002A6E60 /* SSPopup.h */,
-				E416CC6D1DF5E9F8002A6E60 /* SSPopup.m */,
-				E416CC6E1DF5E9F8002A6E60 /* TapButton.h */,
-				E416CC6F1DF5E9F8002A6E60 /* TapButton.m */,
-				E416CC701DF5E9F8002A6E60 /* UIView+Frame.h */,
-				E416CC711DF5E9F8002A6E60 /* UIView+Frame.m */,
-				E416CC721DF5E9F8002A6E60 /* UIView+Layout.h */,
-				E416CC731DF5E9F8002A6E60 /* UIView+Layout.m */,
+				E49352501DF7267300145486 /* Button */,
+				E49352551DF7267300145486 /* Other */,
+				E493525C1DF7267300145486 /* PovView */,
+				E49352611DF7267300145486 /* UIViewLayout */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1691,6 +1677,52 @@
 			path = Form;
 			sourceTree = "<group>";
 		};
+		E49352501DF7267300145486 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				E49352511DF7267300145486 /* BackButton.h */,
+				E49352521DF7267300145486 /* BackButton.m */,
+				E49352531DF7267300145486 /* TapButton.h */,
+				E49352541DF7267300145486 /* TapButton.m */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		E49352551DF7267300145486 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				E49352561DF7267300145486 /* CCZSegementController.h */,
+				E49352571DF7267300145486 /* CCZSegementController.m */,
+				E49352581DF7267300145486 /* HYActivityView.h */,
+				E49352591DF7267300145486 /* HYActivityView.m */,
+				E493525A1DF7267300145486 /* SelectTableViewCell.h */,
+				E493525B1DF7267300145486 /* SelectTableViewCell.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		E493525C1DF7267300145486 /* PovView */ = {
+			isa = PBXGroup;
+			children = (
+				E493525D1DF7267300145486 /* PopView.h */,
+				E493525E1DF7267300145486 /* PopView.m */,
+				E493525F1DF7267300145486 /* SSPopup.h */,
+				E49352601DF7267300145486 /* SSPopup.m */,
+			);
+			path = PovView;
+			sourceTree = "<group>";
+		};
+		E49352611DF7267300145486 /* UIViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E49352621DF7267300145486 /* UIView+Frame.h */,
+				E49352631DF7267300145486 /* UIView+Frame.m */,
+				E49352641DF7267300145486 /* UIView+Layout.h */,
+				E49352651DF7267300145486 /* UIView+Layout.m */,
+			);
+			path = UIViewLayout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1886,14 +1918,12 @@
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
 				E416CD3C1DF5EB4C002A6E60 /* BuyCustomerView.m in Sources */,
 				E416C91E1DF5D802002A6E60 /* main.m in Sources */,
-				E416CCE11DF5E9F8002A6E60 /* BackButton.m in Sources */,
 				E416CD0A1DF5E9F8002A6E60 /* ZZPhotoListModel.m in Sources */,
 				E493521D1DF70CA900145486 /* DetailViewThreeCell.m in Sources */,
 				E416CD711DF5ED7B002A6E60 /* ThreePopTableViewCell.m in Sources */,
 				E49352281DF70CA900145486 /* ThreeTableViewCell.m in Sources */,
 				20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */,
 				20FBC9F01DF640EA0009167F /* UserInfoView.m in Sources */,
-				E416CCE41DF5E9F8002A6E60 /* PopView.m in Sources */,
 				20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */,
 				E416CD041DF5E9F8002A6E60 /* ZZPhotoBrowerViewController.m in Sources */,
 				E416CD821DF5ED84002A6E60 /* SystemSettingViewController.m in Sources */,
@@ -1906,7 +1936,6 @@
 				E416CD6A1DF5ED7B002A6E60 /* NameValueTableViewCell.m in Sources */,
 				E416CD081DF5E9F8002A6E60 /* ZZPhoto.m in Sources */,
 				E416CCFF1DF5E9F8002A6E60 /* ZZCameraPickerViewController.m in Sources */,
-				E416CCE91DF5E9F8002A6E60 /* UIView+Layout.m in Sources */,
 				20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */,
 				E416CBD91DF5E9E5002A6E60 /* MessageSystemController.m in Sources */,
 				E416CD321DF5EB4C002A6E60 /* BusinessChanceViewController.m in Sources */,
@@ -1929,7 +1958,6 @@
 				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
 				E416CD011DF5E9F8002A6E60 /* ZZCameraBrowerCell.m in Sources */,
 				E416CD051DF5E9F8002A6E60 /* ZZPhotoController.m in Sources */,
-				E416CCE61DF5E9F8002A6E60 /* SSPopup.m in Sources */,
 				E49352191DF70CA900145486 /* shopData.m in Sources */,
 				E416CBBA1DF5E9E1002A6E60 /* AddTwoProductionController.m in Sources */,
 				20FBCA001DF6427B0009167F /* offerViewController.m in Sources */,
@@ -1938,6 +1966,8 @@
 				20FBCA131DF643500009167F /* MyBuyerViewController.m in Sources */,
 				E416CD101DF5E9F8002A6E60 /* ZZPhotoPickerFooterView.m in Sources */,
 				E416CD6B1DF5ED7B002A6E60 /* OnePopTableViewCell.m in Sources */,
+				E493526D1DF7267300145486 /* UIView+Frame.m in Sources */,
+				E493526B1DF7267300145486 /* PopView.m in Sources */,
 				20FBC9EC1DF640EA0009167F /* IdentifyViewController.m in Sources */,
 				E416CD6D1DF5ED7B002A6E60 /* PopTableViewCell.m in Sources */,
 				E416CBFD1DF5E9E9002A6E60 /* BUYTitleButton.m in Sources */,
@@ -1955,11 +1985,11 @@
 				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
 				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
-				E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
 				E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */,
 				E416CBF81DF5E9E9002A6E60 /* BUYLoginControl.m in Sources */,
+				E493526C1DF7267300145486 /* SSPopup.m in Sources */,
 				20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */,
 				E416CD021DF5E9F8002A6E60 /* ZZCameraFocusView.m in Sources */,
 				E493521A1DF70CA900145486 /* FMDBOneList.m in Sources */,
@@ -1969,6 +1999,7 @@
 				E416CD641DF5ED7B002A6E60 /* AskPriceTableViewCell.m in Sources */,
 				E49352211DF70CA900145486 /* SendDataViewCell.m in Sources */,
 				E416CBB81DF5E9E1002A6E60 /* AddOneProductionController.m in Sources */,
+				E49352661DF7267300145486 /* BackButton.m in Sources */,
 				20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */,
 				E416CBF61DF5E9E9002A6E60 /* BUYButton.m in Sources */,
 				E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */,
@@ -1996,9 +2027,8 @@
 				E416CD351DF5EB4C002A6E60 /* DemandViewController.m in Sources */,
 				E49352131DF70CA900145486 /* MyProductionController.m in Sources */,
 				E416CD3B1DF5EB4C002A6E60 /* ExhibitionViewCell.m in Sources */,
-				E416CCE21DF5E9F8002A6E60 /* CCZSegementController.m in Sources */,
-				E416CCE71DF5E9F8002A6E60 /* TapButton.m in Sources */,
 				E416CD091DF5E9F8002A6E60 /* ZZPhotoDatas.m in Sources */,
+				E493526E1DF7267300145486 /* UIView+Layout.m in Sources */,
 				E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */,
 				E416CD341DF5EB4C002A6E60 /* DemandTwoViewController.m in Sources */,
 				20FBCA121DF643500009167F /* BUYSaoAndSupViewController.m in Sources */,
@@ -2011,7 +2041,6 @@
 				E416CD0B1DF5E9F8002A6E60 /* ZZPhotoAlert.m in Sources */,
 				E416CD671DF5ED7B002A6E60 /* ImageCollectionViewCell.m in Sources */,
 				E416CCE01DF5E9F8002A6E60 /* ZMJProviderController.m in Sources */,
-				E416CCE31DF5E9F8002A6E60 /* HYActivityView.m in Sources */,
 				E416CBB91DF5E9E1002A6E60 /* AddThreeProductionController.m in Sources */,
 				E416CC081DF5E9F2002A6E60 /* NavigationControl.m in Sources */,
 				E416CD701DF5ED7B002A6E60 /* TextIconTableViewCell.m in Sources */,
@@ -2026,7 +2055,6 @@
 				E416CD6E1DF5ED7B002A6E60 /* QueryPriceTableViewCell.m in Sources */,
 				20FBC9FF1DF6427B0009167F /* ImageAskProductPriceTableViewController.m in Sources */,
 				E416CBFC1DF5E9E9002A6E60 /* BUYTextView.m in Sources */,
-				E416CCE81DF5E9F8002A6E60 /* UIView+Frame.m in Sources */,
 				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E416CD0C1DF5E9F8002A6E60 /* ZZPhotoBrowerCell.m in Sources */,
 				E493522B1DF70CA900145486 /* EditFirstShopCell.m in Sources */,
@@ -2035,8 +2063,12 @@
 				E416CBC61DF5E9E1002A6E60 /* MemberTwoViewCell.m in Sources */,
 				E416CBC21DF5E9E1002A6E60 /* BuyerEditFirstCell.m in Sources */,
 				E416CBBB1DF5E9E1002A6E60 /* BuyerDetailViewController.m in Sources */,
+				E493526A1DF7267300145486 /* SelectTableViewCell.m in Sources */,
 				E416CBDC1DF5E9E5002A6E60 /* ZMJTotleHomeController.m in Sources */,
+				E49352681DF7267300145486 /* CCZSegementController.m in Sources */,
 				E493521B1DF70CA900145486 /* DetailViewFirstCell.m in Sources */,
+				E49352671DF7267300145486 /* TapButton.m in Sources */,
+				E49352691DF7267300145486 /* HYActivityView.m in Sources */,
 				20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */,
 				E416CBFA1DF5E9E9002A6E60 /* BUYRegisterControl.m in Sources */,
 				E416CD381DF5EB4C002A6E60 /* PulishTwoController.m in Sources */,

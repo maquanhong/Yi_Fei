@@ -11,6 +11,7 @@
 #import "SupplyOutForm.h"
 #import "SendDataTwoViewCell.h"
 #import <MessageUI/MessageUI.h>
+#import "PeripheralBlueTooth.h"
 
 
 @interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) NSArray  *TitleArray;
 @property (strong, nonatomic) UIDocumentInteractionController *documentController;
 @property (strong, nonatomic) SupplyOutForm *singleForm;
+@property (strong, nonatomic) PeripheralBlueTooth *Peripheral;
 @property (strong, nonatomic) UIButton *btn;
 
 @end
@@ -122,15 +124,19 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     }else if (_index == 1501 && _num == 1601){
         
         
+   
+        
+        
         
         NSLog(@"发送EmailPdf");
         
     }else if (_index == 1500 && _num == 1600){
         
-        
-        
-        
-        
+       _singleForm = [[SupplyOutForm alloc] init];
+       _singleForm.shopObjc =  _shopData;
+       [_singleForm outExportExcel];
+       PeripheralBlueTooth *peripheral = [PeripheralBlueTooth shareManager];
+       peripheral.path = _singleForm.outputFileName;
 
         NSLog(@"发送蓝牙Excel");
         

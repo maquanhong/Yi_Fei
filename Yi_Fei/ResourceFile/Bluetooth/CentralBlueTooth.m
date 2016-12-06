@@ -169,8 +169,7 @@ static NSString * const kFileExtension = @"xlsx";
         NSString *documentsFolderPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
         NSString *filePath = [[documentsFolderPath stringByAppendingPathComponent:@"单个商品报价"] stringByAppendingPathExtension:kFileExtension];
         [self.data writeToFile:filePath atomically:YES];
-        
-        
+    
         // 取消订阅
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         

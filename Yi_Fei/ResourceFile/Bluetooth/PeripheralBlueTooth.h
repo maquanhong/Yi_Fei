@@ -13,6 +13,6 @@
 
 +(instancetype)shareManager;
 
-
+@property (nonatomic,copy) NSString *path;
 
 @end
