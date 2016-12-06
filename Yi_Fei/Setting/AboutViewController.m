@@ -52,6 +52,8 @@
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     self.versionLabel.text = version;
     [headerView addSubview:self.versionLabel];
+    self.aboutTableView.tableHeaderView = headerView;
+    self.aboutTableView.tableFooterView = [[UIView alloc] init];
     [self addViewConstraints];
     // Do any additional setup after loading the view.
 }
@@ -94,10 +96,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
     cell.textLabel.text = [self.menuArray objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     return cell;
 }
 #pragma mark UITableViewDelegate
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
 /*
 #pragma mark - Navigation
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793C01DF6DBC000992510 /* MySalerViewController.m */; };
+		203793C41DF6F98600992510 /* ProductListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793C31DF6F98600992510 /* ProductListTableViewController.m */; };
+		203793C71DF6FDCF00992510 /* SystemSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793C61DF6FDCF00992510 /* SystemSettingTableViewController.m */; };
 		20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D61DF640EA0009167F /* UIImage+Tool.m */; };
 		20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D91DF640EA0009167F /* AboutViewController.m */; };
 		20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */; };
@@ -54,6 +57,7 @@
 		20FBCA501DF649B30009167F /* tuichu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3E1DF649B30009167F /* tuichu_icon.png */; };
 		20FBCA511DF649B30009167F /* tuichu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3F1DF649B30009167F /* tuichu_icon@2x.png */; };
 		20FBCA521DF649B30009167F /* tuichu_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA401DF649B30009167F /* tuichu_icon@3x.png */; };
+		20FBCA551DF6629B0009167F /* BriefProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA541DF6629B0009167F /* BriefProductTableViewCell.m */; };
 		D880CC91BDD229530EC6ECC3 /* libPods-Yi_Fei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */; };
 		E416C91E1DF5D802002A6E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E416C91D1DF5D802002A6E60 /* main.m */; };
 		E416C9271DF5D802002A6E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E416C9251DF5D802002A6E60 /* Main.storyboard */; };
@@ -223,6 +227,12 @@
 
 /* Begin PBXFileReference section */
 		1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yi_Fei.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yi_Fei/Pods-Yi_Fei.release.xcconfig"; sourceTree = "<group>"; };
+		203793BF1DF6DBC000992510 /* MySalerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySalerViewController.h; sourceTree = "<group>"; };
+		203793C01DF6DBC000992510 /* MySalerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySalerViewController.m; sourceTree = "<group>"; };
+		203793C21DF6F98600992510 /* ProductListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListTableViewController.h; sourceTree = "<group>"; };
+		203793C31DF6F98600992510 /* ProductListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListTableViewController.m; sourceTree = "<group>"; };
+		203793C51DF6FDCF00992510 /* SystemSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingTableViewController.h; sourceTree = "<group>"; };
+		203793C61DF6FDCF00992510 /* SystemSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingTableViewController.m; sourceTree = "<group>"; };
 		20FBC9D51DF640EA0009167F /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
 		20FBC9D61DF640EA0009167F /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
 		20FBC9D81DF640EA0009167F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -299,6 +309,8 @@
 		20FBCA3E1DF649B30009167F /* tuichu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuichu_icon.png; sourceTree = "<group>"; };
 		20FBCA3F1DF649B30009167F /* tuichu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuichu_icon@2x.png"; sourceTree = "<group>"; };
 		20FBCA401DF649B30009167F /* tuichu_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuichu_icon@3x.png"; sourceTree = "<group>"; };
+		20FBCA531DF6629B0009167F /* BriefProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BriefProductTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA541DF6629B0009167F /* BriefProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BriefProductTableViewCell.m; sourceTree = "<group>"; };
 		4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yi_Fei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yi_Fei.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yi_Fei/Pods-Yi_Fei.debug.xcconfig"; sourceTree = "<group>"; };
 		E416C9191DF5D802002A6E60 /* Yi_Fei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yi_Fei.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -656,6 +668,8 @@
 				20FBC9E51DF640EA0009167F /* SettingTableViewController.m */,
 				20FBC9E61DF640EA0009167F /* UserInfoView.h */,
 				20FBC9E71DF640EA0009167F /* UserInfoView.m */,
+				203793C51DF6FDCF00992510 /* SystemSettingTableViewController.h */,
+				203793C61DF6FDCF00992510 /* SystemSettingTableViewController.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1013,6 +1027,8 @@
 		E416CC091DF5E9F8002A6E60 /* Supply */ = {
 			isa = PBXGroup;
 			children = (
+				203793BF1DF6DBC000992510 /* MySalerViewController.h */,
+				203793C01DF6DBC000992510 /* MySalerViewController.m */,
 				20FBC9F11DF6427B0009167F /* AskProductPriceTableViewController.h */,
 				20FBC9F21DF6427B0009167F /* ClientViewController.h */,
 				20FBC9F31DF6427B0009167F /* ImageAskProductPriceTableViewController.h */,
@@ -1028,6 +1044,8 @@
 				E416CC0A1DF5E9F8002A6E60 /* MyShopGoods */,
 				E416CC5E1DF5E9F8002A6E60 /* ZMJProviderController.h */,
 				E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */,
+				203793C21DF6F98600992510 /* ProductListTableViewController.h */,
+				203793C31DF6F98600992510 /* ProductListTableViewController.m */,
 			);
 			path = Supply;
 			sourceTree = "<group>";
@@ -1623,6 +1641,8 @@
 				E416CD611DF5ED7B002A6E60 /* ThreePopTableViewCell.m */,
 				E416CD621DF5ED7B002A6E60 /* UploadImageTableViewCell.h */,
 				E416CD631DF5ED7B002A6E60 /* UploadImageTableViewCell.m */,
+				20FBCA531DF6629B0009167F /* BriefProductTableViewCell.h */,
+				20FBCA541DF6629B0009167F /* BriefProductTableViewCell.m */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -1889,6 +1909,7 @@
 				E416CD891DF5EDF3002A6E60 /* DownListButton.m in Sources */,
 				E416CBC71DF5E9E1002A6E60 /* PrividerBusinessControler.m in Sources */,
 				E416CCDC1DF5E9F8002A6E60 /* EditFourShopCell.m in Sources */,
+				203793C71DF6FDCF00992510 /* SystemSettingTableViewController.m in Sources */,
 				E416CD3E1DF5EB4C002A6E60 /* SearchView.m in Sources */,
 				E416CD681DF5ED7B002A6E60 /* IndustryTypeTableViewCell.m in Sources */,
 				20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */,
@@ -1921,6 +1942,7 @@
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
 				E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */,
 				E416CCCD1DF5E9F8002A6E60 /* DetailViewThreeCell.m in Sources */,
+				203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
 				E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */,
@@ -1930,6 +1952,7 @@
 				E416CCDB1DF5E9F8002A6E60 /* EditFirstShopCell.m in Sources */,
 				E416CD6C1DF5ED7B002A6E60 /* OnePopWithoutTextFieldTableViewCell.m in Sources */,
 				E416CD641DF5ED7B002A6E60 /* AskPriceTableViewCell.m in Sources */,
+				203793C41DF6F98600992510 /* ProductListTableViewController.m in Sources */,
 				E416CBB81DF5E9E1002A6E60 /* AddOneProductionController.m in Sources */,
 				20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */,
 				E416CBF61DF5E9E9002A6E60 /* BUYButton.m in Sources */,
@@ -1941,6 +1964,7 @@
 				E416CBC51DF5E9E1002A6E60 /* MemberOneViewCell.m in Sources */,
 				E416CBDD1DF5E9E5002A6E60 /* InformationCell.m in Sources */,
 				20FBCA021DF6427B0009167F /* SalerViewController.m in Sources */,
+				20FBCA551DF6629B0009167F /* BriefProductTableViewCell.m in Sources */,
 				E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */,
 				E416CD811DF5ED84002A6E60 /* SearchBarView.m in Sources */,
 				E416CD0F1DF5E9F8002A6E60 /* ZZPhotoPickerCell.m in Sources */,

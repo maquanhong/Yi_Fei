@@ -9,7 +9,7 @@
 #import "BuyerViewController.h"
 #import "ZMJMyProductionCell.h"
 #import "BuyerTableViewCell.h"
-#import "MyBuyerViewController.h"
+#import "MySalerViewController.h"
 #import "AddSupplyViewController.h"
 @interface BuyerViewController (){
     NSArray *array;
@@ -197,8 +197,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MyBuyerViewController *myBuyVC=[[MyBuyerViewController alloc] init];
-    [self.navigationController pushViewController:myBuyVC animated:YES];
+    MySalerViewController *mySalerVC=[[MySalerViewController alloc] init];
+    [self.navigationController pushViewController:mySalerVC animated:YES];
 }
 
 
