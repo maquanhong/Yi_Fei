@@ -209,6 +209,12 @@
 		E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520D1DF70CA900145486 /* EditSecondShopCell.m */; };
 		E493522E1DF70CA900145486 /* EditThreeShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520F1DF70CA900145486 /* EditThreeShopCell.m */; };
 		E493522F1DF70CA900145486 /* myShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352111DF70CA900145486 /* myShopView.m */; };
+		E493523F1DF711AA00145486 /* SingleOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E493523A1DF711AA00145486 /* SingleOutForm.m */; };
+		E49352401DF711AA00145486 /* industry.txt in Resources */ = {isa = PBXBuildFile; fileRef = E493523B1DF711AA00145486 /* industry.txt */; };
+		E49352431DF7135600145486 /* SendInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352421DF7135600145486 /* SendInfoController.m */; };
+		E49352461DF719DC00145486 /* BuyerOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352451DF719DC00145486 /* BuyerOutForm.m */; };
+		E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352481DF7200000145486 /* CentralBlueTooth.m */; };
+		E493524C1DF7200000145486 /* PeripheralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E493524A1DF7200000145486 /* PeripheralBlueTooth.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -597,6 +603,17 @@
 		E493520F1DF70CA900145486 /* EditThreeShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditThreeShopCell.m; sourceTree = "<group>"; };
 		E49352101DF70CA900145486 /* myShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myShopView.h; sourceTree = "<group>"; };
 		E49352111DF70CA900145486 /* myShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myShopView.m; sourceTree = "<group>"; };
+		E49352391DF711AA00145486 /* SupplyOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyOutForm.h; sourceTree = "<group>"; };
+		E493523A1DF711AA00145486 /* SingleOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleOutForm.m; sourceTree = "<group>"; };
+		E493523B1DF711AA00145486 /* industry.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = industry.txt; sourceTree = "<group>"; };
+		E49352411DF7135600145486 /* SendInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInfoController.h; sourceTree = "<group>"; };
+		E49352421DF7135600145486 /* SendInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInfoController.m; sourceTree = "<group>"; };
+		E49352441DF719DC00145486 /* BuyerOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerOutForm.h; sourceTree = "<group>"; };
+		E49352451DF719DC00145486 /* BuyerOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerOutForm.m; sourceTree = "<group>"; };
+		E49352471DF7200000145486 /* CentralBlueTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralBlueTooth.h; sourceTree = "<group>"; };
+		E49352481DF7200000145486 /* CentralBlueTooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralBlueTooth.m; sourceTree = "<group>"; };
+		E49352491DF7200000145486 /* PeripheralBlueTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralBlueTooth.h; sourceTree = "<group>"; };
+		E493524A1DF7200000145486 /* PeripheralBlueTooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralBlueTooth.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -725,6 +742,7 @@
 		E416C91B1DF5D802002A6E60 /* Yi_Fei */ = {
 			isa = PBXGroup;
 			children = (
+				E49352301DF711AA00145486 /* ResourceFile */,
 				20FBC9D41DF640EA0009167F /* Category */,
 				20FBC9D71DF640EA0009167F /* Setting */,
 				E416CD731DF5ED84002A6E60 /* MyClient */,
@@ -809,6 +827,8 @@
 				E416CB9D1DF5E9E1002A6E60 /* BuyerProductController.m */,
 				E416CB9E1DF5E9E1002A6E60 /* MemberController.h */,
 				E416CB9F1DF5E9E1002A6E60 /* MemberController.m */,
+				E49352411DF7135600145486 /* SendInfoController.h */,
+				E49352421DF7135600145486 /* SendInfoController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1639,6 +1659,38 @@
 			path = ZMJEditView;
 			sourceTree = "<group>";
 		};
+		E49352301DF711AA00145486 /* ResourceFile */ = {
+			isa = PBXGroup;
+			children = (
+				E49352311DF711AA00145486 /* Bluetooth */,
+				E49352381DF711AA00145486 /* Form */,
+				E493523B1DF711AA00145486 /* industry.txt */,
+			);
+			path = ResourceFile;
+			sourceTree = "<group>";
+		};
+		E49352311DF711AA00145486 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				E49352471DF7200000145486 /* CentralBlueTooth.h */,
+				E49352481DF7200000145486 /* CentralBlueTooth.m */,
+				E49352491DF7200000145486 /* PeripheralBlueTooth.h */,
+				E493524A1DF7200000145486 /* PeripheralBlueTooth.m */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		E49352381DF711AA00145486 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				E49352391DF711AA00145486 /* SupplyOutForm.h */,
+				E493523A1DF711AA00145486 /* SingleOutForm.m */,
+				E49352441DF719DC00145486 /* BuyerOutForm.h */,
+				E49352451DF719DC00145486 /* BuyerOutForm.m */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1691,8 +1743,8 @@
 				TargetAttributes = {
 					E416C9181DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = MXESESKBVY;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = LSWWCQ7WWC;
+						ProvisioningStyle = Automatic;
 					};
 					E416C9311DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1741,6 +1793,7 @@
 				20FBCA461DF649B30009167F /* guanyu_icon@3x.png in Resources */,
 				E416CCEF1DF5E9F8002A6E60 /* flash_close_pic.png in Resources */,
 				20FBCA471DF649B30009167F /* huiyuan_icon.png in Resources */,
+				E49352401DF711AA00145486 /* industry.txt in Resources */,
 				E416CD661DF5ED7B002A6E60 /* down.jpg in Resources */,
 				E416CCF61DF5E9F8002A6E60 /* take_photo_pic.png in Resources */,
 				20FBCA481DF649B30009167F /* huiyuan_icon@2x.png in Resources */,
@@ -1870,6 +1923,7 @@
 				E49352271DF70CA900145486 /* tableViewFooterView.m in Sources */,
 				E416CD681DF5ED7B002A6E60 /* IndustryTypeTableViewCell.m in Sources */,
 				20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */,
+				E493523F1DF711AA00145486 /* SingleOutForm.m in Sources */,
 				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
 				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
@@ -1893,6 +1947,7 @@
 				20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */,
 				20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
+				E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
@@ -1947,6 +2002,7 @@
 				E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */,
 				E416CD341DF5EB4C002A6E60 /* DemandTwoViewController.m in Sources */,
 				20FBCA121DF643500009167F /* BUYSaoAndSupViewController.m in Sources */,
+				E493524C1DF7200000145486 /* PeripheralBlueTooth.m in Sources */,
 				E416CD331DF5EB4C002A6E60 /* DemandOneViewController.m in Sources */,
 				E493522F1DF70CA900145486 /* myShopView.m in Sources */,
 				20FBCA101DF643500009167F /* AskPriceViewController.m in Sources */,
@@ -1987,6 +2043,8 @@
 				E416CD801DF5ED84002A6E60 /* NewlyAskingPrice.m in Sources */,
 				E49352161DF70CA900145486 /* ZMJNewProductionController.m in Sources */,
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
+				E49352431DF7135600145486 /* SendInfoController.m in Sources */,
+				E49352461DF719DC00145486 /* BuyerOutForm.m in Sources */,
 				E416CD3A1DF5EB4C002A6E60 /* ExhibitionViewController.m in Sources */,
 				E416CBBD1DF5E9E1002A6E60 /* BuyerProductController.m in Sources */,
 				20FBC9EE1DF640EA0009167F /* ProductModelStepTwoTableViewController.m in Sources */,
@@ -2123,15 +2181,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = MXESESKBVY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LSWWCQ7WWC;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YiFei.baibeiyun.Yi-Fei";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "352edc6b-fefb-49d0-8020-4dfe5b430cb5";
-				PROVISIONING_PROFILE_SPECIFIER = schoolOnline_development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -2139,12 +2198,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LSWWCQ7WWC;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.YiFei.baibeiyun.Yi-Fei";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

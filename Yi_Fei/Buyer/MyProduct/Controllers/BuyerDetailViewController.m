@@ -12,7 +12,7 @@
 #import "BuyerEditFSecondCell.h"
 #import "BuyerEditThreeCell.h"
 
-#import "InfoSendViewController.h"
+#import "SendInfoController.h"
 #import "ShareActivity.h"
 
 @interface BuyerDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,ShareActivityDelegate>
@@ -56,9 +56,7 @@
 }
 
 -(void)leftButtonClick{
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 
@@ -209,7 +207,7 @@
     switch (index) {
         case 123456:
         {
-    InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
+    SendInfoController *sendView = [[SendInfoController alloc] init];
     [self.navigationController pushViewController:sendView animated:YES];
             
 

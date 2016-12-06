@@ -1,25 +1,26 @@
 //
-//  InfoSendViewController.m
-//  YiFei
+//  SendInfoController.m
+//  Yi_Fei
 //
-//  Created by maquanhong on 10/23/16.
-//  Copyright © 2016 yous. All rights reserved.
+//  Created by yons on 16/12/6.
+//  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "InfoSendViewController.h"
+#import "SendInfoController.h"
 #import "SendDataViewCell.h"
-#import "SupplyOutForm.h"
 #import "SendDataTwoViewCell.h"
 #import <MessageUI/MessageUI.h>
+#import "BuyerOutForm.h"
 
 
-@interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
+@interface SendInfoController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
 {
     SendDataViewCell *Firstell;
     SendDataTwoViewCell *secondCell;
     NSInteger  _index;
     NSInteger _num;
     BackButton *_rightBtn;
+    
 }
 
 @property (nonatomic, strong) UITextField   *textField;
@@ -28,19 +29,20 @@
 @property (nonatomic, strong) NSArray       *dataArray;
 @property (nonatomic, strong) NSArray  *TitleArray;
 @property (strong, nonatomic) UIDocumentInteractionController *documentController;
-@property (strong, nonatomic) SupplyOutForm *singleForm;
+@property (strong, nonatomic) BuyerOutForm *singleForm;
 @property (strong, nonatomic) UIButton *btn;
+
 
 @end
 
-@implementation InfoSendViewController
+@implementation SendInfoController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  [self createNavigationView];
-_TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", nil];
-  _sendArray  = @[@{@"发送方式":@"蓝牙发送"},@{@"发送方式":@"Email发送"}];
-  _dataArray  = @[@{@"发送方式":@"Excel"},@{@"发送方式":@"PDF"}];
+    [self createNavigationView];
+    _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", nil];
+    _sendArray  = @[@{@"发送方式":@"蓝牙发送"},@{@"发送方式":@"Email发送"}];
+    _dataArray  = @[@{@"发送方式":@"Excel"},@{@"发送方式":@"PDF"}];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self addViewConstraints];
 }
@@ -48,7 +50,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 #pragma mark 创建navgationView
 -(void)createNavigationView
 {
-      self.navigationItem.title = @"商品资料发送";
+    self.navigationItem.title = @"商品资料发送";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
@@ -60,7 +62,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     UIBarButtonItem *barbtn=[[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStyleDone target:self action:@selector(sendExcelOrPDF:)];
     barbtn.image=searchimage;
     self.navigationItem.rightBarButtonItem=barbtn;
-
+    
 }
 
 -(void)leftButtonClick{
@@ -106,15 +108,14 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
         make.height.mas_equalTo(30);
     }];
     _tableView.tableFooterView  = footerView;
-
 }
 
 
 #pragma mark 点击发送按钮
 -(void)sendClickBtn:(UIButton*)sender{
     
-    if (_index == 1501 && _num == 1600) {  //发送Excel
-        _singleForm = [[SupplyOutForm alloc] init];
+    if (_index == 1501 && _num == 1600) {
+        _singleForm = [[BuyerOutForm alloc] init];
         _singleForm.shopObjc =  _shopData;
         [_singleForm outExportExcel];
 [self sendExcel:_singleForm.outputFilePath name:_singleForm.outputFileName];
@@ -122,16 +123,12 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     }else if (_index == 1501 && _num == 1601){
         
         
-        
         NSLog(@"发送EmailPdf");
         
     }else if (_index == 1500 && _num == 1600){
+      
         
         
-        
-        
-        
-
         NSLog(@"发送蓝牙Excel");
         
     }else if (_index == 1500 && _num == 1601){
@@ -156,7 +153,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- 
+    
     if (indexPath.section == 0) {
         static NSString *identifer1 = @"firstCell";
         Firstell  = [tableView dequeueReusableCellWithIdentifier:identifer1];
@@ -164,7 +161,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
             Firstell = [[SendDataViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer1];
         }
         Firstell.delegate = self;
-       Firstell.selectionStyle =  UITableViewCellSelectionStyleNone;
+        Firstell.selectionStyle =  UITableViewCellSelectionStyleNone;
         return Firstell;
     }else{
         
@@ -174,8 +171,8 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
             secondCell = [[SendDataTwoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer2];
         }
         secondCell.delegate = self;
-    secondCell.selectionStyle =  UITableViewCellSelectionStyleNone;
-    return secondCell;
+        secondCell.selectionStyle =  UITableViewCellSelectionStyleNone;
+        return secondCell;
     }
 }
 
@@ -217,17 +214,17 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 #pragma mark tableView的组头
 - (UIView *)infoSendTableView:(NSString *)title {
     
-         UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
-         headView.backgroundColor = [UIColor grayColor];
-         UILabel *titleLabel = [[UILabel alloc] init];
-         titleLabel.text = title;
-         titleLabel.font = [UIFont systemFontOfSize:14];
-         [headView addSubview:titleLabel];
-        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.mas_equalTo(headView).offset(20);
-            make.centerY.mas_equalTo(headView.mas_centerY);
-            make.size.mas_equalTo(CGSizeMake(100, 20));
-        }];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+    headView.backgroundColor = [UIColor grayColor];
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = title;
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    [headView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(headView).offset(20);
+        make.centerY.mas_equalTo(headView.mas_centerY);
+        make.size.mas_equalTo(CGSizeMake(100, 20));
+    }];
     return headView;
 }
 
@@ -244,6 +241,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     [_textField resignFirstResponder];
     return YES;
 }
+
 
 
 
@@ -302,19 +300,19 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 }
 
 
-
-
 #pragma mark 利用系统的 -------  发送QQ，微信等等
 -(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
     
-    _singleForm = [[SupplyOutForm alloc] init];
+    _singleForm = [[BuyerOutForm alloc] init];
     _singleForm.shopObjc =  _shopData;
     [_singleForm outExportExcel];
     NSURL *fileURL = [NSURL fileURLWithPath:_singleForm.outputFilePath];
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
     self.documentController.delegate = self;
     [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];
+    
 }
+
 
 #pragma mark - Document Interaction Controller Delegate
 - (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller {
@@ -342,12 +340,17 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 
 
 
-
-
-
-
-
 @end
+
+
+
+
+
+
+
+
+
+
 
 
 
