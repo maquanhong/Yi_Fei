@@ -264,7 +264,6 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     NSString *name = [NSString stringWithFormat:@"%@.xlsx",fileName];
     [mailPicker addAttachmentData:ExcelFile mimeType: @"file/Excel" fileName: name];
     [self presentViewController:mailPicker animated:YES completion:nil];
-    
 }
 
 #pragma mark - 实现 MFMailComposeViewControllerDelegate

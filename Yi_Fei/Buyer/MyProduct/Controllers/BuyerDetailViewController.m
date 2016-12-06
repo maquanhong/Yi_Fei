@@ -11,7 +11,6 @@
 #import "BuyerEditFirstCell.h"
 #import "BuyerEditFSecondCell.h"
 #import "BuyerEditThreeCell.h"
-
 #import "SendInfoController.h"
 #import "ShareActivity.h"
 
@@ -34,6 +33,7 @@
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self createNavigationView];
     [self addContentView];
+   
 }
 
 #pragma mark 创建导航栏
@@ -195,22 +195,19 @@
 
 
 - (void)shareProduct {
-
     ShareActivity *sa = [[ShareActivity alloc] initShareActivityView];
     sa.delegate = self;
     [sa show];
-    
 }
 
-- (void)clickButtonView:(NSInteger)index{
+- (void)clickButtonView:(NSInteger)index button:(UIButton *)btn{
     
     switch (index) {
         case 123456:
         {
     SendInfoController *sendView = [[SendInfoController alloc] init];
+    sendView.shopData =  _shopData;
     [self.navigationController pushViewController:sendView animated:YES];
-            
-
             
         }
             break;

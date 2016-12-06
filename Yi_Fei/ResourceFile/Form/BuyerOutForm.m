@@ -28,7 +28,7 @@ static NSString * const kFileExtension = @"xlsx";
 
 
 #pragma mark 导入的文件名
-- (NSString *)importFileName {
+- (NSString *)outputFileName {
     return @"采购商商品采购单";
 }
 

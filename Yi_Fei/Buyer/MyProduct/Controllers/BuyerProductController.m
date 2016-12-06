@@ -9,7 +9,7 @@
 #import "BuyerProductController.h"
 #import "AddOneProductionController.h"
 #import "BuyerProductTableViewCell.h"
-#import "ZMJGoodsDetailController.h"
+#import "BuyerDetailViewController.h"
 #import "MemberController.h"
 
 
@@ -373,7 +373,7 @@
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ZMJGoodsDetailController *detailPriceVC=[[ZMJGoodsDetailController alloc] init];
+    BuyerDetailViewController *detailPriceVC=[[BuyerDetailViewController alloc] init];
     detailPriceVC.shopData=_listArray[indexPath.row];
     [self.navigationController pushViewController:detailPriceVC animated:YES];
 }
@@ -441,6 +441,7 @@
   [_listArray removeObjectAtIndex:indexPath.row];
     }
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+_numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
     [_tableview reloadData];
     
 }

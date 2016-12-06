@@ -16,7 +16,7 @@
 
 - (void)outExportExcel; //导出来给客户看的;
 
-@property (nonatomic,strong)ProductionData *shopObjc;
+@property (nonatomic,strong,nonnull)ProductionData *shopObjc;
 
 
 

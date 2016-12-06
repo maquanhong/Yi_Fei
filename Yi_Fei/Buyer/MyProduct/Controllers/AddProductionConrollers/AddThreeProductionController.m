@@ -454,8 +454,8 @@
         for (int i=0; i< self.picArray.count; i++) {
             //拿到图片
             ZZPhoto *photo = self.picArray[i];
-            UIImage *image = photo.originImage;
-            
+            CGSize  size = CGSizeMake(145, 160);
+        UIImage *image = [self compressOriginalImage:photo.originImage toSize:size ];
             NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
             //打印日期：中间的空格可以用‘at’或‘T’等字符划分
             NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
@@ -489,8 +489,9 @@
         NSMutableArray  *TimeArray=[NSMutableArray array];
         for (int i=0; i< self.picArray.count; i++) {
             //拿到图片
-            ZZCamera *camera = self.picArray[i];
-            UIImage *image = camera.image;
+        ZZCamera *camera = self.picArray[i];
+        CGSize  size = CGSizeMake(145, 160);
+        UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
             NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
             //打印日期：中间的空格可以用‘at’或‘T’等字符划分
             NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
@@ -507,8 +508,26 @@
         NSString *str=[TimeArray componentsJoinedByString:@"|"];
         _shopObj.shopPicture=str;
     }];
-    
 }
+
+
+-(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
+    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
+    
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;   //返回的就是已经改变的图片
+}
+
+
+
+
+
+
 
 
 
