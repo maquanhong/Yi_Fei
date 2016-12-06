@@ -13,6 +13,7 @@
 #import "PrividerBusinessControler.h"
 #import "BusinessChanceViewController.h"
 #import "MessageViewController.h"
+#import "SettingTableViewController.h"
 
 @interface ZMJTotleHomeController ()<SDCycleScrollViewDelegate>
 
@@ -54,9 +55,8 @@
 }
 
 - (void)showUserInfo {
-    
-    
-    
+    SettingTableViewController *settingVc = [[SettingTableViewController alloc] init];
+    [self.navigationController pushViewController:settingVc animated:YES];
 
 }
 

@@ -7,6 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D61DF640EA0009167F /* UIImage+Tool.m */; };
+		20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D91DF640EA0009167F /* AboutViewController.m */; };
+		20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */; };
+		20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DD1DF640EA0009167F /* IconContenTableVIewCell.m */; };
+		20FBC9EC1DF640EA0009167F /* IdentifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DF1DF640EA0009167F /* IdentifyViewController.m */; };
+		20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E11DF640EA0009167F /* ProductModelStepOneTableViewController.m */; };
+		20FBC9EE1DF640EA0009167F /* ProductModelStepTwoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E31DF640EA0009167F /* ProductModelStepTwoTableViewController.m */; };
+		20FBC9EF1DF640EA0009167F /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E51DF640EA0009167F /* SettingTableViewController.m */; };
+		20FBC9F01DF640EA0009167F /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E71DF640EA0009167F /* UserInfoView.m */; };
+		20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9F71DF6427B0009167F /* AskProductPriceTableViewController.m */; };
+		20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9F81DF6427B0009167F /* ClientViewController.m */; };
+		20FBC9FF1DF6427B0009167F /* ImageAskProductPriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9F91DF6427B0009167F /* ImageAskProductPriceTableViewController.m */; };
+		20FBCA001DF6427B0009167F /* offerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9FA1DF6427B0009167F /* offerViewController.m */; };
+		20FBCA011DF6427B0009167F /* QueryPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */; };
+		20FBCA021DF6427B0009167F /* SalerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9FC1DF6427B0009167F /* SalerViewController.m */; };
+		20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA091DF643500009167F /* AddSupplyViewController.m */; };
+		20FBCA101DF643500009167F /* AskPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0A1DF643500009167F /* AskPriceViewController.m */; };
+		20FBCA111DF643500009167F /* BuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0B1DF643500009167F /* BuyerViewController.m */; };
+		20FBCA121DF643500009167F /* BUYSaoAndSupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0C1DF643500009167F /* BUYSaoAndSupViewController.m */; };
+		20FBCA131DF643500009167F /* MyBuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0D1DF643500009167F /* MyBuyerViewController.m */; };
+		20FBCA141DF643500009167F /* newBuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0E1DF643500009167F /* newBuyerViewController.m */; };
+		20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA161DF644A20009167F /* OnlyTitleTableViewCell.m */; };
+		20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA191DF645AB0009167F /* AddSupplyTableViewCell.m */; };
+		20FBCA1D1DF646B40009167F /* MyBuyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA1C1DF646B40009167F /* MyBuyerTableViewCell.m */; };
+		20FBCA221DF646F40009167F /* MyBuyerAskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA201DF646F40009167F /* MyBuyerAskTableViewCell.m */; };
+		20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */; };
+		20FBCA261DF6473A0009167F /* BuyerLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA251DF6473A0009167F /* BuyerLable.m */; };
+		20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA291DF647CA0009167F /* ZESegmentedsView.m */; };
+		20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA2C1DF648150009167F /* BuyerTableViewCell.m */; };
+		20FBCA411DF649B30009167F /* erweima_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA2F1DF649B30009167F /* erweima_icon.png */; };
+		20FBCA421DF649B30009167F /* erweima_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA301DF649B30009167F /* erweima_icon@2x.png */; };
+		20FBCA431DF649B30009167F /* erweima_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA311DF649B30009167F /* erweima_icon@3x.png */; };
+		20FBCA441DF649B30009167F /* guanyu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA321DF649B30009167F /* guanyu_icon.png */; };
+		20FBCA451DF649B30009167F /* guanyu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA331DF649B30009167F /* guanyu_icon@2x.png */; };
+		20FBCA461DF649B30009167F /* guanyu_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA341DF649B30009167F /* guanyu_icon@3x.png */; };
+		20FBCA471DF649B30009167F /* huiyuan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA351DF649B30009167F /* huiyuan_icon.png */; };
+		20FBCA481DF649B30009167F /* huiyuan_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA361DF649B30009167F /* huiyuan_icon@2x.png */; };
+		20FBCA491DF649B30009167F /* huiyuan_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA371DF649B30009167F /* huiyuan_icon@3x.png */; };
+		20FBCA4A1DF649B30009167F /* jibenziliao_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA381DF649B30009167F /* jibenziliao_icon.png */; };
+		20FBCA4B1DF649B30009167F /* jibenziliao_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA391DF649B30009167F /* jibenziliao_icon@2x.png */; };
+		20FBCA4C1DF649B30009167F /* jibenziliao_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3A1DF649B30009167F /* jibenziliao_icon@3x.png */; };
+		20FBCA4D1DF649B30009167F /* shezhi_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3B1DF649B30009167F /* shezhi_icon.png */; };
+		20FBCA4E1DF649B30009167F /* shezhi_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3C1DF649B30009167F /* shezhi_icon@2x.png */; };
+		20FBCA4F1DF649B30009167F /* shezhi_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3D1DF649B30009167F /* shezhi_icon@3x.png */; };
+		20FBCA501DF649B30009167F /* tuichu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3E1DF649B30009167F /* tuichu_icon.png */; };
+		20FBCA511DF649B30009167F /* tuichu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA3F1DF649B30009167F /* tuichu_icon@2x.png */; };
+		20FBCA521DF649B30009167F /* tuichu_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20FBCA401DF649B30009167F /* tuichu_icon@3x.png */; };
 		D880CC91BDD229530EC6ECC3 /* libPods-Yi_Fei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */; };
 		E416C91E1DF5D802002A6E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E416C91D1DF5D802002A6E60 /* main.m */; };
 		E416C9271DF5D802002A6E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E416C9251DF5D802002A6E60 /* Main.storyboard */; };
@@ -176,6 +223,82 @@
 
 /* Begin PBXFileReference section */
 		1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yi_Fei.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yi_Fei/Pods-Yi_Fei.release.xcconfig"; sourceTree = "<group>"; };
+		20FBC9D51DF640EA0009167F /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
+		20FBC9D61DF640EA0009167F /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
+		20FBC9D81DF640EA0009167F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		20FBC9D91DF640EA0009167F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		20FBC9DA1DF640EA0009167F /* BasicInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoTableViewController.h; sourceTree = "<group>"; };
+		20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoTableViewController.m; sourceTree = "<group>"; };
+		20FBC9DC1DF640EA0009167F /* IconContenTableVIewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconContenTableVIewCell.h; sourceTree = "<group>"; };
+		20FBC9DD1DF640EA0009167F /* IconContenTableVIewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconContenTableVIewCell.m; sourceTree = "<group>"; };
+		20FBC9DE1DF640EA0009167F /* IdentifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyViewController.h; sourceTree = "<group>"; };
+		20FBC9DF1DF640EA0009167F /* IdentifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyViewController.m; sourceTree = "<group>"; };
+		20FBC9E01DF640EA0009167F /* ProductModelStepOneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModelStepOneTableViewController.h; sourceTree = "<group>"; };
+		20FBC9E11DF640EA0009167F /* ProductModelStepOneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModelStepOneTableViewController.m; sourceTree = "<group>"; };
+		20FBC9E21DF640EA0009167F /* ProductModelStepTwoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModelStepTwoTableViewController.h; sourceTree = "<group>"; };
+		20FBC9E31DF640EA0009167F /* ProductModelStepTwoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModelStepTwoTableViewController.m; sourceTree = "<group>"; };
+		20FBC9E41DF640EA0009167F /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		20FBC9E51DF640EA0009167F /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		20FBC9E61DF640EA0009167F /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
+		20FBC9E71DF640EA0009167F /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		20FBC9F11DF6427B0009167F /* AskProductPriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskProductPriceTableViewController.h; sourceTree = "<group>"; };
+		20FBC9F21DF6427B0009167F /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
+		20FBC9F31DF6427B0009167F /* ImageAskProductPriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAskProductPriceTableViewController.h; sourceTree = "<group>"; };
+		20FBC9F41DF6427B0009167F /* offerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = offerViewController.h; sourceTree = "<group>"; };
+		20FBC9F51DF6427B0009167F /* QueryPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryPriceViewController.h; sourceTree = "<group>"; };
+		20FBC9F61DF6427B0009167F /* SalerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalerViewController.h; sourceTree = "<group>"; };
+		20FBC9F71DF6427B0009167F /* AskProductPriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskProductPriceTableViewController.m; sourceTree = "<group>"; };
+		20FBC9F81DF6427B0009167F /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
+		20FBC9F91DF6427B0009167F /* ImageAskProductPriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAskProductPriceTableViewController.m; sourceTree = "<group>"; };
+		20FBC9FA1DF6427B0009167F /* offerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = offerViewController.m; sourceTree = "<group>"; };
+		20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryPriceViewController.m; sourceTree = "<group>"; };
+		20FBC9FC1DF6427B0009167F /* SalerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalerViewController.m; sourceTree = "<group>"; };
+		20FBCA031DF643500009167F /* AddSupplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSupplyViewController.h; sourceTree = "<group>"; };
+		20FBCA041DF643500009167F /* AskPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceViewController.h; sourceTree = "<group>"; };
+		20FBCA051DF643500009167F /* BuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerViewController.h; sourceTree = "<group>"; };
+		20FBCA061DF643500009167F /* BUYSaoAndSupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUYSaoAndSupViewController.h; sourceTree = "<group>"; };
+		20FBCA071DF643500009167F /* MyBuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyerViewController.h; sourceTree = "<group>"; };
+		20FBCA081DF643500009167F /* newBuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newBuyerViewController.h; sourceTree = "<group>"; };
+		20FBCA091DF643500009167F /* AddSupplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSupplyViewController.m; sourceTree = "<group>"; };
+		20FBCA0A1DF643500009167F /* AskPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceViewController.m; sourceTree = "<group>"; };
+		20FBCA0B1DF643500009167F /* BuyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerViewController.m; sourceTree = "<group>"; };
+		20FBCA0C1DF643500009167F /* BUYSaoAndSupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUYSaoAndSupViewController.m; sourceTree = "<group>"; };
+		20FBCA0D1DF643500009167F /* MyBuyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyerViewController.m; sourceTree = "<group>"; };
+		20FBCA0E1DF643500009167F /* newBuyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newBuyerViewController.m; sourceTree = "<group>"; };
+		20FBCA151DF644A20009167F /* OnlyTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyTitleTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA161DF644A20009167F /* OnlyTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyTitleTableViewCell.m; sourceTree = "<group>"; };
+		20FBCA181DF645AB0009167F /* AddSupplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSupplyTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA191DF645AB0009167F /* AddSupplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSupplyTableViewCell.m; sourceTree = "<group>"; };
+		20FBCA1B1DF646B40009167F /* MyBuyerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyerTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA1C1DF646B40009167F /* MyBuyerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyerTableViewCell.m; sourceTree = "<group>"; };
+		20FBCA1E1DF646F40009167F /* MyBuyerAskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyerAskTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA1F1DF646F40009167F /* MyBuyerInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyerInfoTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA201DF646F40009167F /* MyBuyerAskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyerAskTableViewCell.m; sourceTree = "<group>"; };
+		20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyerInfoTableViewCell.m; sourceTree = "<group>"; };
+		20FBCA241DF6473A0009167F /* BuyerLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerLable.h; sourceTree = "<group>"; };
+		20FBCA251DF6473A0009167F /* BuyerLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerLable.m; sourceTree = "<group>"; };
+		20FBCA281DF647CA0009167F /* ZESegmentedsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZESegmentedsView.h; sourceTree = "<group>"; };
+		20FBCA291DF647CA0009167F /* ZESegmentedsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZESegmentedsView.m; sourceTree = "<group>"; };
+		20FBCA2B1DF648150009167F /* BuyerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerTableViewCell.h; sourceTree = "<group>"; };
+		20FBCA2C1DF648150009167F /* BuyerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerTableViewCell.m; sourceTree = "<group>"; };
+		20FBCA2F1DF649B30009167F /* erweima_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erweima_icon.png; sourceTree = "<group>"; };
+		20FBCA301DF649B30009167F /* erweima_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erweima_icon@2x.png"; sourceTree = "<group>"; };
+		20FBCA311DF649B30009167F /* erweima_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erweima_icon@3x.png"; sourceTree = "<group>"; };
+		20FBCA321DF649B30009167F /* guanyu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guanyu_icon.png; sourceTree = "<group>"; };
+		20FBCA331DF649B30009167F /* guanyu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanyu_icon@2x.png"; sourceTree = "<group>"; };
+		20FBCA341DF649B30009167F /* guanyu_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanyu_icon@3x.png"; sourceTree = "<group>"; };
+		20FBCA351DF649B30009167F /* huiyuan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huiyuan_icon.png; sourceTree = "<group>"; };
+		20FBCA361DF649B30009167F /* huiyuan_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "huiyuan_icon@2x.png"; sourceTree = "<group>"; };
+		20FBCA371DF649B30009167F /* huiyuan_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "huiyuan_icon@3x.png"; sourceTree = "<group>"; };
+		20FBCA381DF649B30009167F /* jibenziliao_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jibenziliao_icon.png; sourceTree = "<group>"; };
+		20FBCA391DF649B30009167F /* jibenziliao_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jibenziliao_icon@2x.png"; sourceTree = "<group>"; };
+		20FBCA3A1DF649B30009167F /* jibenziliao_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jibenziliao_icon@3x.png"; sourceTree = "<group>"; };
+		20FBCA3B1DF649B30009167F /* shezhi_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shezhi_icon.png; sourceTree = "<group>"; };
+		20FBCA3C1DF649B30009167F /* shezhi_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shezhi_icon@2x.png"; sourceTree = "<group>"; };
+		20FBCA3D1DF649B30009167F /* shezhi_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shezhi_icon@3x.png"; sourceTree = "<group>"; };
+		20FBCA3E1DF649B30009167F /* tuichu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuichu_icon.png; sourceTree = "<group>"; };
+		20FBCA3F1DF649B30009167F /* tuichu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuichu_icon@2x.png"; sourceTree = "<group>"; };
+		20FBCA401DF649B30009167F /* tuichu_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuichu_icon@3x.png"; sourceTree = "<group>"; };
 		4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yi_Fei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yi_Fei.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yi_Fei/Pods-Yi_Fei.debug.xcconfig"; sourceTree = "<group>"; };
 		E416C9191DF5D802002A6E60 /* Yi_Fei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yi_Fei.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,6 +627,73 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		20FBC9D41DF640EA0009167F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				20FBC9D51DF640EA0009167F /* UIImage+Tool.h */,
+				20FBC9D61DF640EA0009167F /* UIImage+Tool.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		20FBC9D71DF640EA0009167F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				20FBCA2E1DF649570009167F /* Resource */,
+				20FBC9D81DF640EA0009167F /* AboutViewController.h */,
+				20FBC9D91DF640EA0009167F /* AboutViewController.m */,
+				20FBC9DA1DF640EA0009167F /* BasicInfoTableViewController.h */,
+				20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */,
+				20FBC9DC1DF640EA0009167F /* IconContenTableVIewCell.h */,
+				20FBC9DD1DF640EA0009167F /* IconContenTableVIewCell.m */,
+				20FBC9DE1DF640EA0009167F /* IdentifyViewController.h */,
+				20FBC9DF1DF640EA0009167F /* IdentifyViewController.m */,
+				20FBC9E01DF640EA0009167F /* ProductModelStepOneTableViewController.h */,
+				20FBC9E11DF640EA0009167F /* ProductModelStepOneTableViewController.m */,
+				20FBC9E21DF640EA0009167F /* ProductModelStepTwoTableViewController.h */,
+				20FBC9E31DF640EA0009167F /* ProductModelStepTwoTableViewController.m */,
+				20FBC9E41DF640EA0009167F /* SettingTableViewController.h */,
+				20FBC9E51DF640EA0009167F /* SettingTableViewController.m */,
+				20FBC9E61DF640EA0009167F /* UserInfoView.h */,
+				20FBC9E71DF640EA0009167F /* UserInfoView.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		20FBCA271DF647CA0009167F /* ZESementeds */ = {
+			isa = PBXGroup;
+			children = (
+				20FBCA281DF647CA0009167F /* ZESegmentedsView.h */,
+				20FBCA291DF647CA0009167F /* ZESegmentedsView.m */,
+			);
+			path = ZESementeds;
+			sourceTree = "<group>";
+		};
+		20FBCA2E1DF649570009167F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				20FBCA2F1DF649B30009167F /* erweima_icon.png */,
+				20FBCA301DF649B30009167F /* erweima_icon@2x.png */,
+				20FBCA311DF649B30009167F /* erweima_icon@3x.png */,
+				20FBCA321DF649B30009167F /* guanyu_icon.png */,
+				20FBCA331DF649B30009167F /* guanyu_icon@2x.png */,
+				20FBCA341DF649B30009167F /* guanyu_icon@3x.png */,
+				20FBCA351DF649B30009167F /* huiyuan_icon.png */,
+				20FBCA361DF649B30009167F /* huiyuan_icon@2x.png */,
+				20FBCA371DF649B30009167F /* huiyuan_icon@3x.png */,
+				20FBCA381DF649B30009167F /* jibenziliao_icon.png */,
+				20FBCA391DF649B30009167F /* jibenziliao_icon@2x.png */,
+				20FBCA3A1DF649B30009167F /* jibenziliao_icon@3x.png */,
+				20FBCA3B1DF649B30009167F /* shezhi_icon.png */,
+				20FBCA3C1DF649B30009167F /* shezhi_icon@2x.png */,
+				20FBCA3D1DF649B30009167F /* shezhi_icon@3x.png */,
+				20FBCA3E1DF649B30009167F /* tuichu_icon.png */,
+				20FBCA3F1DF649B30009167F /* tuichu_icon@2x.png */,
+				20FBCA401DF649B30009167F /* tuichu_icon@3x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		79A0D0C921E9F082A1D9C350 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +725,8 @@
 		E416C91B1DF5D802002A6E60 /* Yi_Fei */ = {
 			isa = PBXGroup;
 			children = (
+				20FBC9D41DF640EA0009167F /* Category */,
+				20FBC9D71DF640EA0009167F /* Setting */,
 				E416CD731DF5ED84002A6E60 /* MyClient */,
 				E416CD461DF5ED7B002A6E60 /* UITableViewCell */,
 				E416CD3F1DF5ED75002A6E60 /* Segment */,
@@ -574,6 +766,8 @@
 		E416CB8E1DF5E9E1002A6E60 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				20FBCA241DF6473A0009167F /* BuyerLable.h */,
+				20FBCA251DF6473A0009167F /* BuyerLable.m */,
 				E416CB8F1DF5E9E1002A6E60 /* MyProduct */,
 				E416CBB61DF5E9E1002A6E60 /* PrividerBusinessControler.h */,
 				E416CBB71DF5E9E1002A6E60 /* PrividerBusinessControler.m */,
@@ -584,6 +778,18 @@
 		E416CB8F1DF5E9E1002A6E60 /* MyProduct */ = {
 			isa = PBXGroup;
 			children = (
+				20FBCA031DF643500009167F /* AddSupplyViewController.h */,
+				20FBCA041DF643500009167F /* AskPriceViewController.h */,
+				20FBCA051DF643500009167F /* BuyerViewController.h */,
+				20FBCA061DF643500009167F /* BUYSaoAndSupViewController.h */,
+				20FBCA071DF643500009167F /* MyBuyerViewController.h */,
+				20FBCA081DF643500009167F /* newBuyerViewController.h */,
+				20FBCA091DF643500009167F /* AddSupplyViewController.m */,
+				20FBCA0A1DF643500009167F /* AskPriceViewController.m */,
+				20FBCA0B1DF643500009167F /* BuyerViewController.m */,
+				20FBCA0C1DF643500009167F /* BUYSaoAndSupViewController.m */,
+				20FBCA0D1DF643500009167F /* MyBuyerViewController.m */,
+				20FBCA0E1DF643500009167F /* newBuyerViewController.m */,
 				E416CB901DF5E9E1002A6E60 /* Controllers */,
 				E416CBA01DF5E9E1002A6E60 /* Models */,
 				E416CBA71DF5E9E1002A6E60 /* Views */,
@@ -807,6 +1013,18 @@
 		E416CC091DF5E9F8002A6E60 /* Supply */ = {
 			isa = PBXGroup;
 			children = (
+				20FBC9F11DF6427B0009167F /* AskProductPriceTableViewController.h */,
+				20FBC9F21DF6427B0009167F /* ClientViewController.h */,
+				20FBC9F31DF6427B0009167F /* ImageAskProductPriceTableViewController.h */,
+				20FBC9F41DF6427B0009167F /* offerViewController.h */,
+				20FBC9F51DF6427B0009167F /* QueryPriceViewController.h */,
+				20FBC9F61DF6427B0009167F /* SalerViewController.h */,
+				20FBC9F71DF6427B0009167F /* AskProductPriceTableViewController.m */,
+				20FBC9F81DF6427B0009167F /* ClientViewController.m */,
+				20FBC9F91DF6427B0009167F /* ImageAskProductPriceTableViewController.m */,
+				20FBC9FA1DF6427B0009167F /* offerViewController.m */,
+				20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */,
+				20FBC9FC1DF6427B0009167F /* SalerViewController.m */,
 				E416CC0A1DF5E9F8002A6E60 /* MyShopGoods */,
 				E416CC5E1DF5E9F8002A6E60 /* ZMJProviderController.h */,
 				E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */,
@@ -1068,6 +1286,7 @@
 		E416CC601DF5E9F8002A6E60 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				20FBCA271DF647CA0009167F /* ZESementeds */,
 				E416CD831DF5EDF3002A6E60 /* DownListButton */,
 				E416CC611DF5E9F8002A6E60 /* Tools */,
 				E416CC741DF5E9F8002A6E60 /* ZZPhotoKit */,
@@ -1363,6 +1582,18 @@
 		E416CD461DF5ED7B002A6E60 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				20FBCA1E1DF646F40009167F /* MyBuyerAskTableViewCell.h */,
+				20FBCA2B1DF648150009167F /* BuyerTableViewCell.h */,
+				20FBCA2C1DF648150009167F /* BuyerTableViewCell.m */,
+				20FBCA1F1DF646F40009167F /* MyBuyerInfoTableViewCell.h */,
+				20FBCA201DF646F40009167F /* MyBuyerAskTableViewCell.m */,
+				20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */,
+				20FBCA1B1DF646B40009167F /* MyBuyerTableViewCell.h */,
+				20FBCA1C1DF646B40009167F /* MyBuyerTableViewCell.m */,
+				20FBCA181DF645AB0009167F /* AddSupplyTableViewCell.h */,
+				20FBCA191DF645AB0009167F /* AddSupplyTableViewCell.m */,
+				20FBCA151DF644A20009167F /* OnlyTitleTableViewCell.h */,
+				20FBCA161DF644A20009167F /* OnlyTitleTableViewCell.m */,
 				E416CD471DF5ED7B002A6E60 /* AskPriceTableViewCell.h */,
 				E416CD481DF5ED7B002A6E60 /* AskPriceTableViewCell.m */,
 				E416CD491DF5ED7B002A6E60 /* ClientInfoTableViewCell.h */,
@@ -1476,8 +1707,8 @@
 				TargetAttributes = {
 					E416C9181DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = WA8Q762M8L;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = MXESESKBVY;
+						ProvisioningStyle = Manual;
 					};
 					E416C9311DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1510,17 +1741,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20FBCA451DF649B30009167F /* guanyu_icon@2x.png in Resources */,
 				E416CCF41DF5E9F8002A6E60 /* select_no.png in Resources */,
+				20FBCA4A1DF649B30009167F /* jibenziliao_icon.png in Resources */,
+				20FBCA4C1DF649B30009167F /* jibenziliao_icon@3x.png in Resources */,
 				E416CCED1DF5E9F8002A6E60 /* camera_focus_pic.png in Resources */,
 				E416CCF21DF5E9F8002A6E60 /* photo_add.png in Resources */,
+				20FBCA491DF649B30009167F /* huiyuan_icon@3x.png in Resources */,
+				20FBCA431DF649B30009167F /* erweima_icon@3x.png in Resources */,
 				E416CCEE1DF5E9F8002A6E60 /* change_camera_pic.png in Resources */,
 				E416C92C1DF5D802002A6E60 /* LaunchScreen.storyboard in Resources */,
 				E416CCEB1DF5E9F8002A6E60 /* back_button_normal.png in Resources */,
+				20FBCA4B1DF649B30009167F /* jibenziliao_icon@2x.png in Resources */,
+				20FBCA521DF649B30009167F /* tuichu_icon@3x.png in Resources */,
+				20FBCA461DF649B30009167F /* guanyu_icon@3x.png in Resources */,
 				E416CCEF1DF5E9F8002A6E60 /* flash_close_pic.png in Resources */,
+				20FBCA471DF649B30009167F /* huiyuan_icon.png in Resources */,
 				E416CD661DF5ED7B002A6E60 /* down.jpg in Resources */,
 				E416CCF61DF5E9F8002A6E60 /* take_photo_pic.png in Resources */,
+				20FBCA481DF649B30009167F /* huiyuan_icon@2x.png in Resources */,
+				20FBCA411DF649B30009167F /* erweima_icon.png in Resources */,
+				20FBCA4E1DF649B30009167F /* shezhi_icon@2x.png in Resources */,
+				20FBCA441DF649B30009167F /* guanyu_icon.png in Resources */,
 				E416CCEC1DF5E9F8002A6E60 /* back_button_normal@2x.png in Resources */,
+				20FBCA4D1DF649B30009167F /* shezhi_icon.png in Resources */,
+				20FBCA421DF649B30009167F /* erweima_icon@2x.png in Resources */,
 				E416CCF11DF5E9F8002A6E60 /* no_data.png in Resources */,
+				20FBCA511DF649B30009167F /* tuichu_icon@2x.png in Resources */,
+				20FBCA501DF649B30009167F /* tuichu_icon.png in Resources */,
 				E416CCF51DF5E9F8002A6E60 /* select_yes.png in Resources */,
 				E416CCF71DF5E9F8002A6E60 /* take_photo_pic@2x.png in Resources */,
 				E416CCF91DF5E9F8002A6E60 /* zz_alumb_rightCell.png in Resources */,
@@ -1529,6 +1777,7 @@
 				E416CCF01DF5E9F8002A6E60 /* flash_open_pic.png in Resources */,
 				E416C9271DF5D802002A6E60 /* Main.storyboard in Resources */,
 				E416CCF81DF5E9F8002A6E60 /* trash_btn_pic.png in Resources */,
+				20FBCA4F1DF649B30009167F /* shezhi_icon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1595,6 +1844,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E416CD451DF5ED75002A6E60 /* XHSegmentItem.m in Sources */,
+				20FBCA011DF6427B0009167F /* QueryPriceViewController.m in Sources */,
 				E416CCFE1DF5E9F8002A6E60 /* ZZCameraController.m in Sources */,
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
 				E416CCDA1DF5E9F8002A6E60 /* ZMJTypeView.m in Sources */,
@@ -1606,7 +1856,10 @@
 				E416CCD61DF5E9F8002A6E60 /* SecondTableViewCell.m in Sources */,
 				E416CCCC1DF5E9F8002A6E60 /* DetailViewSecondCell.m in Sources */,
 				E416CD711DF5ED7B002A6E60 /* ThreePopTableViewCell.m in Sources */,
+				20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */,
+				20FBC9F01DF640EA0009167F /* UserInfoView.m in Sources */,
 				E416CCE41DF5E9F8002A6E60 /* PopView.m in Sources */,
+				20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */,
 				E416CD041DF5E9F8002A6E60 /* ZZPhotoBrowerViewController.m in Sources */,
 				E416CD821DF5ED84002A6E60 /* SystemSettingViewController.m in Sources */,
 				E416CCFB1DF5E9F8002A6E60 /* ZZBrowserPickerViewController.m in Sources */,
@@ -1620,6 +1873,7 @@
 				E416CCFF1DF5E9F8002A6E60 /* ZZCameraPickerViewController.m in Sources */,
 				E416CCC91DF5E9F8002A6E60 /* shopData.m in Sources */,
 				E416CCE91DF5E9F8002A6E60 /* UIView+Layout.m in Sources */,
+				20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */,
 				E416CCCA1DF5E9F8002A6E60 /* FMDBOneList.m in Sources */,
 				E416CBD91DF5E9E5002A6E60 /* MessageSystemController.m in Sources */,
 				E416CD321DF5EB4C002A6E60 /* BusinessChanceViewController.m in Sources */,
@@ -1628,6 +1882,7 @@
 				E416CCDD1DF5E9F8002A6E60 /* EditSecondShopCell.m in Sources */,
 				E416CD031DF5E9F8002A6E60 /* ZZCameraPickerCell.m in Sources */,
 				E416CCEA1DF5E9F8002A6E60 /* ZZAlumAnimation.m in Sources */,
+				20FBC9EF1DF640EA0009167F /* SettingTableViewController.m in Sources */,
 				E416CD6F1DF5ED7B002A6E60 /* TextFieldTableViewCell.m in Sources */,
 				E416CCFC1DF5E9F8002A6E60 /* ZZPageControl.m in Sources */,
 				E416CCD91DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.m in Sources */,
@@ -1636,35 +1891,47 @@
 				E416CCDC1DF5E9F8002A6E60 /* EditFourShopCell.m in Sources */,
 				E416CD3E1DF5EB4C002A6E60 /* SearchView.m in Sources */,
 				E416CD681DF5ED7B002A6E60 /* IndustryTypeTableViewCell.m in Sources */,
+				20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */,
+				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
+				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
 				E416CCD81DF5E9F8002A6E60 /* ThreeTableViewCell.m in Sources */,
+				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
 				E416CD011DF5E9F8002A6E60 /* ZZCameraBrowerCell.m in Sources */,
 				E416CD051DF5E9F8002A6E60 /* ZZPhotoController.m in Sources */,
 				E416CCE61DF5E9F8002A6E60 /* SSPopup.m in Sources */,
 				E416CBBA1DF5E9E1002A6E60 /* AddTwoProductionController.m in Sources */,
+				20FBCA001DF6427B0009167F /* offerViewController.m in Sources */,
 				E416CBDB1DF5E9E5002A6E60 /* MessageViewController.m in Sources */,
+				20FBCA131DF643500009167F /* MyBuyerViewController.m in Sources */,
 				E416CD101DF5E9F8002A6E60 /* ZZPhotoPickerFooterView.m in Sources */,
 				E416CD6B1DF5ED7B002A6E60 /* OnePopTableViewCell.m in Sources */,
+				20FBC9EC1DF640EA0009167F /* IdentifyViewController.m in Sources */,
 				E416CD6D1DF5ED7B002A6E60 /* PopTableViewCell.m in Sources */,
 				E416CBFD1DF5E9E9002A6E60 /* BUYTitleButton.m in Sources */,
 				E416CD651DF5ED7B002A6E60 /* ClientInfoTableViewCell.m in Sources */,
 				E416CCFD1DF5E9F8002A6E60 /* ZZCameraBrowerViewController.m in Sources */,
+				20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */,
+				20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
 				E416CCD11DF5E9F8002A6E60 /* SendDataViewCell.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
 				E416CCC31DF5E9F8002A6E60 /* MyProductionController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
+				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
 				E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */,
 				E416CCCD1DF5E9F8002A6E60 /* DetailViewThreeCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
 				E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */,
 				E416CBF81DF5E9E9002A6E60 /* BUYLoginControl.m in Sources */,
+				20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */,
 				E416CD021DF5E9F8002A6E60 /* ZZCameraFocusView.m in Sources */,
 				E416CCDB1DF5E9F8002A6E60 /* EditFirstShopCell.m in Sources */,
 				E416CD6C1DF5ED7B002A6E60 /* OnePopWithoutTextFieldTableViewCell.m in Sources */,
 				E416CD641DF5ED7B002A6E60 /* AskPriceTableViewCell.m in Sources */,
 				E416CBB81DF5E9E1002A6E60 /* AddOneProductionController.m in Sources */,
+				20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */,
 				E416CBF61DF5E9E9002A6E60 /* BUYButton.m in Sources */,
 				E416CBFB1DF5E9E9002A6E60 /* BUYImportView.m in Sources */,
 				E416CCD01DF5E9F8002A6E60 /* SendDataTwoViewCell.m in Sources */,
@@ -1673,11 +1940,13 @@
 				E416CD691DF5ED7B002A6E60 /* NameContentTableViewCell.m in Sources */,
 				E416CBC51DF5E9E1002A6E60 /* MemberOneViewCell.m in Sources */,
 				E416CBDD1DF5E9E5002A6E60 /* InformationCell.m in Sources */,
+				20FBCA021DF6427B0009167F /* SalerViewController.m in Sources */,
 				E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */,
 				E416CD811DF5ED84002A6E60 /* SearchBarView.m in Sources */,
 				E416CD0F1DF5E9F8002A6E60 /* ZZPhotoPickerCell.m in Sources */,
 				E416CBC41DF5E9E1002A6E60 /* BuyerEditThreeCell.m in Sources */,
 				E416CBDA1DF5E9E5002A6E60 /* MessageTradeController.m in Sources */,
+				20FBCA1D1DF646B40009167F /* MyBuyerTableViewCell.m in Sources */,
 				E416CBFE1DF5E9E9002A6E60 /* BUYTypeView.m in Sources */,
 				E416CD0D1DF5E9F8002A6E60 /* ZZPhotoHud.m in Sources */,
 				E416CD721DF5ED7B002A6E60 /* UploadImageTableViewCell.m in Sources */,
@@ -1690,8 +1959,10 @@
 				E416CCE71DF5E9F8002A6E60 /* TapButton.m in Sources */,
 				E416CD091DF5E9F8002A6E60 /* ZZPhotoDatas.m in Sources */,
 				E416CD341DF5EB4C002A6E60 /* DemandTwoViewController.m in Sources */,
+				20FBCA121DF643500009167F /* BUYSaoAndSupViewController.m in Sources */,
 				E416CD331DF5EB4C002A6E60 /* DemandOneViewController.m in Sources */,
 				E416CCC61DF5E9F8002A6E60 /* ZMJNewProductionController.m in Sources */,
+				20FBCA101DF643500009167F /* AskPriceViewController.m in Sources */,
 				E416CBD81DF5E9E5002A6E60 /* MessageInfoController.m in Sources */,
 				E416CD441DF5ED75002A6E60 /* XHSegmentControl.m in Sources */,
 				E416CD0B1DF5E9F8002A6E60 /* ZZPhotoAlert.m in Sources */,
@@ -1703,21 +1974,27 @@
 				E416CC081DF5E9F2002A6E60 /* NavigationControl.m in Sources */,
 				E416CD701DF5ED7B002A6E60 /* TextIconTableViewCell.m in Sources */,
 				E416CCD21DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.m in Sources */,
+				20FBCA141DF643500009167F /* newBuyerViewController.m in Sources */,
 				E416CD001DF5E9F8002A6E60 /* ZZCamera.m in Sources */,
 				E416CD3D1DF5EB4C002A6E60 /* IndustryView.m in Sources */,
+				20FBCA261DF6473A0009167F /* BuyerLable.m in Sources */,
 				E416CCC81DF5E9F8002A6E60 /* DetailShopViewController.m in Sources */,
 				E416CD061DF5E9F8002A6E60 /* ZZPhotoListViewController.m in Sources */,
 				E416CD6E1DF5ED7B002A6E60 /* QueryPriceTableViewCell.m in Sources */,
+				20FBC9FF1DF6427B0009167F /* ImageAskProductPriceTableViewController.m in Sources */,
 				E416CCCB1DF5E9F8002A6E60 /* DetailViewFirstCell.m in Sources */,
 				E416CBFC1DF5E9E9002A6E60 /* BUYTextView.m in Sources */,
 				E416CCCE1DF5E9F8002A6E60 /* ShareActivity.m in Sources */,
 				E416CCE81DF5E9F8002A6E60 /* UIView+Frame.m in Sources */,
+				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E416CD0C1DF5E9F8002A6E60 /* ZZPhotoBrowerCell.m in Sources */,
 				E416CCD71DF5E9F8002A6E60 /* tableViewFooterView.m in Sources */,
+				20FBCA221DF646F40009167F /* MyBuyerAskTableViewCell.m in Sources */,
 				E416CBC61DF5E9E1002A6E60 /* MemberTwoViewCell.m in Sources */,
 				E416CBC21DF5E9E1002A6E60 /* BuyerEditFirstCell.m in Sources */,
 				E416CBBB1DF5E9E1002A6E60 /* BuyerDetailViewController.m in Sources */,
 				E416CBDC1DF5E9E5002A6E60 /* ZMJTotleHomeController.m in Sources */,
+				20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */,
 				E416CCDE1DF5E9F8002A6E60 /* EditThreeShopCell.m in Sources */,
 				E416CBFA1DF5E9E9002A6E60 /* BUYRegisterControl.m in Sources */,
 				E416CD381DF5EB4C002A6E60 /* PulishTwoController.m in Sources */,
@@ -1728,6 +2005,7 @@
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
 				E416CD3A1DF5EB4C002A6E60 /* ExhibitionViewController.m in Sources */,
 				E416CBBD1DF5E9E1002A6E60 /* BuyerProductController.m in Sources */,
+				20FBC9EE1DF640EA0009167F /* ProductModelStepTwoTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1861,13 +2139,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = WA8Q762M8L;
+				DEVELOPMENT_TEAM = MXESESKBVY;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.YBLogistic88.Yi-Fei";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "352edc6b-fefb-49d0-8020-4dfe5b430cb5";
+				PROVISIONING_PROFILE_SPECIFIER = schoolOnline_development;
 			};
 			name = Debug;
 		};
@@ -1875,12 +2155,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = WA8Q762M8L;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.YBLogistic88.Yi-Fei";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

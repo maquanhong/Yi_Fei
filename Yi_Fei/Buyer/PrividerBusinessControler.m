@@ -11,7 +11,8 @@
 #import "BUYButton.h"
 #import "MyProductionController.h"
 #import "BuyerProductController.h"
-
+#import "BuyerViewController.h"
+#import "offerViewController.h"
 
 @interface PrividerBusinessControler ()
 
@@ -110,7 +111,7 @@
     CGFloat x = (WIDTH-w)*0.5;
     CGFloat margin1 = 20;
     CGFloat margin2 = 20;
-    NSArray *strs = @[@"我的商品",@"我的客户",@"询价"];
+    NSArray *strs = @[@"我的商品",@"我的供应商",@"询价"];
     
     for (int i = 0; i < 3; i++) {
         NSString *str = strs[i];
@@ -132,27 +133,27 @@
 #pragma mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender
 {
-    BuyerProductController *vc = [[BuyerProductController alloc] init];
+    MyProductionController *vc = [[MyProductionController alloc] init];
+    BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessBuyer];
+    offerViewController *offerVC=[[offerViewController alloc] initWithIdType:BussinessBuyer];
     
     switch (sender.tag) {
         case 0:
-            
-        [self.navigationController pushViewController:vc animated:YES];
-            
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         case 1:
-            
-            
+            [self.navigationController pushViewController:BuyerVc animated:YES];
             break;
             
         case 2:
-            
+            [self.navigationController pushViewController:offerVC animated:YES];
             
             break;
         default:
             break;
     }
 }
+
 
 
 

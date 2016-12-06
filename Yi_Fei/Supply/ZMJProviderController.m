@@ -10,6 +10,9 @@
 #import "UIView+Layout.h"
 #import "BUYButton.h"
 #import "MyProductionController.h"
+#import "BuyerViewController.h"
+#import "offerViewController.h"
+#import "Macro.h"
 
 @interface ZMJProviderController ()
 
@@ -129,25 +132,25 @@
 - (void)btnClick:(UIButton *)sender
 {
     MyProductionController *vc = [[MyProductionController alloc] init];
-
+    BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessSaler];
+    offerViewController *offerVC=[[offerViewController alloc] initWithIdType:BussinessSaler];
+    
     switch (sender.tag) {
         case 0:
-    [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         case 1:
-      
-            
+            [self.navigationController pushViewController:BuyerVc animated:YES];
             break;
             
         case 2:
-
+            [self.navigationController pushViewController:offerVC animated:YES];
             
             break;
         default:
             break;
     }
 }
-
 @end
 
 

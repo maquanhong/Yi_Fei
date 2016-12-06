@@ -1,20 +1,20 @@
 //
-//  NewCreateClientTableViewController.m
+//  ProductModelStepOneTableViewController.m
 //  Yi_Fei
 //
-//  Created by maquanhong on 2016/11/20.
+//  Created by maquanhong on 2016/11/29.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "NewCreateClientTableViewController.h"
+#import "ProductModelStepOneTableViewController.h"
 #import "TextFieldTableViewCell.h"
-#import "IndustryTypeTableViewCell.h"
 #import "BUYButton.h"
-@interface NewCreateClientTableViewController ()
+@interface ProductModelStepOneTableViewController ()
 @property (nonatomic, strong) NSArray *menuArray;
+@property (nonatomic, strong) NSArray *placeholderArray;
 @end
 
-@implementation NewCreateClientTableViewController
+@implementation ProductModelStepOneTableViewController
 - (void)setNav {
     UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -33,21 +33,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNav];
-    self.title = @"新建供应商";
-    _menuArray = @[@"姓名",@"公司",@"联系电话",@"邮箱",@"公司地址",@"  行业类型"];
-       [self.tableView registerClass:[TextFieldTableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[TextFieldTableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.title = @"商品模板";
+    _menuArray = @[@"货号",@"商品名称",@"商品价格",@"商品材质",@"商品颜色"];
+    _placeholderArray = @[@"例如2351415451",@"请填写商品名称",@"请填写商品价格（数字）",@"例如PVC塑料",@"商品颜色"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
-    UIButton *btn = [BUYButton creatBtnWithBgColor:BACKCOLOR borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:[UIColor whiteColor] text:@"保存"];
+    UIButton *btn = [BUYButton creatBtnWithBgColor:BACKCOLOR borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:[UIColor whiteColor] text:@"下一步"];
     btn.frame=CGRectMake(50, 65, WIDTH - 100, 35);
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:btn];
     self.tableView.tableFooterView = bgView;
-    
 }
 
 - (void)btnClick {
@@ -62,30 +63,24 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+//warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+//warning Incomplete implementation, return the number of rows
     return [self.menuArray count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identify = @"cell";
-    TextFieldTableViewCell *cell = (TextFieldTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identify forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[TextFieldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-    }
+    TextFieldTableViewCell *cell = (TextFieldTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.titleLabel.text = [self.menuArray objectAtIndex:indexPath.row];
+    // Configure the cell...
+    cell.valueTextField.placeholder = [self.placeholderArray objectAtIndex:indexPath.row];
     return cell;
-
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
-}
 
 /*
 // Override to support conditional editing of the table view.
