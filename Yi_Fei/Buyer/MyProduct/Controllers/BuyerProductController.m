@@ -9,7 +9,7 @@
 #import "BuyerProductController.h"
 #import "AddOneProductionController.h"
 #import "BuyerProductTableViewCell.h"
-#import "ZMJGoodsDetailController.h"
+#import "BuyerDetailViewController.h"
 #import "MemberController.h"
 
 
@@ -18,6 +18,7 @@
     BOOL _isSearch;
     BOOL _btnSearch;
     BOOL _nilSearch;
+    NewTwoList  *_manager;
 }
 
 @property(nonatomic,strong)UITextField *textInput; //输入框
@@ -53,16 +54,15 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     [self addContentView];
     [self createSearchView];
-
+    
 }
-
 
 //数据的加载
 -(void)loadData{
     //获取单例对象
-    NewTwoList  *manager = [NewTwoList defaultManager];
+    _manager = [NewTwoList newListManager];
     //可变数组初始化
-    _listArray = [NSMutableArray arrayWithArray:[manager getData]];
+    _listArray = [NSMutableArray arrayWithArray:[_manager getData]];
     _allArray = [NSMutableArray array];
     for (NSInteger i = 0 ; i < _listArray.count; i++) {
         ProductionData *dataModel = [[ProductionData alloc] init];
@@ -295,29 +295,29 @@
         make.size.mas_equalTo(CGSizeMake(100, 20));
     }];
     
-     UIButton *memberBtn = [[UIButton alloc] init];
-     memberBtn.backgroundColor = [UIColor redColor];
-     [memberBtn setTitle:@"申请会员" forState:UIControlStateNormal];
-     memberBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-     [memberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-     memberBtn.backgroundColor = COLOR;
-     memberBtn.layer.cornerRadius = 5;
-     [haderView addSubview:memberBtn];
-     [memberBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIButton *memberBtn = [[UIButton alloc] init];
+    memberBtn.backgroundColor = [UIColor redColor];
+    [memberBtn setTitle:@"申请会员" forState:UIControlStateNormal];
+    memberBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [memberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    memberBtn.backgroundColor = COLOR;
+    memberBtn.layer.cornerRadius = 5;
+    [haderView addSubview:memberBtn];
+    [memberBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(haderView).offset(-5);
         make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
         make.size.mas_equalTo(CGSizeMake(70, 25));
-      }];
-   [ memberBtn addTarget:self action:@selector(clickMemberBtn) forControlEvents:UIControlEventTouchUpInside];
-     self.tableview.tableHeaderView = haderView;
+    }];
+    [ memberBtn addTarget:self action:@selector(clickMemberBtn) forControlEvents:UIControlEventTouchUpInside];
+    self.tableview.tableHeaderView = haderView;
     
 }
 
 -(void)clickMemberBtn{
     
-  MemberController  *memVC = [[MemberController alloc] init];
-   [self.navigationController pushViewController:memVC animated:YES];
-
+    MemberController  *memVC = [[MemberController alloc] init];
+    [self.navigationController pushViewController:memVC animated:YES];
+    
 }
 
 
@@ -327,8 +327,10 @@
         return _searchResultArr.count;
     }else if (_btnSearch == YES){
         return _btnResultArr.count;
+    }else if (_nilSearch == YES){
+        return _listArray.count;
     }else{
-        return _allArray.count;
+        return _listArray.count;
     }
 }
 
@@ -371,7 +373,7 @@
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ZMJGoodsDetailController *detailPriceVC=[[ZMJGoodsDetailController alloc] init];
+    BuyerDetailViewController *detailPriceVC=[[BuyerDetailViewController alloc] init];
     detailPriceVC.shopData=_listArray[indexPath.row];
     [self.navigationController pushViewController:detailPriceVC animated:YES];
 }
@@ -389,7 +391,7 @@
     
     if (_isSearch == YES) {
         //赋值对应的对象
-         detailPriceVC.shopData = _searchResultArr[index];
+        detailPriceVC.shopData = _searchResultArr[index];
     }else{
         detailPriceVC.shopData = _listArray[index];
     }
@@ -420,15 +422,26 @@
 //实现删除
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NewTwoList *manager = [NewTwoList defaultManager];
+    _manager = [NewTwoList newListManager];
+    ProductionData *model ;
+    if (_isSearch == YES) {
+    model = _searchResultArr[indexPath.row];
+    }else if (_btnSearch == YES){
+    model = _btnResultArr[indexPath.row];
+    }else{
+    model = _listArray[indexPath.row];
+    }
+    [_manager deleteNameFromTable:model.companyID];
     
-    ProductionData *model = _listArray[indexPath.row];
-    
-    [manager deleteNameFromTable:model.companyID];
-    
-    [_listArray removeObjectAtIndex:indexPath.row];
-    
+    if (_isSearch == YES) {
+    [_searchResultArr removeObjectAtIndex:indexPath.row];
+    }else if (_btnSearch == YES){
+ [_btnResultArr removeObjectAtIndex:indexPath.row];
+    }else{
+  [_listArray removeObjectAtIndex:indexPath.row];
+    }
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+_numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
     [_tableview reloadData];
     
 }

@@ -9,7 +9,6 @@
 #import "PrividerBusinessControler.h"
 #import "UIView+Layout.h"
 #import "BUYButton.h"
-#import "MyProductionController.h"
 #import "BuyerProductController.h"
 #import "BuyerViewController.h"
 #import "offerViewController.h"
@@ -133,7 +132,8 @@
 #pragma mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender
 {
-    MyProductionController *vc = [[MyProductionController alloc] init];
+    
+    BuyerProductController *vc = [[BuyerProductController alloc] init];
     BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessBuyer];
     offerViewController *offerVC=[[offerViewController alloc] initWithIdType:BussinessBuyer];
     

@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Industry>
+    <One Name="大型机械及设备">
+        <Two Name="动力、电力设备">
+            <Three Name="动力设备"/>
+            <Three Name="电力设备"/>
+        </Two>
+        <Two Name="通用机械、小型加工机械及工业零部件">
+            <Three Name="通用机械"/>
+            <Three Name="电力设备"/>
+        </Two>
+        <Two Name="工程农机（室内）">
+            <Three Name="小型工程机械"/>
+            <Three Name="农林机械"/>
+        </Two>
+        <Two Name="工程农机（室外）">
+            <Three Name="工程机械"/>
+            <Three Name="土建工程机械"/>
+            <Three Name="农林机械"/>
+        </Two>
+        <Two Name="大型机械及设备">
+            <Three Name="大型机械"/>
+            <Three Name="成套设备"/>
+        </Two>
+    </One>
+	
+	
+	
+
+    <One Name="汽车配件">
+        <Two Name="汽车零部件"></Two>
+    </One>
+	
+	
+
+
+	
+    <One Name="户外车辆"></One>
+	
+	
+    <One Name="电子电气">
+            <Two Name="电子安全设备"></Two>
+            <Two Name="商务自动化设备"></Two>
+            <Two Name="电子电工产品"></Two>
+    </One>
+	
+	
+    <One Name="建筑及装饰材料">
+            <Two Name="建筑材料"></Two>
+            <Two Name="装饰材料"></Two>
+            <Two Name="厨房设备"></Two>
+    </One>
+	
+	
+    <One Name="新能源">
+            <Two Name="太阳能光伏产品"></Two>
+            <Two Name="太阳能光热产品"></Two>
+    </One>
+	
+	
+    <One Name="自行车"></One>
+	
+	
+    <One Name="化工">
+            <Two Name="化工原料"></Two>
+            <Two Name="农用化工品"></Two>
+            <Two Name="火工制品"></Two>
+    </One>
+	
+	
+    <One Name="家电">
+            <Two Name="厨房电器"></Two>
+            <Two Name="冰箱及制冷设备"></Two>
+            <Two Name="空调及通风设备"></Two>
+            <Two Name="洗衣及干衣设备"></Two>
+            <Two Name="其他家用小电器"></Two>
+    </One>
+	
+	
+    <One Name="计算机及通讯产品">
+            <Two Name="计算机产品"></Two>
+            <Two Name="计算机及配件"></Two>
+            <Two Name="计算机外围设备"></Two>
+            <Two Name="计算机网络设备"></Two>
+            <Two Name="计算机软件"></Two>
+    </One>
+	
+	
+    <One Name="卫浴设施"></One>
+	
+	
+    <One Name="工具">
+            <Two Name="工具"></Two>
+    </One>
+	
+	
+    <One Name="摩托车">
+            <Two Name="摩托车，沙滩车"></Two>
+            <Two Name="摩托车零配件"></Two>
+    </One>
+	
+	
+    <One Name="五金">
+            <Two Name="五金"></Two>
+    </One>
+	
+	
+    <One Name="电子消费品">
+            <Two Name="音像视听产品"></Two>
+            <Two Name="个人数码娱乐产品"></Two>
+            <Two Name="个人通讯产品"></Two>
+    </One>
+	
+	
+    <One Name="照明">
+            <Two Name="照明系统应用"></Two>
+            <Two Name="电光源"></Two>
+            <Two Name="灯具配件"></Two>
+    </One>
+	
+	
+    <One Name="餐厨用具">
+            <Two Name="餐桌用品及装饰"></Two>
+            <Two Name="厨房用品"></Two>
+    </One>
+	
+	
+    <One Name="家居装饰">
+            <Two Name="画、画框、相框、镜"></Two>
+            <Two Name="桌上用品"></Two>
+            <Two Name="门窗装饰，墙挂装饰品"></Two>
+            <Two Name="人造花"></Two>
+    </One>
+	
+	
+    <One Name="编织及藤铁工艺品"></One>
+	
+	
+    <One Name="家居日用">
+            <Two Name="清洁用品"></Two>
+            <Two Name="一般家庭用品"></Two>
+    </One>
+		
+		
+    <One Name="钟表眼镜">
+            <Two Name="钟"></Two>
+            <Two Name="表"></Two>
+            <Two Name="钟表配件"></Two>
+            <Two Name="眼镜"></Two>
+            <Two Name="眼镜配件"></Two>
+    </One>
+	
+	
+    <One Name="宠物用品">
+            <Two Name="宠物用品"></Two>
+    </One>
+	
+	
+    <One Name="日用陶瓷">
+            <Two Name="家庭用餐厨及日用陶瓷"></Two>
+            <Two Name="酒店用餐厨及日用陶瓷"></Two>
+            <Two Name="其它餐厨及日用陶瓷"></Two>
+    </One>
+	
+	
+    <One Name="玻璃工艺品">
+            <Two Name="玻璃装饰品"></Two>
+            <Two Name="其他玻璃工艺品"></Two>
+    </One>
+	
+	
+    <One Name="园林产品">
+            <Two Name="花卉苗木（活植物）"></Two>
+            <Two Name="干燥/人造花"></Two>
+            <Two Name="盆景"></Two>
+            <Two Name="园艺工具"></Two>
+            <Two Name="户外装置"></Two>
+            <Two Name="鱼鸟等观赏动物"></Two>
+            <Two Name="其他"></Two>
+    </One>
+	
+	
+    <One Name="个人护理">
+            <Two Name="化妆品及配件"></Two>
+            <Two Name="头发护理产品及配件"></Two>
+            <Two Name="护齿用品"></Two>
+    </One>
+	
+	
+    <One Name="礼品及赠品">
+            <Two Name="树脂工艺制品"></Two>
+            <Two Name="传统工艺品"></Two>
+            <Two Name="珠宝及骨刻玉雕"></Two>
+            <Two Name="宣传礼品及赠品"></Two>
+            <Two Name="纸品及包装产品"></Two>
+     </One>
+	 
+	 
+    <One Name="工艺陶瓷">
+            <Two Name="美术陶瓷"></Two>
+            <Two Name="陶瓷工艺品"></Two>
+            <Two Name="园艺及花园陶瓷"></Two>
+    </One>
+	
+	
+    <One Name="家具">
+            <Two Name="家庭用室内家具"></Two>
+            <Two Name="宾馆饭店家具"></Two>
+            <Two Name="办公家具"></Two>
+            <Two Name="学校用家具"></Two>
+            <Two Name="医用家具"></Two>
+            <Two Name="户外家具"></Two>
+            <Two Name="公共设施家具"></Two>
+            <Two Name="其他家具"></Two>
+            <Two Name="家具半成品及零配件"></Two>
+    </One>
+	
+	
+    <One Name="铁石(户外)">
+            <Two Name="石材"></Two>
+            <Two Name="大型铸铁制品"></Two>
+    </One>
+	
+	
+    <One Name="浴室用品">
+            <Two Name="洗浴用品"></Two>
+            <Two Name="洗浴用具"></Two>
+    </One>
+	
+	
+    <One Name="玩具">
+            <Two Name="玩具"></Two>
+    </One>
+	
+	
+    <One Name="箱包">
+            <Two Name="日用箱"></Two>
+            <Two Name="公文箱"></Two>
+            <Two Name="包袋类"></Two>
+            <Two Name="其他箱包及配件"></Two>
+    </One>
+	
+	
+    <One Name="内衣"></One>
+	
+	
+    <One Name="服装饰物与配件">
+            <Two Name="时装饰物"></Two>
+            <Two Name="成衣配件"></Two>
+    </One>
+	
+	
+	
+    <One Name="地毯及挂毯">
+            <Two Name="机制地毯"></Two>
+            <Two Name="手工地毯"></Two>
+            <Two Name="其他铺地材料"></Two>
+    </One>
+	
+	
+    <One Name="医药保健品及医疗器械">
+            <Two Name="中药"></Two>
+            <Two Name="化学及生物药"></Two>
+            <Two Name="保健品"></Two>
+            <Two Name="美容美体用品"></Two>
+            <Two Name="家庭医用护理产品"></Two>
+            <Two Name="生殖保健用品及器具"></Two>
+            <Two Name="康复用品"></Two>
+            <Two Name="医院诊断及治疗设备"></Two>
+            <Two Name="一次性耗材"></Two>
+    </One>
+	
+	
+	
+    <One Name="鞋类">
+            <Two Name="时装鞋"></Two>
+            <Two Name="运动鞋"></Two>
+            <Two Name="童鞋"></Two>
+            <Two Name="凉鞋、拖鞋"></Two>
+            <Two Name="其他特殊用途的鞋靴及半成品"></Two>
+    </One>
+	
+	
+	
+    <One Name="男女装">
+            <Two Name="女装"></Two>
+            <Two Name="男装"></Two>
+            <Two Name=" 婚纱、礼服"></Two>
+            <Two Name="其他"></Two>
+    </One>
+	
+	
+    <One Name="运动及休闲服">
+            <Two Name="牛仔服装"></Two>
+            <Two Name="运动服及休闲服"></Two>
+            <Two Name="其他"></Two>
+    </One>
+	
+	
+    <One Name="家用纺织品">
+            <Two Name="床上用品"></Two>
+            <Two Name="家居装饰用纺织品"></Two>
+            <Two Name="浴室用纺织品"></Two>
+            <Two Name="餐桌、厨房用纺织品"></Two>
+            <Two Name="其他"></Two>
+    </One>
+	
+	
+    <One Name="食品">
+            <Two Name="食品"></Two>
+            <Two Name="饮料"></Two>
+            <Two Name="酒"></Two>
+            <Two Name="咖啡"></Two>
+            <Two Name="果汁"></Two>
+            <Two Name="饮用水"></Two>
+            <Two Name="茶叶"></Two>
+            <Two Name="其他饮料"></Two>
+    </One>
+	
+	
+    <One Name="体育旅游休闲用品">
+            <Two Name="运动用品">
+                <Three Name="室内、外运动用品"></Three>
+                <Three Name="体育纪念品"></Three>
+                <Three Name="水上运动，潜水运动用品"></Three>
+            </Two>
+            <Two Name="旅游休闲用品">
+                <Three Name="钓鱼用具"></Three>
+                <Three Name="烧烤用具"></Three>
+                <Three Name="户外休闲用具"></Three>
+                <Three Name="户外旅游用品"></Three>
+            </Two>
+    </One>
+	
+	
+    <One Name="童装"></One>
+	
+	
+    <One Name="裘皮">
+            <Two Name="裘皮及制品"></Two>
+            <Two Name="革皮及制品"></Two>
+            <Two Name="羽绒及制品"></Two>
+            <Two Name="羊绒及制品"></Two>
+            <Two Name="其他裘革皮羽绒及制品"></Two>
+    </One>
+		
+		
+		
+    <One Name="纺织原料面料">
+            <Two Name="面料"></Two>
+            <Two Name="纤维"></Two>
+            <Two Name="纱线"></Two>
+            <Two Name="其他"></Two>
+    </One>
+	
+	
+    <One Name="土特产品">
+            <Two Name="土产品"></Two>
+            <Two Name="畜产品"></Two>
+            <Two Name="林产品"></Two>
+            <Two Name="板材"></Two>
+            <Two Name="木制品"></Two>
+            <Two Name="林化产品"></Two>
+    </One>
+	
+	
+    <One Name="办公文具">
+            <Two Name="笔类"></Two>
+            <Two Name="文件存储类"></Two>
+            <Two Name="办公用品"></Two>
+            <Two Name="纸制品"></Two>
+            <Two Name="标签类"></Two>
+            <Two Name="办公桌摆设装饰品"></Two>
+            <Two Name="办公自动化产品及设备，办公设备耗材"></Two>
+    </One>
+    </Industry>

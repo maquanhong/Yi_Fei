@@ -11,8 +11,7 @@
 #import "BuyerEditFirstCell.h"
 #import "BuyerEditFSecondCell.h"
 #import "BuyerEditThreeCell.h"
-
-#import "InfoSendViewController.h"
+#import "SendInfoController.h"
 #import "ShareActivity.h"
 
 @interface BuyerDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,ShareActivityDelegate>
@@ -34,6 +33,7 @@
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self createNavigationView];
     [self addContentView];
+   
 }
 
 #pragma mark 创建导航栏
@@ -56,9 +56,7 @@
 }
 
 -(void)leftButtonClick{
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 
@@ -197,22 +195,19 @@
 
 
 - (void)shareProduct {
-
     ShareActivity *sa = [[ShareActivity alloc] initShareActivityView];
     sa.delegate = self;
     [sa show];
-    
 }
 
-- (void)clickButtonView:(NSInteger)index{
+- (void)clickButtonView:(NSInteger)index button:(UIButton *)btn{
     
     switch (index) {
         case 123456:
         {
-    InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
+    SendInfoController *sendView = [[SendInfoController alloc] init];
+    sendView.shopData =  _shopData;
     [self.navigationController pushViewController:sendView animated:YES];
-            
-
             
         }
             break;

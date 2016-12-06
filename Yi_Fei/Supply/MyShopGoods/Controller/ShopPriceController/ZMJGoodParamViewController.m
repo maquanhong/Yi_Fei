@@ -513,8 +513,8 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
         for (int i=0; i< self.picArray.count; i++) {
             //拿到图片
             ZZCamera *camera = self.picArray[i];
-            UIImage *image = camera.image;
-            
+            CGSize  size = CGSizeMake(145, 160);
+            UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
             NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
             //打印日期：中间的空格可以用‘at’或‘T’等字符划分
             NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];

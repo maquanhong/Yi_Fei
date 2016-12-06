@@ -13,9 +13,6 @@
 #import "DetailViewThreeCell.h"
 #import "InfoSendViewController.h"
 #import "ShareActivity.h"
-//#import "SingleForm.h"
-
-
 
 
 @interface ZMJGoodsDetailController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,ShareActivityDelegate,PopViewDelegate>
@@ -27,7 +24,6 @@
 
 @property(nonatomic,strong)UITableView *tableView;
 @property (nonatomic, strong) HYActivityView *activityView;
-//@property (strong, nonatomic) SingleForm *single;
 
 
 @end
@@ -68,6 +64,7 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
 
 #pragma mark 创建视图模块
 -(void)addContentView{
+    
     _tableView  =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT) style:UITableViewStyleGrouped];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -211,7 +208,7 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
         case 123456:
         {
     InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
-//    sendView.shopData = _shopData;
+    sendView.shopData = _shopData;
     [self.navigationController pushViewController:sendView animated:YES];
         }
             break;
@@ -262,7 +259,7 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
     [selection CreateTableview:nil withSender:sender  withTitle:@"请选择发送方式" setCompletionBlock:^(int tag){
         
         NSLog(@"Tag--->%d",tag);
-        
+
         
     }];
 

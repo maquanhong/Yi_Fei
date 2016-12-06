@@ -665,7 +665,7 @@
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
     
-    NewTwoList  *manager = [NewTwoList defaultManager];
+    NewTwoList  *manager = [NewTwoList newListManager];
     [manager updateDataModel:_shopObj];
     [self.navigationController popViewControllerAnimated:YES];
     

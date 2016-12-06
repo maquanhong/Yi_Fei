@@ -11,6 +11,7 @@
 
 #import "FMDBOneList.h" //建的第一张表
 #import "shopData.h"
+
 #import "ProductionData.h"
 #import "NewTwoList.h" //建的第二张表
 
@@ -25,7 +26,7 @@
 #import "HYActivityView.h"
 #import "ZZPhotoKit.h"
 #import "FMDB.h"
-//#import "GDataXMLNode.h"
+#import "GDataXMLNode.h"
 #import "PopView.h"
 #import "SVProgressHUD.h"
 
