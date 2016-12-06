@@ -13,7 +13,7 @@
 @interface NewTwoList : NSObject
 
 
-+(NewTwoList *)defaultManager;
++(NewTwoList *)newListManager;
 
 //插入数据
 - (void)insertDataModel:(ProductionData *)model;

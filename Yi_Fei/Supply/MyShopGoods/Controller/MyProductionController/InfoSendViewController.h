@@ -10,6 +10,6 @@
 
 @interface InfoSendViewController : UIViewController
 
-//@property (nonatomic,strong) shopData *shopData;
+@property (nonatomic,strong) shopData *shopData;
 
 @end

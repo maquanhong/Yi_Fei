@@ -412,11 +412,28 @@ UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bound
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     _manager = [FMDBOneList defaultManager];
-    shopData *model = _listArray[indexPath.row];
+    shopData *model ;
+    if (_isSearch == YES) {
+        model = _searchResultArr[indexPath.row];
+    }else if (_btnSearch == YES){
+        model = _btnResultArr[indexPath.row];
+    }else{
+        model = _listArray[indexPath.row];
+    }
     [_manager deleteNameFromTable:model.companyID];
-    [_listArray removeObjectAtIndex:indexPath.row];
-    //刷新其中一个或几个cell。不是全部刷新
+    
+    if (_isSearch == YES) {
+        [_searchResultArr removeObjectAtIndex:indexPath.row];
+    }else if (_btnSearch == YES){
+        [_btnResultArr removeObjectAtIndex:indexPath.row];
+    }else{
+        [_listArray removeObjectAtIndex:indexPath.row];
+         [_allArray removeObjectAtIndex:indexPath.row];
+    }
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSLog(@"%ld",_listArray.count);
+    _numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
+    [_tableview reloadData];
 }
 
 @end

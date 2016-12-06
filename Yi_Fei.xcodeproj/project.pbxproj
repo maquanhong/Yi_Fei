@@ -93,36 +93,6 @@
 		E416CBFE1DF5E9E9002A6E60 /* BUYTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CBF51DF5E9E9002A6E60 /* BUYTypeView.m */; };
 		E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC011DF5E9F2002A6E60 /* AppDelegate.m */; };
 		E416CC081DF5E9F2002A6E60 /* NavigationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC051DF5E9F2002A6E60 /* NavigationControl.m */; };
-		E416CCC21DF5E9F8002A6E60 /* InfoSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC0E1DF5E9F8002A6E60 /* InfoSendViewController.m */; };
-		E416CCC31DF5E9F8002A6E60 /* MyProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC101DF5E9F8002A6E60 /* MyProductionController.m */; };
-		E416CCC41DF5E9F8002A6E60 /* ZMJEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC121DF5E9F8002A6E60 /* ZMJEditViewController.m */; };
-		E416CCC51DF5E9F8002A6E60 /* ZMJGoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC141DF5E9F8002A6E60 /* ZMJGoodsDetailController.m */; };
-		E416CCC61DF5E9F8002A6E60 /* ZMJNewProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC171DF5E9F8002A6E60 /* ZMJNewProductionController.m */; };
-		E416CCC71DF5E9F8002A6E60 /* ZMJGoodParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC1A1DF5E9F8002A6E60 /* ZMJGoodParamViewController.m */; };
-		E416CCC81DF5E9F8002A6E60 /* DetailShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC1D1DF5E9F8002A6E60 /* DetailShopViewController.m */; };
-		E416CCC91DF5E9F8002A6E60 /* shopData.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC221DF5E9F8002A6E60 /* shopData.m */; };
-		E416CCCA1DF5E9F8002A6E60 /* FMDBOneList.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC251DF5E9F8002A6E60 /* FMDBOneList.m */; };
-		E416CCCB1DF5E9F8002A6E60 /* DetailViewFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC2B1DF5E9F8002A6E60 /* DetailViewFirstCell.m */; };
-		E416CCCC1DF5E9F8002A6E60 /* DetailViewSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC2D1DF5E9F8002A6E60 /* DetailViewSecondCell.m */; };
-		E416CCCD1DF5E9F8002A6E60 /* DetailViewThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC2F1DF5E9F8002A6E60 /* DetailViewThreeCell.m */; };
-		E416CCCE1DF5E9F8002A6E60 /* ShareActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC311DF5E9F8002A6E60 /* ShareActivity.m */; };
-		E416CCCF1DF5E9F8002A6E60 /* ZMJMyProductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC361DF5E9F8002A6E60 /* ZMJMyProductionCell.m */; };
-		E416CCD01DF5E9F8002A6E60 /* SendDataTwoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC391DF5E9F8002A6E60 /* SendDataTwoViewCell.m */; };
-		E416CCD11DF5E9F8002A6E60 /* SendDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC3B1DF5E9F8002A6E60 /* SendDataViewCell.m */; };
-		E416CCD21DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC3F1DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.m */; };
-		E416CCD31DF5E9F8002A6E60 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC421DF5E9F8002A6E60 /* FirstTableViewCell.m */; };
-		E416CCD41DF5E9F8002A6E60 /* FourTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC441DF5E9F8002A6E60 /* FourTableViewCell.m */; };
-		E416CCD51DF5E9F8002A6E60 /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC461DF5E9F8002A6E60 /* PicsCell.m */; };
-		E416CCD61DF5E9F8002A6E60 /* SecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC481DF5E9F8002A6E60 /* SecondTableViewCell.m */; };
-		E416CCD71DF5E9F8002A6E60 /* tableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC4B1DF5E9F8002A6E60 /* tableViewFooterView.m */; };
-		E416CCD81DF5E9F8002A6E60 /* ThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC4D1DF5E9F8002A6E60 /* ThreeTableViewCell.m */; };
-		E416CCD91DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC501DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.m */; };
-		E416CCDA1DF5E9F8002A6E60 /* ZMJTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC521DF5E9F8002A6E60 /* ZMJTypeView.m */; };
-		E416CCDB1DF5E9F8002A6E60 /* EditFirstShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC551DF5E9F8002A6E60 /* EditFirstShopCell.m */; };
-		E416CCDC1DF5E9F8002A6E60 /* EditFourShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC571DF5E9F8002A6E60 /* EditFourShopCell.m */; };
-		E416CCDD1DF5E9F8002A6E60 /* EditSecondShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC591DF5E9F8002A6E60 /* EditSecondShopCell.m */; };
-		E416CCDE1DF5E9F8002A6E60 /* EditThreeShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC5B1DF5E9F8002A6E60 /* EditThreeShopCell.m */; };
-		E416CCDF1DF5E9F8002A6E60 /* myShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC5D1DF5E9F8002A6E60 /* myShopView.m */; };
 		E416CCE01DF5E9F8002A6E60 /* ZMJProviderController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */; };
 		E416CCE11DF5E9F8002A6E60 /* BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC631DF5E9F8002A6E60 /* BackButton.m */; };
 		E416CCE21DF5E9F8002A6E60 /* CCZSegementController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CC651DF5E9F8002A6E60 /* CCZSegementController.m */; };
@@ -209,6 +179,36 @@
 		E416CD821DF5ED84002A6E60 /* SystemSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD7D1DF5ED84002A6E60 /* SystemSettingViewController.m */; };
 		E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD851DF5EDF3002A6E60 /* DownListBgView.m */; };
 		E416CD891DF5EDF3002A6E60 /* DownListButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD871DF5EDF3002A6E60 /* DownListButton.m */; };
+		E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C41DF70CA900145486 /* InfoSendViewController.m */; };
+		E49352131DF70CA900145486 /* MyProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C61DF70CA900145486 /* MyProductionController.m */; };
+		E49352141DF70CA900145486 /* ZMJEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C81DF70CA900145486 /* ZMJEditViewController.m */; };
+		E49352151DF70CA900145486 /* ZMJGoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351CA1DF70CA900145486 /* ZMJGoodsDetailController.m */; };
+		E49352161DF70CA900145486 /* ZMJNewProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351CD1DF70CA900145486 /* ZMJNewProductionController.m */; };
+		E49352171DF70CA900145486 /* ZMJGoodParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351D01DF70CA900145486 /* ZMJGoodParamViewController.m */; };
+		E49352181DF70CA900145486 /* DetailShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351D31DF70CA900145486 /* DetailShopViewController.m */; };
+		E49352191DF70CA900145486 /* shopData.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351D71DF70CA900145486 /* shopData.m */; };
+		E493521A1DF70CA900145486 /* FMDBOneList.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351DA1DF70CA900145486 /* FMDBOneList.m */; };
+		E493521B1DF70CA900145486 /* DetailViewFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351DF1DF70CA900145486 /* DetailViewFirstCell.m */; };
+		E493521C1DF70CA900145486 /* DetailViewSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351E11DF70CA900145486 /* DetailViewSecondCell.m */; };
+		E493521D1DF70CA900145486 /* DetailViewThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351E31DF70CA900145486 /* DetailViewThreeCell.m */; };
+		E493521E1DF70CA900145486 /* ShareActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351E51DF70CA900145486 /* ShareActivity.m */; };
+		E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351EA1DF70CA900145486 /* ZMJMyProductionCell.m */; };
+		E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351ED1DF70CA900145486 /* SendDataTwoViewCell.m */; };
+		E49352211DF70CA900145486 /* SendDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351EF1DF70CA900145486 /* SendDataViewCell.m */; };
+		E49352221DF70CA900145486 /* ZMJAddGoodsOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351F31DF70CA900145486 /* ZMJAddGoodsOneCell.m */; };
+		E49352231DF70CA900145486 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351F61DF70CA900145486 /* FirstTableViewCell.m */; };
+		E49352241DF70CA900145486 /* FourTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351F81DF70CA900145486 /* FourTableViewCell.m */; };
+		E49352251DF70CA900145486 /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351FA1DF70CA900145486 /* PicsCell.m */; };
+		E49352261DF70CA900145486 /* SecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351FC1DF70CA900145486 /* SecondTableViewCell.m */; };
+		E49352271DF70CA900145486 /* tableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351FF1DF70CA900145486 /* tableViewFooterView.m */; };
+		E49352281DF70CA900145486 /* ThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352011DF70CA900145486 /* ThreeTableViewCell.m */; };
+		E49352291DF70CA900145486 /* ZMJAddGoodsTwoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352041DF70CA900145486 /* ZMJAddGoodsTwoView.m */; };
+		E493522A1DF70CA900145486 /* ZMJTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352061DF70CA900145486 /* ZMJTypeView.m */; };
+		E493522B1DF70CA900145486 /* EditFirstShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352091DF70CA900145486 /* EditFirstShopCell.m */; };
+		E493522C1DF70CA900145486 /* EditFourShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520B1DF70CA900145486 /* EditFourShopCell.m */; };
+		E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520D1DF70CA900145486 /* EditSecondShopCell.m */; };
+		E493522E1DF70CA900145486 /* EditThreeShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520F1DF70CA900145486 /* EditThreeShopCell.m */; };
+		E493522F1DF70CA900145486 /* myShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352111DF70CA900145486 /* myShopView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,66 +379,6 @@
 		E416CC041DF5E9F2002A6E60 /* NavigationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationControl.h; sourceTree = "<group>"; };
 		E416CC051DF5E9F2002A6E60 /* NavigationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControl.m; sourceTree = "<group>"; };
 		E416CC061DF5E9F2002A6E60 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		E416CC0D1DF5E9F8002A6E60 /* InfoSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoSendViewController.h; sourceTree = "<group>"; };
-		E416CC0E1DF5E9F8002A6E60 /* InfoSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSendViewController.m; sourceTree = "<group>"; };
-		E416CC0F1DF5E9F8002A6E60 /* MyProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductionController.h; sourceTree = "<group>"; };
-		E416CC101DF5E9F8002A6E60 /* MyProductionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProductionController.m; sourceTree = "<group>"; };
-		E416CC111DF5E9F8002A6E60 /* ZMJEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJEditViewController.h; sourceTree = "<group>"; };
-		E416CC121DF5E9F8002A6E60 /* ZMJEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJEditViewController.m; sourceTree = "<group>"; };
-		E416CC131DF5E9F8002A6E60 /* ZMJGoodsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJGoodsDetailController.h; sourceTree = "<group>"; };
-		E416CC141DF5E9F8002A6E60 /* ZMJGoodsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJGoodsDetailController.m; sourceTree = "<group>"; };
-		E416CC161DF5E9F8002A6E60 /* ZMJNewProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJNewProductionController.h; sourceTree = "<group>"; };
-		E416CC171DF5E9F8002A6E60 /* ZMJNewProductionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJNewProductionController.m; sourceTree = "<group>"; };
-		E416CC191DF5E9F8002A6E60 /* ZMJGoodParamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJGoodParamViewController.h; sourceTree = "<group>"; };
-		E416CC1A1DF5E9F8002A6E60 /* ZMJGoodParamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJGoodParamViewController.m; sourceTree = "<group>"; };
-		E416CC1C1DF5E9F8002A6E60 /* DetailShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShopViewController.h; sourceTree = "<group>"; };
-		E416CC1D1DF5E9F8002A6E60 /* DetailShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShopViewController.m; sourceTree = "<group>"; };
-		E416CC211DF5E9F8002A6E60 /* shopData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopData.h; sourceTree = "<group>"; };
-		E416CC221DF5E9F8002A6E60 /* shopData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shopData.m; sourceTree = "<group>"; };
-		E416CC241DF5E9F8002A6E60 /* FMDBOneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBOneList.h; sourceTree = "<group>"; };
-		E416CC251DF5E9F8002A6E60 /* FMDBOneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBOneList.m; sourceTree = "<group>"; };
-		E416CC2A1DF5E9F8002A6E60 /* DetailViewFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewFirstCell.h; sourceTree = "<group>"; };
-		E416CC2B1DF5E9F8002A6E60 /* DetailViewFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewFirstCell.m; sourceTree = "<group>"; };
-		E416CC2C1DF5E9F8002A6E60 /* DetailViewSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewSecondCell.h; sourceTree = "<group>"; };
-		E416CC2D1DF5E9F8002A6E60 /* DetailViewSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewSecondCell.m; sourceTree = "<group>"; };
-		E416CC2E1DF5E9F8002A6E60 /* DetailViewThreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewThreeCell.h; sourceTree = "<group>"; };
-		E416CC2F1DF5E9F8002A6E60 /* DetailViewThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewThreeCell.m; sourceTree = "<group>"; };
-		E416CC301DF5E9F8002A6E60 /* ShareActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareActivity.h; sourceTree = "<group>"; };
-		E416CC311DF5E9F8002A6E60 /* ShareActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareActivity.m; sourceTree = "<group>"; };
-		E416CC351DF5E9F8002A6E60 /* ZMJMyProductionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJMyProductionCell.h; sourceTree = "<group>"; };
-		E416CC361DF5E9F8002A6E60 /* ZMJMyProductionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJMyProductionCell.m; sourceTree = "<group>"; };
-		E416CC381DF5E9F8002A6E60 /* SendDataTwoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendDataTwoViewCell.h; sourceTree = "<group>"; };
-		E416CC391DF5E9F8002A6E60 /* SendDataTwoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendDataTwoViewCell.m; sourceTree = "<group>"; };
-		E416CC3A1DF5E9F8002A6E60 /* SendDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendDataViewCell.h; sourceTree = "<group>"; };
-		E416CC3B1DF5E9F8002A6E60 /* SendDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendDataViewCell.m; sourceTree = "<group>"; };
-		E416CC3E1DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJAddGoodsOneCell.h; sourceTree = "<group>"; };
-		E416CC3F1DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJAddGoodsOneCell.m; sourceTree = "<group>"; };
-		E416CC411DF5E9F8002A6E60 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
-		E416CC421DF5E9F8002A6E60 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
-		E416CC431DF5E9F8002A6E60 /* FourTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourTableViewCell.h; sourceTree = "<group>"; };
-		E416CC441DF5E9F8002A6E60 /* FourTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourTableViewCell.m; sourceTree = "<group>"; };
-		E416CC451DF5E9F8002A6E60 /* PicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicsCell.h; sourceTree = "<group>"; };
-		E416CC461DF5E9F8002A6E60 /* PicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicsCell.m; sourceTree = "<group>"; };
-		E416CC471DF5E9F8002A6E60 /* SecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTableViewCell.h; sourceTree = "<group>"; };
-		E416CC481DF5E9F8002A6E60 /* SecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewCell.m; sourceTree = "<group>"; };
-		E416CC4A1DF5E9F8002A6E60 /* tableViewFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tableViewFooterView.h; sourceTree = "<group>"; };
-		E416CC4B1DF5E9F8002A6E60 /* tableViewFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tableViewFooterView.m; sourceTree = "<group>"; };
-		E416CC4C1DF5E9F8002A6E60 /* ThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeTableViewCell.h; sourceTree = "<group>"; };
-		E416CC4D1DF5E9F8002A6E60 /* ThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeTableViewCell.m; sourceTree = "<group>"; };
-		E416CC4F1DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJAddGoodsTwoView.h; sourceTree = "<group>"; };
-		E416CC501DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJAddGoodsTwoView.m; sourceTree = "<group>"; };
-		E416CC511DF5E9F8002A6E60 /* ZMJTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJTypeView.h; sourceTree = "<group>"; };
-		E416CC521DF5E9F8002A6E60 /* ZMJTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJTypeView.m; sourceTree = "<group>"; };
-		E416CC541DF5E9F8002A6E60 /* EditFirstShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFirstShopCell.h; sourceTree = "<group>"; };
-		E416CC551DF5E9F8002A6E60 /* EditFirstShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFirstShopCell.m; sourceTree = "<group>"; };
-		E416CC561DF5E9F8002A6E60 /* EditFourShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFourShopCell.h; sourceTree = "<group>"; };
-		E416CC571DF5E9F8002A6E60 /* EditFourShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFourShopCell.m; sourceTree = "<group>"; };
-		E416CC581DF5E9F8002A6E60 /* EditSecondShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSecondShopCell.h; sourceTree = "<group>"; };
-		E416CC591DF5E9F8002A6E60 /* EditSecondShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSecondShopCell.m; sourceTree = "<group>"; };
-		E416CC5A1DF5E9F8002A6E60 /* EditThreeShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditThreeShopCell.h; sourceTree = "<group>"; };
-		E416CC5B1DF5E9F8002A6E60 /* EditThreeShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditThreeShopCell.m; sourceTree = "<group>"; };
-		E416CC5C1DF5E9F8002A6E60 /* myShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myShopView.h; sourceTree = "<group>"; };
-		E416CC5D1DF5E9F8002A6E60 /* myShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myShopView.m; sourceTree = "<group>"; };
 		E416CC5E1DF5E9F8002A6E60 /* ZMJProviderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJProviderController.h; sourceTree = "<group>"; };
 		E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJProviderController.m; sourceTree = "<group>"; };
 		E416CC621DF5E9F8002A6E60 /* BackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButton.h; sourceTree = "<group>"; };
@@ -597,6 +537,66 @@
 		E416CD851DF5EDF3002A6E60 /* DownListBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListBgView.m; sourceTree = "<group>"; };
 		E416CD861DF5EDF3002A6E60 /* DownListButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListButton.h; sourceTree = "<group>"; };
 		E416CD871DF5EDF3002A6E60 /* DownListButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListButton.m; sourceTree = "<group>"; };
+		E49351C31DF70CA900145486 /* InfoSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoSendViewController.h; sourceTree = "<group>"; };
+		E49351C41DF70CA900145486 /* InfoSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSendViewController.m; sourceTree = "<group>"; };
+		E49351C51DF70CA900145486 /* MyProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductionController.h; sourceTree = "<group>"; };
+		E49351C61DF70CA900145486 /* MyProductionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProductionController.m; sourceTree = "<group>"; };
+		E49351C71DF70CA900145486 /* ZMJEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJEditViewController.h; sourceTree = "<group>"; };
+		E49351C81DF70CA900145486 /* ZMJEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJEditViewController.m; sourceTree = "<group>"; };
+		E49351C91DF70CA900145486 /* ZMJGoodsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJGoodsDetailController.h; sourceTree = "<group>"; };
+		E49351CA1DF70CA900145486 /* ZMJGoodsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJGoodsDetailController.m; sourceTree = "<group>"; };
+		E49351CC1DF70CA900145486 /* ZMJNewProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJNewProductionController.h; sourceTree = "<group>"; };
+		E49351CD1DF70CA900145486 /* ZMJNewProductionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJNewProductionController.m; sourceTree = "<group>"; };
+		E49351CF1DF70CA900145486 /* ZMJGoodParamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJGoodParamViewController.h; sourceTree = "<group>"; };
+		E49351D01DF70CA900145486 /* ZMJGoodParamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJGoodParamViewController.m; sourceTree = "<group>"; };
+		E49351D21DF70CA900145486 /* DetailShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailShopViewController.h; sourceTree = "<group>"; };
+		E49351D31DF70CA900145486 /* DetailShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailShopViewController.m; sourceTree = "<group>"; };
+		E49351D61DF70CA900145486 /* shopData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopData.h; sourceTree = "<group>"; };
+		E49351D71DF70CA900145486 /* shopData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shopData.m; sourceTree = "<group>"; };
+		E49351D91DF70CA900145486 /* FMDBOneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBOneList.h; sourceTree = "<group>"; };
+		E49351DA1DF70CA900145486 /* FMDBOneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBOneList.m; sourceTree = "<group>"; };
+		E49351DE1DF70CA900145486 /* DetailViewFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewFirstCell.h; sourceTree = "<group>"; };
+		E49351DF1DF70CA900145486 /* DetailViewFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewFirstCell.m; sourceTree = "<group>"; };
+		E49351E01DF70CA900145486 /* DetailViewSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewSecondCell.h; sourceTree = "<group>"; };
+		E49351E11DF70CA900145486 /* DetailViewSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewSecondCell.m; sourceTree = "<group>"; };
+		E49351E21DF70CA900145486 /* DetailViewThreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewThreeCell.h; sourceTree = "<group>"; };
+		E49351E31DF70CA900145486 /* DetailViewThreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewThreeCell.m; sourceTree = "<group>"; };
+		E49351E41DF70CA900145486 /* ShareActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareActivity.h; sourceTree = "<group>"; };
+		E49351E51DF70CA900145486 /* ShareActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareActivity.m; sourceTree = "<group>"; };
+		E49351E91DF70CA900145486 /* ZMJMyProductionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJMyProductionCell.h; sourceTree = "<group>"; };
+		E49351EA1DF70CA900145486 /* ZMJMyProductionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJMyProductionCell.m; sourceTree = "<group>"; };
+		E49351EC1DF70CA900145486 /* SendDataTwoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendDataTwoViewCell.h; sourceTree = "<group>"; };
+		E49351ED1DF70CA900145486 /* SendDataTwoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendDataTwoViewCell.m; sourceTree = "<group>"; };
+		E49351EE1DF70CA900145486 /* SendDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendDataViewCell.h; sourceTree = "<group>"; };
+		E49351EF1DF70CA900145486 /* SendDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendDataViewCell.m; sourceTree = "<group>"; };
+		E49351F21DF70CA900145486 /* ZMJAddGoodsOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJAddGoodsOneCell.h; sourceTree = "<group>"; };
+		E49351F31DF70CA900145486 /* ZMJAddGoodsOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJAddGoodsOneCell.m; sourceTree = "<group>"; };
+		E49351F51DF70CA900145486 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
+		E49351F61DF70CA900145486 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
+		E49351F71DF70CA900145486 /* FourTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourTableViewCell.h; sourceTree = "<group>"; };
+		E49351F81DF70CA900145486 /* FourTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourTableViewCell.m; sourceTree = "<group>"; };
+		E49351F91DF70CA900145486 /* PicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicsCell.h; sourceTree = "<group>"; };
+		E49351FA1DF70CA900145486 /* PicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicsCell.m; sourceTree = "<group>"; };
+		E49351FB1DF70CA900145486 /* SecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTableViewCell.h; sourceTree = "<group>"; };
+		E49351FC1DF70CA900145486 /* SecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewCell.m; sourceTree = "<group>"; };
+		E49351FE1DF70CA900145486 /* tableViewFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tableViewFooterView.h; sourceTree = "<group>"; };
+		E49351FF1DF70CA900145486 /* tableViewFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tableViewFooterView.m; sourceTree = "<group>"; };
+		E49352001DF70CA900145486 /* ThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeTableViewCell.h; sourceTree = "<group>"; };
+		E49352011DF70CA900145486 /* ThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeTableViewCell.m; sourceTree = "<group>"; };
+		E49352031DF70CA900145486 /* ZMJAddGoodsTwoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJAddGoodsTwoView.h; sourceTree = "<group>"; };
+		E49352041DF70CA900145486 /* ZMJAddGoodsTwoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJAddGoodsTwoView.m; sourceTree = "<group>"; };
+		E49352051DF70CA900145486 /* ZMJTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMJTypeView.h; sourceTree = "<group>"; };
+		E49352061DF70CA900145486 /* ZMJTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMJTypeView.m; sourceTree = "<group>"; };
+		E49352081DF70CA900145486 /* EditFirstShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFirstShopCell.h; sourceTree = "<group>"; };
+		E49352091DF70CA900145486 /* EditFirstShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFirstShopCell.m; sourceTree = "<group>"; };
+		E493520A1DF70CA900145486 /* EditFourShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFourShopCell.h; sourceTree = "<group>"; };
+		E493520B1DF70CA900145486 /* EditFourShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFourShopCell.m; sourceTree = "<group>"; };
+		E493520C1DF70CA900145486 /* EditSecondShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSecondShopCell.h; sourceTree = "<group>"; };
+		E493520D1DF70CA900145486 /* EditSecondShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSecondShopCell.m; sourceTree = "<group>"; };
+		E493520E1DF70CA900145486 /* EditThreeShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditThreeShopCell.h; sourceTree = "<group>"; };
+		E493520F1DF70CA900145486 /* EditThreeShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditThreeShopCell.m; sourceTree = "<group>"; };
+		E49352101DF70CA900145486 /* myShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myShopView.h; sourceTree = "<group>"; };
+		E49352111DF70CA900145486 /* myShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myShopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1013,6 +1013,7 @@
 		E416CC091DF5E9F8002A6E60 /* Supply */ = {
 			isa = PBXGroup;
 			children = (
+				E49351C01DF70CA900145486 /* MyShopGoods */,
 				20FBC9F11DF6427B0009167F /* AskProductPriceTableViewController.h */,
 				20FBC9F21DF6427B0009167F /* ClientViewController.h */,
 				20FBC9F31DF6427B0009167F /* ImageAskProductPriceTableViewController.h */,
@@ -1025,262 +1026,10 @@
 				20FBC9FA1DF6427B0009167F /* offerViewController.m */,
 				20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */,
 				20FBC9FC1DF6427B0009167F /* SalerViewController.m */,
-				E416CC0A1DF5E9F8002A6E60 /* MyShopGoods */,
 				E416CC5E1DF5E9F8002A6E60 /* ZMJProviderController.h */,
 				E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */,
 			);
 			path = Supply;
-			sourceTree = "<group>";
-		};
-		E416CC0A1DF5E9F8002A6E60 /* MyShopGoods */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC0B1DF5E9F8002A6E60 /* Controller */,
-				E416CC1E1DF5E9F8002A6E60 /* DownListButton */,
-				E416CC1F1DF5E9F8002A6E60 /* Model */,
-				E416CC261DF5E9F8002A6E60 /* UITableViewCell */,
-				E416CC271DF5E9F8002A6E60 /* View */,
-			);
-			path = MyShopGoods;
-			sourceTree = "<group>";
-		};
-		E416CC0B1DF5E9F8002A6E60 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC0C1DF5E9F8002A6E60 /* MyProductionController */,
-				E416CC151DF5E9F8002A6E60 /* NewBuildProductionCOntoller */,
-				E416CC181DF5E9F8002A6E60 /* ShopPriceController */,
-				E416CC1B1DF5E9F8002A6E60 /* SingleShopController */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		E416CC0C1DF5E9F8002A6E60 /* MyProductionController */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC0D1DF5E9F8002A6E60 /* InfoSendViewController.h */,
-				E416CC0E1DF5E9F8002A6E60 /* InfoSendViewController.m */,
-				E416CC0F1DF5E9F8002A6E60 /* MyProductionController.h */,
-				E416CC101DF5E9F8002A6E60 /* MyProductionController.m */,
-				E416CC111DF5E9F8002A6E60 /* ZMJEditViewController.h */,
-				E416CC121DF5E9F8002A6E60 /* ZMJEditViewController.m */,
-				E416CC131DF5E9F8002A6E60 /* ZMJGoodsDetailController.h */,
-				E416CC141DF5E9F8002A6E60 /* ZMJGoodsDetailController.m */,
-			);
-			path = MyProductionController;
-			sourceTree = "<group>";
-		};
-		E416CC151DF5E9F8002A6E60 /* NewBuildProductionCOntoller */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC161DF5E9F8002A6E60 /* ZMJNewProductionController.h */,
-				E416CC171DF5E9F8002A6E60 /* ZMJNewProductionController.m */,
-			);
-			path = NewBuildProductionCOntoller;
-			sourceTree = "<group>";
-		};
-		E416CC181DF5E9F8002A6E60 /* ShopPriceController */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC191DF5E9F8002A6E60 /* ZMJGoodParamViewController.h */,
-				E416CC1A1DF5E9F8002A6E60 /* ZMJGoodParamViewController.m */,
-			);
-			path = ShopPriceController;
-			sourceTree = "<group>";
-		};
-		E416CC1B1DF5E9F8002A6E60 /* SingleShopController */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC1C1DF5E9F8002A6E60 /* DetailShopViewController.h */,
-				E416CC1D1DF5E9F8002A6E60 /* DetailShopViewController.m */,
-			);
-			path = SingleShopController;
-			sourceTree = "<group>";
-		};
-		E416CC1E1DF5E9F8002A6E60 /* DownListButton */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DownListButton;
-			sourceTree = "<group>";
-		};
-		E416CC1F1DF5E9F8002A6E60 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC201DF5E9F8002A6E60 /* NewAddShopModel */,
-				E416CC231DF5E9F8002A6E60 /* NewList */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E416CC201DF5E9F8002A6E60 /* NewAddShopModel */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC211DF5E9F8002A6E60 /* shopData.h */,
-				E416CC221DF5E9F8002A6E60 /* shopData.m */,
-			);
-			path = NewAddShopModel;
-			sourceTree = "<group>";
-		};
-		E416CC231DF5E9F8002A6E60 /* NewList */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC241DF5E9F8002A6E60 /* FMDBOneList.h */,
-				E416CC251DF5E9F8002A6E60 /* FMDBOneList.m */,
-			);
-			path = NewList;
-			sourceTree = "<group>";
-		};
-		E416CC261DF5E9F8002A6E60 /* UITableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UITableViewCell;
-			sourceTree = "<group>";
-		};
-		E416CC271DF5E9F8002A6E60 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC281DF5E9F8002A6E60 /* MyProductView */,
-				E416CC5C1DF5E9F8002A6E60 /* myShopView.h */,
-				E416CC5D1DF5E9F8002A6E60 /* myShopView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E416CC281DF5E9F8002A6E60 /* MyProductView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC291DF5E9F8002A6E60 /* DetailView */,
-				E416CC321DF5E9F8002A6E60 /* MyProductView */,
-				E416CC371DF5E9F8002A6E60 /* SendDataView */,
-				E416CC3C1DF5E9F8002A6E60 /* ZMJAddProductView */,
-				E416CC531DF5E9F8002A6E60 /* ZMJEditView */,
-			);
-			path = MyProductView;
-			sourceTree = "<group>";
-		};
-		E416CC291DF5E9F8002A6E60 /* DetailView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC2A1DF5E9F8002A6E60 /* DetailViewFirstCell.h */,
-				E416CC2B1DF5E9F8002A6E60 /* DetailViewFirstCell.m */,
-				E416CC2C1DF5E9F8002A6E60 /* DetailViewSecondCell.h */,
-				E416CC2D1DF5E9F8002A6E60 /* DetailViewSecondCell.m */,
-				E416CC2E1DF5E9F8002A6E60 /* DetailViewThreeCell.h */,
-				E416CC2F1DF5E9F8002A6E60 /* DetailViewThreeCell.m */,
-				E416CC301DF5E9F8002A6E60 /* ShareActivity.h */,
-				E416CC311DF5E9F8002A6E60 /* ShareActivity.m */,
-			);
-			path = DetailView;
-			sourceTree = "<group>";
-		};
-		E416CC321DF5E9F8002A6E60 /* MyProductView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC331DF5E9F8002A6E60 /* ZMJMPHeaderView */,
-				E416CC341DF5E9F8002A6E60 /* ZMJMyProductionCell */,
-			);
-			path = MyProductView;
-			sourceTree = "<group>";
-		};
-		E416CC331DF5E9F8002A6E60 /* ZMJMPHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZMJMPHeaderView;
-			sourceTree = "<group>";
-		};
-		E416CC341DF5E9F8002A6E60 /* ZMJMyProductionCell */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC351DF5E9F8002A6E60 /* ZMJMyProductionCell.h */,
-				E416CC361DF5E9F8002A6E60 /* ZMJMyProductionCell.m */,
-			);
-			path = ZMJMyProductionCell;
-			sourceTree = "<group>";
-		};
-		E416CC371DF5E9F8002A6E60 /* SendDataView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC381DF5E9F8002A6E60 /* SendDataTwoViewCell.h */,
-				E416CC391DF5E9F8002A6E60 /* SendDataTwoViewCell.m */,
-				E416CC3A1DF5E9F8002A6E60 /* SendDataViewCell.h */,
-				E416CC3B1DF5E9F8002A6E60 /* SendDataViewCell.m */,
-			);
-			path = SendDataView;
-			sourceTree = "<group>";
-		};
-		E416CC3C1DF5E9F8002A6E60 /* ZMJAddProductView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC3D1DF5E9F8002A6E60 /* AddOneView */,
-				E416CC401DF5E9F8002A6E60 /* AddThreeView */,
-				E416CC4E1DF5E9F8002A6E60 /* AddTwoView */,
-			);
-			path = ZMJAddProductView;
-			sourceTree = "<group>";
-		};
-		E416CC3D1DF5E9F8002A6E60 /* AddOneView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC3E1DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.h */,
-				E416CC3F1DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.m */,
-			);
-			path = AddOneView;
-			sourceTree = "<group>";
-		};
-		E416CC401DF5E9F8002A6E60 /* AddThreeView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC411DF5E9F8002A6E60 /* FirstTableViewCell.h */,
-				E416CC421DF5E9F8002A6E60 /* FirstTableViewCell.m */,
-				E416CC431DF5E9F8002A6E60 /* FourTableViewCell.h */,
-				E416CC441DF5E9F8002A6E60 /* FourTableViewCell.m */,
-				E416CC451DF5E9F8002A6E60 /* PicsCell.h */,
-				E416CC461DF5E9F8002A6E60 /* PicsCell.m */,
-				E416CC471DF5E9F8002A6E60 /* SecondTableViewCell.h */,
-				E416CC481DF5E9F8002A6E60 /* SecondTableViewCell.m */,
-				E416CC491DF5E9F8002A6E60 /* SectionHeaderView */,
-				E416CC4C1DF5E9F8002A6E60 /* ThreeTableViewCell.h */,
-				E416CC4D1DF5E9F8002A6E60 /* ThreeTableViewCell.m */,
-			);
-			path = AddThreeView;
-			sourceTree = "<group>";
-		};
-		E416CC491DF5E9F8002A6E60 /* SectionHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC4A1DF5E9F8002A6E60 /* tableViewFooterView.h */,
-				E416CC4B1DF5E9F8002A6E60 /* tableViewFooterView.m */,
-			);
-			path = SectionHeaderView;
-			sourceTree = "<group>";
-		};
-		E416CC4E1DF5E9F8002A6E60 /* AddTwoView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC4F1DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.h */,
-				E416CC501DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.m */,
-				E416CC511DF5E9F8002A6E60 /* ZMJTypeView.h */,
-				E416CC521DF5E9F8002A6E60 /* ZMJTypeView.m */,
-			);
-			path = AddTwoView;
-			sourceTree = "<group>";
-		};
-		E416CC531DF5E9F8002A6E60 /* ZMJEditView */ = {
-			isa = PBXGroup;
-			children = (
-				E416CC541DF5E9F8002A6E60 /* EditFirstShopCell.h */,
-				E416CC551DF5E9F8002A6E60 /* EditFirstShopCell.m */,
-				E416CC561DF5E9F8002A6E60 /* EditFourShopCell.h */,
-				E416CC571DF5E9F8002A6E60 /* EditFourShopCell.m */,
-				E416CC581DF5E9F8002A6E60 /* EditSecondShopCell.h */,
-				E416CC591DF5E9F8002A6E60 /* EditSecondShopCell.m */,
-				E416CC5A1DF5E9F8002A6E60 /* EditThreeShopCell.h */,
-				E416CC5B1DF5E9F8002A6E60 /* EditThreeShopCell.m */,
-			);
-			path = ZMJEditView;
 			sourceTree = "<group>";
 		};
 		E416CC601DF5E9F8002A6E60 /* ThirdLibs */ = {
@@ -1655,6 +1404,241 @@
 			path = DownListButton;
 			sourceTree = "<group>";
 		};
+		E49351C01DF70CA900145486 /* MyShopGoods */ = {
+			isa = PBXGroup;
+			children = (
+				E49351C11DF70CA900145486 /* Controller */,
+				E49351D41DF70CA900145486 /* Model */,
+				E49351DB1DF70CA900145486 /* View */,
+			);
+			path = MyShopGoods;
+			sourceTree = "<group>";
+		};
+		E49351C11DF70CA900145486 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E49351C21DF70CA900145486 /* MyProductionController */,
+				E49351CB1DF70CA900145486 /* NewBuildProductionCOntoller */,
+				E49351CE1DF70CA900145486 /* ShopPriceController */,
+				E49351D11DF70CA900145486 /* SingleShopController */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E49351C21DF70CA900145486 /* MyProductionController */ = {
+			isa = PBXGroup;
+			children = (
+				E49351C31DF70CA900145486 /* InfoSendViewController.h */,
+				E49351C41DF70CA900145486 /* InfoSendViewController.m */,
+				E49351C51DF70CA900145486 /* MyProductionController.h */,
+				E49351C61DF70CA900145486 /* MyProductionController.m */,
+				E49351C71DF70CA900145486 /* ZMJEditViewController.h */,
+				E49351C81DF70CA900145486 /* ZMJEditViewController.m */,
+				E49351C91DF70CA900145486 /* ZMJGoodsDetailController.h */,
+				E49351CA1DF70CA900145486 /* ZMJGoodsDetailController.m */,
+			);
+			path = MyProductionController;
+			sourceTree = "<group>";
+		};
+		E49351CB1DF70CA900145486 /* NewBuildProductionCOntoller */ = {
+			isa = PBXGroup;
+			children = (
+				E49351CC1DF70CA900145486 /* ZMJNewProductionController.h */,
+				E49351CD1DF70CA900145486 /* ZMJNewProductionController.m */,
+			);
+			path = NewBuildProductionCOntoller;
+			sourceTree = "<group>";
+		};
+		E49351CE1DF70CA900145486 /* ShopPriceController */ = {
+			isa = PBXGroup;
+			children = (
+				E49351CF1DF70CA900145486 /* ZMJGoodParamViewController.h */,
+				E49351D01DF70CA900145486 /* ZMJGoodParamViewController.m */,
+			);
+			path = ShopPriceController;
+			sourceTree = "<group>";
+		};
+		E49351D11DF70CA900145486 /* SingleShopController */ = {
+			isa = PBXGroup;
+			children = (
+				E49351D21DF70CA900145486 /* DetailShopViewController.h */,
+				E49351D31DF70CA900145486 /* DetailShopViewController.m */,
+			);
+			path = SingleShopController;
+			sourceTree = "<group>";
+		};
+		E49351D41DF70CA900145486 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E49351D51DF70CA900145486 /* NewAddShopModel */,
+				E49351D81DF70CA900145486 /* NewList */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E49351D51DF70CA900145486 /* NewAddShopModel */ = {
+			isa = PBXGroup;
+			children = (
+				E49351D61DF70CA900145486 /* shopData.h */,
+				E49351D71DF70CA900145486 /* shopData.m */,
+			);
+			path = NewAddShopModel;
+			sourceTree = "<group>";
+		};
+		E49351D81DF70CA900145486 /* NewList */ = {
+			isa = PBXGroup;
+			children = (
+				E49351D91DF70CA900145486 /* FMDBOneList.h */,
+				E49351DA1DF70CA900145486 /* FMDBOneList.m */,
+			);
+			path = NewList;
+			sourceTree = "<group>";
+		};
+		E49351DB1DF70CA900145486 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E49351DC1DF70CA900145486 /* MyProductView */,
+				E49352101DF70CA900145486 /* myShopView.h */,
+				E49352111DF70CA900145486 /* myShopView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E49351DC1DF70CA900145486 /* MyProductView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351DD1DF70CA900145486 /* DetailView */,
+				E49351E61DF70CA900145486 /* MyProductView */,
+				E49351EB1DF70CA900145486 /* SendDataView */,
+				E49351F01DF70CA900145486 /* ZMJAddProductView */,
+				E49352071DF70CA900145486 /* ZMJEditView */,
+			);
+			path = MyProductView;
+			sourceTree = "<group>";
+		};
+		E49351DD1DF70CA900145486 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351DE1DF70CA900145486 /* DetailViewFirstCell.h */,
+				E49351DF1DF70CA900145486 /* DetailViewFirstCell.m */,
+				E49351E01DF70CA900145486 /* DetailViewSecondCell.h */,
+				E49351E11DF70CA900145486 /* DetailViewSecondCell.m */,
+				E49351E21DF70CA900145486 /* DetailViewThreeCell.h */,
+				E49351E31DF70CA900145486 /* DetailViewThreeCell.m */,
+				E49351E41DF70CA900145486 /* ShareActivity.h */,
+				E49351E51DF70CA900145486 /* ShareActivity.m */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		E49351E61DF70CA900145486 /* MyProductView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351E71DF70CA900145486 /* ZMJMPHeaderView */,
+				E49351E81DF70CA900145486 /* ZMJMyProductionCell */,
+			);
+			path = MyProductView;
+			sourceTree = "<group>";
+		};
+		E49351E71DF70CA900145486 /* ZMJMPHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZMJMPHeaderView;
+			sourceTree = "<group>";
+		};
+		E49351E81DF70CA900145486 /* ZMJMyProductionCell */ = {
+			isa = PBXGroup;
+			children = (
+				E49351E91DF70CA900145486 /* ZMJMyProductionCell.h */,
+				E49351EA1DF70CA900145486 /* ZMJMyProductionCell.m */,
+			);
+			path = ZMJMyProductionCell;
+			sourceTree = "<group>";
+		};
+		E49351EB1DF70CA900145486 /* SendDataView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351EC1DF70CA900145486 /* SendDataTwoViewCell.h */,
+				E49351ED1DF70CA900145486 /* SendDataTwoViewCell.m */,
+				E49351EE1DF70CA900145486 /* SendDataViewCell.h */,
+				E49351EF1DF70CA900145486 /* SendDataViewCell.m */,
+			);
+			path = SendDataView;
+			sourceTree = "<group>";
+		};
+		E49351F01DF70CA900145486 /* ZMJAddProductView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351F11DF70CA900145486 /* AddOneView */,
+				E49351F41DF70CA900145486 /* AddThreeView */,
+				E49352021DF70CA900145486 /* AddTwoView */,
+			);
+			path = ZMJAddProductView;
+			sourceTree = "<group>";
+		};
+		E49351F11DF70CA900145486 /* AddOneView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351F21DF70CA900145486 /* ZMJAddGoodsOneCell.h */,
+				E49351F31DF70CA900145486 /* ZMJAddGoodsOneCell.m */,
+			);
+			path = AddOneView;
+			sourceTree = "<group>";
+		};
+		E49351F41DF70CA900145486 /* AddThreeView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351F51DF70CA900145486 /* FirstTableViewCell.h */,
+				E49351F61DF70CA900145486 /* FirstTableViewCell.m */,
+				E49351F71DF70CA900145486 /* FourTableViewCell.h */,
+				E49351F81DF70CA900145486 /* FourTableViewCell.m */,
+				E49351F91DF70CA900145486 /* PicsCell.h */,
+				E49351FA1DF70CA900145486 /* PicsCell.m */,
+				E49351FB1DF70CA900145486 /* SecondTableViewCell.h */,
+				E49351FC1DF70CA900145486 /* SecondTableViewCell.m */,
+				E49351FD1DF70CA900145486 /* SectionHeaderView */,
+				E49352001DF70CA900145486 /* ThreeTableViewCell.h */,
+				E49352011DF70CA900145486 /* ThreeTableViewCell.m */,
+			);
+			path = AddThreeView;
+			sourceTree = "<group>";
+		};
+		E49351FD1DF70CA900145486 /* SectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				E49351FE1DF70CA900145486 /* tableViewFooterView.h */,
+				E49351FF1DF70CA900145486 /* tableViewFooterView.m */,
+			);
+			path = SectionHeaderView;
+			sourceTree = "<group>";
+		};
+		E49352021DF70CA900145486 /* AddTwoView */ = {
+			isa = PBXGroup;
+			children = (
+				E49352031DF70CA900145486 /* ZMJAddGoodsTwoView.h */,
+				E49352041DF70CA900145486 /* ZMJAddGoodsTwoView.m */,
+				E49352051DF70CA900145486 /* ZMJTypeView.h */,
+				E49352061DF70CA900145486 /* ZMJTypeView.m */,
+			);
+			path = AddTwoView;
+			sourceTree = "<group>";
+		};
+		E49352071DF70CA900145486 /* ZMJEditView */ = {
+			isa = PBXGroup;
+			children = (
+				E49352081DF70CA900145486 /* EditFirstShopCell.h */,
+				E49352091DF70CA900145486 /* EditFirstShopCell.m */,
+				E493520A1DF70CA900145486 /* EditFourShopCell.h */,
+				E493520B1DF70CA900145486 /* EditFourShopCell.m */,
+				E493520C1DF70CA900145486 /* EditSecondShopCell.h */,
+				E493520D1DF70CA900145486 /* EditSecondShopCell.m */,
+				E493520E1DF70CA900145486 /* EditThreeShopCell.h */,
+				E493520F1DF70CA900145486 /* EditThreeShopCell.m */,
+			);
+			path = ZMJEditView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1847,15 +1831,13 @@
 				20FBCA011DF6427B0009167F /* QueryPriceViewController.m in Sources */,
 				E416CCFE1DF5E9F8002A6E60 /* ZZCameraController.m in Sources */,
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
-				E416CCDA1DF5E9F8002A6E60 /* ZMJTypeView.m in Sources */,
 				E416CD3C1DF5EB4C002A6E60 /* BuyCustomerView.m in Sources */,
 				E416C91E1DF5D802002A6E60 /* main.m in Sources */,
 				E416CCE11DF5E9F8002A6E60 /* BackButton.m in Sources */,
 				E416CD0A1DF5E9F8002A6E60 /* ZZPhotoListModel.m in Sources */,
-				E416CCDF1DF5E9F8002A6E60 /* myShopView.m in Sources */,
-				E416CCD61DF5E9F8002A6E60 /* SecondTableViewCell.m in Sources */,
-				E416CCCC1DF5E9F8002A6E60 /* DetailViewSecondCell.m in Sources */,
+				E493521D1DF70CA900145486 /* DetailViewThreeCell.m in Sources */,
 				E416CD711DF5ED7B002A6E60 /* ThreePopTableViewCell.m in Sources */,
+				E49352281DF70CA900145486 /* ThreeTableViewCell.m in Sources */,
 				20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */,
 				20FBC9F01DF640EA0009167F /* UserInfoView.m in Sources */,
 				E416CCE41DF5E9F8002A6E60 /* PopView.m in Sources */,
@@ -1863,44 +1845,41 @@
 				E416CD041DF5E9F8002A6E60 /* ZZPhotoBrowerViewController.m in Sources */,
 				E416CD821DF5ED84002A6E60 /* SystemSettingViewController.m in Sources */,
 				E416CCFB1DF5E9F8002A6E60 /* ZZBrowserPickerViewController.m in Sources */,
+				E49352221DF70CA900145486 /* ZMJAddGoodsOneCell.m in Sources */,
 				E416CD391DF5EB4C002A6E60 /* ExhibitionDeatailController.m in Sources */,
 				E416CBF91DF5E9E9002A6E60 /* BUYAgreementController.m in Sources */,
 				E416CBBE1DF5E9E1002A6E60 /* MemberController.m in Sources */,
-				E416CCC21DF5E9F8002A6E60 /* InfoSendViewController.m in Sources */,
 				E416CBC11DF5E9E1002A6E60 /* BuyerProductTableViewCell.m in Sources */,
 				E416CD6A1DF5ED7B002A6E60 /* NameValueTableViewCell.m in Sources */,
 				E416CD081DF5E9F8002A6E60 /* ZZPhoto.m in Sources */,
 				E416CCFF1DF5E9F8002A6E60 /* ZZCameraPickerViewController.m in Sources */,
-				E416CCC91DF5E9F8002A6E60 /* shopData.m in Sources */,
 				E416CCE91DF5E9F8002A6E60 /* UIView+Layout.m in Sources */,
 				20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */,
-				E416CCCA1DF5E9F8002A6E60 /* FMDBOneList.m in Sources */,
 				E416CBD91DF5E9E5002A6E60 /* MessageSystemController.m in Sources */,
 				E416CD321DF5EB4C002A6E60 /* BusinessChanceViewController.m in Sources */,
+				E49352241DF70CA900145486 /* FourTableViewCell.m in Sources */,
 				E416CBF71DF5E9E9002A6E60 /* BUYHomeControl.m in Sources */,
-				E416CCD31DF5E9F8002A6E60 /* FirstTableViewCell.m in Sources */,
-				E416CCDD1DF5E9F8002A6E60 /* EditSecondShopCell.m in Sources */,
 				E416CD031DF5E9F8002A6E60 /* ZZCameraPickerCell.m in Sources */,
 				E416CCEA1DF5E9F8002A6E60 /* ZZAlumAnimation.m in Sources */,
 				20FBC9EF1DF640EA0009167F /* SettingTableViewController.m in Sources */,
 				E416CD6F1DF5ED7B002A6E60 /* TextFieldTableViewCell.m in Sources */,
 				E416CCFC1DF5E9F8002A6E60 /* ZZPageControl.m in Sources */,
-				E416CCD91DF5E9F8002A6E60 /* ZMJAddGoodsTwoView.m in Sources */,
 				E416CD891DF5EDF3002A6E60 /* DownListButton.m in Sources */,
 				E416CBC71DF5E9E1002A6E60 /* PrividerBusinessControler.m in Sources */,
-				E416CCDC1DF5E9F8002A6E60 /* EditFourShopCell.m in Sources */,
 				E416CD3E1DF5EB4C002A6E60 /* SearchView.m in Sources */,
+				E49352271DF70CA900145486 /* tableViewFooterView.m in Sources */,
 				E416CD681DF5ED7B002A6E60 /* IndustryTypeTableViewCell.m in Sources */,
 				20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */,
 				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
-				E416CCD81DF5E9F8002A6E60 /* ThreeTableViewCell.m in Sources */,
 				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
 				E416CD011DF5E9F8002A6E60 /* ZZCameraBrowerCell.m in Sources */,
 				E416CD051DF5E9F8002A6E60 /* ZZPhotoController.m in Sources */,
 				E416CCE61DF5E9F8002A6E60 /* SSPopup.m in Sources */,
+				E49352191DF70CA900145486 /* shopData.m in Sources */,
 				E416CBBA1DF5E9E1002A6E60 /* AddTwoProductionController.m in Sources */,
 				20FBCA001DF6427B0009167F /* offerViewController.m in Sources */,
+				E49352151DF70CA900145486 /* ZMJGoodsDetailController.m in Sources */,
 				E416CBDB1DF5E9E5002A6E60 /* MessageViewController.m in Sources */,
 				20FBCA131DF643500009167F /* MyBuyerViewController.m in Sources */,
 				E416CD101DF5E9F8002A6E60 /* ZZPhotoPickerFooterView.m in Sources */,
@@ -1908,33 +1887,37 @@
 				20FBC9EC1DF640EA0009167F /* IdentifyViewController.m in Sources */,
 				E416CD6D1DF5ED7B002A6E60 /* PopTableViewCell.m in Sources */,
 				E416CBFD1DF5E9E9002A6E60 /* BUYTitleButton.m in Sources */,
+				E493521E1DF70CA900145486 /* ShareActivity.m in Sources */,
 				E416CD651DF5ED7B002A6E60 /* ClientInfoTableViewCell.m in Sources */,
 				E416CCFD1DF5E9F8002A6E60 /* ZZCameraBrowerViewController.m in Sources */,
 				20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */,
 				20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
-				E416CCD11DF5E9F8002A6E60 /* SendDataViewCell.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
-				E416CCC31DF5E9F8002A6E60 /* MyProductionController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
+				E49352261DF70CA900145486 /* SecondTableViewCell.m in Sources */,
+				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
+				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
 				E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */,
-				E416CCCD1DF5E9F8002A6E60 /* DetailViewThreeCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
 				E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */,
 				E416CBF81DF5E9E9002A6E60 /* BUYLoginControl.m in Sources */,
 				20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */,
 				E416CD021DF5E9F8002A6E60 /* ZZCameraFocusView.m in Sources */,
-				E416CCDB1DF5E9F8002A6E60 /* EditFirstShopCell.m in Sources */,
+				E493521A1DF70CA900145486 /* FMDBOneList.m in Sources */,
+				E49352171DF70CA900145486 /* ZMJGoodParamViewController.m in Sources */,
+				E49352291DF70CA900145486 /* ZMJAddGoodsTwoView.m in Sources */,
 				E416CD6C1DF5ED7B002A6E60 /* OnePopWithoutTextFieldTableViewCell.m in Sources */,
 				E416CD641DF5ED7B002A6E60 /* AskPriceTableViewCell.m in Sources */,
+				E49352211DF70CA900145486 /* SendDataViewCell.m in Sources */,
 				E416CBB81DF5E9E1002A6E60 /* AddOneProductionController.m in Sources */,
 				20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */,
 				E416CBF61DF5E9E9002A6E60 /* BUYButton.m in Sources */,
+				E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */,
 				E416CBFB1DF5E9E9002A6E60 /* BUYImportView.m in Sources */,
-				E416CCD01DF5E9F8002A6E60 /* SendDataTwoViewCell.m in Sources */,
 				E416CBC31DF5E9E1002A6E60 /* BuyerEditFSecondCell.m in Sources */,
 				E416CD361DF5EB4C002A6E60 /* ProductiPulishController.m in Sources */,
 				E416CD691DF5ED7B002A6E60 /* NameContentTableViewCell.m in Sources */,
@@ -1943,65 +1926,66 @@
 				20FBCA021DF6427B0009167F /* SalerViewController.m in Sources */,
 				E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */,
 				E416CD811DF5ED84002A6E60 /* SearchBarView.m in Sources */,
+				E49352251DF70CA900145486 /* PicsCell.m in Sources */,
 				E416CD0F1DF5E9F8002A6E60 /* ZZPhotoPickerCell.m in Sources */,
 				E416CBC41DF5E9E1002A6E60 /* BuyerEditThreeCell.m in Sources */,
 				E416CBDA1DF5E9E5002A6E60 /* MessageTradeController.m in Sources */,
+				E493521C1DF70CA900145486 /* DetailViewSecondCell.m in Sources */,
 				20FBCA1D1DF646B40009167F /* MyBuyerTableViewCell.m in Sources */,
+				E49352141DF70CA900145486 /* ZMJEditViewController.m in Sources */,
 				E416CBFE1DF5E9E9002A6E60 /* BUYTypeView.m in Sources */,
 				E416CD0D1DF5E9F8002A6E60 /* ZZPhotoHud.m in Sources */,
+				E49352181DF70CA900145486 /* DetailShopViewController.m in Sources */,
 				E416CD721DF5ED7B002A6E60 /* UploadImageTableViewCell.m in Sources */,
 				E416CD371DF5EB4C002A6E60 /* PulishOneViewController.m in Sources */,
 				E416CD351DF5EB4C002A6E60 /* DemandViewController.m in Sources */,
+				E49352131DF70CA900145486 /* MyProductionController.m in Sources */,
 				E416CD3B1DF5EB4C002A6E60 /* ExhibitionViewCell.m in Sources */,
-				E416CCC71DF5E9F8002A6E60 /* ZMJGoodParamViewController.m in Sources */,
-				E416CCCF1DF5E9F8002A6E60 /* ZMJMyProductionCell.m in Sources */,
 				E416CCE21DF5E9F8002A6E60 /* CCZSegementController.m in Sources */,
 				E416CCE71DF5E9F8002A6E60 /* TapButton.m in Sources */,
 				E416CD091DF5E9F8002A6E60 /* ZZPhotoDatas.m in Sources */,
+				E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */,
 				E416CD341DF5EB4C002A6E60 /* DemandTwoViewController.m in Sources */,
 				20FBCA121DF643500009167F /* BUYSaoAndSupViewController.m in Sources */,
 				E416CD331DF5EB4C002A6E60 /* DemandOneViewController.m in Sources */,
-				E416CCC61DF5E9F8002A6E60 /* ZMJNewProductionController.m in Sources */,
+				E493522F1DF70CA900145486 /* myShopView.m in Sources */,
 				20FBCA101DF643500009167F /* AskPriceViewController.m in Sources */,
 				E416CBD81DF5E9E5002A6E60 /* MessageInfoController.m in Sources */,
 				E416CD441DF5ED75002A6E60 /* XHSegmentControl.m in Sources */,
 				E416CD0B1DF5E9F8002A6E60 /* ZZPhotoAlert.m in Sources */,
 				E416CD671DF5ED7B002A6E60 /* ImageCollectionViewCell.m in Sources */,
 				E416CCE01DF5E9F8002A6E60 /* ZMJProviderController.m in Sources */,
-				E416CCC41DF5E9F8002A6E60 /* ZMJEditViewController.m in Sources */,
 				E416CCE31DF5E9F8002A6E60 /* HYActivityView.m in Sources */,
 				E416CBB91DF5E9E1002A6E60 /* AddThreeProductionController.m in Sources */,
 				E416CC081DF5E9F2002A6E60 /* NavigationControl.m in Sources */,
 				E416CD701DF5ED7B002A6E60 /* TextIconTableViewCell.m in Sources */,
-				E416CCD21DF5E9F8002A6E60 /* ZMJAddGoodsOneCell.m in Sources */,
 				20FBCA141DF643500009167F /* newBuyerViewController.m in Sources */,
 				E416CD001DF5E9F8002A6E60 /* ZZCamera.m in Sources */,
+				E493522A1DF70CA900145486 /* ZMJTypeView.m in Sources */,
 				E416CD3D1DF5EB4C002A6E60 /* IndustryView.m in Sources */,
 				20FBCA261DF6473A0009167F /* BuyerLable.m in Sources */,
-				E416CCC81DF5E9F8002A6E60 /* DetailShopViewController.m in Sources */,
 				E416CD061DF5E9F8002A6E60 /* ZZPhotoListViewController.m in Sources */,
+				E49352231DF70CA900145486 /* FirstTableViewCell.m in Sources */,
+				E493522C1DF70CA900145486 /* EditFourShopCell.m in Sources */,
 				E416CD6E1DF5ED7B002A6E60 /* QueryPriceTableViewCell.m in Sources */,
 				20FBC9FF1DF6427B0009167F /* ImageAskProductPriceTableViewController.m in Sources */,
-				E416CCCB1DF5E9F8002A6E60 /* DetailViewFirstCell.m in Sources */,
 				E416CBFC1DF5E9E9002A6E60 /* BUYTextView.m in Sources */,
-				E416CCCE1DF5E9F8002A6E60 /* ShareActivity.m in Sources */,
 				E416CCE81DF5E9F8002A6E60 /* UIView+Frame.m in Sources */,
 				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E416CD0C1DF5E9F8002A6E60 /* ZZPhotoBrowerCell.m in Sources */,
-				E416CCD71DF5E9F8002A6E60 /* tableViewFooterView.m in Sources */,
+				E493522B1DF70CA900145486 /* EditFirstShopCell.m in Sources */,
+				E493522E1DF70CA900145486 /* EditThreeShopCell.m in Sources */,
 				20FBCA221DF646F40009167F /* MyBuyerAskTableViewCell.m in Sources */,
 				E416CBC61DF5E9E1002A6E60 /* MemberTwoViewCell.m in Sources */,
 				E416CBC21DF5E9E1002A6E60 /* BuyerEditFirstCell.m in Sources */,
 				E416CBBB1DF5E9E1002A6E60 /* BuyerDetailViewController.m in Sources */,
 				E416CBDC1DF5E9E5002A6E60 /* ZMJTotleHomeController.m in Sources */,
+				E493521B1DF70CA900145486 /* DetailViewFirstCell.m in Sources */,
 				20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */,
-				E416CCDE1DF5E9F8002A6E60 /* EditThreeShopCell.m in Sources */,
 				E416CBFA1DF5E9E9002A6E60 /* BUYRegisterControl.m in Sources */,
 				E416CD381DF5EB4C002A6E60 /* PulishTwoController.m in Sources */,
-				E416CCC51DF5E9F8002A6E60 /* ZMJGoodsDetailController.m in Sources */,
-				E416CCD51DF5E9F8002A6E60 /* PicsCell.m in Sources */,
-				E416CCD41DF5E9F8002A6E60 /* FourTableViewCell.m in Sources */,
 				E416CD801DF5ED84002A6E60 /* NewlyAskingPrice.m in Sources */,
+				E49352161DF70CA900145486 /* ZMJNewProductionController.m in Sources */,
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
 				E416CD3A1DF5EB4C002A6E60 /* ExhibitionViewController.m in Sources */,
 				E416CBBD1DF5E9E1002A6E60 /* BuyerProductController.m in Sources */,

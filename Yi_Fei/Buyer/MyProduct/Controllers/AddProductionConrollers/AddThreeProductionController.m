@@ -111,7 +111,7 @@
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
     
-    NewTwoList  *manager = [NewTwoList defaultManager];
+    NewTwoList  *manager = [NewTwoList newListManager];
     //查询
     if ([manager isHasDataIDFromTable:_shopObj.companyID]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"此商品给已经添加过" preferredStyle:UIAlertControllerStyleAlert];

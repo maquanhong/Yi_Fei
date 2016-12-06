@@ -16,14 +16,15 @@
     FMDatabase * _dataBase;
 }
 
-static FMDBOneList * manager=nil;
-+(FMDBOneList *)defaultManager
+static NewTwoList * manager=nil;
+
++(NewTwoList *)newListManager
 {
     //只调用一次，保证线程安全
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
         if(manager==nil){
-            manager=[[FMDBOneList alloc]init];
+            manager = [[NewTwoList alloc]init];
         }
     });
     return manager;

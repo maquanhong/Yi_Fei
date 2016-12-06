@@ -10,7 +10,11 @@
 
 @interface ZMJGoodParamViewController : UIViewController
 
+
+
 @property(nonatomic,strong)shopData *shopObj;
+
+
 
 
 @end

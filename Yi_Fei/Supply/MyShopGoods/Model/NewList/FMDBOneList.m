@@ -40,10 +40,6 @@ static FMDBOneList * manager=nil;
 
         //如果创建成功 打开
         if ([_dataBase open]) {
-            //addYiFei 表的名字
-//            NSString * createSql = @"create table if not exists addYiFei( id varchar(1024),title varchar(1024),pic varchar(1024),createtime varchar(1024), author varchar(1024))";
-        
-            
            NSString *createSql = @"create table if not exists addYiFei(id varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000))";
             //integer 数字  varchar字符串   glob 二进制数据NSData
             if ([_dataBase executeUpdate:createSql]){//executeUpdate 返回值是BOOL

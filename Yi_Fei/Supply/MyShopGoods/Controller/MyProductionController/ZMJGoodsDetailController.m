@@ -211,7 +211,7 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
         case 123456:
         {
     InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
-//    sendView.shopData = _shopData;
+    sendView.shopData = _shopData;
     [self.navigationController pushViewController:sendView animated:YES];
         }
             break;
@@ -262,7 +262,7 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
     [selection CreateTableview:nil withSender:sender  withTitle:@"请选择发送方式" setCompletionBlock:^(int tag){
         
         NSLog(@"Tag--->%d",tag);
-        
+
         
     }];
 

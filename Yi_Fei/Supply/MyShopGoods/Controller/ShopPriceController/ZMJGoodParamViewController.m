@@ -11,6 +11,9 @@
 #import "MyProductionController.h"
 #import "ZMJMyProductionCell.h"
 #import "Header.h"
+
+
+
 #import "FirstTableViewCell.h"
 #import "SecondTableViewCell.h"
 #import "ThreeTableViewCell.h"
@@ -491,9 +494,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
             [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
         }
         NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture= [NSString stringWithFormat:@"%@",str];
-        NSLog(@"%@",_shopObj.shopPicture);
-        NSLog(@"%@",str);
+        _shopObj.shopPicture=str;
     }];
 }
 
@@ -537,14 +538,32 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
+    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
     
-UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
- [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
     UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return scaledImage;   //返回的就是已经改变的图片
     
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;   //返回的就是已经改变的图片
 }
 
 

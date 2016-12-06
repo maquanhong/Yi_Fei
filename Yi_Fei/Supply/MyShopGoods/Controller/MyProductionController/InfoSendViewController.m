@@ -8,20 +8,18 @@
 
 #import "InfoSendViewController.h"
 #import "SendDataViewCell.h"
-//#import "SingleForm.h"
+//#import "SingleForm.h"
 #import "SendDataTwoViewCell.h"
 #import <MessageUI/MessageUI.h>
-//#import "PeripheralViewController.h"
-//#import "CentralViewController.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 
 #define NOTIFY_MTU      20
 
-@interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate,CBPeripheralManagerDelegate>
+@interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
 {
     SendDataViewCell *Firstell;
     SendDataTwoViewCell *secondCell;
-//    PeripheralViewController *_peripheral;
+
     NSInteger  _index;
     NSInteger _num;
     BackButton *_rightBtn;
@@ -52,8 +50,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 初始化周边设备
-_peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
   [self createNavigationView];
 _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", nil];
   _sendArray  = @[@{@"发送方式":@"蓝牙发送"},@{@"发送方式":@"Email发送"}];
@@ -125,27 +121,6 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     _tableView.tableFooterView  = footerView;
 
 }
-
-#pragma mark 点击发送按钮
--(void)sendClickBtn:(UIButton*)sender{
-
-    if (_index == 1501 && _num == 1600) {
-        
-        
-    }else if (_index == 1501 && _num == 1601){
-    
-            NSLog(@"发送EmailPdf");
-        
-    }else if (_index == 1500 && _num == 1600){
-      
-         NSLog(@"发送蓝牙Excel");
-        
-    }else if (_index == 1500 && _num == 1601){
-        
-        NSLog(@"发送蓝牙Pdf");
-    }
-}
-
 
 #pragma mark tableView 的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -305,34 +280,6 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 
 
 
-
-
-
-
-
-
-
-#pragma mark 发送QQ，微信等等
-//-(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
-//
-//    _singleForm = [[SingleForm alloc] init];
-//    _singleForm.shopObjc =  _shopData;
-//    [_singleForm exportExcelAndPDF];
-//    
-//    NSURL *fileURL = [NSURL fileURLWithPath:_singleForm.outputFilePath];
-//   self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-//    self.documentController.delegate = self;
-//    [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];
-//    
-//}
-//
-//#pragma mark - Document Interaction Controller Delegate
-//- (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller {
-//    
-//    if (self.documentController == controller) {
-//        self.documentController = nil;
-//    }
-//}
 
 
 

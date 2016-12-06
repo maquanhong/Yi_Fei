@@ -101,7 +101,7 @@
     [_backView.textFTwo endEditing:YES];
     [_backView.textFThree endEditing:YES];
     ZMJGoodParamViewController *paramVC = [[ ZMJGoodParamViewController alloc] init];
-//    paramVC.shopObj = _shopObj;
+    paramVC.shopObj = _shopObj;
     [self.navigationController pushViewController:paramVC animated:YES];
 }
 
