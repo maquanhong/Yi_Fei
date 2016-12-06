@@ -123,11 +123,6 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
         
     }else if (_index == 1501 && _num == 1601){
         
-        
-   
-        
-        
-        
         NSLog(@"发送EmailPdf");
         
     }else if (_index == 1500 && _num == 1600){
@@ -306,9 +301,6 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
     [self presentViewController:alertVC animated:YES completion:nil];
     
 }
-
-
-
 
 #pragma mark 利用系统的 -------  发送QQ，微信等等
 -(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
