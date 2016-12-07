@@ -219,7 +219,6 @@
 		E493526C1DF7267300145486 /* SSPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352601DF7267300145486 /* SSPopup.m */; };
 		E493526D1DF7267300145486 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352631DF7267300145486 /* UIView+Frame.m */; };
 		E493526E1DF7267300145486 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352651DF7267300145486 /* UIView+Layout.m */; };
-		E49352DC1DF749D600145486 /* SupplyImport.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352DB1DF749D600145486 /* SupplyImport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -627,8 +626,6 @@
 		E49352631DF7267300145486 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		E49352641DF7267300145486 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		E49352651DF7267300145486 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
-		E49352DA1DF749D600145486 /* SupplyImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyImport.h; sourceTree = "<group>"; };
-		E49352DB1DF749D600145486 /* SupplyImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyImport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1696,8 +1693,6 @@
 				E493523A1DF711AA00145486 /* SingleOutForm.m */,
 				E49352441DF719DC00145486 /* BuyerOutForm.h */,
 				E49352451DF719DC00145486 /* BuyerOutForm.m */,
-				E49352DA1DF749D600145486 /* SupplyImport.h */,
-				E49352DB1DF749D600145486 /* SupplyImport.m */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -1943,7 +1938,6 @@
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
 				E416CD3C1DF5EB4C002A6E60 /* BuyCustomerView.m in Sources */,
 				E416C91E1DF5D802002A6E60 /* main.m in Sources */,
-				E49352DC1DF749D600145486 /* SupplyImport.m in Sources */,
 				E416CD0A1DF5E9F8002A6E60 /* ZZPhotoListModel.m in Sources */,
 				E493521D1DF70CA900145486 /* DetailViewThreeCell.m in Sources */,
 				E416CD711DF5ED7B002A6E60 /* ThreePopTableViewCell.m in Sources */,
@@ -1974,7 +1968,6 @@
 				E416CCFC1DF5E9F8002A6E60 /* ZZPageControl.m in Sources */,
 				E416CD891DF5EDF3002A6E60 /* DownListButton.m in Sources */,
 				E416CBC71DF5E9E1002A6E60 /* PrividerBusinessControler.m in Sources */,
-				E416CCDC1DF5E9F8002A6E60 /* EditFourShopCell.m in Sources */,
 				203793C71DF6FDCF00992510 /* SystemSettingTableViewController.m in Sources */,
 				E416CD3E1DF5EB4C002A6E60 /* SearchView.m in Sources */,
 				E49352271DF70CA900145486 /* tableViewFooterView.m in Sources */,
@@ -2012,8 +2005,6 @@
 				E49352261DF70CA900145486 /* SecondTableViewCell.m in Sources */,
 				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
-				E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */,
-				E416CCCD1DF5E9F8002A6E60 /* DetailViewThreeCell.m in Sources */,
 				203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */,
 				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,

@@ -25,14 +25,12 @@ static FMDBOneList * manager=nil;
         manager=[[FMDBOneList alloc]init];
         }
     });
-    
     return manager;
 }
 
 - (instancetype)init
 {
     if(self=[super init]){
-        
     NSString * path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/addYiFei.db"];
     
         //很据路径创建表
@@ -40,7 +38,8 @@ static FMDBOneList * manager=nil;
 
         //如果创建成功 打开
         if ([_dataBase open]) {
-           NSString *createSql = @"create table if not exists addYiFei(id varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000))";
+           NSString *createSql = @"create table if not exists addYiFei  ( companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000))";
+           
             //integer 数字  varchar字符串   glob 二进制数据NSData
             if ([_dataBase executeUpdate:createSql]){//executeUpdate 返回值是BOOL
                 //executeUpdate 增、删、改、创建 都是使用这个方法
@@ -56,7 +55,7 @@ static FMDBOneList * manager=nil;
 //插入
 - (void)insertDataModel:(shopData *)model{
     
-    NSString * insertSql = @"insert into addYiFei(id,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,shopPicture) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    NSString * insertSql = @"insert into addYiFei(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,shopPicture) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture];
   
@@ -68,14 +67,15 @@ static FMDBOneList * manager=nil;
 }
 
 //修改数据
-- (void)updateDataModel:(shopData *)model{
-    
-    NSString *sql = [NSString stringWithFormat:@"update addYiFei set id = '%@', shopName = '%@',shopSize = '%@', shopMed = '%@', shopColor = '%@' ,shopPrice = '%@' ,shopHuoBi = '%@', shopTiaoK = '%@',shopAdderss='%@', shopDescribe = '%@' , shopInfo = '%@' ,shopCustom = '%@',shopContent = '%@',shopPicture = '%@'",model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture];
+- (void)updateDataModel:(shopData *)model str:(NSString*)str {
+
+   
+    NSString *sql = [NSString stringWithFormat:@"update addYiFei set companyID = '%@', shopName = '%@',shopSize = '%@', shopMed = '%@', shopColor = '%@' ,shopPrice = '%@' ,shopHuoBi = '%@', shopTiaoK = '%@',shopAdderss='%@', shopDescribe = '%@' , shopInfo = '%@' ,shopCustom = '%@',shopContent = '%@',shopPicture = '%@' where  companyID = %@  ",model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,str];
   BOOL success = [_dataBase executeUpdate:sql];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
-        NSLog(@"插入成功");
+        NSLog(@"修改成功");
     }
 }
 
@@ -83,7 +83,7 @@ static FMDBOneList * manager=nil;
 - (BOOL)isHasDataIDFromTable:(NSString* )dataId
 {
     
-    NSString * isSql = @"select *from addYiFei where id=?";
+    NSString * isSql = @"select *from addYiFei where companyID =?";
     
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,dataId];
@@ -98,7 +98,7 @@ static FMDBOneList * manager=nil;
 //删除
 - (void)deleteNameFromTable:(NSString* )dataId
 {
-    NSString * deleteSql = @"delete from addYiFei where id = ?";
+    NSString * deleteSql = @"delete from addYiFei where companyID = ?";
     if ([_dataBase executeUpdate:deleteSql,dataId]) {
         NSLog(@"删除成功");
     }
@@ -112,7 +112,7 @@ static FMDBOneList * manager=nil;
     NSMutableArray * arr = [NSMutableArray array];
     while ([set next]) {
       shopData* model = [[shopData alloc]init];
-        model.companyID = [set stringForColumn:@"id"];
+        model.companyID = [set stringForColumn:@"companyID"];
         model.shopName = [set stringForColumn:@"shopName"];
         model.shopSize=[set stringForColumn:@"shopSize"];
         model.shopMed=[set stringForColumn:@"shopMed"];

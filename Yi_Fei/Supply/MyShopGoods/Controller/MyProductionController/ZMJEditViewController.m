@@ -38,7 +38,7 @@
     NSString *_id;
     NSInteger _clickNum;
     NSString *_picture;
-    
+    NSString * _idNum;
 }
 
 @property(nonatomic,strong)UITableView *tableView; //tableView表格视图
@@ -76,7 +76,10 @@
     _number = 0;
     _flag = 0;
     _clickNum = 0;
+    _idNum = _shopObj.companyID;
     _picture = _shopObj.shopPicture;
+    _shopCustomContent = [NSMutableArray array];
+     _shopCustomType = [NSMutableArray array];
 _customArray =[_shopObj.shopCustom componentsSeparatedByString:@"|"];
 _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     self.view.backgroundColor=[UIColor whiteColor];
@@ -209,21 +212,26 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             }
             if (_clickNum != 1) {
             if ([_customArray[indexPath.row]  isEqualToString:@"ABC"]  ) {
-                
+        
             fourCell.textFOne.text  = @"";
                 
             }else{
-                
+                if ([_customArray[indexPath.row] isKindOfClass:[NSNull class]]) {
+                    fourCell.textFOne.text = @"";
+                }else{
             fourCell.textFOne.text = _customArray[indexPath.row];
-                
+                }
             }
-                
             if ([_bodyArray[indexPath.row]  isEqualToString:@"ABC"]) {
                 fourCell.textFTwo.text  = @"";
             }else{
+                if ([_bodyArray[indexPath.row] isKindOfClass:[NSNull class]]) {
+                fourCell.textFTwo.text = @"";
+                }else{
                 fourCell.textFTwo.text = _bodyArray[indexPath.row];
+                }
             }
-            }
+        }
             fourCell.textFOne.delegate = self;
             fourCell.textFTwo.delegate = self;
             fourCell.textFOne.tag = 2600;
@@ -341,22 +349,22 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     switch (textField.tag) {
         case 2300:
         {
-        _shopObj.companyID = firstCell.textF.text;
+        _shopObj.companyID = textField.text;
         }
             break;
         case 2301:
         {
-        _shopObj.shopName = firstCell.textF.text;
+        _shopObj.shopName = textField.text;
         }
             break;
         case 2302:
         {
-    _shopObj.shopSize = firstCell.textF.text;
+    _shopObj.shopSize = textField.text;
         }
             break;
         case 2303:
         {
-   _shopObj.shopMed = firstCell.textF.text;
+   _shopObj.shopMed = textField.text;
         }
             break;
         case 2304:
@@ -367,12 +375,12 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             break;
         case 2305:
         {
-    _shopObj.shopPrice = firstCell.textF.text;
+    _shopObj.shopPrice = textField.text;
         }
             break;
         case 2306:
         {
-     _shopObj.shopDescribe = firstCell.textF.text;
+     _shopObj.shopDescribe = textField.text;
         }
             break;
             
@@ -601,18 +609,20 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         }
         [_shopCustomType addObject:str1];
         NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
-        _shopObj.shopCustom=str;
-        //    NSLog(@"拼接后的字符串是===== %@",str);
+          NSLog(@"拼接后的字符串是2===== %@",str);
+        _shopObj.shopCustom  =   str;
+    
     }else{
         if (textField.text.length == 0) {
             str2=[NSString stringWithFormat:@"%@",@"ABC"];
         }else{
-            str2=[NSString stringWithFormat:@"%@",textField.text];
+            str2 = [NSString stringWithFormat:@"%@",textField.text];
         }
         [_shopCustomContent addObject:str2];
-        NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
-        _shopObj.shopContent=str;
-        //        NSLog(@"拼接后的字符串是2===== %@",str);
+    NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
+     NSLog(@"拼接后的字符串是2===== %@",str);
+        _shopObj.shopContent  =   str;
+   
     }
 }
 
@@ -713,10 +723,9 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
-    
- 
+
     FMDBOneList  *manager = [FMDBOneList defaultManager];
-    [manager updateDataModel:_shopObj];
+    [manager updateDataModel:_shopObj str:_idNum];
     [self.navigationController popViewControllerAnimated:YES];
     
 }

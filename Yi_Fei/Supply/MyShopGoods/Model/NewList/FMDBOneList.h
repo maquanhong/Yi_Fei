@@ -19,7 +19,7 @@
 - (void)insertDataModel:(shopData *)model;
 
 //修改数据
-- (void)updateDataModel:(shopData *)model;
+- (void)updateDataModel:(shopData *)model str:(NSString*)str;
 
 //查询数据
 - (BOOL)isHasDataIDFromTable:(NSString* )dataId;
