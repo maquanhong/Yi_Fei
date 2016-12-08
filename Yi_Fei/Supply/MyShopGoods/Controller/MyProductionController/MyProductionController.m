@@ -430,7 +430,7 @@ cell.priceL.text  =  @"";
     }else{
         model = _listArray[indexPath.row];
     }
-    [_manager deleteNameFromTable:model.companyID];
+    [_manager deleteNameFromTable:model.ind];
     
     if (_isSearch == YES) {
         [_searchResultArr removeObjectAtIndex:indexPath.row];

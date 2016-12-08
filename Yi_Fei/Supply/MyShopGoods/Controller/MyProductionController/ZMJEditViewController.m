@@ -349,7 +349,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     switch (textField.tag) {
         case 2300:
         {
-        _shopObj.companyID = textField.text;
+    _shopObj.companyID = textField.text;
         }
             break;
         case 2301:
@@ -612,7 +612,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
           NSLog(@"拼接后的字符串是2===== %@",str);
         _shopObj.shopCustom  =   str;
     
-    }else{
+    }else if(textField.tag == 2601){
         if (textField.text.length == 0) {
             str2=[NSString stringWithFormat:@"%@",@"ABC"];
         }else{
@@ -622,7 +622,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
      NSLog(@"拼接后的字符串是2===== %@",str);
         _shopObj.shopContent  =   str;
-   
     }
 }
 
@@ -723,19 +722,41 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
-
+       [self get];
     FMDBOneList  *manager = [FMDBOneList defaultManager];
-    [manager updateDataModel:_shopObj str:_idNum];
+    [manager updateDataModel:_shopObj number:_shopObj.ind];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
-
-
-
-
-
-
+-(void)get{
+    UITextField *textFiled;
+    switch (textFiled.tag) {
+        case 2300:
+     [textFiled resignFirstResponder];
+            break;
+        case 2301:
+   [textFiled resignFirstResponder];
+            break;
+        case 2302:
+   [textFiled resignFirstResponder];
+            break;
+        case 2303:
+   [textFiled resignFirstResponder];
+            break;
+        case 2304:
+   [textFiled resignFirstResponder];
+            break;
+        case 2305:
+   [textFiled resignFirstResponder];
+            break;
+        case 2306:
+   [textFiled resignFirstResponder];
+            break;
+        default:
+            break;
+    }
+}
 
 
 

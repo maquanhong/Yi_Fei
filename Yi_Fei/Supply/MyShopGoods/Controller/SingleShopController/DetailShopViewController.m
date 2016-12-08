@@ -112,16 +112,25 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     switch (textField.tag) {
         case 2000:
-        _shopObj.shopColor = textField.text;
-//            NSLog(@"%@",_shopObj.shopColor);
+        if (textField.text.length > 0) {
+    _shopObj.shopColor = textField.text;
+        }else{
+    _shopObj.shopColor = @"";
+        }
             break;
         case 2001:
-          _shopObj.shopPrice = textField.text;
-//           NSLog(@"%@",_shopObj.shopPrice);
+        if (textField.text.length > 0) {
+            _shopObj.shopColor = textField.text;
+        }else{
+            _shopObj.shopColor = @"";
+        }
             break;
         case 2002:
-            _shopObj.shopAdderss = textField.text;
-//           NSLog(@"%@",_shopObj.shopAdderss);
+        if (textField.text.length > 0) {
+            _shopObj.shopColor = textField.text;
+        }else{
+            _shopObj.shopColor = @"";
+        }
             break;
     }
 }
@@ -183,7 +192,6 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
     switch (textField.tag) {
         case 2000:
   [textField resignFirstResponder];
