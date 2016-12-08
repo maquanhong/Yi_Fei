@@ -11,6 +11,7 @@
 #import "BuyerTableViewCell.h"
 #import "MySalerViewController.h"
 #import "AddSupplyViewController.h"
+#import "NewCreateClientTableViewController.h"
 @interface BuyerViewController (){
     NSArray *array;
     UIView *addTableV;
@@ -184,7 +185,12 @@
 }
 
 -(void)btn2Click:(UIButton *)sender{
-    AddSupplyViewController *addSuVC=[[AddSupplyViewController alloc] init];
+    NewCreateClientTableViewController *addSuVC;
+    if (self.type == BussinessBuyer) {
+        addSuVC=[[NewCreateClientTableViewController alloc] initWithTypeId:BussinessBuyer];
+    } else {
+        addSuVC=[[NewCreateClientTableViewController alloc] initWithTypeId:BussinessSaler];
+    }
     [self.navigationController pushViewController:addSuVC animated:YES];
     [addTableV removeFromSuperview];
 }

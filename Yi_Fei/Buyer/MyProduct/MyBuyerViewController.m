@@ -117,7 +117,7 @@
 }
 
 -(void)btn2Click:(UIButton *)sender{
-    NewCreateClientTableViewController *addSuVC=[[NewCreateClientTableViewController alloc] init];
+    NewCreateClientTableViewController *addSuVC=[[NewCreateClientTableViewController alloc] initWithTypeId:BussinessSaler];
     [self.navigationController pushViewController:addSuVC animated:YES];
     [addTableV removeFromSuperview];
 }

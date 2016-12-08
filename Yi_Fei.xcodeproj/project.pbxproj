@@ -16,6 +16,7 @@
 		203793DC1DF8227C00992510 /* GYModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D21DF8227C00992510 /* GYModelObject.m */; };
 		203793DD1DF8227C00992510 /* GYDCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D61DF8227C00992510 /* GYDCUtilities.m */; };
 		203793DE1DF8227C00992510 /* GYReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D81DF8227C00992510 /* GYReflection.m */; };
+		203793E41DF99BE600992510 /* ClientBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793E31DF99BE600992510 /* ClientBaseInfo.m */; };
 		20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D61DF640EA0009167F /* UIImage+Tool.m */; };
 		20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D91DF640EA0009167F /* AboutViewController.m */; };
 		20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */; };
@@ -283,6 +284,8 @@
 		203793D61DF8227C00992510 /* GYDCUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDCUtilities.m; sourceTree = "<group>"; };
 		203793D71DF8227C00992510 /* GYReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYReflection.h; sourceTree = "<group>"; };
 		203793D81DF8227C00992510 /* GYReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYReflection.m; sourceTree = "<group>"; };
+		203793E21DF99BE600992510 /* ClientBaseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientBaseInfo.h; sourceTree = "<group>"; };
+		203793E31DF99BE600992510 /* ClientBaseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientBaseInfo.m; sourceTree = "<group>"; };
 		20FBC9D51DF640EA0009167F /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
 		20FBC9D61DF640EA0009167F /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
 		20FBC9D81DF640EA0009167F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -1524,6 +1527,8 @@
 				E416CD7B1DF5ED84002A6E60 /* SearchBarView.m */,
 				E416CD7C1DF5ED84002A6E60 /* SystemSettingViewController.h */,
 				E416CD7D1DF5ED84002A6E60 /* SystemSettingViewController.m */,
+				203793E21DF99BE600992510 /* ClientBaseInfo.h */,
+				203793E31DF99BE600992510 /* ClientBaseInfo.m */,
 			);
 			path = MyClient;
 			sourceTree = "<group>";
@@ -1933,8 +1938,8 @@
 				TargetAttributes = {
 					E416C9181DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = LSWWCQ7WWC;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = MXESESKBVY;
+						ProvisioningStyle = Manual;
 					};
 					E416C9311DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
@@ -2172,6 +2177,7 @@
 				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
 				203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */,
+				203793E41DF99BE600992510 /* ClientBaseInfo.m in Sources */,
 				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
@@ -2410,7 +2416,7 @@
 			baseConfigurationReference = B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = LSWWCQ7WWC;
+				DEVELOPMENT_TEAM = MXESESKBVY;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
@@ -2432,10 +2438,10 @@
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.YiFei.baibeiyun.Yi-Fei";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "352edc6b-fefb-49d0-8020-4dfe5b430cb5";
+				PROVISIONING_PROFILE_SPECIFIER = schoolOnline_development;
 			};
 			name = Debug;
 		};
@@ -2444,7 +2450,7 @@
 			baseConfigurationReference = 1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = LSWWCQ7WWC;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
@@ -2466,7 +2472,7 @@
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.YiFei.baibeiyun.Yi-Fei";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

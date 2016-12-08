@@ -10,11 +10,23 @@
 #import "TextFieldTableViewCell.h"
 #import "IndustryTypeTableViewCell.h"
 #import "BUYButton.h"
+#import "ClientBaseInfo.h"
 @interface NewCreateClientTableViewController ()
 @property (nonatomic, strong) NSArray *menuArray;
+@property (nonatomic, assign) BussinessType  type;
+@property (nonatomic, strong) NSDictionary  *clientBaseInfoDic;
+@property (nonatomic, strong) NSDictionary  *supplyerBaseInfoDic;
 @end
 
 @implementation NewCreateClientTableViewController
+
+- (instancetype)initWithTypeId:(BussinessType)type {
+    self = [super init];
+    if (self) {
+        _type = type;
+    }
+    return self;
+}
 - (void)setNav {
     UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -33,7 +45,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNav];
-    self.title = @"新建供应商";
+    if (self.type == BussinessBuyer) {
+        self.title = @"新建供应商";
+    } else if (self.type == BussinessSaler) {
+        self.title = @"新建客户";
+    }
+    
     _menuArray = @[@"姓名",@"公司",@"联系电话",@"邮箱",@"公司地址",@"  行业类型"];
        [self.tableView registerClass:[TextFieldTableViewCell class] forCellReuseIdentifier:@"cell"];
     // Uncomment the following line to preserve selection between presentations.
@@ -51,7 +68,7 @@
 }
 
 - (void)btnClick {
-
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning {

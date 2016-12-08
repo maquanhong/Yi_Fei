@@ -65,7 +65,7 @@
     NSInteger index = sender.tag - 1000;
     if (self.type == BussinessBuyer) {
         if (index == 1) {
-            NewCreateClientTableViewController *clientVc = [[NewCreateClientTableViewController alloc] init];
+            NewCreateClientTableViewController *clientVc = [[NewCreateClientTableViewController alloc] initWithTypeId:BussinessBuyer];
             [self.navigationController pushViewController:clientVc animated:YES];
         } else if (index == 0) {
             SalerViewController *salerVc = [[SalerViewController alloc] init];
@@ -76,8 +76,8 @@
             ClientViewController *clientVc = [[ClientViewController alloc] init];
             [self.navigationController pushViewController:clientVc animated:YES];
         } else if (index == 1) {
-            BuyerViewController *buyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessSaler];
-            [self.navigationController pushViewController:buyerVc animated:YES];
+            NewCreateClientTableViewController *clientVc = [[NewCreateClientTableViewController alloc] initWithTypeId:BussinessSaler];
+            [self.navigationController pushViewController:clientVc animated:YES];
         }
     }
 

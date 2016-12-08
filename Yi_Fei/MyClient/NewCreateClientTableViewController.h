@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Macro.h"
 @interface NewCreateClientTableViewController : UITableViewController
-
+- (instancetype)initWithTypeId:(BussinessType)type;
 @end
