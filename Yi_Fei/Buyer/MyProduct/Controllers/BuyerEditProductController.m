@@ -327,6 +327,7 @@
     }
 }
 
+
 #pragma mark 设置tableView的高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -358,6 +359,57 @@
         return 0;
     }
 }
+
+#pragma mark -----------------------------------
+#pragma mark 保存model的设置
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    
+    switch (textField.tag) {
+        case 2300:
+        {
+            _shopObj.companyID = textField.text;
+        }
+            break;
+        case 2301:
+        {
+            _shopObj.shopName = textField.text;
+        }
+            break;
+        case 2302:
+        {
+            _shopObj.shopSize = textField.text;
+        }
+            break;
+        case 2303:
+        {
+            _shopObj.shopMed = textField.text;
+        }
+            break;
+        case 2304:
+        {
+            
+            _shopObj.shopColor = firstCell.textF.text;
+        }
+            break;
+        case 2305:
+        {
+            _shopObj.shopPrice = textField.text;
+        }
+            break;
+        case 2306:
+        {
+            _shopObj.shopDescribe = textField.text;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return YES;
+    
+}
+
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     switch (textField.tag) {
@@ -439,7 +491,6 @@
         default:
             break;
     }
-    
 }
 
 
@@ -557,13 +608,17 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
     if (textView.tag == 2400) {
-        _shopObj.shopDescribe = textView.text;
-        
-        //    NSLog(@"%@",_shopObj.shopDescribe);
+        if (textView.text.length > 0) {
+    _shopObj.shopDescribe = textView.text;
+        }else{
+    _shopObj.shopDescribe = @"";
+        }
     }else{
-        _shopObj.shopInfo = textView.text;
-        
-        //    NSLog(@"%@",_shopObj.shopInfo);
+        if (textView.text.length > 0) {
+            _shopObj.shopInfo = textView.text;
+        }else{
+            _shopObj.shopInfo = @"";
+        }
     }
 }
 
@@ -664,13 +719,42 @@
 
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
-    
+    [self get];
     NewTwoList  *manager = [NewTwoList newListManager];
-    [manager updateDataModel:_shopObj];
+    [manager updateDataModel:_shopObj number:_shopObj.ind];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
+
+-(void)get{
+    UITextField *textFiled;
+    switch (textFiled.tag) {
+        case 2300:
+            [textFiled resignFirstResponder];
+            break;
+        case 2301:
+            [textFiled resignFirstResponder];
+            break;
+        case 2302:
+            [textFiled resignFirstResponder];
+            break;
+        case 2303:
+            [textFiled resignFirstResponder];
+            break;
+        case 2304:
+            [textFiled resignFirstResponder];
+            break;
+        case 2305:
+            [textFiled resignFirstResponder];
+            break;
+        case 2306:
+            [textFiled resignFirstResponder];
+            break;
+        default:
+            break;
+    }
+}
 
 
 

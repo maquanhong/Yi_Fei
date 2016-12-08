@@ -139,21 +139,33 @@
     
     switch (textField.tag - 10000) {
         case 0:
+            if (textField.text.length > 0) {
         _shopObjc.companyID = textField.text ;
-//            NSLog(@"%@",_shopObjc.companyID );
+            }else{
+         _shopObjc.companyID = @"" ;
+            }
             [textField resignFirstResponder];
             break;
         case 1:
-        _shopObjc.shopName = textField.text;
-//         NSLog(@"%@",_shopObjc.shopName );
+        if (textField.text.length > 0) {
+            _shopObjc.shopName = textField.text ;
+        }else{
+            _shopObjc.shopName = @"" ;
+        }
             break;
         case 2:
-        _shopObjc.shopSize = textField.text;
-//         NSLog(@"%@",_shopObjc.shopPrice );
+        if (textField.text.length > 0) {
+            _shopObjc.shopSize = textField.text ;
+        }else{
+            _shopObjc.shopSize = @"" ;
+        }
             break;
         case 3:
-        _shopObjc.shopMed = textField.text;
-//         NSLog(@"%@",_shopObjc.shopMed );
+        if (textField.text.length > 0) {
+            _shopObjc.shopMed = textField.text ;
+        }else{
+            _shopObjc.shopMed = @"" ;
+        }
             break;
         default:
             break;

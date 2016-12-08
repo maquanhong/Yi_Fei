@@ -19,18 +19,46 @@
 - (void)insertDataModel:(shopData *)model;
 
 //修改数据
-- (void)updateDataModel:(shopData *)model;
+- (void)updateDataModel:(shopData *)model number:(int)number ;
 
 //查询数据
-- (BOOL)isHasDataIDFromTable:(NSString* )dataId;
+- (BOOL)isHasDataIDFromTable:(NSInteger)dataId;
 
 //删除数据
-- (void)deleteNameFromTable:(NSString* )dataId;
-
+- (void)deleteNameFromTable:(int )dataId;
 
 //查询所有
 - (NSArray *)getData;
 
 
 
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

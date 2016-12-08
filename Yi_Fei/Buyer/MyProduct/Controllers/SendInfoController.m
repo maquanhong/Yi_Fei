@@ -11,7 +11,6 @@
 #import "SendDataTwoViewCell.h"
 #import <MessageUI/MessageUI.h>
 #import "BuyerOutForm.h"
-#import "SupplyImport.h"
 
 
 @interface SendInfoController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
@@ -21,7 +20,7 @@
     NSInteger  _index;
     NSInteger _num;
     BackButton *_rightBtn;
-    SupplyImport *_supply;
+
     
 }
 
@@ -304,14 +303,14 @@
 #pragma mark 利用系统的 -------  发送QQ，微信等等
 -(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
 
-//    _singleForm = [[BuyerOutForm alloc] init];
-//    _singleForm.shopObjc =  _shopData;
-//    [_singleForm outExportExcel];
+    _singleForm = [[BuyerOutForm alloc] init];
+    _singleForm.shopObjc =  _shopData;
+    [_singleForm outExportExcel];
     
-    _supply = [[SupplyImport alloc] init];
-    _supply.shopObjc =  _shopData;
-    [_supply  importExcel];
-    NSURL *fileURL = [NSURL fileURLWithPath:_supply.importFilePath];
+//    _supply = [[SupplyImport alloc] init];
+//    _supply.shopObjc =  _shopData;
+//    [_supply  importExcel];
+    NSURL *fileURL = [NSURL fileURLWithPath:_singleForm.outputFilePath];
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
     self.documentController.delegate = self;
     [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];

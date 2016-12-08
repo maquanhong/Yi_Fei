@@ -123,7 +123,7 @@
 -(void)clickBtnNextController{
     FMDBOneList  *manager = [FMDBOneList defaultManager];
     //查询
-    if ([manager isHasDataIDFromTable:_shopObj.companyID]) {
+    if ([manager isHasDataIDFromTable:_shopObj.ind]) {
       
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"此商品给已经添加过" preferredStyle:UIAlertControllerStyleAlert];
         //确定按钮
@@ -133,7 +133,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
     }else{
         
         //进行收藏
-        [manager insertDataModel:_shopObj];
+    [manager insertDataModel:_shopObj];
     [firstCell.textView endEditing:YES];
     MyProductionController *myVC = [[ MyProductionController alloc] init];
         for (MyProductionController * controller in self.navigationController.viewControllers) { //遍历
@@ -417,23 +417,23 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
 
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
-    
         if (textView.tag - 2400 == 0) {
+            if (textView.text.length > 0) {
         _shopObj.shopDescribe = textView.text;
-            
-//    NSLog(@"%@",_shopObj.shopDescribe);
+            }else{
+        _shopObj.shopDescribe = @"";
+            }
         }else{
-       _shopObj.shopInfo = textView.text;
-            
-//    NSLog(@"%@",_shopObj.shopInfo);
+        if (textView.text.length > 0) {
+            _shopObj.shopInfo = textView.text;
+        }else{
+            _shopObj.shopInfo = @"";
         }
-    
+    }
 }
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    
     [textField resignFirstResponder];
     return YES;
 }
@@ -533,26 +533,6 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
         
     }];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 -(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
     UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸

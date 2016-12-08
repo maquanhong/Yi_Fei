@@ -19,13 +19,13 @@
 - (void)insertDataModel:(ProductionData *)model;
 
 //修改数据
-- (void)updateDataModel:(ProductionData *)model;
+- (void)updateDataModel:(ProductionData *)model number:(int)number;
 
 //查询数据
-- (BOOL)isHasDataIDFromTable:(NSString* )dataId;
+- (BOOL)isHasDataIDFromTable:(in )dataId;
 
 //删除数据
-- (void)deleteNameFromTable:(NSString* )dataId;
+- (void)deleteNameFromTable:(int)dataId;
 
 
 //查询所有

@@ -361,7 +361,11 @@
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
     cell.nameShop.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
+    if (dataModel.shopPrice.length > 0 ) {
     cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
+    }else{
+        cell.priceL.text  =  @"";
+    }
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -431,8 +435,7 @@
     }else{
     model = _listArray[indexPath.row];
     }
-    [_manager deleteNameFromTable:model.companyID];
-    
+    [_manager deleteNameFromTable:model.ind];
     if (_isSearch == YES) {
     [_searchResultArr removeObjectAtIndex:indexPath.row];
     }else if (_btnSearch == YES){

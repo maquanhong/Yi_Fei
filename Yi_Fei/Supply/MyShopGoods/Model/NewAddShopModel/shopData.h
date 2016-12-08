@@ -13,7 +13,6 @@
 
 //对象属性
 @property (nonatomic, assign) int ind;
-
 @property (nonatomic, copy) NSString *companyID; //公司货号
 @property (nonatomic, copy) NSString *shopName;  //商品名称
 @property (nonatomic, copy) NSString *shopSize;  //商品尺寸

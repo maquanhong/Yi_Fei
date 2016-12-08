@@ -338,8 +338,18 @@ UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bound
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
-    cell.nameShop.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
-    cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
+    if (dataModel.shopName.length > 0 ) {
+        cell.nameShop.text=[NSString stringWithFormat:@"￥%@",dataModel.shopName];
+    }else{
+        cell.nameShop.text  =  @"";
+    }
+    
+    if (dataModel.shopPrice.length > 0 ) {
+cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
+    }else{
+cell.priceL.text  =  @"";
+    }
+  
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -420,7 +430,7 @@ UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bound
     }else{
         model = _listArray[indexPath.row];
     }
-    [_manager deleteNameFromTable:model.companyID];
+    [_manager deleteNameFromTable:model.ind];
     
     if (_isSearch == YES) {
         [_searchResultArr removeObjectAtIndex:indexPath.row];
