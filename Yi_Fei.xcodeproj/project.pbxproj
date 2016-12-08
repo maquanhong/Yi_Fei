@@ -174,6 +174,18 @@
 		E416CD821DF5ED84002A6E60 /* SystemSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD7D1DF5ED84002A6E60 /* SystemSettingViewController.m */; };
 		E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD851DF5EDF3002A6E60 /* DownListBgView.m */; };
 		E416CD891DF5EDF3002A6E60 /* DownListButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD871DF5EDF3002A6E60 /* DownListButton.m */; };
+		E44212141DF9E1990083BC1F /* ParsingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E442120C1DF9E1990083BC1F /* ParsingController.m */; };
+		E44212151DF9E1990083BC1F /* SupplyImport.m in Sources */ = {isa = PBXBuildFile; fileRef = E442120E1DF9E1990083BC1F /* SupplyImport.m */; };
+		E44212161DF9E1990083BC1F /* BuyerOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E44212111DF9E1990083BC1F /* BuyerOutForm.m */; };
+		E44212171DF9E1990083BC1F /* SingleOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E44212121DF9E1990083BC1F /* SingleOutForm.m */; };
+		E442123A1DF9E3BE0083BC1F /* test.xls in Resources */ = {isa = PBXBuildFile; fileRef = E44212391DF9E3BE0083BC1F /* test.xls */; };
+		E442123C1DF9E3C60083BC1F /* baojia.xls in Resources */ = {isa = PBXBuildFile; fileRef = E442123B1DF9E3C60083BC1F /* baojia.xls */; };
+		E442123E1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = E442123D1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx */; };
+		E44212401DF9E4910083BC1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E442123F1DF9E4910083BC1F /* CoreGraphics.framework */; };
+		E44212441DF9E4A10083BC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212431DF9E4A10083BC1F /* Foundation.framework */; };
+		E44212461DF9E4A70083BC1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212451DF9E4A70083BC1F /* UIKit.framework */; };
+		E44212471DF9E4AD0083BC1F /* libDHxlsReaderIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212361DF9E3AC0083BC1F /* libDHxlsReaderIOS.a */; };
+		E44212491DF9E4B90083BC1F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212481DF9E4B90083BC1F /* libiconv.tbd */; };
 		E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C41DF70CA900145486 /* InfoSendViewController.m */; };
 		E49352131DF70CA900145486 /* MyProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C61DF70CA900145486 /* MyProductionController.m */; };
 		E49352141DF70CA900145486 /* ZMJEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C81DF70CA900145486 /* ZMJEditViewController.m */; };
@@ -204,10 +216,8 @@
 		E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520D1DF70CA900145486 /* EditSecondShopCell.m */; };
 		E493522E1DF70CA900145486 /* EditThreeShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E493520F1DF70CA900145486 /* EditThreeShopCell.m */; };
 		E493522F1DF70CA900145486 /* myShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352111DF70CA900145486 /* myShopView.m */; };
-		E493523F1DF711AA00145486 /* SingleOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E493523A1DF711AA00145486 /* SingleOutForm.m */; };
 		E49352401DF711AA00145486 /* industry.txt in Resources */ = {isa = PBXBuildFile; fileRef = E493523B1DF711AA00145486 /* industry.txt */; };
 		E49352431DF7135600145486 /* SendInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352421DF7135600145486 /* SendInfoController.m */; };
-		E49352461DF719DC00145486 /* BuyerOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352451DF719DC00145486 /* BuyerOutForm.m */; };
 		E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352481DF7200000145486 /* CentralBlueTooth.m */; };
 		E493524C1DF7200000145486 /* PeripheralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E493524A1DF7200000145486 /* PeripheralBlueTooth.m */; };
 		E49352661DF7267300145486 /* BackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352521DF7267300145486 /* BackButton.m */; };
@@ -228,6 +238,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = E416C9181DF5D802002A6E60;
 			remoteInfo = Yi_Fei;
+		};
+		E44212351DF9E3AC0083BC1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DEB78ABF14BB9ABF00845894;
+			remoteInfo = DHxlsReaderIOS;
+		};
+		E44212371DF9E3AC0083BC1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 97BCBBE716DD4E9A00FF978C;
+			remoteInfo = DHxlsReader;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -537,6 +561,23 @@
 		E416CD851DF5EDF3002A6E60 /* DownListBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListBgView.m; sourceTree = "<group>"; };
 		E416CD861DF5EDF3002A6E60 /* DownListButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListButton.h; sourceTree = "<group>"; };
 		E416CD871DF5EDF3002A6E60 /* DownListButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListButton.m; sourceTree = "<group>"; };
+		E442120B1DF9E1990083BC1F /* ParsingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingController.h; sourceTree = "<group>"; };
+		E442120C1DF9E1990083BC1F /* ParsingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParsingController.m; sourceTree = "<group>"; };
+		E442120D1DF9E1990083BC1F /* SupplyImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyImport.h; sourceTree = "<group>"; };
+		E442120E1DF9E1990083BC1F /* SupplyImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyImport.m; sourceTree = "<group>"; };
+		E44212101DF9E1990083BC1F /* BuyerOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerOutForm.h; sourceTree = "<group>"; };
+		E44212111DF9E1990083BC1F /* BuyerOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerOutForm.m; sourceTree = "<group>"; };
+		E44212121DF9E1990083BC1F /* SingleOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleOutForm.m; sourceTree = "<group>"; };
+		E44212131DF9E1990083BC1F /* SupplyOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyOutForm.h; sourceTree = "<group>"; };
+		E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = DHxlsReaderIOS.xcodeproj; sourceTree = "<group>"; };
+		E44212391DF9E3BE0083BC1F /* test.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.xls; sourceTree = "<group>"; };
+		E442123B1DF9E3C60083BC1F /* baojia.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = baojia.xls; sourceTree = "<group>"; };
+		E442123D1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "供应商导入商品单价.xlsx"; sourceTree = "<group>"; };
+		E442123F1DF9E4910083BC1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E44212411DF9E4980083BC1F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E44212431DF9E4A10083BC1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E44212451DF9E4A70083BC1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E44212481DF9E4B90083BC1F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		E49351C31DF70CA900145486 /* InfoSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoSendViewController.h; sourceTree = "<group>"; };
 		E49351C41DF70CA900145486 /* InfoSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSendViewController.m; sourceTree = "<group>"; };
 		E49351C51DF70CA900145486 /* MyProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductionController.h; sourceTree = "<group>"; };
@@ -597,13 +638,9 @@
 		E493520F1DF70CA900145486 /* EditThreeShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditThreeShopCell.m; sourceTree = "<group>"; };
 		E49352101DF70CA900145486 /* myShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myShopView.h; sourceTree = "<group>"; };
 		E49352111DF70CA900145486 /* myShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myShopView.m; sourceTree = "<group>"; };
-		E49352391DF711AA00145486 /* SupplyOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyOutForm.h; sourceTree = "<group>"; };
-		E493523A1DF711AA00145486 /* SingleOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleOutForm.m; sourceTree = "<group>"; };
 		E493523B1DF711AA00145486 /* industry.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = industry.txt; sourceTree = "<group>"; };
 		E49352411DF7135600145486 /* SendInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInfoController.h; sourceTree = "<group>"; };
 		E49352421DF7135600145486 /* SendInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInfoController.m; sourceTree = "<group>"; };
-		E49352441DF719DC00145486 /* BuyerOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerOutForm.h; sourceTree = "<group>"; };
-		E49352451DF719DC00145486 /* BuyerOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerOutForm.m; sourceTree = "<group>"; };
 		E49352471DF7200000145486 /* CentralBlueTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralBlueTooth.h; sourceTree = "<group>"; };
 		E49352481DF7200000145486 /* CentralBlueTooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralBlueTooth.m; sourceTree = "<group>"; };
 		E49352491DF7200000145486 /* PeripheralBlueTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralBlueTooth.h; sourceTree = "<group>"; };
@@ -633,6 +670,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E44212491DF9E4B90083BC1F /* libiconv.tbd in Frameworks */,
+				E44212471DF9E4AD0083BC1F /* libDHxlsReaderIOS.a in Frameworks */,
+				E44212461DF9E4A70083BC1F /* UIKit.framework in Frameworks */,
+				E44212441DF9E4A10083BC1F /* Foundation.framework in Frameworks */,
+				E44212401DF9E4910083BC1F /* CoreGraphics.framework in Frameworks */,
 				D880CC91BDD229530EC6ECC3 /* libPods-Yi_Fei.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,6 +770,11 @@
 		79A0D0C921E9F082A1D9C350 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E44212481DF9E4B90083BC1F /* libiconv.tbd */,
+				E44212451DF9E4A70083BC1F /* UIKit.framework */,
+				E44212431DF9E4A10083BC1F /* Foundation.framework */,
+				E44212411DF9E4980083BC1F /* CoreFoundation.framework */,
+				E442123F1DF9E4910083BC1F /* CoreGraphics.framework */,
 				4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */,
 			);
 			name = Frameworks;
@@ -736,6 +783,10 @@
 		E416C9101DF5D802002A6E60 = {
 			isa = PBXGroup;
 			children = (
+				E442123D1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx */,
+				E442123B1DF9E3C60083BC1F /* baojia.xls */,
+				E44212391DF9E3BE0083BC1F /* test.xls */,
+				E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */,
 				E416C91B1DF5D802002A6E60 /* Yi_Fei */,
 				E416C9351DF5D802002A6E60 /* Yi_FeiUITests */,
 				E416C91A1DF5D802002A6E60 /* Products */,
@@ -1430,6 +1481,37 @@
 			path = DownListButton;
 			sourceTree = "<group>";
 		};
+		E442120A1DF9E1990083BC1F /* importForm */ = {
+			isa = PBXGroup;
+			children = (
+				E442120B1DF9E1990083BC1F /* ParsingController.h */,
+				E442120C1DF9E1990083BC1F /* ParsingController.m */,
+				E442120D1DF9E1990083BC1F /* SupplyImport.h */,
+				E442120E1DF9E1990083BC1F /* SupplyImport.m */,
+			);
+			path = importForm;
+			sourceTree = "<group>";
+		};
+		E442120F1DF9E1990083BC1F /* outForm */ = {
+			isa = PBXGroup;
+			children = (
+				E44212101DF9E1990083BC1F /* BuyerOutForm.h */,
+				E44212111DF9E1990083BC1F /* BuyerOutForm.m */,
+				E44212121DF9E1990083BC1F /* SingleOutForm.m */,
+				E44212131DF9E1990083BC1F /* SupplyOutForm.h */,
+			);
+			path = outForm;
+			sourceTree = "<group>";
+		};
+		E44212311DF9E3AC0083BC1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E44212361DF9E3AC0083BC1F /* libDHxlsReaderIOS.a */,
+				E44212381DF9E3AC0083BC1F /* libDHxlsReader.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E49351C01DF70CA900145486 /* MyShopGoods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1689,10 +1771,8 @@
 		E49352381DF711AA00145486 /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				E49352391DF711AA00145486 /* SupplyOutForm.h */,
-				E493523A1DF711AA00145486 /* SingleOutForm.m */,
-				E49352441DF719DC00145486 /* BuyerOutForm.h */,
-				E49352451DF719DC00145486 /* BuyerOutForm.m */,
+				E442120A1DF9E1990083BC1F /* importForm */,
+				E442120F1DF9E1990083BC1F /* outForm */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -1816,6 +1896,12 @@
 			mainGroup = E416C9101DF5D802002A6E60;
 			productRefGroup = E416C91A1DF5D802002A6E60 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E44212311DF9E3AC0083BC1F /* Products */;
+					ProjectRef = E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E416C9181DF5D802002A6E60 /* Yi_Fei */,
@@ -1823,6 +1909,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E44212361DF9E3AC0083BC1F /* libDHxlsReaderIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDHxlsReaderIOS.a;
+			remoteRef = E44212351DF9E3AC0083BC1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E44212381DF9E3AC0083BC1F /* libDHxlsReader.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDHxlsReader.a;
+			remoteRef = E44212371DF9E3AC0083BC1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E416C9171DF5D802002A6E60 /* Resources */ = {
@@ -1858,11 +1961,14 @@
 				E416CCF11DF5E9F8002A6E60 /* no_data.png in Resources */,
 				20FBCA511DF649B30009167F /* tuichu_icon@2x.png in Resources */,
 				20FBCA501DF649B30009167F /* tuichu_icon.png in Resources */,
+				E442123C1DF9E3C60083BC1F /* baojia.xls in Resources */,
 				E416CCF51DF5E9F8002A6E60 /* select_yes.png in Resources */,
 				E416CCF71DF5E9F8002A6E60 /* take_photo_pic@2x.png in Resources */,
+				E442123E1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx in Resources */,
 				E416CCF91DF5E9F8002A6E60 /* zz_alumb_rightCell.png in Resources */,
 				E416C9291DF5D802002A6E60 /* Assets.xcassets in Resources */,
 				E416CCF31DF5E9F8002A6E60 /* remove_btn_pic.png in Resources */,
+				E442123A1DF9E3BE0083BC1F /* test.xls in Resources */,
 				E416CCF01DF5E9F8002A6E60 /* flash_open_pic.png in Resources */,
 				E416C9271DF5D802002A6E60 /* Main.storyboard in Resources */,
 				E416CCF81DF5E9F8002A6E60 /* trash_btn_pic.png in Resources */,
@@ -1973,7 +2079,6 @@
 				E49352271DF70CA900145486 /* tableViewFooterView.m in Sources */,
 				E416CD681DF5ED7B002A6E60 /* IndustryTypeTableViewCell.m in Sources */,
 				20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */,
-				E493523F1DF711AA00145486 /* SingleOutForm.m in Sources */,
 				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
 				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
@@ -1999,6 +2104,7 @@
 				20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
 				E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */,
+				E44212171DF9E1990083BC1F /* SingleOutForm.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
@@ -2010,6 +2116,7 @@
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
 				E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */,
+				E44212161DF9E1990083BC1F /* BuyerOutForm.m in Sources */,
 				E416CBF81DF5E9E9002A6E60 /* BUYLoginControl.m in Sources */,
 				E493526C1DF7267300145486 /* SSPopup.m in Sources */,
 				20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */,
@@ -2046,6 +2153,7 @@
 				E416CBFE1DF5E9E9002A6E60 /* BUYTypeView.m in Sources */,
 				E416CD0D1DF5E9F8002A6E60 /* ZZPhotoHud.m in Sources */,
 				E49352181DF70CA900145486 /* DetailShopViewController.m in Sources */,
+				E44212151DF9E1990083BC1F /* SupplyImport.m in Sources */,
 				E416CD721DF5ED7B002A6E60 /* UploadImageTableViewCell.m in Sources */,
 				E416CD371DF5EB4C002A6E60 /* PulishOneViewController.m in Sources */,
 				E416CD351DF5EB4C002A6E60 /* DemandViewController.m in Sources */,
@@ -2089,6 +2197,7 @@
 				E416CBBB1DF5E9E1002A6E60 /* BuyerDetailViewController.m in Sources */,
 				E493526A1DF7267300145486 /* SelectTableViewCell.m in Sources */,
 				E416CBDC1DF5E9E5002A6E60 /* ZMJTotleHomeController.m in Sources */,
+				E44212141DF9E1990083BC1F /* ParsingController.m in Sources */,
 				E49352681DF7267300145486 /* CCZSegementController.m in Sources */,
 				E493521B1DF70CA900145486 /* DetailViewFirstCell.m in Sources */,
 				E49352671DF7267300145486 /* TapButton.m in Sources */,
@@ -2100,7 +2209,6 @@
 				E49352161DF70CA900145486 /* ZMJNewProductionController.m in Sources */,
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
 				E49352431DF7135600145486 /* SendInfoController.m in Sources */,
-				E49352461DF719DC00145486 /* BuyerOutForm.m in Sources */,
 				E416CD3A1DF5EB4C002A6E60 /* ExhibitionViewController.m in Sources */,
 				E416CBBD1DF5E9E1002A6E60 /* BuyerProductController.m in Sources */,
 				20FBC9EE1DF640EA0009167F /* ProductModelStepTwoTableViewController.m in Sources */,
@@ -2240,6 +2348,23 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LSWWCQ7WWC;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(PODS_ROOT)/GDataXML-HTML/libxml",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/GDataXML-HTML\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/PureLayout\"",
+					"\"${PODS_ROOT}/Headers/Public/SDCycleScrollView\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/libxlsxwriter\"",
+					DHxlsReader,
+				);
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2257,6 +2382,23 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LSWWCQ7WWC;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(PODS_ROOT)/GDataXML-HTML/libxml",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/GDataXML-HTML\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/PureLayout\"",
+					"\"${PODS_ROOT}/Headers/Public/SDCycleScrollView\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/libxlsxwriter\"",
+					DHxlsReader,
+				);
 				INFOPLIST_FILE = Yi_Fei/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
