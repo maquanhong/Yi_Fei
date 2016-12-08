@@ -10,6 +10,12 @@
 		203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793C01DF6DBC000992510 /* MySalerViewController.m */; };
 		203793C41DF6F98600992510 /* ProductListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793C31DF6F98600992510 /* ProductListTableViewController.m */; };
 		203793C71DF6FDCF00992510 /* SystemSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793C61DF6FDCF00992510 /* SystemSettingTableViewController.m */; };
+		203793D91DF8227C00992510 /* FMDatabaseQueue+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793CB1DF8227C00992510 /* FMDatabaseQueue+Async.m */; };
+		203793DA1DF8227C00992510 /* GYDataContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793CE1DF8227C00992510 /* GYDataContext.m */; };
+		203793DB1DF8227C00992510 /* GYDBRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D01DF8227C00992510 /* GYDBRunner.m */; };
+		203793DC1DF8227C00992510 /* GYModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D21DF8227C00992510 /* GYModelObject.m */; };
+		203793DD1DF8227C00992510 /* GYDCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D61DF8227C00992510 /* GYDCUtilities.m */; };
+		203793DE1DF8227C00992510 /* GYReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D81DF8227C00992510 /* GYReflection.m */; };
 		20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D61DF640EA0009167F /* UIImage+Tool.m */; };
 		20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D91DF640EA0009167F /* AboutViewController.m */; };
 		20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */; };
@@ -240,6 +246,20 @@
 		203793C31DF6F98600992510 /* ProductListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListTableViewController.m; sourceTree = "<group>"; };
 		203793C51DF6FDCF00992510 /* SystemSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingTableViewController.h; sourceTree = "<group>"; };
 		203793C61DF6FDCF00992510 /* SystemSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingTableViewController.m; sourceTree = "<group>"; };
+		203793CA1DF8227C00992510 /* FMDatabaseQueue+Async.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabaseQueue+Async.h"; sourceTree = "<group>"; };
+		203793CB1DF8227C00992510 /* FMDatabaseQueue+Async.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabaseQueue+Async.m"; sourceTree = "<group>"; };
+		203793CC1DF8227C00992510 /* GYDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDataCenter.h; sourceTree = "<group>"; };
+		203793CD1DF8227C00992510 /* GYDataContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDataContext.h; sourceTree = "<group>"; };
+		203793CE1DF8227C00992510 /* GYDataContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDataContext.m; sourceTree = "<group>"; };
+		203793CF1DF8227C00992510 /* GYDBRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDBRunner.h; sourceTree = "<group>"; };
+		203793D01DF8227C00992510 /* GYDBRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDBRunner.m; sourceTree = "<group>"; };
+		203793D11DF8227C00992510 /* GYModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYModelObject.h; sourceTree = "<group>"; };
+		203793D21DF8227C00992510 /* GYModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYModelObject.m; sourceTree = "<group>"; };
+		203793D31DF8227C00992510 /* GYModelObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYModelObjectProtocol.h; sourceTree = "<group>"; };
+		203793D51DF8227C00992510 /* GYDCUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYDCUtilities.h; sourceTree = "<group>"; };
+		203793D61DF8227C00992510 /* GYDCUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDCUtilities.m; sourceTree = "<group>"; };
+		203793D71DF8227C00992510 /* GYReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYReflection.h; sourceTree = "<group>"; };
+		203793D81DF8227C00992510 /* GYReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYReflection.m; sourceTree = "<group>"; };
 		20FBC9D51DF640EA0009167F /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
 		20FBC9D61DF640EA0009167F /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
 		20FBC9D81DF640EA0009167F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -659,6 +679,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		203793C81DF8227C00992510 /* GYDataCenter */ = {
+			isa = PBXGroup;
+			children = (
+				203793C91DF8227C00992510 /* FMDBExtension */,
+				203793CC1DF8227C00992510 /* GYDataCenter.h */,
+				203793CD1DF8227C00992510 /* GYDataContext.h */,
+				203793CE1DF8227C00992510 /* GYDataContext.m */,
+				203793CF1DF8227C00992510 /* GYDBRunner.h */,
+				203793D01DF8227C00992510 /* GYDBRunner.m */,
+				203793D11DF8227C00992510 /* GYModelObject.h */,
+				203793D21DF8227C00992510 /* GYModelObject.m */,
+				203793D31DF8227C00992510 /* GYModelObjectProtocol.h */,
+				203793D41DF8227C00992510 /* Utilities */,
+			);
+			path = GYDataCenter;
+			sourceTree = "<group>";
+		};
+		203793C91DF8227C00992510 /* FMDBExtension */ = {
+			isa = PBXGroup;
+			children = (
+				203793CA1DF8227C00992510 /* FMDatabaseQueue+Async.h */,
+				203793CB1DF8227C00992510 /* FMDatabaseQueue+Async.m */,
+			);
+			path = FMDBExtension;
+			sourceTree = "<group>";
+		};
+		203793D41DF8227C00992510 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				203793D51DF8227C00992510 /* GYDCUtilities.h */,
+				203793D61DF8227C00992510 /* GYDCUtilities.m */,
+				203793D71DF8227C00992510 /* GYReflection.h */,
+				203793D81DF8227C00992510 /* GYReflection.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		20FBC9D41DF640EA0009167F /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,6 +1133,7 @@
 		E416CC601DF5E9F8002A6E60 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				203793C81DF8227C00992510 /* GYDataCenter */,
 				20FBCA271DF647CA0009167F /* ZESementeds */,
 				E416CD831DF5EDF3002A6E60 /* DownListButton */,
 				E416CC611DF5E9F8002A6E60 /* Tools */,
@@ -1938,6 +1996,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E416CD451DF5ED75002A6E60 /* XHSegmentItem.m in Sources */,
+				203793DC1DF8227C00992510 /* GYModelObject.m in Sources */,
 				20FBCA011DF6427B0009167F /* QueryPriceViewController.m in Sources */,
 				E416CCFE1DF5E9F8002A6E60 /* ZZCameraController.m in Sources */,
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
@@ -1974,7 +2033,6 @@
 				E416CCFC1DF5E9F8002A6E60 /* ZZPageControl.m in Sources */,
 				E416CD891DF5EDF3002A6E60 /* DownListButton.m in Sources */,
 				E416CBC71DF5E9E1002A6E60 /* PrividerBusinessControler.m in Sources */,
-				E416CCDC1DF5E9F8002A6E60 /* EditFourShopCell.m in Sources */,
 				203793C71DF6FDCF00992510 /* SystemSettingTableViewController.m in Sources */,
 				E416CD3E1DF5EB4C002A6E60 /* SearchView.m in Sources */,
 				E49352271DF70CA900145486 /* tableViewFooterView.m in Sources */,
@@ -1983,6 +2041,7 @@
 				E493523F1DF711AA00145486 /* SingleOutForm.m in Sources */,
 				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
+				203793DE1DF8227C00992510 /* GYReflection.m in Sources */,
 				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
 				E416CD011DF5E9F8002A6E60 /* ZZCameraBrowerCell.m in Sources */,
 				E416CD051DF5E9F8002A6E60 /* ZZPhotoController.m in Sources */,
@@ -2012,8 +2071,6 @@
 				E49352261DF70CA900145486 /* SecondTableViewCell.m in Sources */,
 				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
-				E416CCE51DF5E9F8002A6E60 /* SelectTableViewCell.m in Sources */,
-				E416CCCD1DF5E9F8002A6E60 /* DetailViewThreeCell.m in Sources */,
 				203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */,
 				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
@@ -2024,6 +2081,7 @@
 				20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */,
 				E416CD021DF5E9F8002A6E60 /* ZZCameraFocusView.m in Sources */,
 				E493521A1DF70CA900145486 /* FMDBOneList.m in Sources */,
+				203793DD1DF8227C00992510 /* GYDCUtilities.m in Sources */,
 				E49352171DF70CA900145486 /* ZMJGoodParamViewController.m in Sources */,
 				E49352291DF70CA900145486 /* ZMJAddGoodsTwoView.m in Sources */,
 				E416CD6C1DF5ED7B002A6E60 /* OnePopWithoutTextFieldTableViewCell.m in Sources */,
@@ -2048,6 +2106,7 @@
 				E49352251DF70CA900145486 /* PicsCell.m in Sources */,
 				E416CD0F1DF5E9F8002A6E60 /* ZZPhotoPickerCell.m in Sources */,
 				E416CBC41DF5E9E1002A6E60 /* BuyerEditThreeCell.m in Sources */,
+				203793D91DF8227C00992510 /* FMDatabaseQueue+Async.m in Sources */,
 				E416CBDA1DF5E9E5002A6E60 /* MessageTradeController.m in Sources */,
 				E493521C1DF70CA900145486 /* DetailViewSecondCell.m in Sources */,
 				20FBCA1D1DF646B40009167F /* MyBuyerTableViewCell.m in Sources */,
@@ -2105,6 +2164,8 @@
 				20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */,
 				E416CBFA1DF5E9E9002A6E60 /* BUYRegisterControl.m in Sources */,
 				E416CD381DF5EB4C002A6E60 /* PulishTwoController.m in Sources */,
+				203793DA1DF8227C00992510 /* GYDataContext.m in Sources */,
+				203793DB1DF8227C00992510 /* GYDBRunner.m in Sources */,
 				E416CD801DF5ED84002A6E60 /* NewlyAskingPrice.m in Sources */,
 				E49352161DF70CA900145486 /* ZMJNewProductionController.m in Sources */,
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
