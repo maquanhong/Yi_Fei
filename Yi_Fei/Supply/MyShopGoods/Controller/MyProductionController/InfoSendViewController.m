@@ -12,7 +12,8 @@
 #import "SendDataTwoViewCell.h"
 #import <MessageUI/MessageUI.h>
 #import "PeripheralBlueTooth.h"
-
+#import "ParsingController.h"
+#import "CreateSupplyPDF.h"
 
 @interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
 {
@@ -21,6 +22,7 @@
     NSInteger  _index;
     NSInteger _num;
     BackButton *_rightBtn;
+    NSInteger _pdf;
 }
 
 @property (nonatomic, strong) UITextField   *textField;
@@ -30,6 +32,7 @@
 @property (nonatomic, strong) NSArray  *TitleArray;
 @property (strong, nonatomic) UIDocumentInteractionController *documentController;
 @property (strong, nonatomic) SupplyOutForm *singleForm;
+@property (strong, nonatomic) CreateSupplyPDF *createPdf;
 @property (strong, nonatomic) PeripheralBlueTooth *Peripheral;
 @property (strong, nonatomic) UIButton *btn;
 
@@ -121,9 +124,22 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
         [_singleForm outExportExcel];
 [self sendExcel:_singleForm.outputFilePath name:_singleForm.outputFileName];
         
-    }else if (_index == 1501 && _num == 1601){
-        
-        NSLog(@"发送EmailPdf");
+    }else if (_index == 1501 && _num == 1601){  //发送pdf
+        _pdf = 1;
+        NSString* fileName = @"New.pdf";
+        NSArray *arrayPaths =
+        NSSearchPathForDirectoriesInDomains(
+                                            NSDocumentDirectory,
+                                            NSUserDomainMask,
+                                            YES);
+        NSString *path = [arrayPaths objectAtIndex:0];
+        NSString* pdfFilePath = [path stringByAppendingPathComponent:fileName];
+
+        _createPdf = [[CreateSupplyPDF alloc] init];
+        _createPdf.shopObjc =  _shopData;
+        [_createPdf createPDF:pdfFilePath];
+ [self sendExcel:pdfFilePath name:@"供应商"];
+    
         
     }else if (_index == 1500 && _num == 1600){
         
@@ -205,6 +221,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    
     if (section == 0) {
         UIView *headerOneView =  [self infoSendTableView:_TitleArray[0]];
         return headerOneView  ;
@@ -212,6 +229,7 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
         UIView *headerTwoView = [self infoSendTableView:_TitleArray[1]];
         return headerTwoView;
     }
+    
 }
 
 
@@ -247,8 +265,6 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 }
 
 
-
-
 #pragma mark 发送邮件
 -(void)sendExcel:(NSString *)path name:(NSString*)fileName{
     
@@ -260,9 +276,14 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
         return ;
     }
     //添加一个Excel附件
+    if (_pdf == 1) {
+    NSData *pdf = [NSData dataWithContentsOfFile:path];
+    [mailPicker addAttachmentData: pdf mimeType: @"" fileName: @"供应商.pdf"];
+    }else{
     NSData *ExcelFile = [NSData dataWithContentsOfFile:path];
     NSString *name = [NSString stringWithFormat:@"%@.xlsx",fileName];
     [mailPicker addAttachmentData:ExcelFile mimeType: @"file/Excel" fileName: name];
+    }
     [self presentViewController:mailPicker animated:YES completion:nil];
 }
 
@@ -304,10 +325,26 @@ _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", 
 #pragma mark 利用系统的 -------  发送QQ，微信等等
 -(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
     
-    _singleForm = [[SupplyOutForm alloc] init];
-    _singleForm.shopObjc =  _shopData;
-    [_singleForm outExportExcel];
-    NSURL *fileURL = [NSURL fileURLWithPath:_singleForm.outputFilePath];
+//    _singleForm = [[SupplyOutForm alloc] init];
+//    _singleForm.shopObjc =  _shopData;
+//    [_singleForm outExportExcel];
+    
+    
+    NSString* fileName = @"New.pdf";
+    NSArray *arrayPaths =
+    NSSearchPathForDirectoriesInDomains(
+                                        NSDocumentDirectory,
+                                        NSUserDomainMask,
+                                        YES);
+    NSString *path = [arrayPaths objectAtIndex:0];
+    NSString* pdfFilePath = [path stringByAppendingPathComponent:fileName];
+    
+    _createPdf = [[CreateSupplyPDF alloc] init];
+    _createPdf.shopObjc =  _shopData;
+    [_createPdf createPDF:pdfFilePath];
+
+    
+    NSURL *fileURL = [NSURL fileURLWithPath:pdfFilePath];
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
     self.documentController.delegate = self;
     [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];

@@ -12,9 +12,6 @@
 
 @property(nonatomic,strong)shopData *shopObj;
 
-@property(nonatomic,assign)NSInteger num;
-
-@property(nonatomic,strong)ProductionData *productObj;
 
 
 @end

@@ -23,6 +23,7 @@
         _valueTextField = [[UITextField alloc] initForAutoLayout];
         [self.contentView addSubview:self.valueTextField];
         [self addViewConstraints];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextFieldTextDidChangeNotification object:nil];
     }
     return self;
 }
@@ -37,6 +38,12 @@
     [self.valueTextField autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.titleLabel];
     [self.valueTextField autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:5];
     [self.valueTextField autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.titleLabel];
+}
+
+- (void)textDidChange {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(textDidChange:inCell:)]) {
+        [self.delegate textDidChange:self.valueTextField.text inCell:self];
+    }
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

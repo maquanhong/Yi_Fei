@@ -26,7 +26,7 @@
     _titileLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_titileLabel];
     [_titileLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(self).offset(10);
+        make.leading.mas_equalTo(self).offset(15);
         make.top.mas_equalTo(self.mas_top).offset(10);
         make.size.mas_equalTo(CGSizeMake(60, 20));
     }];

@@ -8,7 +8,7 @@
 #import <libxlsxwriter/xlsxwriter.h>
 #import "SupplyImport.h"
 
-static NSString * const kFileExtension = @"xlsx";
+static NSString * const kFileExtension = @"xls";
 
 @implementation SupplyImport
 

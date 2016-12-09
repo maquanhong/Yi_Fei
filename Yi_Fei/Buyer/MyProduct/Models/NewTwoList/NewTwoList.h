@@ -22,11 +22,10 @@
 - (void)updateDataModel:(ProductionData *)model number:(int)number;
 
 //查询数据
-- (BOOL)isHasDataIDFromTable:(in )dataId;
+- (BOOL)isHasDataIDFromTable:(int)dataId;
 
 //删除数据
-- (void)deleteNameFromTable:(int)dataId;
-
+- (void)deleteNameFromTable:(NSString*)dataId;
 
 //查询所有
 - (NSArray *)getData;

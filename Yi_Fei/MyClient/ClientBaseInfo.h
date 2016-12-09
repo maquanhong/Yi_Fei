@@ -9,7 +9,7 @@
 #import "GYModelObject.h"
 
 @interface ClientBaseInfo : GYModelObject
-@property (nonatomic, strong, readonly) NSString  *clientId;
+@property (nonatomic, strong, readonly) NSString  *name;
 @property (nonatomic, strong, readonly) NSString  *company;
 @property (nonatomic, strong, readonly) NSString  *telphone;
 @property (nonatomic, strong, readonly) NSString  *email;

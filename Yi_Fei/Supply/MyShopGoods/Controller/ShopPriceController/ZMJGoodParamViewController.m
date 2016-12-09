@@ -159,7 +159,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
     if (section == 0) {
         return 2;
     }else if (section == 1){
-        return _index;;
+        return _index;
     }else if (section == 2){
         if (_flag == 1) {
             return 1;
@@ -224,7 +224,6 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
         }
         if (_flag == 1) {
     fourCell.imageArray = [NSArray arrayWithArray:self.picArray];
-    _flag = 0;
     [fourCell.collectionView reloadData];
         }
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -535,7 +534,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
 }
 
 -(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
-    UIGraphicsBeginImageContext(size);  //size 为CGSize类型，即你所需要的图片尺寸
+    UIGraphicsBeginImageContext(size);
     
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     
@@ -543,7 +542,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
     
     UIGraphicsEndImageContext();
     
-    return scaledImage;   //返回的就是已经改变的图片
+    return scaledImage;
 }
 
 

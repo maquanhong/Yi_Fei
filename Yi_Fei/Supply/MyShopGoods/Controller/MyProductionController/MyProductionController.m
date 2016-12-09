@@ -276,6 +276,7 @@ UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bound
     
     _numLabel = [[UILabel alloc] init];
     _numLabel.textColor=COLOR;
+    _numLabel.text = @"0";
     _numLabel.font=[UIFont systemFontOfSize:16.0];
     [haderView addSubview:_numLabel];
     [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -430,7 +431,7 @@ cell.priceL.text  =  @"";
     }else{
         model = _listArray[indexPath.row];
     }
-    [_manager deleteNameFromTable:model.ind];
+    [_manager deleteNameFromTable:model.companyID];
     
     if (_isSearch == YES) {
         [_searchResultArr removeObjectAtIndex:indexPath.row];

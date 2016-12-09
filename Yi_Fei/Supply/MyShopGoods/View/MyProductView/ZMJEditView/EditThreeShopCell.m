@@ -36,7 +36,7 @@
     [_oneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self).offset(15);
         make.top.mas_equalTo(self.mas_top).offset(10);
-        make.size.mas_equalTo(CGSizeMake(70, 25));
+        make.size.mas_equalTo(CGSizeMake(60, 25));
     }];
     
     _typeOneView = [[ZMJTypeView alloc] init];
@@ -51,7 +51,7 @@
     [_typeOneView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_oneLabel.mas_right).offset(15);
         make.centerY.mas_equalTo(_oneLabel.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(120, 25));
+        make.size.mas_equalTo(CGSizeMake(110, 25));
     }];
     
 
@@ -63,7 +63,7 @@
     [_twoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_oneLabel);
         make.top.mas_equalTo(_oneLabel.mas_bottom).offset(20);
-        make.size.mas_equalTo(CGSizeMake(70, 25));
+        make.size.mas_equalTo(CGSizeMake(60, 25));
     }];
     
     
@@ -75,7 +75,7 @@
     [_typeTwoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_twoLabel.mas_right).offset(15);
         make.centerY.mas_equalTo(_twoLabel.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(120, 25));
+        make.size.mas_equalTo(CGSizeMake(110, 25));
     }];
     _typeTwoView.tag = 1301;
     UITapGestureRecognizer *tapTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
@@ -93,7 +93,7 @@
     [_textFThree mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_typeTwoView.mas_right).offset(10);
         make.centerY.mas_equalTo(_typeTwoView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(110, 25));
+        make.size.mas_equalTo(CGSizeMake(100, 25));
     }];
     _textFThree.tag = 1302;
     _textFThree.hidden = YES;

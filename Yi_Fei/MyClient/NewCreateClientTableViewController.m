@@ -11,11 +11,13 @@
 #import "IndustryTypeTableViewCell.h"
 #import "BUYButton.h"
 #import "ClientBaseInfo.h"
-@interface NewCreateClientTableViewController ()
+#import <MBProgressHUD/MBProgressHUD.h>
+@interface NewCreateClientTableViewController ()<TextFieldTableViewCellDelegate>
 @property (nonatomic, strong) NSArray *menuArray;
 @property (nonatomic, assign) BussinessType  type;
-@property (nonatomic, strong) NSDictionary  *clientBaseInfoDic;
-@property (nonatomic, strong) NSDictionary  *supplyerBaseInfoDic;
+@property (nonatomic, strong) NSMutableDictionary  *clientBaseInfoDic;
+@property (nonatomic, strong) NSMutableDictionary  *supplyerBaseInfoDic;
+@property (nonatomic, strong) NSArray  *keysArray;
 @end
 
 @implementation NewCreateClientTableViewController
@@ -24,6 +26,8 @@
     self = [super init];
     if (self) {
         _type = type;
+        _clientBaseInfoDic = [NSMutableDictionary dictionary];
+        _supplyerBaseInfoDic = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -50,7 +54,7 @@
     } else if (self.type == BussinessSaler) {
         self.title = @"新建客户";
     }
-    
+    _keysArray = @[@"name",@"company",@"telphone",@"email",@"companyAddress",@"jobType"];
     _menuArray = @[@"姓名",@"公司",@"联系电话",@"邮箱",@"公司地址",@"  行业类型"];
        [self.tableView registerClass:[TextFieldTableViewCell class] forCellReuseIdentifier:@"cell"];
     // Uncomment the following line to preserve selection between presentations.
@@ -69,6 +73,46 @@
 
 - (void)btnClick {
     [self.view endEditing:YES];
+    if (self.type == BussinessBuyer) {
+        if ([[self.supplyerBaseInfoDic allKeys] count] != [self.keysArray count]) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            [hud.label setText:@"信息不完整"];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        } else {
+            
+        }
+        
+    } else if (self.type == BussinessSaler) {
+        if ([[self.clientBaseInfoDic allKeys] count] != [self.keysArray count]) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            [hud.label setText:@"信息不完整"];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        } else {
+            ClientBaseInfo *baseInfo = [ClientBaseInfo objectWithDictionary:self.clientBaseInfoDic];
+            [baseInfo save];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            [hud.label setText:@"正在保存"];
+            while (baseInfo.isSaving) {
+                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            }
+            [hud.label setText:@"保存成功"];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,12 +140,43 @@
         cell = [[TextFieldTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
     cell.titleLabel.text = [self.menuArray objectAtIndex:indexPath.row];
+    cell.delegate = self;
     return cell;
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
+}
+
+#pragma mark TextFieldTableViewCellDelegate
+/*
+ @"clientId",
+ @"company",
+ @"telphone",
+ @"email",
+ @"companyAddress",
+ @"jobType"
+ */
+- (void)textDidChange:(NSString *)text inCell:(TextFieldTableViewCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSString *key = [self.keysArray objectAtIndex:indexPath.row];
+    if (self.type == BussinessBuyer) {
+        if (text.length == 0) {
+            [self.supplyerBaseInfoDic removeObjectForKey:key];
+        } else {
+            [self.supplyerBaseInfoDic setObject:text forKey:key];
+        }
+        
+    } else if (self.type == BussinessSaler) {
+        if (text.length == 0) {
+            [self.clientBaseInfoDic removeObjectForKey:key];
+        } else {
+            [self.clientBaseInfoDic setObject:text forKey:key];
+        }
+        
+    }
+    
 }
 
 /*

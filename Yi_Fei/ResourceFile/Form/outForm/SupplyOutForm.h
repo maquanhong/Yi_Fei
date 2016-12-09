@@ -1,15 +1,14 @@
 //
-//  Example.h
+//  SupplyOutForm.h
 //  Yi_Fei
 //
-//  Created by yons on 16/11/25.
-//  Copyright © 2016年 Practice. All rights reserved.
+//  Created by yons on 16/12/9.
+//  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
 @import Foundation;
 
 @interface SupplyOutForm : NSObject
-
 
 #pragma mark 导出
 @property (readonly, nonatomic, nonnull) NSString *outputFileName;  //导出的文件名
@@ -18,22 +17,7 @@
 @property (nonatomic,strong,nonnull) shopData *shopObjc;
 
 
-
-
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

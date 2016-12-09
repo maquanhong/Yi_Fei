@@ -12,6 +12,7 @@
 #import "MySalerViewController.h"
 #import "AddSupplyViewController.h"
 #import "NewCreateClientTableViewController.h"
+#import "ClientBaseInfo.h"
 @interface BuyerViewController (){
     NSArray *array;
     UIView *addTableV;
@@ -19,6 +20,7 @@
 @property(nonatomic,strong)UISearchController *searchC;
 @property (nonatomic, assign) BOOL bShowAddView;
 @property (nonatomic, assign) BussinessType type;
+@property (nonatomic, strong) NSArray *clientInfoArray;
 @end
 
 @implementation BuyerViewController
@@ -52,6 +54,7 @@
        self.title=@"供应商列表";
     } else {
         self.title=@"客户列表";
+        _clientInfoArray = [ClientBaseInfo objectsWhere:nil arguments:nil];
     }
     
     self.bShowAddView = NO;
@@ -59,7 +62,16 @@
     [self addContentView];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.type == BussinessBuyer) {
+        
+    } else {
+       
+        _clientInfoArray = [ClientBaseInfo objectsWhere:nil arguments:nil];
+    }
+    [self.tableview reloadData];
+}
 
 
 -(void)addContentView{
@@ -105,7 +117,7 @@
 
 #pragma Mark -- 事件处理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return array.count;
+    return self.clientInfoArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,7 +127,9 @@
         cell=[[BuyerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
     }
     cell.imgV.image=[UIImage imageNamed:@"logo.png"];
-    cell.nameShop.text=array[indexPath.row];
+    ClientBaseInfo *baseInfo = self.clientInfoArray[indexPath.row];
+    cell.nameShop.text = baseInfo.name;
+    cell.priceL.text = baseInfo.company;
     return cell;
 }
 

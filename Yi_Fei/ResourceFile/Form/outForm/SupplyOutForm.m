@@ -1,17 +1,16 @@
-
 //
-//  BuyerOutForm.m
+//  SupplyOutForm.m
 //  Yi_Fei
 //
-//  Created by yons on 16/12/6.
+//  Created by yons on 16/12/9.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
+
 #import <libxlsxwriter/xlsxwriter.h>
-#import "BuyerOutForm.h"
+#import "SupplyOutForm.h"
 
 static NSString * const kFileExtension = @"xlsx";
-
-@implementation BuyerOutForm
+@implementation SupplyOutForm
 
 
 #pragma mark 导出的文件路径
@@ -27,12 +26,10 @@ static NSString * const kFileExtension = @"xlsx";
 }
 
 
-#pragma mark 导入的文件名
+#pragma mark 导出的文件名
 - (NSString *)outputFileName {
-    return @"采购商商品采购单";
+    return @"供应商商品单价";
 }
-
-
 
 
 //供应商导出给客户看的
@@ -241,37 +238,36 @@ static NSString * const kFileExtension = @"xlsx";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

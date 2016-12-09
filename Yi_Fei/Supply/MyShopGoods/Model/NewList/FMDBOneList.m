@@ -74,7 +74,7 @@ static FMDBOneList * manager=nil;
 }
 
 //查找
-- (BOOL)isHasDataIDFromTable:(NSInteger)dataId;
+- (BOOL)isHasDataIDFromTable:(int)dataId;
 {
     NSString * isSql = @"select *from addYiFei where ind =?";
     //FMResultSet 查询结果的集合类
@@ -88,9 +88,9 @@ static FMDBOneList * manager=nil;
     return [set next];//next 返回时一个BOOL
 }
 //删除
-- (void)deleteNameFromTable:(int )dataId
+- (void)deleteNameFromTable:(NSString* )dataId
 {
-    NSString * deleteSql = @"delete from addYiFei where ind = ?";
+    NSString * deleteSql = @"delete from addYiFei where companyID = ?";
     if ([_dataBase executeUpdate:deleteSql,dataId]) {
         NSLog(@"删除成功");
     }

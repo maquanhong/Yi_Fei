@@ -80,7 +80,7 @@ static NewTwoList * manager=nil;
 }
 
 //查找
-- (BOOL)isHasDataIDFromTable:(in )dataId
+- (BOOL)isHasDataIDFromTable:(int)dataId
 {
     NSString * isSql = @"select *from addTwoYiFei where ind=?";
     //FMResultSet 查询结果的集合类
@@ -96,9 +96,9 @@ static NewTwoList * manager=nil;
 
 
 //删除
-- (void)deleteNameFromTable:(int)dataId
+- (void)deleteNameFromTable:(NSString*)dataId
 {
-    NSString * deleteSql = @"delete from addTwoYiFei where ind = ?";
+    NSString * deleteSql = @"delete from addTwoYiFei where companyID = ?";
     if ([_dataBase executeUpdate:deleteSql,dataId]) {
         NSLog(@"删除成功");
     }

@@ -10,7 +10,7 @@
 
 @implementation ClientBaseInfo
 + (NSString *)dbName {
-    return @"addYiFei.db";
+    return @"addYiFei";
 }
 
 + (NSString *)tableName {
@@ -18,14 +18,14 @@
 }
 
 + (NSString *)primaryKey {
-    return @"clientId";
+    return @"name";
 }
 + (NSArray *)persistentProperties {
     static NSArray *properties = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         properties = @[
-                       @"clientId",
+                       @"name",
                        @"company",
                        @"telphone",
                        @"email",
@@ -39,7 +39,7 @@
 - (BOOL)isEqual:(id)object {
     ClientBaseInfo *other = (ClientBaseInfo *)object;
     
-    if (self.clientId != other.clientId) {
+    if (self.name != other.name) {
         return NO;
     }
     

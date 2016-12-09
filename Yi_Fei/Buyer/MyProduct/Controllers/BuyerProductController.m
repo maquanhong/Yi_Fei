@@ -275,6 +275,7 @@
     
     _numLabel = [[UILabel alloc] init];
     _numLabel.textColor=COLOR;
+    _numLabel.text = @"0";
     _numLabel.font=[UIFont systemFontOfSize:16.0];
     [haderView addSubview:_numLabel];
     [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -435,7 +436,7 @@
     }else{
     model = _listArray[indexPath.row];
     }
-    [_manager deleteNameFromTable:model.ind];
+    [_manager deleteNameFromTable:model.companyID];
     if (_isSearch == YES) {
     [_searchResultArr removeObjectAtIndex:indexPath.row];
     }else if (_btnSearch == YES){
