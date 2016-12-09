@@ -19,7 +19,6 @@
 #import "MyProductionController.h"
 #import "ThreeTableViewCell.h"
 
-
 @interface ZMJEditViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextFieldDelegate,UITextViewDelegate,EditThreeShopCellDelegate,SSPopupDelegate,UITextFieldDelegate>{
     
     EditFirstShopCell *firstCell;
@@ -39,6 +38,7 @@
     NSInteger _clickNum;
     NSString *_picture;
     NSString * _idNum;
+    
 }
 
 @property(nonatomic,strong)UITableView *tableView; //tableView表格视图
@@ -80,6 +80,14 @@
     _picture = _shopObj.shopPicture;
     _shopCustomContent = [NSMutableArray array];
      _shopCustomType = [NSMutableArray array];
+    _array = [NSMutableArray array];
+    NSArray *arrayimg=[_shopObj.shopPicture componentsSeparatedByString:@"|"];
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    for (NSInteger i = 0 ; i < arrayimg.count; i++) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
+        [_array addObject:imagePath];
+    }
 _customArray =[_shopObj.shopCustom componentsSeparatedByString:@"|"];
 _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     self.view.backgroundColor=[UIColor whiteColor];
@@ -152,7 +160,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             if (_flag == 1) {
                 return 1;
             }else{
-                if (_array.count != 0 ) {
+                if (_array.count == 0 ) {
                      return 0;
                 }else{
                     return 1;
@@ -203,6 +211,10 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             threeCell.delegate = self;
             threeCell.typeOneView.nameLabel.text = _shopObj.shopHuoBi;
             threeCell.typeTwoView.nameLabel.text = _shopObj.shopTiaoK;
+            if ([_shopObj.shopTiaoK isEqualToString:@"FOB"]) {
+                threeCell.textFThree.hidden = NO;
+                threeCell.textFThree.text = _shopObj.shopAdderss;
+            }
             return threeCell;
         }else if (indexPath.section == 3){
             static NSString *identifer4=@"editFourCell";
@@ -232,6 +244,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
                 }
             }
         }
+            fourCell.selectionStyle = UITableViewCellSeparatorStyleNone;
             fourCell.textFOne.delegate = self;
             fourCell.textFTwo.delegate = self;
             fourCell.textFOne.tag = 2600;
@@ -253,14 +266,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
          if (sixCell == nil) {
              sixCell = [[EditFourShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer6];
          }
-           _array = [NSMutableArray array];
-            NSArray *arrayimg=[_shopObj.shopPicture componentsSeparatedByString:@"|"];
-            NSString *path_document = NSHomeDirectory();
-                //设置一个图片的存储路径
-            for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-             NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
-                    [_array addObject:imagePath];
-                }
         sixCell.imageArray = [NSArray arrayWithArray:[_array copy]];
           return sixCell;
             }
@@ -654,7 +659,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     photoController.selectPhotoOfMax = 8;
     //设置相册中完成按钮旁边小圆点颜色。
     //   photoController.roundColor = [UIColor greenColor];
-    
     [photoController showIn:self result:^(id responseObject){
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
@@ -664,8 +668,8 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         for (int i=0; i< self.picArray.count; i++) {
             //拿到图片
             ZZPhoto *photo = self.picArray[i];
-            UIImage *image = photo.originImage;
-            
+            CGSize  size = CGSizeMake(145, 160);
+            UIImage *image = [self compressOriginalImage:photo.originImage toSize:size ];
             NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
             //打印日期：中间的空格可以用‘at’或‘T’等字符划分
             NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
@@ -701,7 +705,8 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         for (int i=0; i< self.picArray.count; i++) {
             //拿到图片
             ZZCamera *camera = self.picArray[i];
-            UIImage *image = camera.image;
+            CGSize  size = CGSizeMake(145, 160);
+            UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
             NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
             //打印日期：中间的空格可以用‘at’或‘T’等字符划分
             NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
@@ -719,6 +724,24 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         _shopObj.shopPicture=str;
     }];
 }
+
+
+-(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
+    UIGraphicsBeginImageContext(size);
+    
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
+}
+
+
+
+
+
 
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{

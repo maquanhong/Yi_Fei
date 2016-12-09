@@ -9,7 +9,6 @@
 #import "ParsingController.h"
 #import "DHxlsReader.h"
 
-
 @interface ParsingController ()
 
 @end
@@ -19,12 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString *path = [[NSBundle mainBundle ] pathForResource:@"供应商导入商品单价.xlsx" ofType:nil];
+    NSString *path = [[NSBundle mainBundle ] pathForResource:@"ImportPrice.xls" ofType:nil];
 
 DHxlsReader *reader = [DHxlsReader xlsReaderWithPath:path];
   assert(reader);
-  NSMutableArray *oneArray = [NSMutableArray array];
-    
+//  NSMutableArray *oneArray = [NSMutableArray array];
     //excel表中第几行开始
     int row = 1;
 //    while(row < 2 ) {

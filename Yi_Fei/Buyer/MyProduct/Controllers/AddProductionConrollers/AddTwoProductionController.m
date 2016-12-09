@@ -123,7 +123,7 @@
             break;
         case 2002:
             _shopObj.shopAdderss = textField.text;
-            //           NSLog(@"%@",_shopObj.shopAdderss);
+        //           NSLog(@"%@",_shopObj.shopAdderss);
             break;
     }
 }
@@ -133,7 +133,7 @@
 {
     _index = 100000;
     _currencyArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
-    _typeArray = @[@"EXW",@"FCA",@"CPT",@"CIP",@"DAT",@"DAP",@"DDP",@"FOB"];
+      _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
     switch (tag) {
         case 10000:
         {
@@ -186,14 +186,17 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
+    [_backView.textFThree endEditing:YES];
+    if (textField.text.length > 0) {
+        _shopObj.shopAdderss = _backView.textFThree.text;
+    }else{
+        _shopObj.shopColor = @"";
+    }
     switch (textField.tag) {
         case 2000:
             [textField resignFirstResponder];
             break;
         case 2001:
-            [textField resignFirstResponder];
-            break;
-        case 2002:
             [textField resignFirstResponder];
             break;
     }

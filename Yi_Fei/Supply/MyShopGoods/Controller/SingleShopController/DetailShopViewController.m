@@ -12,7 +12,7 @@
 #import "BUYButton.h"
 
 
-@interface DetailShopViewController ()<UITextFieldDelegate,ZMJAddGoodsTwoViewDelegate,UITableViewDelegate,UITableViewDataSource,SSPopupDelegate>{
+@interface DetailShopViewController ()<UITextFieldDelegate,ZMJAddGoodsTwoViewDelegate,SSPopupDelegate>{
     
     NSArray *_currencyArray;
     NSArray *_typeArray;
@@ -81,6 +81,7 @@
      _backView.textFTwo.delegate = self;
     _backView.textFThree.delegate = self;
     _backView.textFThree.hidden = YES;
+    _backView.textFThree.tag = 20002;
     [self.view addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self.view);
@@ -92,7 +93,15 @@
     btn.frame=CGRectMake(50, 300, WIDTH - 100, 35);
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
+//    [self.view addGestureRecognizer:tap];
 }
+
+//-(void)click{
+// 
+//    [_backView.textFThree resignFirstResponder];
+//}
 
 #pragma mark 进入最后的页面
 - (void)btnClick:(UIButton*)btn
@@ -110,6 +119,7 @@
 #pragma UITextField代理
 //编辑结束监听
 - (void)textFieldDidEndEditing:(UITextField *)textField{
+
     switch (textField.tag) {
         case 2000:
         if (textField.text.length > 0) {
@@ -120,16 +130,9 @@
             break;
         case 2001:
         if (textField.text.length > 0) {
-            _shopObj.shopColor = textField.text;
+            _shopObj.shopPrice = textField.text;
         }else{
-            _shopObj.shopColor = @"";
-        }
-            break;
-        case 2002:
-        if (textField.text.length > 0) {
-            _shopObj.shopColor = textField.text;
-        }else{
-            _shopObj.shopColor = @"";
+            _shopObj.shopPrice = @"";
         }
             break;
     }
@@ -140,7 +143,7 @@
 {
     _index = 100000;
     _currencyArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
-    _typeArray = @[@"EXW",@"FCA",@"CPT",@"CIP",@"DAT",@"DAP",@"DDP",@"FOB"];
+    _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
     switch (tag) {
         case 10000:
         {
@@ -192,15 +195,20 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [_backView.textFThree endEditing:YES];
+    if (textField.text.length > 0) {
+        _shopObj.shopAdderss = _backView.textFThree.text;
+    }else{
+        _shopObj.shopColor = @"";
+    }
+    
     switch (textField.tag) {
         case 2000:
   [textField resignFirstResponder];
             break;
         case 2001:
    [textField resignFirstResponder];
-            break;
-        case 2002:
-  [textField resignFirstResponder];
             break;
     }
     return YES;

@@ -113,7 +113,7 @@
     
     NewTwoList  *manager = [NewTwoList newListManager];
     //查询
-    if ([manager isHasDataIDFromTable:_shopObj.companyID]) {
+    if ([manager isHasDataIDFromTable:_shopObj.ind]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"此商品给已经添加过" preferredStyle:UIAlertControllerStyleAlert];
         //确定按钮
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil] ;
@@ -211,7 +211,6 @@
         if (_flag == 1) {
         fourCell.imageArray = [NSArray arrayWithArray:self.picArray];
         [fourCell.collectionView reloadData];
-        _flag = 0;
         }
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return fourCell;

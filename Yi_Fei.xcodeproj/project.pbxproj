@@ -177,15 +177,16 @@
 		E44212141DF9E1990083BC1F /* ParsingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E442120C1DF9E1990083BC1F /* ParsingController.m */; };
 		E44212151DF9E1990083BC1F /* SupplyImport.m in Sources */ = {isa = PBXBuildFile; fileRef = E442120E1DF9E1990083BC1F /* SupplyImport.m */; };
 		E44212161DF9E1990083BC1F /* BuyerOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E44212111DF9E1990083BC1F /* BuyerOutForm.m */; };
-		E44212171DF9E1990083BC1F /* SingleOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E44212121DF9E1990083BC1F /* SingleOutForm.m */; };
 		E442123A1DF9E3BE0083BC1F /* test.xls in Resources */ = {isa = PBXBuildFile; fileRef = E44212391DF9E3BE0083BC1F /* test.xls */; };
 		E442123C1DF9E3C60083BC1F /* baojia.xls in Resources */ = {isa = PBXBuildFile; fileRef = E442123B1DF9E3C60083BC1F /* baojia.xls */; };
-		E442123E1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = E442123D1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx */; };
+		E442123E1DF9E3CC0083BC1F /* nihao.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = E442123D1DF9E3CC0083BC1F /* nihao.xlsx */; };
 		E44212401DF9E4910083BC1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E442123F1DF9E4910083BC1F /* CoreGraphics.framework */; };
 		E44212441DF9E4A10083BC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212431DF9E4A10083BC1F /* Foundation.framework */; };
 		E44212461DF9E4A70083BC1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212451DF9E4A70083BC1F /* UIKit.framework */; };
 		E44212471DF9E4AD0083BC1F /* libDHxlsReaderIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212361DF9E3AC0083BC1F /* libDHxlsReaderIOS.a */; };
 		E44212491DF9E4B90083BC1F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212481DF9E4B90083BC1F /* libiconv.tbd */; };
+		E442124D1DF9F8830083BC1F /* ImportPrice.xls in Resources */ = {isa = PBXBuildFile; fileRef = E442124C1DF9F8830083BC1F /* ImportPrice.xls */; };
+		E470D59A1DFB17F300C87494 /* CreateSupplyPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = E470D5991DFB17F300C87494 /* CreateSupplyPDF.m */; };
 		E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C41DF70CA900145486 /* InfoSendViewController.m */; };
 		E49352131DF70CA900145486 /* MyProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C61DF70CA900145486 /* MyProductionController.m */; };
 		E49352141DF70CA900145486 /* ZMJEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C81DF70CA900145486 /* ZMJEditViewController.m */; };
@@ -229,6 +230,7 @@
 		E493526C1DF7267300145486 /* SSPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352601DF7267300145486 /* SSPopup.m */; };
 		E493526D1DF7267300145486 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352631DF7267300145486 /* UIView+Frame.m */; };
 		E493526E1DF7267300145486 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352651DF7267300145486 /* UIView+Layout.m */; };
+		E4E504181DFAB82B007CBDF8 /* SupplyOutForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E504171DFAB82B007CBDF8 /* SupplyOutForm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -567,17 +569,18 @@
 		E442120E1DF9E1990083BC1F /* SupplyImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyImport.m; sourceTree = "<group>"; };
 		E44212101DF9E1990083BC1F /* BuyerOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerOutForm.h; sourceTree = "<group>"; };
 		E44212111DF9E1990083BC1F /* BuyerOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerOutForm.m; sourceTree = "<group>"; };
-		E44212121DF9E1990083BC1F /* SingleOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleOutForm.m; sourceTree = "<group>"; };
-		E44212131DF9E1990083BC1F /* SupplyOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyOutForm.h; sourceTree = "<group>"; };
 		E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = DHxlsReaderIOS.xcodeproj; sourceTree = "<group>"; };
 		E44212391DF9E3BE0083BC1F /* test.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.xls; sourceTree = "<group>"; };
 		E442123B1DF9E3C60083BC1F /* baojia.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = baojia.xls; sourceTree = "<group>"; };
-		E442123D1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "供应商导入商品单价.xlsx"; sourceTree = "<group>"; };
+		E442123D1DF9E3CC0083BC1F /* nihao.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = nihao.xlsx; sourceTree = "<group>"; };
 		E442123F1DF9E4910083BC1F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E44212411DF9E4980083BC1F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E44212431DF9E4A10083BC1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E44212451DF9E4A70083BC1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E44212481DF9E4B90083BC1F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		E442124C1DF9F8830083BC1F /* ImportPrice.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImportPrice.xls; sourceTree = "<group>"; };
+		E470D5981DFB17F300C87494 /* CreateSupplyPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSupplyPDF.h; sourceTree = "<group>"; };
+		E470D5991DFB17F300C87494 /* CreateSupplyPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSupplyPDF.m; sourceTree = "<group>"; };
 		E49351C31DF70CA900145486 /* InfoSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoSendViewController.h; sourceTree = "<group>"; };
 		E49351C41DF70CA900145486 /* InfoSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSendViewController.m; sourceTree = "<group>"; };
 		E49351C51DF70CA900145486 /* MyProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductionController.h; sourceTree = "<group>"; };
@@ -663,6 +666,8 @@
 		E49352631DF7267300145486 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		E49352641DF7267300145486 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		E49352651DF7267300145486 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		E4E504161DFAB82B007CBDF8 /* SupplyOutForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyOutForm.h; sourceTree = "<group>"; };
+		E4E504171DFAB82B007CBDF8 /* SupplyOutForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyOutForm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -783,7 +788,8 @@
 		E416C9101DF5D802002A6E60 = {
 			isa = PBXGroup;
 			children = (
-				E442123D1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx */,
+				E442124C1DF9F8830083BC1F /* ImportPrice.xls */,
+				E442123D1DF9E3CC0083BC1F /* nihao.xlsx */,
 				E442123B1DF9E3C60083BC1F /* baojia.xls */,
 				E44212391DF9E3BE0083BC1F /* test.xls */,
 				E44212301DF9E3AC0083BC1F /* DHxlsReaderIOS.xcodeproj */,
@@ -1497,8 +1503,8 @@
 			children = (
 				E44212101DF9E1990083BC1F /* BuyerOutForm.h */,
 				E44212111DF9E1990083BC1F /* BuyerOutForm.m */,
-				E44212121DF9E1990083BC1F /* SingleOutForm.m */,
-				E44212131DF9E1990083BC1F /* SupplyOutForm.h */,
+				E4E504161DFAB82B007CBDF8 /* SupplyOutForm.h */,
+				E4E504171DFAB82B007CBDF8 /* SupplyOutForm.m */,
 			);
 			path = outForm;
 			sourceTree = "<group>";
@@ -1510,6 +1516,15 @@
 				E44212381DF9E3AC0083BC1F /* libDHxlsReader.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E470D5951DFB17C500C87494 /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				E470D5981DFB17F300C87494 /* CreateSupplyPDF.h */,
+				E470D5991DFB17F300C87494 /* CreateSupplyPDF.m */,
+			);
+			path = PDF;
 			sourceTree = "<group>";
 		};
 		E49351C01DF70CA900145486 /* MyShopGoods */ = {
@@ -1750,6 +1765,7 @@
 		E49352301DF711AA00145486 /* ResourceFile */ = {
 			isa = PBXGroup;
 			children = (
+				E470D5951DFB17C500C87494 /* PDF */,
 				E49352311DF711AA00145486 /* Bluetooth */,
 				E49352381DF711AA00145486 /* Form */,
 				E493523B1DF711AA00145486 /* industry.txt */,
@@ -1932,6 +1948,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E442124D1DF9F8830083BC1F /* ImportPrice.xls in Resources */,
 				20FBCA451DF649B30009167F /* guanyu_icon@2x.png in Resources */,
 				E416CCF41DF5E9F8002A6E60 /* select_no.png in Resources */,
 				20FBCA4A1DF649B30009167F /* jibenziliao_icon.png in Resources */,
@@ -1964,7 +1981,7 @@
 				E442123C1DF9E3C60083BC1F /* baojia.xls in Resources */,
 				E416CCF51DF5E9F8002A6E60 /* select_yes.png in Resources */,
 				E416CCF71DF5E9F8002A6E60 /* take_photo_pic@2x.png in Resources */,
-				E442123E1DF9E3CC0083BC1F /* 供应商导入商品单价.xlsx in Resources */,
+				E442123E1DF9E3CC0083BC1F /* nihao.xlsx in Resources */,
 				E416CCF91DF5E9F8002A6E60 /* zz_alumb_rightCell.png in Resources */,
 				E416C9291DF5D802002A6E60 /* Assets.xcassets in Resources */,
 				E416CCF31DF5E9F8002A6E60 /* remove_btn_pic.png in Resources */,
@@ -2048,6 +2065,7 @@
 				E493521D1DF70CA900145486 /* DetailViewThreeCell.m in Sources */,
 				E416CD711DF5ED7B002A6E60 /* ThreePopTableViewCell.m in Sources */,
 				E49352281DF70CA900145486 /* ThreeTableViewCell.m in Sources */,
+				E4E504181DFAB82B007CBDF8 /* SupplyOutForm.m in Sources */,
 				20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */,
 				20FBC9F01DF640EA0009167F /* UserInfoView.m in Sources */,
 				20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */,
@@ -2104,7 +2122,6 @@
 				20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
 				E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */,
-				E44212171DF9E1990083BC1F /* SingleOutForm.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
@@ -2135,6 +2152,7 @@
 				E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */,
 				E416CBFB1DF5E9E9002A6E60 /* BUYImportView.m in Sources */,
 				E416CBC31DF5E9E1002A6E60 /* BuyerEditFSecondCell.m in Sources */,
+				E470D59A1DFB17F300C87494 /* CreateSupplyPDF.m in Sources */,
 				E416CD361DF5EB4C002A6E60 /* ProductiPulishController.m in Sources */,
 				E416CD691DF5ED7B002A6E60 /* NameContentTableViewCell.m in Sources */,
 				E416CBC51DF5E9E1002A6E60 /* MemberOneViewCell.m in Sources */,
