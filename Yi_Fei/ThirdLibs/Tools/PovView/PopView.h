@@ -37,7 +37,7 @@ typedef void (^VSActionBlock)(int);
     NSString *Title;
 }
 
-@property (nonatomic, assign) id<PopViewDelegate> SSPopupDelegate;
+@property (nonatomic, assign) id<PopViewDelegate>  delegate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<PopViewDelegate>)delegate;
 

@@ -27,7 +27,7 @@
     self = [super init];
     if ((self = [super initWithFrame:frame]))
     {
-        self.SSPopupDelegate = delegate;
+        self.delegate = delegate;
     }
     
     return self;
@@ -88,12 +88,12 @@
 
 
 #pragma mark Cell的代理方法
--(void)clickEmailBtn:(NSInteger)number{
+-(void)clickExcelBtn:(NSInteger)number{
     _index = number;
 }
 
 
--(void)clickBloothBtn:(NSInteger)number{
+-(void)clickPDFBtn:(NSInteger)number{
     _index = number;
 }
 
@@ -174,8 +174,8 @@
     if (completionBlock) {
         completionBlock((int)_index);
     }
-    if ([self.SSPopupDelegate respondsToSelector:@selector(GetSelectedOutlet:)]) {
-        [self.SSPopupDelegate GetSelectedOutlet:(int)_index];
+    if ([self.delegate respondsToSelector:@selector(GetSelectedOutlet:)]) {
+        [self.delegate GetSelectedOutlet:(int)_index];
     }
     [self CloseAnimation];
     

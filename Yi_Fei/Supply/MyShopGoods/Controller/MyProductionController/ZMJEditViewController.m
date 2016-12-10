@@ -443,40 +443,12 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         }
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    switch (textField.tag) {
-        case 2300:
-            [textField resignFirstResponder];
-            break;
-        case 2301:
-          [textField resignFirstResponder];
-            break;
-        case 2302:
-            [textField resignFirstResponder];
-            break;
-        case 2303:
-           [textField resignFirstResponder];
-            break;
-        case 2304:
-            [textField resignFirstResponder];
-            break;
-        case 2305:
-             [textField resignFirstResponder];
-            break;
-        case 2306:
-          [textField resignFirstResponder];
-            break;
-        default:
-            break;
-    }
-    return YES;
-}
 
 
 -(void)clickViewTag:(NSInteger)tag{
 
     _currencyArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
-    _typeArray = @[@"EXW",@"FCA",@"CPT",@"CIP",@"DAT",@"DAP",@"DDP",@"FOB"];
+    _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
     switch (tag) {
         case 1300:
         {
@@ -739,46 +711,11 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 }
 
 
-
-
-
-
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
-       [self get];
     FMDBOneList  *manager = [FMDBOneList defaultManager];
     [manager updateDataModel:_shopObj number:_shopObj.ind];
     [self.navigationController popViewControllerAnimated:YES];
-    
-}
-
--(void)get{
-    UITextField *textFiled;
-    switch (textFiled.tag) {
-        case 2300:
-     [textFiled resignFirstResponder];
-            break;
-        case 2301:
-   [textFiled resignFirstResponder];
-            break;
-        case 2302:
-   [textFiled resignFirstResponder];
-            break;
-        case 2303:
-   [textFiled resignFirstResponder];
-            break;
-        case 2304:
-   [textFiled resignFirstResponder];
-            break;
-        case 2305:
-   [textFiled resignFirstResponder];
-            break;
-        case 2306:
-   [textFiled resignFirstResponder];
-            break;
-        default:
-            break;
-    }
 }
 
 

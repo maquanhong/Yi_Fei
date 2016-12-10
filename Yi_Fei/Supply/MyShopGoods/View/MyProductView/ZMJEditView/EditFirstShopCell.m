@@ -42,8 +42,8 @@
     [lineV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self);
         make.trailing.mas_equalTo(self);
-        make.top.mas_equalTo(_nameLabel.mas_bottom).offset(5);
-        make.height.mas_equalTo(1.5);
+        make.bottom.mas_equalTo(self.mas_bottom);
+        make.height.mas_equalTo(1.0);
     }];
     
     _textF=[[UITextField alloc] init];
@@ -56,6 +56,8 @@
         make.trailing.mas_equalTo(self).offset(-10);
         make.height.mas_equalTo(25);
     }];
+    
+    
 }
 
 

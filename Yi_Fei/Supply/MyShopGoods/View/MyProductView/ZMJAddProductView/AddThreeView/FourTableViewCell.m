@@ -44,6 +44,7 @@
     
     _holderLabel = [[UILabel alloc] init];
     _holderLabel.font = [UIFont systemFontOfSize:14];
+    _holderLabel.textColor = [UIColor lightGrayColor];
     _holderLabel.enabled = NO;
     [_textView addSubview:_holderLabel];
     [_holderLabel mas_makeConstraints:^(MASConstraintMaker *make) {

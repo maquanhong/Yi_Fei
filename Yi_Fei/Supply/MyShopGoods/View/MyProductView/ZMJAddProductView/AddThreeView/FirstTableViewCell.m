@@ -30,25 +30,17 @@
         make.size.mas_equalTo(CGSizeMake(60, 20));
     }];
     
-    _textView = [[UITextView alloc] init];
-    _textView.font = [UIFont systemFontOfSize:14];
-    [self.contentView addSubview:_textView];
-    [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _contentLabel = [[UITextField alloc] init];
+    _contentLabel.font = [UIFont systemFontOfSize:14];
+    [self.contentView addSubview:_contentLabel];
+    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_titileLabel.mas_right).offset(10);
         make.top.mas_equalTo(_titileLabel.mas_top).offset(-5);
         make.trailing.mas_equalTo(self).offset(-10);
         make.bottom.mas_equalTo(self.mas_bottom).offset(-5);
     }];
    
-    _holderLabel = [[UILabel alloc] init];
-    _holderLabel.font = [UIFont systemFontOfSize:14];
-     _holderLabel.enabled = NO;
-    [_textView addSubview:_holderLabel];
-    [_holderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(_textView);
-        make.top.mas_equalTo(_textView.mas_top).offset(5);
-        make.size.mas_equalTo(CGSizeMake(140, 20));
-    }];
+   
     
     
     UIView *lineV=[[UIView alloc] init];

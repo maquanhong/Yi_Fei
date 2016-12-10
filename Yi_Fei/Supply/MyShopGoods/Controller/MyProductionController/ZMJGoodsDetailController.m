@@ -12,10 +12,10 @@
 #import "DetailViewSecondCell.h"
 #import "DetailViewThreeCell.h"
 #import "InfoSendViewController.h"
-#import "ShareActivity.h"
+//#import "ShareActivity.h"
 
 
-@interface ZMJGoodsDetailController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,ShareActivityDelegate,PopViewDelegate>
+@interface ZMJGoodsDetailController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     DetailViewFirstCell *firstCell;
     DetailViewSecondCell *secondCell;
@@ -25,11 +25,9 @@
 @property(nonatomic,strong)UITableView *tableView;
 @property (nonatomic, strong) HYActivityView *activityView;
 
-
 @end
 
 @implementation ZMJGoodsDetailController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,10 +46,9 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     self.navigationItem.leftBarButtonItem = barItem;
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    
-BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    
-    [rightBtn setImage:[UIImage imageNamed:@"点点"] forState:UIControlStateNormal];
+  BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+    [rightBtn setTitle:@"发送" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     [rightBtn addTarget:self action:@selector(shareProduct) forControlEvents: UIControlEventTouchUpInside];
    self.navigationItem.rightBarButtonItem = rightItem;
@@ -59,6 +56,12 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
 
 -(void)leftButtonClick{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)shareProduct{
+    InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
+    sendView.shopData = _shopData;
+    [self.navigationController pushViewController:sendView animated:YES];
 }
 
 
@@ -194,82 +197,6 @@ BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 250;
 }
-
-
-- (void)shareProduct {
- ShareActivity *sa = [[ShareActivity alloc] initShareActivityView];
-    sa.delegate = self;
-      [sa show];
-}
-
-
--(void)clickButtonView:(NSInteger)index button:(UIButton *)btn{
-    switch (index) {
-        case 123456:
-        {
-    InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
-    sendView.shopData = _shopData;
-    [self.navigationController pushViewController:sendView animated:YES];
-        }
-            break;
-        case 123457:
-        {
-          NSInteger num = 123457;
-    [self createPopViewButton:btn number:num];
-            
-            
-            
-        }
-            break;
-        case 123458:
-        {
-            
-            
-        }
-            break;
-        case 123459:
-        {
-            
-            
-        }
-            break;
-        case 123460:
-        {
-            
-            
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-
-
-
-
--(void)createPopViewButton:(UIButton*)sender number:(NSInteger)number{
-
-    PopView * selection=[[PopView alloc]init];
-    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:0.4];
-    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-    selection.SSPopupDelegate=self;
-    [self.view  addSubview:selection];
-    
-    [selection CreateTableview:nil withSender:sender  withTitle:@"请选择发送方式" setCompletionBlock:^(int tag){
-        
-        NSLog(@"Tag--->%d",tag);
-
-        
-    }];
-
-}
-
-
-
-
-
-
 
 
 

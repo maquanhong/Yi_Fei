@@ -99,9 +99,11 @@
 #pragma mark 进入最后的页面
 - (void)btnClick:(UIButton*)btn
 {
-    [_backView.textFOne endEditing:YES];
-    [_backView.textFTwo endEditing:YES];
-    [_backView.textFThree endEditing:YES];
+    if (_backView.textFThree.text.length > 0) {
+        _shopObj.shopAdderss = _backView.textFThree.text;
+    }else{
+        _shopObj.shopColor = @"";
+    }
     AddThreeProductionController *paramVC = [[AddThreeProductionController alloc] init];
     paramVC.shopObj = _shopObj;
     [self.navigationController pushViewController:paramVC animated:YES];
@@ -133,7 +135,7 @@
 {
     _index = 100000;
     _currencyArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
-      _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
+    _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
     switch (tag) {
         case 10000:
         {
@@ -181,28 +183,6 @@
             break;
     }
 }
-
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
-    [_backView.textFThree endEditing:YES];
-    if (textField.text.length > 0) {
-        _shopObj.shopAdderss = _backView.textFThree.text;
-    }else{
-        _shopObj.shopColor = @"";
-    }
-    switch (textField.tag) {
-        case 2000:
-            [textField resignFirstResponder];
-            break;
-        case 2001:
-            [textField resignFirstResponder];
-            break;
-    }
-    return YES;
-}
-
 
 
 

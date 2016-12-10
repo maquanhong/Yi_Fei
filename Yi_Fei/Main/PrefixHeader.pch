@@ -27,8 +27,8 @@
 #import "ZZPhotoKit.h"
 #import "FMDB.h"
 #import "GDataXMLNode.h"
-#import "PopView.h"
 #import "SVProgressHUD.h"
+#import "PopView.h"
 
 
 #pragma mark 颜色的的设置

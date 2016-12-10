@@ -40,7 +40,7 @@
     [_iconImageView setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];
     [self addSubview:_iconImageView];
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(self).offset(40);
+        make.leading.mas_equalTo(self).offset(20);
         make.top.mas_equalTo(self.mas_top).offset(20);
         make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
@@ -57,7 +57,7 @@
     [_titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_iconImageView.mas_right).offset(10);
         make.centerY.mas_equalTo(_iconImageView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
+        make.size.mas_equalTo(CGSizeMake(80, 20));
     }];
     
     _chooseBtn =[[TapButton alloc] init];
@@ -82,19 +82,18 @@
     [_emailLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_chooseBtn.mas_right).offset(10);
         make.centerY.mas_equalTo(_chooseBtn.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
+        make.size.mas_equalTo(CGSizeMake(80, 20));
     }];
     
 }
-
 
 
 -(void)clickOneBtn:(UIButton*)sender{
     sender.selected = !sender.selected;
     UIButton *btn =  [self viewWithTag:1231];
     btn.selected = NO;
-    if ([self.delegate respondsToSelector:@selector(clickBloothBtn:)]) {
-        [self.delegate clickBloothBtn:sender.tag];
+    if ([self.delegate respondsToSelector:@selector(clickExcelBtn:)]) {
+        [self.delegate clickExcelBtn:sender.tag];
     }
 }
 
@@ -103,8 +102,8 @@
     sender.selected = !sender.selected;
     UIButton *btn =  [self viewWithTag:1230];
     btn.selected = NO;
-    if ([self.delegate respondsToSelector:@selector(clickEmailBtn:)]) {
-        [self.delegate clickEmailBtn:sender.tag];
+    if ([self.delegate respondsToSelector:@selector(clickPDFBtn:)]) {
+        [self.delegate clickPDFBtn:sender.tag];
     }
 }
 

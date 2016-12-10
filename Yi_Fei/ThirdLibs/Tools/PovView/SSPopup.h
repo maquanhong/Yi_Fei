@@ -25,7 +25,7 @@ typedef void (^VSActionBlock)(int);
 
 
 /* Pickup Outlet get Delegate */
--(void)GetSelectedOutlet:(int)tag;
+-(void)GetSelectedOutlet:(NSInteger)tag;
 
 
 @end
