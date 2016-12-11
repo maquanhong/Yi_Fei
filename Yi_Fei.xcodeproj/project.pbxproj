@@ -17,6 +17,7 @@
 		203793DD1DF8227C00992510 /* GYDCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D61DF8227C00992510 /* GYDCUtilities.m */; };
 		203793DE1DF8227C00992510 /* GYReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D81DF8227C00992510 /* GYReflection.m */; };
 		203793E41DF99BE600992510 /* ClientBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793E31DF99BE600992510 /* ClientBaseInfo.m */; };
+		2053FDE91DFDA11800A593EB /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2053FDE81DFDA11800A593EB /* ProductListViewController.m */; };
 		20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D61DF640EA0009167F /* UIImage+Tool.m */; };
 		20FBC9E91DF640EA0009167F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D91DF640EA0009167F /* AboutViewController.m */; };
 		20FBC9EA1DF640EA0009167F /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DB1DF640EA0009167F /* BasicInfoTableViewController.m */; };
@@ -304,6 +305,8 @@
 		203793D81DF8227C00992510 /* GYReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYReflection.m; sourceTree = "<group>"; };
 		203793E21DF99BE600992510 /* ClientBaseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientBaseInfo.h; sourceTree = "<group>"; };
 		203793E31DF99BE600992510 /* ClientBaseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientBaseInfo.m; sourceTree = "<group>"; };
+		2053FDE71DFDA11800A593EB /* ProductListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListViewController.h; sourceTree = "<group>"; };
+		2053FDE81DFDA11800A593EB /* ProductListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListViewController.m; sourceTree = "<group>"; };
 		20FBC9D51DF640EA0009167F /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
 		20FBC9D61DF640EA0009167F /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
 		20FBC9D81DF640EA0009167F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -1214,6 +1217,8 @@
 		E416CC091DF5E9F8002A6E60 /* Supply */ = {
 			isa = PBXGroup;
 			children = (
+				2053FDE71DFDA11800A593EB /* ProductListViewController.h */,
+				2053FDE81DFDA11800A593EB /* ProductListViewController.m */,
 				203793BF1DF6DBC000992510 /* MySalerViewController.h */,
 				203793C01DF6DBC000992510 /* MySalerViewController.m */,
 				E49351C01DF70CA900145486 /* MyShopGoods */,
@@ -2454,6 +2459,7 @@
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
 				E49352431DF7135600145486 /* SendInfoController.m in Sources */,
 				E416CD3A1DF5EB4C002A6E60 /* ExhibitionViewController.m in Sources */,
+				2053FDE91DFDA11800A593EB /* ProductListViewController.m in Sources */,
 				E416CBBD1DF5E9E1002A6E60 /* BuyerProductController.m in Sources */,
 				20FBC9EE1DF640EA0009167F /* ProductModelStepTwoTableViewController.m in Sources */,
 			);

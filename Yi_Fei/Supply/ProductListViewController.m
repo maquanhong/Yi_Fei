@@ -6,24 +6,21 @@
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "QueryPriceViewController.h"
+#import "ProductListViewController.h"
 #import "SearchBarView.h"
 #import "PureLayout.h"
 #import "QueryPriceTableViewCell.h"
 #import "AskProductPriceTableViewController.h"
 #import "ImageAskProductPriceTableViewController.h"
-#import "AddOneProductionController.h"
-#import "BuyerProductController.h"
-@interface QueryPriceViewController ()<SearchBarViewDelegate,XHSegmentControlDelegate, UITableViewDelegate, UITableViewDataSource,QueryPriceTableViewCellDelegate>{
+
+@interface ProductListViewController ()<SearchBarViewDelegate, UITableViewDelegate, UITableViewDataSource,QueryPriceTableViewCellDelegate>{
     UIView *addTableV;
 }
 @property (nonatomic, strong) UITableView  *productTableView;
-@property (nonatomic, strong) XHSegmentControl *segmentControl;
 @property (nonatomic, strong) UISearchController *searchC;
-@property (nonatomic, assign) BOOL bShowAddView;
 @end
 
-@implementation QueryPriceViewController
+@implementation ProductListViewController
 
 - (void)setNav {
     UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
@@ -35,79 +32,13 @@
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem=leftBtnItem;
     
-    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProduct)];
+    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc] initWithTitle:@"确认添加" style:UIBarButtonItemStyleDone target:self action:@selector(confirmAdd)];
     self.navigationItem.rightBarButtonItem=rightButton;
 }
 
-- (void)addProduct {
-    self.bShowAddView = !self.bShowAddView;
-    //获取当前顶层的窗口
-    UIWindow *awindow=[[UIApplication sharedApplication].windows lastObject];
-    if (self.bShowAddView) {
-        addTableV=[[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT)];
-        addTableV.backgroundColor=[UIColor clearColor];
-        UIView *bgView = [[UIView alloc] initWithFrame:addTableV.bounds];
-        bgView.backgroundColor = [UIColor blackColor];
-        bgView.alpha = 0.6;
-        [addTableV addSubview:bgView];
-        [awindow addSubview:addTableV];
-        NSArray *imgArray=@[@"saoyisao-.png",@"shoudong.png"];
-        NSArray *titleArray;
-        titleArray=@[@"添加商品",@"新建商品"];
-        for (int i=0; i<2; i++) {
-            UIView *backV=[[UIView alloc] init];
-            backV.backgroundColor = [UIColor whiteColor];
-            [backV sizeToFit];
-            backV.frame=CGRectMake(0, 41*i, WIDTH, 41);
-            [addTableV addSubview:backV];
-            
-            UIImageView *imgV=[[UIImageView alloc] init];
-            imgV.contentMode = UIViewContentModeCenter;
-            imgV.frame=CGRectMake(10, 5, 30, 30);
-            imgV.image=[UIImage imageNamed:imgArray[i]];
-            [backV addSubview:imgV];
-            
-            
-            UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-            [btn sizeToFit];
-            btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 70, 30);
-            if (i==1) {
-                btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 130, 30);
-                [btn addTarget:self action:@selector(btn2Click) forControlEvents:UIControlEventTouchUpInside];
-            } else {
-                [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-            }
-            btn.tag=70+i;
-            btn.titleLabel.font=[UIFont systemFontOfSize:15.0];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
-            [backV addSubview:btn];
-            
-            
-            UIView *lineV=[[UIView alloc] init];
-            lineV.frame=CGRectMake(0, CGRectGetMaxY(backV.frame) - 1, WIDTH, 1);
-            lineV.backgroundColor=[UIColor lightGrayColor];
-            [backV addSubview:lineV];
-        }
-    }else{
-        [addTableV removeFromSuperview];
-    }
-
+- (void)confirmAdd {
 }
 
-- (void)btn2Click {
-    self.bShowAddView = NO;
-    [addTableV removeFromSuperview];
-    AddOneProductionController *addOneVc = [[AddOneProductionController alloc] init];
-    [self.navigationController pushViewController:addOneVc animated:YES];
-}
-
-- (void)btnClick {
-    self.bShowAddView = NO;
-    [addTableV removeFromSuperview];
-    BuyerProductController *buyerVc = [[BuyerProductController alloc] init];
-    [self.navigationController pushViewController:buyerVc animated:YES];
-}
 
 - (void)leftButtonClick {
     [self.navigationController popViewControllerAnimated:YES];
@@ -115,14 +46,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"询价";
+    self.title = @"商品清单";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setNav];
-    _segmentControl = [[XHSegmentControl alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 44)];
-    self.segmentControl.delegate = self;
-    self.segmentControl.titles = @[@"已报价",@"预留报价",@"留样报价"];
-    [self.view addSubview:self.segmentControl];
-    [self.segmentControl load];
     
     _productTableView = [[UITableView alloc] initForAutoLayout];
     self.productTableView.delegate = self;
@@ -156,7 +82,7 @@
     [self.productTableView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
     [self.productTableView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
     [self.productTableView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-    [self.productTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.segmentControl];
+    [self.productTableView autoPinEdgeToSuperviewEdge:ALEdgeTop];
 }
 
 - (void)didReceiveMemoryWarning {
