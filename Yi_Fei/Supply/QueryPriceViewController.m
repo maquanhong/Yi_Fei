@@ -12,10 +12,14 @@
 #import "QueryPriceTableViewCell.h"
 #import "AskProductPriceTableViewController.h"
 #import "ImageAskProductPriceTableViewController.h"
-@interface QueryPriceViewController ()<SearchBarViewDelegate,XHSegmentControlDelegate, UITableViewDelegate, UITableViewDataSource,QueryPriceTableViewCellDelegate>
+#import "AddOneProductionController.h"
+@interface QueryPriceViewController ()<SearchBarViewDelegate,XHSegmentControlDelegate, UITableViewDelegate, UITableViewDataSource,QueryPriceTableViewCellDelegate>{
+    UIView *addTableV;
+}
 @property (nonatomic, strong) UITableView  *productTableView;
 @property (nonatomic, strong) XHSegmentControl *segmentControl;
 @property (nonatomic, strong) UISearchController *searchC;
+@property (nonatomic, assign) BOOL bShowAddView;
 @end
 
 @implementation QueryPriceViewController
@@ -29,6 +33,69 @@
     
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem=leftBtnItem;
+    
+    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProduct)];
+    self.navigationItem.rightBarButtonItem=rightButton;
+}
+
+- (void)addProduct {
+    self.bShowAddView = !self.bShowAddView;
+    //获取当前顶层的窗口
+    UIWindow *awindow=[[UIApplication sharedApplication].windows lastObject];
+    if (self.bShowAddView) {
+        addTableV=[[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT)];
+        addTableV.backgroundColor=[UIColor clearColor];
+        UIView *bgView = [[UIView alloc] initWithFrame:addTableV.bounds];
+        bgView.backgroundColor = [UIColor blackColor];
+        bgView.alpha = 0.6;
+        [addTableV addSubview:bgView];
+        [awindow addSubview:addTableV];
+        NSArray *imgArray=@[@"saoyisao-.png",@"shoudong.png"];
+        NSArray *titleArray;
+        titleArray=@[@"添加商品",@"新建商品"];
+        for (int i=0; i<2; i++) {
+            UIView *backV=[[UIView alloc] init];
+            backV.backgroundColor = [UIColor whiteColor];
+            [backV sizeToFit];
+            backV.frame=CGRectMake(0, 41*i, WIDTH, 41);
+            [addTableV addSubview:backV];
+            
+            UIImageView *imgV=[[UIImageView alloc] init];
+            imgV.contentMode = UIViewContentModeCenter;
+            imgV.frame=CGRectMake(10, 5, 30, 30);
+            imgV.image=[UIImage imageNamed:imgArray[i]];
+            [backV addSubview:imgV];
+            
+            
+            UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+            [btn sizeToFit];
+            btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 70, 30);
+            if (i==1) {
+                btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 130, 30);
+                [btn addTarget:self action:@selector(btn2Click:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            btn.tag=70+i;
+            btn.titleLabel.font=[UIFont systemFontOfSize:15.0];
+            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+            [backV addSubview:btn];
+            
+            
+            UIView *lineV=[[UIView alloc] init];
+            lineV.frame=CGRectMake(0, CGRectGetMaxY(backV.frame) - 1, WIDTH, 1);
+            lineV.backgroundColor=[UIColor lightGrayColor];
+            [backV addSubview:lineV];
+        }
+    }else{
+        [addTableV removeFromSuperview];
+    }
+
+}
+
+- (void)btnClick {
+    AddOneProductionController *addOneVc = [[AddOneProductionController alloc] init];
+    [self.navigationController pushViewController:addOneVc animated:YES];
 }
 
 - (void)leftButtonClick {
