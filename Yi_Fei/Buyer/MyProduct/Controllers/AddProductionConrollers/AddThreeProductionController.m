@@ -90,14 +90,11 @@
     _tableView.backgroundColor=[UIColor whiteColor];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    UIView *footView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
-    _certainBtn = [[UIButton alloc] init];
-    [_certainBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [_certainBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _certainBtn.backgroundColor = BACKCOLOR;
-    _certainBtn.layer.cornerRadius = 10;
-    [footView addSubview:_certainBtn];
-    [_certainBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *footView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
+    UIButton *btn = [BUYButton creatBtnWithBgColor:NAVCOLOR borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:[UIColor whiteColor] text:@"确定"];
+    [btn addTarget:self action:@selector(clickBtnNextController) forControlEvents:UIControlEventTouchUpInside];
+    [footView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(footView.mas_centerX);
         make.centerY.mas_equalTo(footView.mas_centerY);
         make.leading.mas_equalTo(footView).offset(40);
@@ -105,7 +102,6 @@
     }];
     _tableView.tableFooterView=footView;
     [self.view addSubview:_tableView];
-    [_certainBtn addTarget:self action:@selector(clickBtnNextController) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark 保存数据到数据库
@@ -122,7 +118,6 @@
     }else{
         //进行收藏
         [manager insertDataModel:_shopObj];
-        [firstCell.textView endEditing:YES];
         BuyerProductController *myVC = [[ BuyerProductController alloc] init];
         for (BuyerProductController * controller in self.navigationController.viewControllers) { //遍历
             if ([controller isKindOfClass:[BuyerProductController class]]) { //这里判断是否为你想要跳转的页面
@@ -170,11 +165,9 @@
                 firstCell = [[FirstTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer1];
             }
             firstCell.titileLabel.text = @"商品简介";
-            firstCell.holderLabel.text = @"请输入商品相关介绍";
+            firstCell.contentLabel.placeholder = @"请输入商品相关介绍";
             firstCell.selectionStyle =  UITableViewCellSelectionStyleNone;
             _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-            firstCell.textView.delegate = self;
-            firstCell.textView.tag = 2400 ;
             return firstCell;
         }else{
             static NSString *identifer2 =@"secondCell";
@@ -186,7 +179,6 @@
             secondCell.holderLabel.text = @"请勿沾水/勿靠近火源";
             secondCell.selectionStyle =  UITableViewCellSelectionStyleNone;
             secondCell.textView.delegate = self;
-            secondCell.textView.tag = 2401;
             return secondCell;
         }
         
@@ -218,6 +210,21 @@
         return nil;
     }
 }
+#pragma mark textView的代理
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    secondCell.holderLabel.hidden = YES;
+    return YES;
+}
+
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    secondCell.holderLabel.hidden = NO;
+    return YES;
+}
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -333,7 +340,6 @@
     [_tableView reloadData];
 }
 
-
 #pragma UITextField代理
 //编辑结束监听
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -372,48 +378,6 @@
 }
 
 
-//textView的代理方法设置占位符问题
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    if (textView.tag  == 2400) {
-        firstCell.holderLabel.alpha = 0;
-    }else{
-        secondCell.holderLabel.alpha = 0;
-    }
-    return YES;
-}
-
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView
-{
-    //将要停止编辑(不是第一响应者时)
-    if (textView.text.length == 0) {
-        if (textView.tag  == 2400) {
-            firstCell.holderLabel.alpha = 1.0;
-        }else{
-            secondCell.holderLabel.alpha = 1.0;
-        }
-    }
-    return YES;
-}
-
-
--(void)textViewDidEndEditing:(UITextView *)textView{
-    if (textView.tag - 2400 == 0) {
-        _shopObj.shopDescribe = textView.text;
-        //    NSLog(@"%@",_shopObj.shopDescribe);
-    }else{
-        _shopObj.shopInfo = textView.text;
-        //    NSLog(@"%@",_shopObj.shopInfo);
-    }
-    
-}
-
-//textFiled的代理
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    return YES;
-}
-
 
 #pragma mark 上传的事件
 -(void)clickUpBtn{
@@ -434,7 +398,6 @@
     [alert addAction: action3];
     [self presentViewController:alert animated:NO completion:nil];
 }
-
 
 -(void)clickPhotoAlbum{
     

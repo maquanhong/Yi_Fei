@@ -94,21 +94,16 @@
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
-//    [self.view addGestureRecognizer:tap];
 }
-
-//-(void)click{
-// 
-//    [_backView.textFThree resignFirstResponder];
-//}
 
 #pragma mark 进入最后的页面
 - (void)btnClick:(UIButton*)btn
 {
-    [_backView.textFOne endEditing:YES];
-    [_backView.textFTwo endEditing:YES];
-    [_backView.textFThree endEditing:YES];
+    if (_backView.textFThree.text.length > 0) {
+        _shopObj.shopAdderss = _backView.textFThree.text;
+    }else{
+        _shopObj.shopColor = @"";
+    }
     ZMJGoodParamViewController *paramVC = [[ ZMJGoodParamViewController alloc] init];
     paramVC.shopObj = _shopObj;
     [self.navigationController pushViewController:paramVC animated:YES];
@@ -191,29 +186,6 @@
             break;
     }
 }
-
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-
-    [_backView.textFThree endEditing:YES];
-    if (textField.text.length > 0) {
-        _shopObj.shopAdderss = _backView.textFThree.text;
-    }else{
-        _shopObj.shopColor = @"";
-    }
-    
-    switch (textField.tag) {
-        case 2000:
-  [textField resignFirstResponder];
-            break;
-        case 2001:
-   [textField resignFirstResponder];
-            break;
-    }
-    return YES;
-}
-
 
 
 

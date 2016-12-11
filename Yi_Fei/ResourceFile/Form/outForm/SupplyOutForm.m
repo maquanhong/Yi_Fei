@@ -17,12 +17,9 @@ static NSString * const kFileExtension = @"xlsx";
 - (NSString *)outputFilePath {
     
     NSAssert(self.outputFileName, @"outputFileName needs to be overridden in subclasses");
-    
     NSString *documentsFolderPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString *filePath = [[documentsFolderPath stringByAppendingPathComponent:self.outputFileName] stringByAppendingPathExtension:kFileExtension];
-    
     return filePath;
-    
 }
 
 

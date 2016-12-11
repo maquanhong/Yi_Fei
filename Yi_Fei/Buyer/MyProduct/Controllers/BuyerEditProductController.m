@@ -153,7 +153,7 @@
         if (_flag == 1) {
             return 1;
         }else{
-            if (_array.count != 0 ) {
+            if (_array.count == 0 ) {
                 return 0;
             }else{
                 return 1;
@@ -252,8 +252,8 @@
                 sixCell = [[EditFourShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer6];
             }
             sixCell.imageArray = [NSArray arrayWithArray:[_array copy]];
+            return sixCell;
         }
-        return sixCell;
     }else{
         return nil;
     }
@@ -391,8 +391,7 @@
             break;
         case 2304:
         {
-            
-            _shopObj.shopColor = firstCell.textF.text;
+        _shopObj.shopColor = firstCell.textF.text;
         }
             break;
         case 2305:
@@ -405,7 +404,6 @@
             _shopObj.shopDescribe = textField.text;
         }
             break;
-            
         default:
             break;
     }
@@ -413,48 +411,12 @@
     
 }
 
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    switch (textField.tag) {
-        case 2000:
-            [textField resignFirstResponder];
-            break;
-        case 2001:
-            [textField resignFirstResponder];
-            break;
-        case 2300:
-            [textField resignFirstResponder];
-            break;
-        case 2301:
-            [textField resignFirstResponder];
-            break;
-        case 2302:
-            [textField resignFirstResponder];
-            break;
-        case 2303:
-            [textField resignFirstResponder];
-            break;
-        case 2304:
-            [textField resignFirstResponder];
-            break;
-        case 2305:
-            [textField resignFirstResponder];
-            break;
-        case 2306:
-            [textField resignFirstResponder];
-            break;
-        default:
-            break;
-    }
-    return YES;
-}
 
 
 -(void)clickViewTag:(NSInteger)tag{
     
     _currencyArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
-    _typeArray = @[@"EXW",@"FCA",@"CPT",@"CIP",@"DAT",@"DAP",@"DDP",@"FOB"];
+    _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
     switch (tag) {
         case 1300:
         {
@@ -653,7 +615,6 @@
     [self presentViewController:alert animated:NO completion:nil];
 }
 
-
 -(void)clickPhotoAlbum{
     
     _flag = 1;
@@ -692,7 +653,6 @@
     }];
 }
 
-
 - (void)presentCameraSingle {
     _flag = 1;
     
@@ -730,7 +690,6 @@
     }];
 }
 
-
 -(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
     UIGraphicsBeginImageContext(size);
     
@@ -743,49 +702,14 @@
 }
 
 
-
-
-
-
-
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
-    [self get];
     NewTwoList  *manager = [NewTwoList newListManager];
     [manager updateDataModel:_shopObj number:_shopObj.ind];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
-
--(void)get{
-    UITextField *textFiled;
-    switch (textFiled.tag) {
-        case 2300:
-            [textFiled resignFirstResponder];
-            break;
-        case 2301:
-            [textFiled resignFirstResponder];
-            break;
-        case 2302:
-            [textFiled resignFirstResponder];
-            break;
-        case 2303:
-            [textFiled resignFirstResponder];
-            break;
-        case 2304:
-            [textFiled resignFirstResponder];
-            break;
-        case 2305:
-            [textFiled resignFirstResponder];
-            break;
-        case 2306:
-            [textFiled resignFirstResponder];
-            break;
-        default:
-            break;
-    }
-}
 
 
 

@@ -12,9 +12,10 @@
 #import "BuyerEditFSecondCell.h"
 #import "BuyerEditThreeCell.h"
 #import "SendInfoController.h"
-#import "ShareActivity.h"
 
-@interface BuyerDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,ShareActivityDelegate>
+//#import "ShareActivity.h"
+
+@interface BuyerDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     BuyerEditFirstCell *firstCell;
     BuyerEditFSecondCell *secondCell;
@@ -46,10 +47,9 @@
     self.navigationItem.leftBarButtonItem = barItem;
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    
     BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    
-    [rightBtn setImage:[UIImage imageNamed:@"点点"] forState:UIControlStateNormal];
+    [rightBtn setTitle:@"发送" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     [rightBtn addTarget:self action:@selector(shareProduct) forControlEvents: UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -59,6 +59,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)shareProduct{
+    SendInfoController *sendView = [[SendInfoController alloc] init];
+    sendView.shopData =  _shopData;
+    [self.navigationController pushViewController:sendView animated:YES];
+}
 
 #pragma mark 创建视图模块
 -(void)addContentView{
@@ -188,91 +193,20 @@
     }];
     return backView;
 }
+
+
 //在设置section的header的时候，必须要结合设置header的高度，否则header不显示(要想实现section的header的话 必须要设置其高度，否则不显示)
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 250;
 }
 
 
-- (void)shareProduct {
-    ShareActivity *sa = [[ShareActivity alloc] initShareActivityView];
-    sa.delegate = self;
-    [sa show];
-}
-
-- (void)clickButtonView:(NSInteger)index button:(UIButton *)btn{
-    
-    switch (index) {
-        case 123456:
-        {
-    SendInfoController *sendView = [[SendInfoController alloc] init];
-    sendView.shopData =  _shopData;
-    [self.navigationController pushViewController:sendView animated:YES];
-            
-        }
-            break;
-        case 123457:
-        {
-            
-            
-            
-        }
-            break;
-        case 123458:
-        {
-          
-            
-            
-            
-        }
-            break;
-        case 123459:
-        {
-       
-            
-            
-            
-        }
-            break;
-        case 123460:
-        {
-          
-            
-            
-            
-            
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 @end
+
+
 
 
 

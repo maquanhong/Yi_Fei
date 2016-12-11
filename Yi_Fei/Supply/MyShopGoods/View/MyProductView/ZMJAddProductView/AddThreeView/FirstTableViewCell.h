@@ -10,11 +10,10 @@
 
 @interface FirstTableViewCell : UITableViewCell
 
-@property (nonatomic,strong) UILabel *holderLabel;
+@property (nonatomic,strong) UITextField *contentLabel;
 
 @property (nonatomic,strong) UILabel *titileLabel;
 
-@property (nonatomic,strong) UITextView *textView;
 
 
 @end

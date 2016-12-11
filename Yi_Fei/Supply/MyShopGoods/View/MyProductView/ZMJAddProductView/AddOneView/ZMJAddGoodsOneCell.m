@@ -13,9 +13,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
     [self addView];
-        
     }
     return self;
 }
@@ -52,7 +50,7 @@
     [lineV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self);
         make.trailing.mas_equalTo(self);
-        make.top.mas_equalTo(self.mas_bottom);
+        make.bottom.mas_equalTo(self.mas_bottom);
         make.height.mas_equalTo(1.0);
     }];
 

@@ -10,9 +10,9 @@
 
 @protocol SelectTableViewCellDelegate <NSObject>
 
--(void)clickBloothBtn:(NSInteger)number;
+-(void)clickExcelBtn:(NSInteger)number;
 
--(void)clickEmailBtn:(NSInteger)number;
+-(void)clickPDFBtn:(NSInteger)number;
 
 @end
 

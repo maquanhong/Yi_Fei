@@ -8,7 +8,23 @@
 
 #import "CreateSupplyPDF.h"
 
+static NSString * const kFileExtension = @"pdf";
 @implementation CreateSupplyPDF
+
+
+#pragma mark 导出的文件路径
+- (NSString *)outputFilePath {
+    
+    NSAssert(self.outputFileName, @"outputFileName needs to be overridden in subclasses");
+    NSString *documentsFolderPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *filePath = [[documentsFolderPath stringByAppendingPathComponent:self.outputFileName] stringByAppendingPathExtension:kFileExtension];
+    return filePath;
+}
+
+#pragma mark 导入的文件名
+- (NSString *)outputFileName {
+    return @"供应商";
+}
 
 
 +(void)drawText:(NSString*)textToDraw inFrame:(CGRect)frame fontName:(NSString *)fontName fontSize:(int) fontSize
@@ -61,9 +77,9 @@
 }
 
 
-- (void)createPDF:(NSString*)filePath
+- (void)createPDF
 {
-    UIGraphicsBeginPDFContextToFile(filePath, CGRectZero, nil);
+    UIGraphicsBeginPDFContextToFile(self.outputFilePath, CGRectZero, nil);
     UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, 1000, 1300), nil);
     
     CGPoint fromOne = CGPointMake(110, 30);

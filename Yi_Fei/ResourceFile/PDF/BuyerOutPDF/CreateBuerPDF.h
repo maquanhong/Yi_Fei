@@ -1,15 +1,14 @@
 //
-//  CreateSupplyPDF.h
+//  CreateBuerPDF.h
 //  Yi_Fei
 //
-//  Created by yons on 16/12/9.
+//  Created by yons on 16/12/10.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreText/CoreText.h>
 
-@interface CreateSupplyPDF : NSObject
+@interface CreateBuerPDF : NSObject
 
 + (void)drawText:(NSString*)text inFrame:(CGRect)frame fontName:(NSString *)fontName fontSize:(int) fontSize;
 
@@ -17,9 +16,12 @@
 
 +(void)drawImage:(UIImage*)image inRect:(CGRect)rect;
 
-- (void)createPDF:(NSString*)filePath;
+- (void)createPDF;
 
-@property (nonatomic,strong)shopData *shopObjc;
+@property (nonatomic,strong)ProductionData *shopObjc;
+
+@property (readonly, nonatomic) NSString *outputFileName;  //导出的文件名
+@property (readonly, nonatomic) NSString *outputFilePath;  //导出的文件路径
 
 
 

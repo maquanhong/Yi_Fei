@@ -71,21 +71,23 @@
     
     _nameArray = @[@"公司货号",@"商品名称",@"商品尺寸",@"商品材质"];
     _holderArray = @[@"例如2351415451",@"请填写商品名称",@"例如52cm/68cm",@"例如PVC塑料"];
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 270) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT) style:UITableViewStylePlain];
     _tableView.backgroundColor=[UIColor whiteColor];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    _tableView.scrollEnabled=NO;
-    [self.view addSubview:_tableView];
+    _tableView.scrollEnabled = NO;
+    UIView *footView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200 )];
     UIButton *btn = [BUYButton creatBtnWithBgColor:NAVCOLOR borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:[UIColor whiteColor] text:@"下一步"];
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    [footView addSubview:btn];
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_tableView.mas_bottom).offset(60);
-        make.trailing.mas_equalTo(self.view).offset(-40);
-        make.leading.mas_equalTo(self.view).offset(40);
-        make.height.mas_equalTo(35);
+        make.centerX.mas_equalTo(footView.mas_centerX);
+        make.centerY.mas_equalTo(footView.mas_centerY);
+        make.leading.mas_equalTo(footView).offset(40);
+        make.trailing.mas_equalTo(footView).offset(-40);
     }];
+    _tableView.tableFooterView=footView;
+    [self.view addSubview:_tableView];
 }
 
 #pragma Mark -->事件处理
@@ -112,25 +114,6 @@
     return 50;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    switch (textField.tag - 10000) {
-        case 0:
-            [textField resignFirstResponder];
-            break;
-        case 1:
-            [textField resignFirstResponder];
-            break;
-        case 2:
-            [textField resignFirstResponder];
-            break;
-        case 3:
-            [textField resignFirstResponder];
-            break;
-        default:
-            break;
-    }
-    return YES;
-}
 
 
 #pragma UITextField代理

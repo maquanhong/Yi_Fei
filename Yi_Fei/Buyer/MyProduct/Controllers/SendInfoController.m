@@ -12,20 +12,19 @@
 #import <MessageUI/MessageUI.h>
 #import "BuyerOutForm.h"
 #import "SupplyImport.h"
+#import "CreateBuerPDF.h"
 
-
-@interface SendInfoController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate>
+@interface SendInfoController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate,PopViewDelegate>
 {
     SendDataViewCell *Firstell;
     SendDataTwoViewCell *secondCell;
     NSInteger  _index;
     NSInteger _num;
-    BackButton *_rightBtn;
-
-    
+    NSInteger _flag;
+    NSInteger _pdf;
 }
-
-@property (nonatomic, strong) UITextField   *textField;
+@property (nonatomic, strong) CreateBuerPDF * createPDF;
+@property (nonatomic, strong) PopView * selection;
 @property (nonatomic, strong) UITableView   *tableView;
 @property (nonatomic, strong) NSArray       *sendArray;
 @property (nonatomic, strong) NSArray       *dataArray;
@@ -42,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavigationView];
+    _flag = 1;
     _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", nil];
     _sendArray  = @[@{@"发送方式":@"蓝牙发送"},@{@"发送方式":@"Email发送"}];
     _dataArray  = @[@{@"发送方式":@"Excel"},@{@"发送方式":@"PDF"}];
@@ -58,8 +58,6 @@
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = barItem;
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     UIImage *searchimage=[UIImage imageNamed:@"点点"];
     UIBarButtonItem *barbtn=[[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStyleDone target:self action:@selector(sendExcelOrPDF:)];
     barbtn.image=searchimage;
@@ -74,22 +72,7 @@
 #pragma mark 添加视图
 - (void)addViewConstraints {
     
-    _textField = [[UITextField alloc] init];
-    _textField.font = [UIFont systemFontOfSize:14];
-    _textField.delegate = self;
-    _textField.layer.borderWidth = 1;
-    _textField.layer.borderColor = COLOR.CGColor;
-    _textField.layer.cornerRadius = 5.0;
-    _textField.layer.masksToBounds =YES;
-    _textField.placeholder = @"输入设备号或地址";
-    [self.view addSubview:_textField];
-    [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).offset(74);
-        make.leading.mas_equalTo(self.view).offset(30);
-        make.trailing.mas_equalTo(self.view).offset(-30);
-        make.height.mas_equalTo(25);
-    }];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, WIDTH, HEIGHT) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
@@ -111,39 +94,6 @@
     }];
     _tableView.tableFooterView  = footerView;
 }
-
-
-#pragma mark 点击发送按钮
--(void)sendClickBtn:(UIButton*)sender{
-    
-    if (_index == 1501 && _num == 1600) {
-        _singleForm = [[BuyerOutForm alloc] init];
-        _singleForm.shopObjc =  _shopData;
-        [_singleForm outExportExcel];
-[self sendExcel:_singleForm.outputFilePath name:_singleForm.outputFileName];
-        
-    }else if (_index == 1501 && _num == 1601){
-        
-        
-        NSLog(@"发送EmailPdf");
-        
-    }else if (_index == 1500 && _num == 1600){
-      
-        
-        
-        NSLog(@"发送蓝牙Excel");
-        
-    }else if (_index == 1500 && _num == 1601){
-        
-        
-        
-        
-        
-        NSLog(@"发送蓝牙Pdf");
-    }
-}
-
-
 
 #pragma mark tableView 的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -239,31 +189,51 @@
 }
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [_textField resignFirstResponder];
-    return YES;
+#pragma mark 点击发送按钮
+-(void)sendClickBtn:(UIButton*)sender{
+    
+    if (_index == 1501 && _num == 1600) { //Email发送Excel文件
+        _singleForm = [[BuyerOutForm alloc] init];
+        _singleForm.shopObjc =  _shopData;
+        [_singleForm outExportExcel];
+[self sendExcel:_singleForm.outputFilePath name:_singleForm.outputFileName];
+        
+    }else if (_index == 1501 && _num == 1601){ //Email发送PDF
+        _pdf = 1;
+        _createPDF = [[CreateBuerPDF alloc] init];
+        _createPDF.shopObjc =  _shopData;
+        [_createPDF createPDF];
+    [self sendExcel:_createPDF.outputFilePath name:_createPDF.outputFileName];
+    }else if (_index == 1500 && _num == 1600){
+        
+        
+        
+        NSLog(@"发送蓝牙Excel");
+        
+    }else if (_index == 1500 && _num == 1601){
+        
+        
+        NSLog(@"发送蓝牙Pdf");
+    }
 }
-
-
-
-
 
 #pragma mark 发送邮件
 -(void)sendExcel:(NSString *)path name:(NSString*)fileName{
-    
     MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
     mailPicker.mailComposeDelegate = self;
-    
     //判断能否发送邮件
     if (![MFMailComposeViewController canSendMail]) {
         return ;
     }
     //添加一个Excel附件
-    NSData *ExcelFile = [NSData dataWithContentsOfFile:path];
-    NSString *name = [NSString stringWithFormat:@"%@.xlsx",fileName];
-    [mailPicker addAttachmentData:ExcelFile mimeType: @"file/Excel" fileName: name];
-    [self presentViewController:mailPicker animated:YES completion:nil];
-    
+    if (_pdf == 1) {
+    NSData *pdf = [NSData dataWithContentsOfFile:path];
+  [mailPicker addAttachmentData: pdf mimeType: @"" fileName:fileName];
+    }else{
+        NSData *ExcelFile = [NSData dataWithContentsOfFile:path];
+    [mailPicker addAttachmentData:ExcelFile mimeType: @"file/Excel" fileName: fileName];
+    }
+ [self presentViewController:mailPicker animated:YES completion:nil];
 }
 
 #pragma mark - 实现 MFMailComposeViewControllerDelegate
@@ -300,23 +270,43 @@
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 
-
 #pragma mark 利用系统的 -------  发送QQ，微信等等
 -(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
-
-//    _singleForm = [[BuyerOutForm alloc] init];
-//    _singleForm.shopObjc =  _shopData;
-//    [_singleForm outExportExcel];
     
-    _supply = [[SupplyImport alloc] init];
-    _supply.shopObjc =  _shopData;
-    [_supply  importExcel];
-//    NSURL *fileURL = [NSURL fileURLWithPath:_singleForm.outputFilePath];
-//    self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-//    self.documentController.delegate = self;
-//    [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];
-    
+    if (_flag == 1) {
+        _selection=[[PopView alloc]init];
+        _selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:0.4];
+        _selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+        _selection.delegate=self;
+        [self.view  addSubview:_selection];
+        [_selection CreateTableview:nil withSender:sender  withTitle:@"请选择发送方式" setCompletionBlock:^(int tag){
+            if (tag == 1230) {
+            _singleForm = [[BuyerOutForm alloc] init];
+            _singleForm.shopObjc =  _shopData;
+            [_singleForm outExportExcel];
+            [self sendDataExcelOrPDF:sender path:_singleForm.outputFilePath];
+            }else if (tag == 1231){
+            _createPDF = [[CreateBuerPDF alloc] init];
+            _createPDF.shopObjc =  _shopData;
+            [_createPDF createPDF];
+    [self sendDataExcelOrPDF:sender path:_createPDF.outputFilePath];
+        }
+    }];
+        _flag = 0;
+    }else{
+        [_selection removeFromSuperview];
+        _flag = 1;
+    }
 }
+
+#pragma mark 调用系统的发送文件
+-(void)sendDataExcelOrPDF:(UIBarButtonItem*)sender path:(NSString*)path{
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+    self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+    self.documentController.delegate = self;
+    [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];
+}
+
 
 #pragma mark - Document Interaction Controller Delegate
 - (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller {
@@ -324,17 +314,6 @@
         self.documentController = nil;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
