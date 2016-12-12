@@ -6,116 +6,37 @@
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "QueryPriceViewController.h"
+#import "AskWayController.h"
 #import "SearchBarView.h"
 #import "PureLayout.h"
 #import "QueryPriceTableViewCell.h"
 #import "AskProductPriceTableViewController.h"
 #import "ImageAskProductPriceTableViewController.h"
+
+
 #import "AddOneProductionController.h"
 #import "BuyerProductController.h"
-@interface QueryPriceViewController ()<SearchBarViewDelegate,XHSegmentControlDelegate, UITableViewDelegate, UITableViewDataSource,QueryPriceTableViewCellDelegate>{
+#import "DownSheet.h"
+
+@interface AskWayController ()<SearchBarViewDelegate,XHSegmentControlDelegate, UITableViewDelegate, UITableViewDataSource,QueryPriceTableViewCellDelegate,DownSheetDelegate>{
     UIView *addTableV;
+    
 }
+@property (nonatomic, strong) DownSheet *sheet;
+@property (nonatomic, strong) NSArray *MenuList;
 @property (nonatomic, strong) UITableView  *productTableView;
 @property (nonatomic, strong) XHSegmentControl *segmentControl;
 @property (nonatomic, strong) UISearchController *searchC;
 @property (nonatomic, assign) BOOL bShowAddView;
 @end
 
-@implementation QueryPriceViewController
-
-- (void)setNav {
-    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
-    leftBtn.frame = CGRectMake(0, 0, 25, 25);
-    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-    
-    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem=leftBtnItem;
-    
-    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProduct)];
-    self.navigationItem.rightBarButtonItem=rightButton;
-}
-
-- (void)addProduct {
-    self.bShowAddView = !self.bShowAddView;
-    //获取当前顶层的窗口
-    UIWindow *awindow=[[UIApplication sharedApplication].windows lastObject];
-    if (self.bShowAddView) {
-        addTableV=[[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT)];
-        addTableV.backgroundColor=[UIColor clearColor];
-        UIView *bgView = [[UIView alloc] initWithFrame:addTableV.bounds];
-        bgView.backgroundColor = [UIColor blackColor];
-        bgView.alpha = 0.6;
-        [addTableV addSubview:bgView];
-        [awindow addSubview:addTableV];
-        NSArray *imgArray=@[@"saoyisao-.png",@"shoudong.png"];
-        NSArray *titleArray;
-        titleArray=@[@"添加商品",@"新建商品"];
-        for (int i=0; i<2; i++) {
-            UIView *backV=[[UIView alloc] init];
-            backV.backgroundColor = [UIColor whiteColor];
-            [backV sizeToFit];
-            backV.frame=CGRectMake(0, 41*i, WIDTH, 41);
-            [addTableV addSubview:backV];
-            
-            UIImageView *imgV=[[UIImageView alloc] init];
-            imgV.contentMode = UIViewContentModeCenter;
-            imgV.frame=CGRectMake(10, 5, 30, 30);
-            imgV.image=[UIImage imageNamed:imgArray[i]];
-            [backV addSubview:imgV];
-            
-            
-            UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-            [btn sizeToFit];
-            btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 70, 30);
-            if (i==1) {
-                btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 130, 30);
-                [btn addTarget:self action:@selector(btn2Click) forControlEvents:UIControlEventTouchUpInside];
-            } else {
-                [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-            }
-            btn.tag=70+i;
-            btn.titleLabel.font=[UIFont systemFontOfSize:15.0];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
-            [backV addSubview:btn];
-            
-            
-            UIView *lineV=[[UIView alloc] init];
-            lineV.frame=CGRectMake(0, CGRectGetMaxY(backV.frame) - 1, WIDTH, 1);
-            lineV.backgroundColor=[UIColor lightGrayColor];
-            [backV addSubview:lineV];
-        }
-    }else{
-        [addTableV removeFromSuperview];
-    }
-
-}
-
-- (void)btn2Click {
-    self.bShowAddView = NO;
-    [addTableV removeFromSuperview];
-    AddOneProductionController *addOneVc = [[AddOneProductionController alloc] init];
-    [self.navigationController pushViewController:addOneVc animated:YES];
-}
-
-- (void)btnClick {
-    self.bShowAddView = NO;
-    [addTableV removeFromSuperview];
-    BuyerProductController *buyerVc = [[BuyerProductController alloc] init];
-    [self.navigationController pushViewController:buyerVc animated:YES];
-}
-
-- (void)leftButtonClick {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+@implementation AskWayController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"询价";
+    [self initDemoData];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setNav];
     _segmentControl = [[XHSegmentControl alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 44)];
@@ -152,6 +73,58 @@
     // Do any additional setup after loading the view.
 }
 
+
+- (void)setNav {
+    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    leftBtn.frame = CGRectMake(0, 0, 25, 25);
+    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    
+    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem=leftBtnItem;
+    
+    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProduct)];
+    self.navigationItem.rightBarButtonItem=rightButton;
+}
+
+- (void)leftButtonClick {
+    [self.navigationController popViewControllerAnimated:YES];
+    [_sheet removeFromSuperview];
+}
+
+-(void)initDemoData{
+    DownSheetModel *Model1 = [[DownSheetModel alloc]init];
+    Model1.icon = @"tianjiashangpin_icon";
+    Model1.title = @"添加商品";
+    DownSheetModel *Model2 = [[DownSheetModel alloc]init];
+    Model2.icon = @"shoudong.png";
+    Model2.title = @"新建商品";
+    _MenuList = [[NSArray alloc]init];
+    _MenuList = @[Model1,Model2];
+    
+}
+
+-(void)addProduct{
+    _sheet = [[DownSheet alloc]initWithlist:_MenuList height:0];
+    _sheet.delegate = self;
+    [_sheet showInView:nil];
+}
+
+
+
+-(void)didSelectIndex:(NSInteger)index{
+    NSLog(@"%ld",index);
+    if (index == 0) {
+        BuyerProductController *buyerVc = [[BuyerProductController alloc] init];
+        [self.navigationController pushViewController:buyerVc animated:YES];
+    }else if (index == 1){
+        AddOneProductionController *addOneVc = [[AddOneProductionController alloc] init];
+        [self.navigationController pushViewController:addOneVc animated:YES];
+    }
+}
+
+
 - (void)addViewConstraints {
     [self.productTableView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
     [self.productTableView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
@@ -159,10 +132,10 @@
     [self.productTableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.segmentControl];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -208,19 +181,22 @@
     [self.navigationController pushViewController:askVc animated:YES];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
+
 
 #pragma mark XHSegmentControlDelegate
 - (void)xhSegmentSelectAtIndex:(NSInteger)index animation:(BOOL)animation {
     
 }
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_sheet removeFromSuperview];
+    
+}
+
 
 @end
