@@ -1,32 +1,30 @@
 //
-//  BuyerViewController.m
+//  SalerViewController.m
 //  YiFei
 //
 //  Created by yangyan on 16/8/30.
 //  Copyright © 2016年 yous. All rights reserved.
 //
 
-#import "BuyerViewController.h"
+#import "AskPriceSupplyController.h"
 #import "ZMJMyProductionCell.h"
 #import "BuyerTableViewCell.h"
-#import "MySalerViewController.h"
+#import "MyBuyerViewController.h"
 #import "AddSupplyViewController.h"
-#import "NewClientSupplyController.h"
-#import "ClientBaseInfo.h"
-@interface BuyerViewController (){
+#import "AskWayController.h"
+@interface AskPriceSupplyController (){
     NSArray *array;
     UIView *addTableV;
 }
 @property(nonatomic,strong)UISearchController *searchC;
 @property (nonatomic, assign) BOOL bShowAddView;
-@property (nonatomic, assign) BussinessType type;
-@property (nonatomic, strong) NSArray *clientInfoArray;
 @end
 
-@implementation BuyerViewController
+@implementation AskPriceSupplyController
+
 - (void)setNav {
-    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     
+    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0, 0, 25, 25);
     UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
@@ -39,38 +37,13 @@
     self.automaticallyAdjustsScrollViewInsets=YES;
 }
 
-- (instancetype)initWithTypeId:(BussinessType)type {
-    self = [super init];
-    if (self) {
-        _type = type;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1.0];
-    if (self.type == BussinessBuyer) {
-       self.title=@"供应商列表";
-    } else {
-        self.title=@"客户列表";
-        _clientInfoArray = [ClientBaseInfo objectsWhere:nil arguments:nil];
-    }
-    
+    self.title=@"供应商列表";
     self.bShowAddView = NO;
     [self setNav];
     [self addContentView];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (self.type == BussinessBuyer) {
-        
-    } else {
-       
-        _clientInfoArray = [ClientBaseInfo objectsWhere:nil arguments:nil];
-    }
-    [self.tableview reloadData];
 }
 
 
@@ -94,12 +67,7 @@
     //自适应
     [_searchC.searchBar sizeToFit];
     //提示信息
-    if (self.type == BussinessBuyer) {
-        _searchC.searchBar.placeholder = @"请输入供应商或者公司名称";
-    } else {
-        _searchC.searchBar.placeholder = @"请输入客户或者公司名称";
-    }
-    
+    _searchC.searchBar.placeholder = @"请输入供应商名称或者公司名称";
     _searchC.searchBar.showsCancelButton=YES;
     UIButton *canceLBtn = [_searchC.searchBar valueForKey:@"cancelButton"];
     [canceLBtn setTitle:@"取消" forState:UIControlStateNormal];
@@ -117,7 +85,7 @@
 
 #pragma Mark -- 事件处理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.clientInfoArray.count;
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -127,9 +95,7 @@
         cell=[[BuyerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
     }
     cell.imgV.image=[UIImage imageNamed:@"logo.png"];
-    ClientBaseInfo *baseInfo = self.clientInfoArray[indexPath.row];
-    cell.nameShop.text = baseInfo.name;
-    cell.priceL.text = baseInfo.company;
+    cell.nameShop.text=array[indexPath.row];
     return cell;
 }
 
@@ -148,12 +114,7 @@
         [addTableV addSubview:bgView];
         [awindow addSubview:addTableV];
         NSArray *imgArray=@[@"saoyisao-.png",@"shoudong.png"];
-        NSArray *titleArray;
-        if (self.type == BussinessBuyer) {
-            titleArray=@[@"扫一扫",@"手动添加供应商"];
-        } else {
-            titleArray=@[@"扫一扫",@"手动添加客户"];
-        }
+        NSArray *titleArray=@[@"扫一扫",@"手动添加供应商"];
         for (int i=0; i<2; i++) {
             UIView *backV=[[UIView alloc] init];
             backV.backgroundColor = [UIColor whiteColor];
@@ -199,12 +160,7 @@
 }
 
 -(void)btn2Click:(UIButton *)sender{
-    NewClientSupplyController *addSuVC;
-    if (self.type == BussinessBuyer) {
-        addSuVC=[[NewClientSupplyController alloc] initWithTypeId:BussinessBuyer];
-    } else {
-        addSuVC=[[NewClientSupplyController alloc] initWithTypeId:BussinessSaler];
-    }
+    AddSupplyViewController *addSuVC=[[AddSupplyViewController alloc] init];
     [self.navigationController pushViewController:addSuVC animated:YES];
     [addTableV removeFromSuperview];
 }
@@ -217,8 +173,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MySalerViewController *mySalerVC=[[MySalerViewController alloc] init];
-    [self.navigationController pushViewController:mySalerVC animated:YES];
+    AskWayController *salerVC=[[AskWayController alloc] init];
+    [self.navigationController pushViewController:salerVC animated:YES];
 }
 
 

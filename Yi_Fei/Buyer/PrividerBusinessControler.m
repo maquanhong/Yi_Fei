@@ -11,7 +11,7 @@
 #import "BUYButton.h"
 #import "BuyerProductController.h"
 #import "BuyerViewController.h"
-#import "offerViewController.h"
+#import "AskPriceController.h"
 
 @interface PrividerBusinessControler ()
 
@@ -135,7 +135,7 @@
     
     BuyerProductController *vc = [[BuyerProductController alloc] init];
     BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessBuyer];
-    offerViewController *offerVC=[[offerViewController alloc] initWithIdType:BussinessBuyer];
+    AskPriceController *offerVC=[[AskPriceController alloc] initWithIdType:BussinessBuyer];
     
     switch (sender.tag) {
         case 0:

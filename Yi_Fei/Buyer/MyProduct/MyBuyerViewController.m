@@ -16,7 +16,7 @@
 #import "ZESegmentedsView.h"
 #import "OnlyTitleTableViewCell.h"
 #import "AddSupplyViewController.h"
-#import "NewCreateClientTableViewController.h"
+#import "NewClientSupplyController.h"
 @interface MyBuyerViewController ()<ZESegmentedsViewDelegate>
 {
     UIView *addTableV;
@@ -117,7 +117,7 @@
 }
 
 -(void)btn2Click:(UIButton *)sender{
-    NewCreateClientTableViewController *addSuVC=[[NewCreateClientTableViewController alloc] initWithTypeId:BussinessSaler];
+    NewClientSupplyController *addSuVC=[[NewClientSupplyController alloc] initWithTypeId:BussinessSaler];
     [self.navigationController pushViewController:addSuVC animated:YES];
     [addTableV removeFromSuperview];
 }

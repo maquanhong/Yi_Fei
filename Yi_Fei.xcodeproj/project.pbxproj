@@ -22,11 +22,7 @@
 		20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E11DF640EA0009167F /* ProductModelStepOneTableViewController.m */; };
 		20FBC9EE1DF640EA0009167F /* ProductModelStepTwoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E31DF640EA0009167F /* ProductModelStepTwoTableViewController.m */; };
 		20FBC9FD1DF6427B0009167F /* AskProductPriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9F71DF6427B0009167F /* AskProductPriceTableViewController.m */; };
-		20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9F81DF6427B0009167F /* ClientViewController.m */; };
 		20FBC9FF1DF6427B0009167F /* ImageAskProductPriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9F91DF6427B0009167F /* ImageAskProductPriceTableViewController.m */; };
-		20FBCA001DF6427B0009167F /* offerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9FA1DF6427B0009167F /* offerViewController.m */; };
-		20FBCA011DF6427B0009167F /* QueryPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */; };
-		20FBCA021DF6427B0009167F /* SalerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9FC1DF6427B0009167F /* SalerViewController.m */; };
 		20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA091DF643500009167F /* AddSupplyViewController.m */; };
 		20FBCA101DF643500009167F /* AskPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0A1DF643500009167F /* AskPriceViewController.m */; };
 		20FBCA111DF643500009167F /* BuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA0B1DF643500009167F /* BuyerViewController.m */; };
@@ -150,7 +146,6 @@
 		E416CD711DF5ED7B002A6E60 /* ThreePopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD611DF5ED7B002A6E60 /* ThreePopTableViewCell.m */; };
 		E416CD721DF5ED7B002A6E60 /* UploadImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD631DF5ED7B002A6E60 /* UploadImageTableViewCell.m */; };
 		E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD751DF5ED84002A6E60 /* Client.m */; };
-		E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD771DF5ED84002A6E60 /* NewCreateClientTableViewController.m */; };
 		E416CD801DF5ED84002A6E60 /* NewlyAskingPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD791DF5ED84002A6E60 /* NewlyAskingPrice.m */; };
 		E416CD811DF5ED84002A6E60 /* SearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD7B1DF5ED84002A6E60 /* SearchBarView.m */; };
 		E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = E416CD851DF5EDF3002A6E60 /* DownListBgView.m */; };
@@ -187,6 +182,14 @@
 		E464CB7C1DFF0F67008DDB12 /* SystemSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB7B1DFF0F67008DDB12 /* SystemSettingViewController.m */; };
 		E464CB841DFF1090008DDB12 /* SystemSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB821DFF1090008DDB12 /* SystemSettingCell.m */; };
 		E464CB851DFF1090008DDB12 /* SystemSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E464CB831DFF1090008DDB12 /* SystemSettingCell.xib */; };
+		E464CB891DFF2B00008DDB12 /* AskPriceController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB871DFF2B00008DDB12 /* AskPriceController.m */; };
+		E464CB961DFF2D45008DDB12 /* ClientSupplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB921DFF2D45008DDB12 /* ClientSupplyController.m */; };
+		E464CB971DFF2D45008DDB12 /* NewClientSupplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB951DFF2D45008DDB12 /* NewClientSupplyController.m */; };
+		E464CB9A1DFF2EB9008DDB12 /* AskPriceSupplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB991DFF2EB9008DDB12 /* AskPriceSupplyController.m */; };
+		E464CB9D1DFF2F99008DDB12 /* AskWayController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB9C1DFF2F99008DDB12 /* AskWayController.m */; };
+		E464CBA51DFF3463008DDB12 /* DownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CBA01DFF3463008DDB12 /* DownSheet.m */; };
+		E464CBA61DFF3463008DDB12 /* DownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CBA21DFF3463008DDB12 /* DownSheetCell.m */; };
+		E464CBA71DFF3463008DDB12 /* DownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CBA41DFF3463008DDB12 /* DownSheetModel.m */; };
 		E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C41DF70CA900145486 /* InfoSendViewController.m */; };
 		E49352131DF70CA900145486 /* MyProductionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C61DF70CA900145486 /* MyProductionController.m */; };
 		E49352141DF70CA900145486 /* ZMJEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49351C81DF70CA900145486 /* ZMJEditViewController.m */; };
@@ -307,17 +310,9 @@
 		20FBC9E21DF640EA0009167F /* ProductModelStepTwoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModelStepTwoTableViewController.h; sourceTree = "<group>"; };
 		20FBC9E31DF640EA0009167F /* ProductModelStepTwoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModelStepTwoTableViewController.m; sourceTree = "<group>"; };
 		20FBC9F11DF6427B0009167F /* AskProductPriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskProductPriceTableViewController.h; sourceTree = "<group>"; };
-		20FBC9F21DF6427B0009167F /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
 		20FBC9F31DF6427B0009167F /* ImageAskProductPriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAskProductPriceTableViewController.h; sourceTree = "<group>"; };
-		20FBC9F41DF6427B0009167F /* offerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = offerViewController.h; sourceTree = "<group>"; };
-		20FBC9F51DF6427B0009167F /* QueryPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryPriceViewController.h; sourceTree = "<group>"; };
-		20FBC9F61DF6427B0009167F /* SalerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalerViewController.h; sourceTree = "<group>"; };
 		20FBC9F71DF6427B0009167F /* AskProductPriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskProductPriceTableViewController.m; sourceTree = "<group>"; };
-		20FBC9F81DF6427B0009167F /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
 		20FBC9F91DF6427B0009167F /* ImageAskProductPriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAskProductPriceTableViewController.m; sourceTree = "<group>"; };
-		20FBC9FA1DF6427B0009167F /* offerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = offerViewController.m; sourceTree = "<group>"; };
-		20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryPriceViewController.m; sourceTree = "<group>"; };
-		20FBC9FC1DF6427B0009167F /* SalerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SalerViewController.m; sourceTree = "<group>"; };
 		20FBCA031DF643500009167F /* AddSupplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSupplyViewController.h; sourceTree = "<group>"; };
 		20FBCA041DF643500009167F /* AskPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceViewController.h; sourceTree = "<group>"; };
 		20FBCA051DF643500009167F /* BuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerViewController.h; sourceTree = "<group>"; };
@@ -552,8 +547,6 @@
 		E416CD631DF5ED7B002A6E60 /* UploadImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageTableViewCell.m; sourceTree = "<group>"; };
 		E416CD741DF5ED84002A6E60 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		E416CD751DF5ED84002A6E60 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
-		E416CD761DF5ED84002A6E60 /* NewCreateClientTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCreateClientTableViewController.h; sourceTree = "<group>"; };
-		E416CD771DF5ED84002A6E60 /* NewCreateClientTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCreateClientTableViewController.m; sourceTree = "<group>"; };
 		E416CD781DF5ED84002A6E60 /* NewlyAskingPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewlyAskingPrice.h; sourceTree = "<group>"; };
 		E416CD791DF5ED84002A6E60 /* NewlyAskingPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewlyAskingPrice.m; sourceTree = "<group>"; };
 		E416CD7A1DF5ED84002A6E60 /* SearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarView.h; sourceTree = "<group>"; };
@@ -616,6 +609,22 @@
 		E464CB811DFF1090008DDB12 /* SystemSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingCell.h; sourceTree = "<group>"; };
 		E464CB821DFF1090008DDB12 /* SystemSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingCell.m; sourceTree = "<group>"; };
 		E464CB831DFF1090008DDB12 /* SystemSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemSettingCell.xib; sourceTree = "<group>"; };
+		E464CB871DFF2B00008DDB12 /* AskPriceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceController.m; sourceTree = "<group>"; };
+		E464CB881DFF2B00008DDB12 /* AskPriceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceController.h; sourceTree = "<group>"; };
+		E464CB911DFF2D45008DDB12 /* ClientSupplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientSupplyController.h; path = ../Buyer/AskPriceController/ClientSupplyController/ClientSupplyController.h; sourceTree = "<group>"; };
+		E464CB921DFF2D45008DDB12 /* ClientSupplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientSupplyController.m; path = ../Buyer/AskPriceController/ClientSupplyController/ClientSupplyController.m; sourceTree = "<group>"; };
+		E464CB941DFF2D45008DDB12 /* NewClientSupplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewClientSupplyController.h; sourceTree = "<group>"; };
+		E464CB951DFF2D45008DDB12 /* NewClientSupplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewClientSupplyController.m; sourceTree = "<group>"; };
+		E464CB981DFF2EB9008DDB12 /* AskPriceSupplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceSupplyController.h; sourceTree = "<group>"; };
+		E464CB991DFF2EB9008DDB12 /* AskPriceSupplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceSupplyController.m; sourceTree = "<group>"; };
+		E464CB9B1DFF2F99008DDB12 /* AskWayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskWayController.h; sourceTree = "<group>"; };
+		E464CB9C1DFF2F99008DDB12 /* AskWayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskWayController.m; sourceTree = "<group>"; };
+		E464CB9F1DFF3463008DDB12 /* DownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheet.h; sourceTree = "<group>"; };
+		E464CBA01DFF3463008DDB12 /* DownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheet.m; sourceTree = "<group>"; };
+		E464CBA11DFF3463008DDB12 /* DownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetCell.h; sourceTree = "<group>"; };
+		E464CBA21DFF3463008DDB12 /* DownSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheetCell.m; sourceTree = "<group>"; };
+		E464CBA31DFF3463008DDB12 /* DownSheetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetModel.h; sourceTree = "<group>"; };
+		E464CBA41DFF3463008DDB12 /* DownSheetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheetModel.m; sourceTree = "<group>"; };
 		E49351C31DF70CA900145486 /* InfoSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoSendViewController.h; sourceTree = "<group>"; };
 		E49351C41DF70CA900145486 /* InfoSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSendViewController.m; sourceTree = "<group>"; };
 		E49351C51DF70CA900145486 /* MyProductionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProductionController.h; sourceTree = "<group>"; };
@@ -931,6 +940,7 @@
 		E416CB8E1DF5E9E1002A6E60 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				E464CB861DFF2AD7008DDB12 /* AskPriceController */,
 				20FBCA241DF6473A0009167F /* BuyerLable.h */,
 				20FBCA251DF6473A0009167F /* BuyerLable.m */,
 				E416CB8F1DF5E9E1002A6E60 /* MyProduct */,
@@ -1186,17 +1196,9 @@
 				203793C01DF6DBC000992510 /* MySalerViewController.m */,
 				E49351C01DF70CA900145486 /* MyShopGoods */,
 				20FBC9F11DF6427B0009167F /* AskProductPriceTableViewController.h */,
-				20FBC9F21DF6427B0009167F /* ClientViewController.h */,
 				20FBC9F31DF6427B0009167F /* ImageAskProductPriceTableViewController.h */,
-				20FBC9F41DF6427B0009167F /* offerViewController.h */,
-				20FBC9F51DF6427B0009167F /* QueryPriceViewController.h */,
-				20FBC9F61DF6427B0009167F /* SalerViewController.h */,
 				20FBC9F71DF6427B0009167F /* AskProductPriceTableViewController.m */,
-				20FBC9F81DF6427B0009167F /* ClientViewController.m */,
 				20FBC9F91DF6427B0009167F /* ImageAskProductPriceTableViewController.m */,
-				20FBC9FA1DF6427B0009167F /* offerViewController.m */,
-				20FBC9FB1DF6427B0009167F /* QueryPriceViewController.m */,
-				20FBC9FC1DF6427B0009167F /* SalerViewController.m */,
 				E416CC5E1DF5E9F8002A6E60 /* ZMJProviderController.h */,
 				E416CC5F1DF5E9F8002A6E60 /* ZMJProviderController.m */,
 				203793C21DF6F98600992510 /* ProductListTableViewController.h */,
@@ -1208,6 +1210,7 @@
 		E416CC601DF5E9F8002A6E60 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				E464CB9E1DFF3463008DDB12 /* Classes */,
 				E464CB4B1DFEE73E008DDB12 /* QRCode */,
 				203793C81DF8227C00992510 /* GYDataCenter */,
 				E4F13A461DFC1CA7004860F4 /* IQKeyboardManager */,
@@ -1539,10 +1542,10 @@
 		E416CD731DF5ED84002A6E60 /* MyClient */ = {
 			isa = PBXGroup;
 			children = (
+				E464CB911DFF2D45008DDB12 /* ClientSupplyController.h */,
+				E464CB921DFF2D45008DDB12 /* ClientSupplyController.m */,
 				E416CD741DF5ED84002A6E60 /* Client.h */,
 				E416CD751DF5ED84002A6E60 /* Client.m */,
-				E416CD761DF5ED84002A6E60 /* NewCreateClientTableViewController.h */,
-				E416CD771DF5ED84002A6E60 /* NewCreateClientTableViewController.m */,
 				E416CD781DF5ED84002A6E60 /* NewlyAskingPrice.h */,
 				E416CD791DF5ED84002A6E60 /* NewlyAskingPrice.m */,
 				E416CD7A1DF5ED84002A6E60 /* SearchBarView.h */,
@@ -1696,6 +1699,50 @@
 				E464CB831DFF1090008DDB12 /* SystemSettingCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E464CB861DFF2AD7008DDB12 /* AskPriceController */ = {
+			isa = PBXGroup;
+			children = (
+				E464CB901DFF2D45008DDB12 /* ClientSupplyController */,
+				E464CB931DFF2D45008DDB12 /* NewClientSupplyController */,
+				E464CB871DFF2B00008DDB12 /* AskPriceController.m */,
+				E464CB881DFF2B00008DDB12 /* AskPriceController.h */,
+			);
+			path = AskPriceController;
+			sourceTree = "<group>";
+		};
+		E464CB901DFF2D45008DDB12 /* ClientSupplyController */ = {
+			isa = PBXGroup;
+			children = (
+				E464CB9B1DFF2F99008DDB12 /* AskWayController.h */,
+				E464CB9C1DFF2F99008DDB12 /* AskWayController.m */,
+				E464CB981DFF2EB9008DDB12 /* AskPriceSupplyController.h */,
+				E464CB991DFF2EB9008DDB12 /* AskPriceSupplyController.m */,
+			);
+			path = ClientSupplyController;
+			sourceTree = "<group>";
+		};
+		E464CB931DFF2D45008DDB12 /* NewClientSupplyController */ = {
+			isa = PBXGroup;
+			children = (
+				E464CB941DFF2D45008DDB12 /* NewClientSupplyController.h */,
+				E464CB951DFF2D45008DDB12 /* NewClientSupplyController.m */,
+			);
+			path = NewClientSupplyController;
+			sourceTree = "<group>";
+		};
+		E464CB9E1DFF3463008DDB12 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E464CB9F1DFF3463008DDB12 /* DownSheet.h */,
+				E464CBA01DFF3463008DDB12 /* DownSheet.m */,
+				E464CBA11DFF3463008DDB12 /* DownSheetCell.h */,
+				E464CBA21DFF3463008DDB12 /* DownSheetCell.m */,
+				E464CBA31DFF3463008DDB12 /* DownSheetModel.h */,
+				E464CBA41DFF3463008DDB12 /* DownSheetModel.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		E470D5951DFB17C500C87494 /* PDF */ = {
@@ -2312,7 +2359,6 @@
 				E464CB841DFF1090008DDB12 /* SystemSettingCell.m in Sources */,
 				E416CD451DF5ED75002A6E60 /* XHSegmentItem.m in Sources */,
 				203793DC1DF8227C00992510 /* GYModelObject.m in Sources */,
-				20FBCA011DF6427B0009167F /* QueryPriceViewController.m in Sources */,
 				E416CCFE1DF5E9F8002A6E60 /* ZZCameraController.m in Sources */,
 				E464CB5F1DFEE73E008DDB12 /* HMScannerViewController.m in Sources */,
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
@@ -2327,6 +2373,7 @@
 				E4F13A751DFC1CA8004860F4 /* IQBarButtonItem.m in Sources */,
 				20FBCA0F1DF643500009167F /* AddSupplyViewController.m in Sources */,
 				E464CB6A1DFEF66D008DDB12 /* ApplyMemBerController.m in Sources */,
+				E464CB961DFF2D45008DDB12 /* ClientSupplyController.m in Sources */,
 				E416CD041DF5E9F8002A6E60 /* ZZPhotoBrowerViewController.m in Sources */,
 				E464CB031DFEB7BF008DDB12 /* SettingTableViewController.m in Sources */,
 				E416CCFB1DF5E9F8002A6E60 /* ZZBrowserPickerViewController.m in Sources */,
@@ -2356,6 +2403,7 @@
 				20FBCA1A1DF645AB0009167F /* AddSupplyTableViewCell.m in Sources */,
 				E464CAFD1DFEB651008DDB12 /* UserInfoView.m in Sources */,
 				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
+				E464CBA61DFF3463008DDB12 /* DownSheetCell.m in Sources */,
 				E464CB7C1DFF0F67008DDB12 /* SystemSettingViewController.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
 				203793DE1DF8227C00992510 /* GYReflection.m in Sources */,
@@ -2365,7 +2413,6 @@
 				E49352191DF70CA900145486 /* shopData.m in Sources */,
 				E4F13A731DFC1CA8004860F4 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				E416CBBA1DF5E9E1002A6E60 /* AddTwoProductionController.m in Sources */,
-				20FBCA001DF6427B0009167F /* offerViewController.m in Sources */,
 				E49352151DF70CA900145486 /* ZMJGoodsDetailController.m in Sources */,
 				E416CBDB1DF5E9E5002A6E60 /* MessageViewController.m in Sources */,
 				20FBCA131DF643500009167F /* MyBuyerViewController.m in Sources */,
@@ -2387,6 +2434,7 @@
 				E464CB0A1DFEBD21008DDB12 /* BasicInfoTableViewController.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
 				E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */,
+				E464CB971DFF2D45008DDB12 /* NewClientSupplyController.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
@@ -2398,7 +2446,6 @@
 				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
 				E416CBBF1DF5E9E1002A6E60 /* ProductionData.m in Sources */,
-				E416CD7F1DF5ED84002A6E60 /* NewCreateClientTableViewController.m in Sources */,
 				E44212161DF9E1990083BC1F /* BuyerOutForm.m in Sources */,
 				E416CBF81DF5E9E9002A6E60 /* BUYLoginControl.m in Sources */,
 				E464CB311DFEE434008DDB12 /* IdentifyViewController.m in Sources */,
@@ -2416,7 +2463,6 @@
 				E49352211DF70CA900145486 /* SendDataViewCell.m in Sources */,
 				E416CBB81DF5E9E1002A6E60 /* AddOneProductionController.m in Sources */,
 				E49352661DF7267300145486 /* BackButton.m in Sources */,
-				20FBC9FE1DF6427B0009167F /* ClientViewController.m in Sources */,
 				E416CBF61DF5E9E9002A6E60 /* BUYButton.m in Sources */,
 				E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */,
 				E416CBFB1DF5E9E9002A6E60 /* BUYImportView.m in Sources */,
@@ -2425,7 +2471,6 @@
 				E416CD691DF5ED7B002A6E60 /* NameContentTableViewCell.m in Sources */,
 				E416CBC51DF5E9E1002A6E60 /* MemberOneViewCell.m in Sources */,
 				E416CBDD1DF5E9E5002A6E60 /* InformationCell.m in Sources */,
-				20FBCA021DF6427B0009167F /* SalerViewController.m in Sources */,
 				20FBCA551DF6629B0009167F /* BriefProductTableViewCell.m in Sources */,
 				E4F13A701DFC1CA8004860F4 /* IQUIViewController+Additions.m in Sources */,
 				E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */,
@@ -2451,7 +2496,9 @@
 				E4F13A6C1DFC1CA7004860F4 /* IQNSArray+Sort.m in Sources */,
 				E49352131DF70CA900145486 /* MyProductionController.m in Sources */,
 				E416CD3B1DF5EB4C002A6E60 /* ExhibitionViewCell.m in Sources */,
+				E464CB9D1DFF2F99008DDB12 /* AskWayController.m in Sources */,
 				E4F13A771DFC1CA8004860F4 /* IQTitleBarButtonItem.m in Sources */,
+				E464CB9A1DFF2EB9008DDB12 /* AskPriceSupplyController.m in Sources */,
 				E416CD091DF5E9F8002A6E60 /* ZZPhotoDatas.m in Sources */,
 				E493526E1DF7267300145486 /* UIView+Layout.m in Sources */,
 				E493522D1DF70CA900145486 /* EditSecondShopCell.m in Sources */,
@@ -2470,6 +2517,7 @@
 				E4F13A891DFC5E8B004860F4 /* PopView.m in Sources */,
 				E416CD671DF5ED7B002A6E60 /* ImageCollectionViewCell.m in Sources */,
 				E416CCE01DF5E9F8002A6E60 /* ZMJProviderController.m in Sources */,
+				E464CB891DFF2B00008DDB12 /* AskPriceController.m in Sources */,
 				E416CBB91DF5E9E1002A6E60 /* AddThreeProductionController.m in Sources */,
 				E416CC081DF5E9F2002A6E60 /* NavigationControl.m in Sources */,
 				20FBCA141DF643500009167F /* newBuyerViewController.m in Sources */,
@@ -2495,6 +2543,7 @@
 				E416CBC21DF5E9E1002A6E60 /* BuyerEditFirstCell.m in Sources */,
 				E416CBBB1DF5E9E1002A6E60 /* BuyerDetailViewController.m in Sources */,
 				E493526A1DF7267300145486 /* SelectTableViewCell.m in Sources */,
+				E464CBA71DFF3463008DDB12 /* DownSheetModel.m in Sources */,
 				E416CBDC1DF5E9E5002A6E60 /* ZMJTotleHomeController.m in Sources */,
 				E44212141DF9E1990083BC1F /* ParsingController.m in Sources */,
 				E49352681DF7267300145486 /* CCZSegementController.m in Sources */,
@@ -2508,6 +2557,7 @@
 				203793DA1DF8227C00992510 /* GYDataContext.m in Sources */,
 				203793DB1DF8227C00992510 /* GYDBRunner.m in Sources */,
 				E416CD801DF5ED84002A6E60 /* NewlyAskingPrice.m in Sources */,
+				E464CBA51DFF3463008DDB12 /* DownSheet.m in Sources */,
 				E49352161DF70CA900145486 /* ZMJNewProductionController.m in Sources */,
 				E416CBBC1DF5E9E1002A6E60 /* BuyerEditProductController.m in Sources */,
 				E49352431DF7135600145486 /* SendInfoController.m in Sources */,

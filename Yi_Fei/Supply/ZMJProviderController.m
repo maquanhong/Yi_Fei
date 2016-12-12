@@ -11,7 +11,7 @@
 #import "BUYButton.h"
 #import "MyProductionController.h"
 #import "BuyerViewController.h"
-#import "offerViewController.h"
+#import "AskPriceController.h"
 #import "Macro.h"
 
 @interface ZMJProviderController ()
@@ -133,7 +133,7 @@
 {
     MyProductionController *vc = [[MyProductionController alloc] init];
     BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessSaler];
-    offerViewController *offerVC=[[offerViewController alloc] initWithIdType:BussinessSaler];
+    AskPriceController *offerVC=[[AskPriceController alloc] initWithIdType:BussinessSaler];
     
     switch (sender.tag) {
         case 0:
