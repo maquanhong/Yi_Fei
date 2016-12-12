@@ -29,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _btnMutableArray = [NSMutableArray array];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = COLOR;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     //添加控件1
@@ -46,12 +45,11 @@
 }
 
 - (void)addViewConstraints {
-    CGFloat w = 200;
     
     [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:120];
     [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
     [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:50];
-    UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
+    UIImage *logoImage = [UIImage imageNamed:@"regitstlogo"];
     [self.logoImgView autoSetDimension:ALDimensionHeight toSize:logoImage.size.height];
     
     [self.btnBgView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
@@ -79,7 +77,7 @@
     UIImageView *img = [[UIImageView alloc] initForAutoLayout];
     _logoImgView = img;
     img.contentMode = UIViewContentModeCenter;
-    UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
+    UIImage *logoImage = [UIImage imageNamed:@"regitstlogo"];
     img.image = logoImage;
     [self.view addSubview:img];
 }
