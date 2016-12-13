@@ -10,6 +10,5 @@
 
 @interface AskPriceSupplyController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,strong)UITableView *tableview;
 
 @end

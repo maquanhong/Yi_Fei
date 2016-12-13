@@ -53,9 +53,6 @@
     }];
     [self.view addSubview:segement.view];
     [self addChildViewController:segement];
-    
-    
-    
 }
 
 

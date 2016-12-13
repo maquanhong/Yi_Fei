@@ -1,26 +1,33 @@
 //
-//  BuyerProductController.m
+//  ShopListController.m
 //  Yi_Fei
 //
-//  Created by yons on 16/11/24.
+//  Created by yons on 16/12/13.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "BuyerProductController.h"
-#import "AddOneProductionController.h"
-#import "BuyerProductTableViewCell.h"
-#import "BuyerDetailViewController.h"
-#import "MemberController.h"
+#import "ShopListController.h"
+#import "ShopListCell.h"
+#import "BuyerEditProductController.h"
+#import "ZMJTypeView.h"
+#import "UWDatePickerView.h"
+#import "AskPriceModel.h"
+#import "AskWayController.h"
+#import "AskPriceList.h"
+#import "ConversionTrams.h"
 
-
-@interface BuyerProductController ()<ZMJMyProductionCellDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
-    BuyerProductTableViewCell *cell;
+@interface ShopListController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ShopListCellDelegate,SSPopupDelegate,UWDatePickerViewDelegate>{
+    ShopListCell *cell;
     BOOL _isSearch;
     BOOL _btnSearch;
     BOOL _nilSearch;
-    NewTwoList  *_manager;
+    NSString *_time;
+    UWDatePickerView *_pickerView;
+    NSInteger _index;
 }
-
+@property(nonatomic,strong)AskPriceList *askManager;
+@property(nonatomic,strong)ZMJTypeView *typeOneView;
+@property(nonatomic,strong)ZMJTypeView *typeTwoView;
 @property(nonatomic,strong)UITextField *textInput; //输入框
 @property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
 @property(nonatomic,strong)UITableView *tableview; //表格视图
@@ -29,36 +36,37 @@
 @property (nonatomic, strong) NSMutableArray *btnResultArr; //点击按钮时的结果
 @property (nonatomic, strong) NSMutableArray *allArray; //搜索的结果
 @property (nonatomic, strong) UILabel *numLabel; //有多少个元素
+@property (nonatomic, strong)  NewTwoList *manager;
+@property (nonatomic, strong)  NSMutableArray *circleArray;
 
 @end
 
-
-@implementation BuyerProductController
+@implementation ShopListController
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self loadData];
 }
 
-
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _circleArray = [NSMutableArray array];
     _isSearch = NO;
     _btnSearch = NO;
     _nilSearch = NO;
+    _index = 0;
     _searchResultArr = [NSMutableArray array];
     _btnResultArr = [NSMutableArray array];
     [self createNavigationView];
-    self.automaticallyAdjustsScrollViewInsets=NO;
-    [self addContentView];
     [self createSearchView];
-    
+    [self addContentView];
 }
+
 
 //数据的加载
 -(void)loadData{
+    
     //获取单例对象
     _manager = [NewTwoList newListManager];
     //可变数组初始化
@@ -79,18 +87,19 @@
 #pragma mark 创建navgationView
 -(void)createNavigationView
 {
-    self.navigationItem.title = @"我的商品";
+      self.title = @"商品清单";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = barItem;
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [rightBtn setBackgroundImage:[UIImage imageNamed:@"xinjian"] forState:UIControlStateNormal];
-    UIBarButtonItem * barRightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    self.navigationItem.rightBarButtonItem = barRightItem;
-    [rightBtn addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
+    [rightBtn setTitle:@"确认添加" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -98,12 +107,53 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark 创建新的商品
--(void)rightButtonClick:(UIButton *)button{
-    AddOneProductionController *shopVC=[[AddOneProductionController alloc] init];
-    [self.navigationController pushViewController:shopVC animated:YES];
-    
+- (void)rightButtonClick{
+
+    if (_circleArray.count != 0) {
+        for (NSInteger i = 0 ; i < _circleArray.count; i++) {
+            NSString *str = [NSString stringWithFormat:@"%@",_circleArray[i]];
+            NSInteger num = [str integerValue];
+            ProductionData *dataModel = [[ProductionData alloc] init];
+            if (_isSearch == YES) {
+                //赋值对应的对象
+                dataModel = _searchResultArr[num];
+                _isSearch = NO;
+            }else if (_nilSearch == YES){
+                dataModel = _listArray[num];
+                _nilSearch = NO;
+            }else if (_btnSearch == YES){
+                dataModel = _listArray[num];
+                _btnSearch = NO;
+            }else{
+                dataModel = _listArray[num];
+          }
+            ConversionTrams *conversion = [[ConversionTrams alloc] init];
+            NSString *flag = [NSString stringWithFormat:@"%ld",_index];
+            AskPriceModel *model;
+            if (_index == 2) {
+            model = [conversion  trams:dataModel tag:flag time:_time];
+            }else{
+            model = [conversion  trams:dataModel tag:flag time:nil];
+            }
+            _askManager = [AskPriceList defaultManager];
+            [_askManager insertDataModel:model];
+        }
+        AskWayController *myVC = [[ AskWayController alloc] init];
+        for (AskWayController * controller in self.navigationController.viewControllers) { //遍历
+            if ([controller isKindOfClass:[AskWayController class]]) { //这里判断是否为你想要跳转的页面
+                myVC = controller;
+                myVC.flag = [NSString stringWithFormat:@"%ld",_index];
+            }
+        }
+        if (myVC) {
+            [self.navigationController popToViewController:myVC animated:YES]; //跳转
+        }
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+ 
 }
+
 
 
 #pragma mark 创建搜索框
@@ -126,7 +176,7 @@
     imageBackView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [_searchBackView addSubview:imageBackView];
     [imageBackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(_searchBackView).offset(20);
+        make.leading.mas_equalTo(_searchBackView).offset(10);
         make.trailing.mas_equalTo(_searchBackView).offset(-70);
         make.centerY.mas_equalTo(_searchBackView.mas_centerY);
         make.height.mas_equalTo(30);
@@ -232,92 +282,61 @@
 }
 
 
+
 #pragma mark 创建tableView视图
 -(void)addContentView{
     
-    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 140, WIDTH-20, HEIGHT-140 )style:UITableViewStylePlain];
+    UIView *backView = [[UIView alloc] init];
+    backView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backView];
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view);
+        make.trailing.mas_equalTo(self.view);
+        make.top.mas_equalTo(_searchBackView.mas_bottom).offset(3);
+        make.height.mas_equalTo(40);
+    }];
+    
+    _typeOneView = [[ZMJTypeView alloc] init];
+    _typeOneView.layer.cornerRadius = 5;
+    _typeOneView.layer.borderWidth = 1.0;
+    _typeOneView.nameLabel.text = @"已报价";
+    _typeOneView.tag = 9000;
+    UITapGestureRecognizer *tapOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
+    [_typeOneView addGestureRecognizer:tapOne];
+    _typeOneView.layer.borderColor = BACKCOLOR.CGColor;
+    [backView addSubview:_typeOneView];
+    [_typeOneView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(backView).offset(10);
+        make.centerY.equalTo(backView);
+        make.size.mas_equalTo(CGSizeMake(90, 20));
+    }];
+    
+    _typeTwoView = [[ZMJTypeView alloc] init];
+    _typeTwoView.layer.cornerRadius = 5;
+    _typeTwoView.layer.borderWidth = 1.0;
+    _typeTwoView.layer.borderColor = BACKCOLOR.CGColor;
+    _typeTwoView.nameLabel.text = @"2017-02-02 12:10";
+    [backView addSubview:_typeTwoView];
+    [_typeTwoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_typeOneView.mas_right).offset(10);
+        make.centerY.equalTo(backView);
+        make.size.mas_equalTo(CGSizeMake(150, 20));
+    }];
+    _typeTwoView.tag = 9001;
+    _typeTwoView.hidden = YES;
+    UITapGestureRecognizer *tapTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
+    [_typeTwoView addGestureRecognizer:tapTwo];
+    
+    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 165, WIDTH-20, HEIGHT- 165 )style:UITableViewStylePlain];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_tableview.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(8,8)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = _tableview.bounds;
+    maskLayer.path = maskPath.CGPath;
+    _tableview.layer.mask = maskLayer;
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:self.tableview];
-    
-    UIView *haderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH-20, 45)];
-    haderView.userInteractionEnabled = YES;
-    haderView.backgroundColor = [UIColor whiteColor];
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(8,8)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = haderView.bounds;
-    maskLayer.path = maskPath.CGPath;
-    haderView.layer.mask = maskLayer;
-    
-    UIView *nextView = [[UIView alloc]init];
-    nextView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [haderView addSubview:nextView];
-    [nextView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(haderView);
-        make.trailing.mas_equalTo(haderView);
-        make.bottom.mas_equalTo(haderView.mas_bottom);
-        make.height.mas_equalTo(5);
-    }];
-    
-    UILabel  *numberlabel = [[UILabel alloc] init];
-    [numberlabel sizeToFit];
-    numberlabel.textColor=[UIColor lightGrayColor];
-    numberlabel.font=[UIFont systemFontOfSize:16.0];
-    numberlabel.text=@" 商品数量:";
-    [haderView addSubview:numberlabel];
-    [numberlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(haderView).offset(10);
-        make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
-        make.size.mas_equalTo(CGSizeMake(75, 20));
-    }];
-    
-    _numLabel = [[UILabel alloc] init];
-    _numLabel.textColor=COLOR;
-    _numLabel.text = @"0";
-    _numLabel.font=[UIFont systemFontOfSize:16.0];
-    [haderView addSubview:_numLabel];
-    [_numLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(numberlabel.mas_right).offset(5);
-        make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
-        make.size.mas_equalTo(CGSizeMake(40, 20));
-    }];
-    
-    UILabel *nameLabel = [[UILabel alloc] init];
-    [nameLabel sizeToFit];
-    nameLabel.textColor=[UIColor blackColor];
-    nameLabel.font=[UIFont systemFontOfSize:18.0];
-    nameLabel.text=@" 商品清单";
-    [haderView addSubview:nameLabel];
-    [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(haderView).offset(120);
-        make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
-    }];
-    
-    UIButton *memberBtn = [[UIButton alloc] init];
-    memberBtn.backgroundColor = [UIColor redColor];
-    [memberBtn setTitle:@"申请会员" forState:UIControlStateNormal];
-    memberBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [memberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    memberBtn.backgroundColor = COLOR;
-    memberBtn.layer.cornerRadius = 5;
-    [haderView addSubview:memberBtn];
-    [memberBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(haderView).offset(-5);
-        make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
-        make.size.mas_equalTo(CGSizeMake(70, 25));
-    }];
-    [ memberBtn addTarget:self action:@selector(clickMemberBtn) forControlEvents:UIControlEventTouchUpInside];
-    self.tableview.tableHeaderView = haderView;
-    
-}
-
--(void)clickMemberBtn{
-    
-    MemberController  *memVC = [[MemberController alloc] init];
-    [self.navigationController pushViewController:memVC animated:YES];
-    
 }
 
 
@@ -338,9 +357,8 @@
     static NSString *cellIdent=@"cell";
     cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
     if (cell==nil) {
-        cell=[[BuyerProductTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
+        cell=[[ShopListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
     }
-    
     ProductionData *dataModel = [[ProductionData alloc] init];
     if (_isSearch == YES) {
         //赋值对应的对象
@@ -350,7 +368,7 @@
         dataModel = _listArray[indexPath.row];
         _nilSearch = NO;
     }else if (_btnSearch == YES){
-        dataModel = _btnResultArr[indexPath.row];
+        dataModel = _listArray[indexPath.row];
         _btnSearch = NO;
     }else{
         dataModel = _listArray[indexPath.row];
@@ -360,109 +378,134 @@
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
-    cell.nameShop.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
+    if (dataModel.shopName.length > 0 ) {
+        cell.nameShop.text=[NSString stringWithFormat:@"￥%@",dataModel.shopName];
+    }else{
+        cell.nameShop.text  =  @"";
+    }
     if (dataModel.shopPrice.length > 0 ) {
-    cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
+        cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{
         cell.priceL.text  =  @"";
     }
     cell.delegate = self;
-    cell.selected = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     _numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
     return cell;
+    
 }
 
 
-#pragma mark 点击页面进行跳转
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    BuyerDetailViewController *detailPriceVC=[[BuyerDetailViewController alloc] init];
-    detailPriceVC.shopData=_listArray[indexPath.row];
-    [self.navigationController pushViewController:detailPriceVC animated:YES];
-}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110;
 }
 
-#pragma mark 跳转到详情界面
-- (void)clickView:(BuyerDetailViewController *)View row:(UITableViewCell *)row{
-    
-    NSIndexPath *indexPath =  [_tableview indexPathForCell:row];
-    NSInteger  index = indexPath.row;
-    BuyerDetailViewController *detailPriceVC=[[BuyerDetailViewController alloc] init];
-    
-    if (_isSearch == YES) {
-        //赋值对应的对象
-        detailPriceVC.shopData = _searchResultArr[index];
+//#pragma mark 跳转到详情界面
+//- (void)clickView:(ZMJGoodsDetailController *)controller index:(UITableViewCell *)index
+//{
+//    NSIndexPath *indexPath =  [_tableview indexPathForCell:index];
+//    NSInteger  row = indexPath.row;
+//    ZMJGoodsDetailController *detailPriceVC=[[ZMJGoodsDetailController alloc] init];
+//    detailPriceVC.shopData=_listArray[row];
+//    [self.navigationController pushViewController:detailPriceVC animated:YES];
+//}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell=[_tableview cellForRowAtIndexPath:indexPath];
+    NSString *str = [NSString stringWithFormat:@"%ld",indexPath.row];
+    if ([_circleArray containsObject:str]) {
+        cell.selectBtn.selected = NO ;
+        [_circleArray removeObject:str];
     }else{
-        detailPriceVC.shopData = _listArray[index];
+       cell.selectBtn.selected = YES ;
+        [_circleArray addObject:str];
     }
-    
-    [self.navigationController pushViewController:detailPriceVC animated:YES];
 }
 
+
+
 #pragma mark 跳转到编辑界面
-- (void)clickView:(BuyerEditProductController *)View num:(UITableViewCell *)num{
-    NSIndexPath *indexPath =  [_tableview indexPathForCell:num];
+- (void)clickLabelView:(BuyerEditProductController *)controller index:(UITableViewCell *)index
+{
+    NSIndexPath *indexPath =  [_tableview indexPathForCell:index];
     NSInteger  row = indexPath.row;
-    BuyerEditProductController *editVC  =[[BuyerEditProductController alloc] init];
+    BuyerEditProductController *editVC =[[BuyerEditProductController alloc] init];
     if (_isSearch == YES) {
         //赋值对应的对象
         editVC.shopObj = _searchResultArr[row];
     }else{
         editVC.shopObj = _listArray[row];
     }
-    
     [self.navigationController pushViewController:editVC animated:YES];
 }
 
 
-//设置编辑cell的样式（可省略）
--(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPat{
-    return UITableViewCellEditingStyleDelete;
-}
-//实现删除
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    _manager = [NewTwoList newListManager];
-    ProductionData *model ;
-    if (_isSearch == YES) {
-    model = _searchResultArr[indexPath.row];
-    }else if (_btnSearch == YES){
-    model = _btnResultArr[indexPath.row];
-    }else{
-    model = _listArray[indexPath.row];
+#pragma mark 三种状态的选择改变
+-(void)clickTypeView:(id)sender{
+    UITapGestureRecognizer * singleTap = (UITapGestureRecognizer *)sender;
+    NSInteger tag = [singleTap view].tag;
+    NSArray *firstArray = @[@"已报价",@"预留报价",@"留样报价"];
+    switch (tag) {
+        case 9000:
+        {
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = firstArray.count;
+    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:firstArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+        _index = tag;
+        _typeOneView.nameLabel.text = firstArray[tag];
+        if (tag == 1) {
+        _typeTwoView.hidden = NO;
+        }else{
+        _typeTwoView.hidden = YES;
+        }
+    }];
+        }
+            break;
+        case 9001:
+        {
+      [self setupDateView:DateTypeOfStart];
+        }
+            break;
+        default:
+            break;
     }
-    [_manager deleteNameFromTable:model.companyID];
-    if (_isSearch == YES) {
-    [_searchResultArr removeObjectAtIndex:indexPath.row];
-    }else if (_btnSearch == YES){
- [_btnResultArr removeObjectAtIndex:indexPath.row];
-    }else{
-  [_listArray removeObjectAtIndex:indexPath.row];
-    }
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-_numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
-    [_tableview reloadData];
+}
+
+- (void)setupDateView:(DateType)type {
+
+    _pickerView = [UWDatePickerView instanceDatePickerView];
+    _pickerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    [_pickerView setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.3]];
+    _pickerView.delegate = self;
+    _pickerView.type = type;
+    [self.view addSubview:_pickerView];
     
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [_textInput resignFirstResponder];
-    return YES;
+- (void)getSelectDate:(NSString *)date type:(DateType)type {
+    switch (type) {
+        case DateTypeOfStart:
+        {
+    _typeTwoView.nameLabel.text = date;
+    _time = date;
+        }
+            break;
+        case DateTypeOfEnd:
+
+            break;
+        default:
+            break;
+    }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -505,11 +548,6 @@ _numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
 
 
 @end
-
-
-
-
-
 
 
 

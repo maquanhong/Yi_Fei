@@ -368,7 +368,7 @@ cell.priceL.text  =  @"";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    return 110;
 }
 
 
@@ -446,6 +446,13 @@ cell.priceL.text  =  @"";
     _numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
     [_tableview reloadData];
 }
+
+
+
+
+
+
+
 
 @end
 

@@ -29,7 +29,7 @@
     [_imgV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self).offset(10);
         make.centerY.mas_equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(110, 85));
+        make.size.mas_equalTo(CGSizeMake(90, 90));
         
     }];
     
@@ -74,9 +74,9 @@
         button.tag=10000+i;
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         if (i == 0) {
-            button.frame=CGRectMake(130, 70, 50, 25);
+            button.frame=CGRectMake(110, 70, 50, 25);
         }else{
-            button.frame=CGRectMake(190, 70, 90, 25);
+            button.frame=CGRectMake(170, 70, 90, 25);
         }
         [self.contentView addSubview:button];
     }

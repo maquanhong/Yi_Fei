@@ -11,81 +11,184 @@
 #import "BuyerTableViewCell.h"
 #import "MyBuyerViewController.h"
 #import "AddSupplyViewController.h"
+
+
 #import "AskWayController.h"
-@interface AskPriceSupplyController (){
+#import "DownSheet.h"
+@interface AskPriceSupplyController ()<DownSheetDelegate,UITextFieldDelegate>{
+
+    BOOL _isSearch;
+    BOOL _btnSearch;
+    BOOL _nilSearch;
     NSArray *array;
     UIView *addTableV;
+    BOOL isSelect;
+ 
 }
+@property(nonatomic,strong)UITextField *textInput; //输入框
+@property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
+@property(nonatomic,strong)UITableView *tableview; //表格视图
+@property(nonatomic,strong)UIView *searchBackView; //搜索的背景图片
+@property (nonatomic, strong) NSMutableArray *searchResultArr; //输入时的结果
+@property (nonatomic, strong) NSMutableArray *btnResultArr; //点击按钮时的结果
+@property (nonatomic, strong) NSMutableArray *allArray; //搜索的结果
+@property (nonatomic, strong) UILabel *numLabel; //有多少个元素
+@property (nonatomic, strong)  NewTwoList *manager;
+@property (nonatomic, strong)  NSMutableArray *circleArray;
+@property (nonatomic, strong) DownSheet *sheet;
+@property (nonatomic, strong) NSArray *MenuList;
+
 @property(nonatomic,strong)UISearchController *searchC;
-@property (nonatomic, assign) BOOL bShowAddView;
+
 @end
 
 @implementation AskPriceSupplyController
 
-- (void)setNav {
-    
-    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
-    leftBtn.frame = CGRectMake(0, 0, 25, 25);
-    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-    
-    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem=leftBtnItem;
-    
-    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightButtonClick)];
-    self.navigationItem.rightBarButtonItem=rightButton;
-    self.automaticallyAdjustsScrollViewInsets=YES;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1.0];
-    self.title=@"供应商列表";
-    self.bShowAddView = NO;
-    [self setNav];
-    [self addContentView];
+    isSelect = YES;
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self createNavigationView];
+    [self createSearchView];
+    [self createTableView];
+    
+}
+
+#pragma mark 创建导航栏
+-(void)createNavigationView
+{
+    self.title = @"供应商列表";
+    BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    self.navigationItem.leftBarButtonItem = barItem;
+    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [rightBtn setBackgroundImage:[UIImage imageNamed:@"xinjian"] forState:UIControlStateNormal];
+    UIBarButtonItem * barRightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = barRightItem;
+    [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+-(void)leftButtonClick{
+    [self.navigationController popViewControllerAnimated:YES];
+    [_sheet removeFromSuperview];
+}
+
+#pragma mark 出现头部视图
+-(void)rightButtonClick{
+    if (isSelect) {
+        [self initDemoData];
+        _sheet = [[DownSheet alloc]initWithlist:_MenuList height:0];
+        _sheet.delegate = self;
+        [_sheet showInView:nil];
+        isSelect = NO;
+    }else{
+        [_sheet removeFromSuperview];
+        isSelect = YES;
+    }
+}
+
+-(void)initDemoData{
+    
+    DownSheetModel *Model1 = [[DownSheetModel alloc]init];
+    Model1.icon = @"saoyisao-0";
+    Model1.title = @"扫一扫";
+    DownSheetModel *Model2 = [[DownSheetModel alloc]init];
+    Model2.icon = @"shoudong.png";
+    Model2.title = @"手动添加供应商";
+    _MenuList = [[NSArray alloc]init];
+    _MenuList = @[Model1,Model2];
+    
+}
+
+-(void)didSelectIndex:(NSInteger)index{
+    
+    if (index == 0) {
+    NSLog(@"%ld",index);
+    }else if (index == 1){
+     NSLog(@"%ld",index);
+    }
 }
 
 
--(void)addContentView{
-    array=@[@"易非"];
-    self.tableview=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)style:UITableViewStyleGrouped];
-    self.tableview.backgroundColor=[UIColor clearColor];
-    self.tableview.rowHeight=80;
+#pragma mark 设置搜索框
+-(void)createSearchView{
+    
+    _searchBackView = [[UIView alloc]init];
+    _searchBackView.backgroundColor = [UIColor whiteColor];
+    _searchBackView.userInteractionEnabled = YES;
+    [self.view addSubview:_searchBackView];
+    [_searchBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view);
+        make.trailing.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view.mas_top).offset(64);
+        make.height.mas_equalTo(50);
+    }];
+    
+    UIView *imageBackView = [[UIView alloc]init];
+    imageBackView.userInteractionEnabled = YES;
+    imageBackView.layer.cornerRadius = 8;
+    imageBackView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [_searchBackView addSubview:imageBackView];
+    [imageBackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(_searchBackView).offset(10);
+        make.trailing.mas_equalTo(_searchBackView).offset(-70);
+        make.centerY.mas_equalTo(_searchBackView.mas_centerY);
+        make.height.mas_equalTo(30);
+    }];
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage imageNamed:@"sousuo"];
+    [imageBackView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(imageBackView).offset(20);
+        make.centerY.mas_equalTo(imageBackView.mas_centerY);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+    }];
+    
+    _textInput = [[UITextField alloc] init];
+    _textInput.font = [UIFont systemFontOfSize:14];
+    _textInput.placeholder = @"输入商品名称";
+    _textInput.delegate = self;
+    [_textInput addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [imageBackView addSubview:_textInput];
+    [_textInput mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(imageView.mas_right).offset(5);
+        make.centerY.mas_equalTo(imageBackView.mas_centerY);
+        make.trailing.mas_equalTo(imageBackView);
+        make.height.mas_equalTo(30);
+    }];
+    
+    UIButton *searchBtn = [[UIButton alloc]init];
+    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    searchBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [searchBtn setTitleColor:COLOR forState:UIControlStateNormal];
+    [_searchBackView addSubview:searchBtn];
+    [searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(imageBackView.mas_right).offset(15);
+        make.centerY.mas_equalTo(imageBackView.mas_centerY);
+        make.height.mas_equalTo(40);
+        make.trailing.mas_equalTo(_searchBackView).offset(-15);
+    }];
+    [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+-(void)createTableView{
+    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 140, WIDTH-20, HEIGHT- 140 )style:UITableViewStylePlain];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     [self.view addSubview:self.tableview];
-    
-    //初始化搜索栏
-    _searchC = [[UISearchController alloc] initWithSearchResultsController:nil];
-    _searchC.searchBar.barTintColor=[UIColor colorWithRed:234/255.0 green:234/255.0 blue:234/255.0 alpha:1.0];
-    _searchC.delegate=self;
-    //是否隐藏导航
-    _searchC.hidesNavigationBarDuringPresentation = NO;
-    _searchC.dimsBackgroundDuringPresentation=NO;
-    _searchC.searchBar.barStyle=UIBarStyleBlack;
-    //自适应
-    [_searchC.searchBar sizeToFit];
-    //提示信息
-    _searchC.searchBar.placeholder = @"请输入供应商名称或者公司名称";
-    _searchC.searchBar.showsCancelButton=YES;
-    UIButton *canceLBtn = [_searchC.searchBar valueForKey:@"cancelButton"];
-    [canceLBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [canceLBtn setTitleColor:NAVCOLOR forState:UIControlStateNormal];
-    //代理方法
-    _searchC.searchResultsUpdater = self;
-    _searchC.delegate=self;
-    self.tableview.tableHeaderView = _searchC.searchBar;
 }
 
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-
-}
 
 #pragma Mark -- 事件处理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return array.count;
+    
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -100,76 +203,6 @@
 }
 
 
-//添加列表窗口
--(void)rightButtonClick{
-    self.bShowAddView = !self.bShowAddView;
-    //获取当前顶层的窗口
-    UIWindow *awindow=[[UIApplication sharedApplication].windows lastObject];
-    if (self.bShowAddView) {
-        addTableV=[[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT)];
-        addTableV.backgroundColor=[UIColor clearColor];
-        UIView *bgView = [[UIView alloc] initWithFrame:addTableV.bounds];
-        bgView.backgroundColor = [UIColor blackColor];
-        bgView.alpha = 0.6;
-        [addTableV addSubview:bgView];
-        [awindow addSubview:addTableV];
-        NSArray *imgArray=@[@"saoyisao-.png",@"shoudong.png"];
-        NSArray *titleArray=@[@"扫一扫",@"手动添加供应商"];
-        for (int i=0; i<2; i++) {
-            UIView *backV=[[UIView alloc] init];
-            backV.backgroundColor = [UIColor whiteColor];
-            [backV sizeToFit];
-            backV.frame=CGRectMake(0, 41*i, WIDTH, 41);
-            [addTableV addSubview:backV];
-            
-            UIImageView *imgV=[[UIImageView alloc] init];
-            imgV.contentMode = UIViewContentModeCenter;
-            imgV.frame=CGRectMake(10, 5, 30, 30);
-            imgV.image=[UIImage imageNamed:imgArray[i]];
-            [backV addSubview:imgV];
-
-            
-            UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-            [btn sizeToFit];
-            btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 70, 30);
-            if (i==1) {
-                btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 130, 30);
-                [btn addTarget:self action:@selector(btn2Click:) forControlEvents:UIControlEventTouchUpInside];
-            }
-            btn.tag=70+i;
-            btn.titleLabel.font=[UIFont systemFontOfSize:15.0];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
-            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-            [backV addSubview:btn];
-            
-            
-            UIView *lineV=[[UIView alloc] init];
-            lineV.frame=CGRectMake(0, CGRectGetMaxY(backV.frame) - 1, WIDTH, 1);
-            lineV.backgroundColor=[UIColor lightGrayColor];
-            [backV addSubview:lineV];
-        }
-    }else{
-        [addTableV removeFromSuperview];
-    }
-}
-
--(void)btnClick:(UIButton *)sender{
-    
-
-}
-
--(void)btn2Click:(UIButton *)sender{
-    AddSupplyViewController *addSuVC=[[AddSupplyViewController alloc] init];
-    [self.navigationController pushViewController:addSuVC animated:YES];
-    [addTableV removeFromSuperview];
-}
-
--(void)leftButtonClick{
-    [self.navigationController popViewControllerAnimated:YES];
-    [addTableV removeFromSuperview];
-}
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -177,22 +210,34 @@
     [self.navigationController pushViewController:salerVC animated:YES];
 }
 
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_sheet removeFromSuperview];
+    
 }
-*/
+
+
+
+
+
+
+
+
+
 
 @end
+
+
+
+
+
+
+
+
+

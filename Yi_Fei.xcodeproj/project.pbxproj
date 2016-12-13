@@ -34,7 +34,6 @@
 		20FBCA1D1DF646B40009167F /* MyBuyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA1C1DF646B40009167F /* MyBuyerTableViewCell.m */; };
 		20FBCA221DF646F40009167F /* MyBuyerAskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA201DF646F40009167F /* MyBuyerAskTableViewCell.m */; };
 		20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */; };
-		20FBCA261DF6473A0009167F /* BuyerLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA251DF6473A0009167F /* BuyerLable.m */; };
 		20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA291DF647CA0009167F /* ZESegmentedsView.m */; };
 		20FBCA2D1DF648150009167F /* BuyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA2C1DF648150009167F /* BuyerTableViewCell.m */; };
 		20FBCA551DF6629B0009167F /* BriefProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA541DF6629B0009167F /* BriefProductTableViewCell.m */; };
@@ -162,6 +161,21 @@
 		E44212471DF9E4AD0083BC1F /* libDHxlsReaderIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212361DF9E3AC0083BC1F /* libDHxlsReaderIOS.a */; };
 		E44212491DF9E4B90083BC1F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E44212481DF9E4B90083BC1F /* libiconv.tbd */; };
 		E442124D1DF9F8830083BC1F /* ImportPrice.xls in Resources */ = {isa = PBXBuildFile; fileRef = E442124C1DF9F8830083BC1F /* ImportPrice.xls */; };
+		E45931F51DFFF7BF00040DA2 /* ShopListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45931F41DFFF7BF00040DA2 /* ShopListController.m */; };
+		E45931F91DFFFC5200040DA2 /* ShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E45931F71DFFFC5200040DA2 /* ShopListCell.m */; };
+		E45932001E000C6200040DA2 /* ShopListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45931FF1E000C6200040DA2 /* ShopListDetailController.m */; };
+		E45932031E00331100040DA2 /* SelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932021E00331100040DA2 /* SelectButton.m */; };
+		E45932091E00482800040DA2 /* UWDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932071E00482800040DA2 /* UWDatePickerView.m */; };
+		E459320A1E00482800040DA2 /* UWDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E45932081E00482800040DA2 /* UWDatePickerView.xib */; };
+		E45932231E005D8900040DA2 /* AlreadyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E459321B1E005D8900040DA2 /* AlreadyController.m */; };
+		E45932241E005D8900040DA2 /* AskWayController.m in Sources */ = {isa = PBXBuildFile; fileRef = E459321D1E005D8900040DA2 /* AskWayController.m */; };
+		E45932251E005D8900040DA2 /* ReservedController.m in Sources */ = {isa = PBXBuildFile; fileRef = E459321F1E005D8900040DA2 /* ReservedController.m */; };
+		E45932261E005D8900040DA2 /* RetentionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932211E005D8900040DA2 /* RetentionController.m */; };
+		E459322F1E005DBB00040DA2 /* AskPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E459322D1E005DBB00040DA2 /* AskPriceCell.m */; };
+		E45932331E0065AA00040DA2 /* BuyerLable.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932321E0065AA00040DA2 /* BuyerLable.m */; };
+		E45932371E00737100040DA2 /* AskPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932361E00737100040DA2 /* AskPriceModel.m */; };
+		E459323A1E0073B700040DA2 /* AskPriceList.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932391E0073B700040DA2 /* AskPriceList.m */; };
+		E459323D1E00830400040DA2 /* ConversionTrams.m in Sources */ = {isa = PBXBuildFile; fileRef = E459323C1E00830400040DA2 /* ConversionTrams.m */; };
 		E464CAFD1DFEB651008DDB12 /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CAFB1DFEB651008DDB12 /* UserInfoView.m */; };
 		E464CB031DFEB7BF008DDB12 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB021DFEB7BF008DDB12 /* SettingTableViewController.m */; };
 		E464CB0A1DFEBD21008DDB12 /* BasicInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB091DFEBD21008DDB12 /* BasicInfoTableViewController.m */; };
@@ -186,7 +200,6 @@
 		E464CB961DFF2D45008DDB12 /* ClientSupplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB921DFF2D45008DDB12 /* ClientSupplyController.m */; };
 		E464CB971DFF2D45008DDB12 /* NewClientSupplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB951DFF2D45008DDB12 /* NewClientSupplyController.m */; };
 		E464CB9A1DFF2EB9008DDB12 /* AskPriceSupplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB991DFF2EB9008DDB12 /* AskPriceSupplyController.m */; };
-		E464CB9D1DFF2F99008DDB12 /* AskWayController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB9C1DFF2F99008DDB12 /* AskWayController.m */; };
 		E464CBA51DFF3463008DDB12 /* DownSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CBA01DFF3463008DDB12 /* DownSheet.m */; };
 		E464CBA61DFF3463008DDB12 /* DownSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CBA21DFF3463008DDB12 /* DownSheetCell.m */; };
 		E464CBA71DFF3463008DDB12 /* DownSheetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CBA41DFF3463008DDB12 /* DownSheetModel.m */; };
@@ -335,8 +348,6 @@
 		20FBCA1F1DF646F40009167F /* MyBuyerInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBuyerInfoTableViewCell.h; sourceTree = "<group>"; };
 		20FBCA201DF646F40009167F /* MyBuyerAskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyerAskTableViewCell.m; sourceTree = "<group>"; };
 		20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBuyerInfoTableViewCell.m; sourceTree = "<group>"; };
-		20FBCA241DF6473A0009167F /* BuyerLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerLable.h; sourceTree = "<group>"; };
-		20FBCA251DF6473A0009167F /* BuyerLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerLable.m; sourceTree = "<group>"; };
 		20FBCA281DF647CA0009167F /* ZESegmentedsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZESegmentedsView.h; sourceTree = "<group>"; };
 		20FBCA291DF647CA0009167F /* ZESegmentedsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZESegmentedsView.m; sourceTree = "<group>"; };
 		20FBCA2B1DF648150009167F /* BuyerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerTableViewCell.h; sourceTree = "<group>"; };
@@ -571,6 +582,35 @@
 		E44212451DF9E4A70083BC1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E44212481DF9E4B90083BC1F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		E442124C1DF9F8830083BC1F /* ImportPrice.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImportPrice.xls; sourceTree = "<group>"; };
+		E45931F31DFFF7BF00040DA2 /* ShopListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListController.h; sourceTree = "<group>"; };
+		E45931F41DFFF7BF00040DA2 /* ShopListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListController.m; sourceTree = "<group>"; };
+		E45931F61DFFFC5200040DA2 /* ShopListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListCell.h; sourceTree = "<group>"; };
+		E45931F71DFFFC5200040DA2 /* ShopListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListCell.m; sourceTree = "<group>"; };
+		E45931FE1E000C6200040DA2 /* ShopListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListDetailController.h; sourceTree = "<group>"; };
+		E45931FF1E000C6200040DA2 /* ShopListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListDetailController.m; sourceTree = "<group>"; };
+		E45932011E00331100040DA2 /* SelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectButton.h; sourceTree = "<group>"; };
+		E45932021E00331100040DA2 /* SelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectButton.m; sourceTree = "<group>"; };
+		E45932061E00482800040DA2 /* UWDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UWDatePickerView.h; sourceTree = "<group>"; };
+		E45932071E00482800040DA2 /* UWDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UWDatePickerView.m; sourceTree = "<group>"; };
+		E45932081E00482800040DA2 /* UWDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UWDatePickerView.xib; sourceTree = "<group>"; };
+		E459321A1E005D8900040DA2 /* AlreadyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlreadyController.h; sourceTree = "<group>"; };
+		E459321B1E005D8900040DA2 /* AlreadyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlreadyController.m; sourceTree = "<group>"; };
+		E459321C1E005D8900040DA2 /* AskWayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskWayController.h; sourceTree = "<group>"; };
+		E459321D1E005D8900040DA2 /* AskWayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskWayController.m; sourceTree = "<group>"; };
+		E459321E1E005D8900040DA2 /* ReservedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservedController.h; sourceTree = "<group>"; };
+		E459321F1E005D8900040DA2 /* ReservedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservedController.m; sourceTree = "<group>"; };
+		E45932201E005D8900040DA2 /* RetentionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetentionController.h; sourceTree = "<group>"; };
+		E45932211E005D8900040DA2 /* RetentionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetentionController.m; sourceTree = "<group>"; };
+		E459322C1E005DBB00040DA2 /* AskPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceCell.h; sourceTree = "<group>"; };
+		E459322D1E005DBB00040DA2 /* AskPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceCell.m; sourceTree = "<group>"; };
+		E45932311E0065AA00040DA2 /* BuyerLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerLable.h; sourceTree = "<group>"; };
+		E45932321E0065AA00040DA2 /* BuyerLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerLable.m; sourceTree = "<group>"; };
+		E45932351E00737100040DA2 /* AskPriceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceModel.h; sourceTree = "<group>"; };
+		E45932361E00737100040DA2 /* AskPriceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceModel.m; sourceTree = "<group>"; };
+		E45932381E0073B700040DA2 /* AskPriceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceList.h; sourceTree = "<group>"; };
+		E45932391E0073B700040DA2 /* AskPriceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceList.m; sourceTree = "<group>"; };
+		E459323B1E00830400040DA2 /* ConversionTrams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionTrams.h; sourceTree = "<group>"; };
+		E459323C1E00830400040DA2 /* ConversionTrams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionTrams.m; sourceTree = "<group>"; };
 		E464CAFA1DFEB651008DDB12 /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
 		E464CAFB1DFEB651008DDB12 /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
 		E464CB011DFEB7BF008DDB12 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
@@ -617,8 +657,6 @@
 		E464CB951DFF2D45008DDB12 /* NewClientSupplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewClientSupplyController.m; sourceTree = "<group>"; };
 		E464CB981DFF2EB9008DDB12 /* AskPriceSupplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceSupplyController.h; sourceTree = "<group>"; };
 		E464CB991DFF2EB9008DDB12 /* AskPriceSupplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceSupplyController.m; sourceTree = "<group>"; };
-		E464CB9B1DFF2F99008DDB12 /* AskWayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskWayController.h; sourceTree = "<group>"; };
-		E464CB9C1DFF2F99008DDB12 /* AskWayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskWayController.m; sourceTree = "<group>"; };
 		E464CB9F1DFF3463008DDB12 /* DownSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheet.h; sourceTree = "<group>"; };
 		E464CBA01DFF3463008DDB12 /* DownSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownSheet.m; sourceTree = "<group>"; };
 		E464CBA11DFF3463008DDB12 /* DownSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownSheetCell.h; sourceTree = "<group>"; };
@@ -941,8 +979,6 @@
 			isa = PBXGroup;
 			children = (
 				E464CB861DFF2AD7008DDB12 /* AskPriceController */,
-				20FBCA241DF6473A0009167F /* BuyerLable.h */,
-				20FBCA251DF6473A0009167F /* BuyerLable.m */,
 				E416CB8F1DF5E9E1002A6E60 /* MyProduct */,
 				E416CBB61DF5E9E1002A6E60 /* PrividerBusinessControler.h */,
 				E416CBB71DF5E9E1002A6E60 /* PrividerBusinessControler.m */,
@@ -1225,6 +1261,9 @@
 		E416CC611DF5E9F8002A6E60 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E45932311E0065AA00040DA2 /* BuyerLable.h */,
+				E45932321E0065AA00040DA2 /* BuyerLable.m */,
+				E45932051E00482800040DA2 /* UWDatePickerView */,
 				E49352501DF7267300145486 /* Button */,
 				E49352551DF7267300145486 /* Other */,
 				E493525C1DF7267300145486 /* PovView */,
@@ -1598,6 +1637,99 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E45931ED1DFFF64D00040DA2 /* ShopList */ = {
+			isa = PBXGroup;
+			children = (
+				E45931F01DFFF6C500040DA2 /* Controllers */,
+				E45931F11DFFF6C500040DA2 /* Models */,
+				E45931F21DFFF6C500040DA2 /* Views */,
+			);
+			path = ShopList;
+			sourceTree = "<group>";
+		};
+		E45931F01DFFF6C500040DA2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E45931F31DFFF7BF00040DA2 /* ShopListController.h */,
+				E45931F41DFFF7BF00040DA2 /* ShopListController.m */,
+				E45931FE1E000C6200040DA2 /* ShopListDetailController.h */,
+				E45931FF1E000C6200040DA2 /* ShopListDetailController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E45931F11DFFF6C500040DA2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E459323B1E00830400040DA2 /* ConversionTrams.h */,
+				E459323C1E00830400040DA2 /* ConversionTrams.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E45931F21DFFF6C500040DA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E45931F61DFFFC5200040DA2 /* ShopListCell.h */,
+				E45931F71DFFFC5200040DA2 /* ShopListCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E45932051E00482800040DA2 /* UWDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				E45932061E00482800040DA2 /* UWDatePickerView.h */,
+				E45932071E00482800040DA2 /* UWDatePickerView.m */,
+				E45932081E00482800040DA2 /* UWDatePickerView.xib */,
+			);
+			path = UWDatePickerView;
+			sourceTree = "<group>";
+		};
+		E459320B1E00556000040DA2 /* AskPriceWay */ = {
+			isa = PBXGroup;
+			children = (
+				E45932191E005D8900040DA2 /* Controllers */,
+				E45932221E005D8900040DA2 /* Views */,
+			);
+			path = AskPriceWay;
+			sourceTree = "<group>";
+		};
+		E45932191E005D8900040DA2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E459321C1E005D8900040DA2 /* AskWayController.h */,
+				E459321D1E005D8900040DA2 /* AskWayController.m */,
+				E459321A1E005D8900040DA2 /* AlreadyController.h */,
+				E459321B1E005D8900040DA2 /* AlreadyController.m */,
+				E459321E1E005D8900040DA2 /* ReservedController.h */,
+				E459321F1E005D8900040DA2 /* ReservedController.m */,
+				E45932201E005D8900040DA2 /* RetentionController.h */,
+				E45932211E005D8900040DA2 /* RetentionController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E45932221E005D8900040DA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E459322C1E005DBB00040DA2 /* AskPriceCell.h */,
+				E459322D1E005DBB00040DA2 /* AskPriceCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E45932341E0065E200040DA2 /* AskPriceForm */ = {
+			isa = PBXGroup;
+			children = (
+				E45932351E00737100040DA2 /* AskPriceModel.h */,
+				E45932361E00737100040DA2 /* AskPriceModel.m */,
+				E45932381E0073B700040DA2 /* AskPriceList.h */,
+				E45932391E0073B700040DA2 /* AskPriceList.m */,
+			);
+			path = AskPriceForm;
+			sourceTree = "<group>";
+		};
 		E464CAF71DFEB651008DDB12 /* MianInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -1704,6 +1836,7 @@
 		E464CB861DFF2AD7008DDB12 /* AskPriceController */ = {
 			isa = PBXGroup;
 			children = (
+				E45932341E0065E200040DA2 /* AskPriceForm */,
 				E464CB901DFF2D45008DDB12 /* ClientSupplyController */,
 				E464CB931DFF2D45008DDB12 /* NewClientSupplyController */,
 				E464CB871DFF2B00008DDB12 /* AskPriceController.m */,
@@ -1715,8 +1848,8 @@
 		E464CB901DFF2D45008DDB12 /* ClientSupplyController */ = {
 			isa = PBXGroup;
 			children = (
-				E464CB9B1DFF2F99008DDB12 /* AskWayController.h */,
-				E464CB9C1DFF2F99008DDB12 /* AskWayController.m */,
+				E459320B1E00556000040DA2 /* AskPriceWay */,
+				E45931ED1DFFF64D00040DA2 /* ShopList */,
 				E464CB981DFF2EB9008DDB12 /* AskPriceSupplyController.h */,
 				E464CB991DFF2EB9008DDB12 /* AskPriceSupplyController.m */,
 			);
@@ -2019,6 +2152,8 @@
 				E49352521DF7267300145486 /* BackButton.m */,
 				E49352531DF7267300145486 /* TapButton.h */,
 				E49352541DF7267300145486 /* TapButton.m */,
+				E45932011E00331100040DA2 /* SelectButton.h */,
+				E45932021E00331100040DA2 /* SelectButton.m */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -2272,6 +2407,7 @@
 				E416CCEE1DF5E9F8002A6E60 /* change_camera_pic.png in Resources */,
 				E416C92C1DF5D802002A6E60 /* LaunchScreen.storyboard in Resources */,
 				E416CCEB1DF5E9F8002A6E60 /* back_button_normal.png in Resources */,
+				E459320A1E00482800040DA2 /* UWDatePickerView.xib in Resources */,
 				E416CCEF1DF5E9F8002A6E60 /* flash_close_pic.png in Resources */,
 				E464CB851DFF1090008DDB12 /* SystemSettingCell.xib in Resources */,
 				E49352401DF711AA00145486 /* industry.txt in Resources */,
@@ -2363,6 +2499,7 @@
 				E464CB5F1DFEE73E008DDB12 /* HMScannerViewController.m in Sources */,
 				E416CD7E1DF5ED84002A6E60 /* Client.m in Sources */,
 				E416CD3C1DF5EB4C002A6E60 /* BuyCustomerView.m in Sources */,
+				E45931F91DFFFC5200040DA2 /* ShopListCell.m in Sources */,
 				E416C91E1DF5D802002A6E60 /* main.m in Sources */,
 				E416CD0A1DF5E9F8002A6E60 /* ZZPhotoListModel.m in Sources */,
 				E493521D1DF70CA900145486 /* DetailViewThreeCell.m in Sources */,
@@ -2378,11 +2515,13 @@
 				E464CB031DFEB7BF008DDB12 /* SettingTableViewController.m in Sources */,
 				E416CCFB1DF5E9F8002A6E60 /* ZZBrowserPickerViewController.m in Sources */,
 				E49352221DF70CA900145486 /* ZMJAddGoodsOneCell.m in Sources */,
+				E45932091E00482800040DA2 /* UWDatePickerView.m in Sources */,
 				E416CD391DF5EB4C002A6E60 /* ExhibitionDeatailController.m in Sources */,
 				E416CBF91DF5E9E9002A6E60 /* BUYAgreementController.m in Sources */,
 				E416CBBE1DF5E9E1002A6E60 /* MemberController.m in Sources */,
 				E416CBC11DF5E9E1002A6E60 /* BuyerProductTableViewCell.m in Sources */,
 				E416CD081DF5E9F8002A6E60 /* ZZPhoto.m in Sources */,
+				E45932001E000C6200040DA2 /* ShopListDetailController.m in Sources */,
 				E464CB5C1DFEE73E008DDB12 /* HMScannerBorder.m in Sources */,
 				E416CCFF1DF5E9F8002A6E60 /* ZZCameraPickerViewController.m in Sources */,
 				E416CBD91DF5E9E5002A6E60 /* MessageSystemController.m in Sources */,
@@ -2406,9 +2545,11 @@
 				E464CBA61DFF3463008DDB12 /* DownSheetCell.m in Sources */,
 				E464CB7C1DFF0F67008DDB12 /* SystemSettingViewController.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
+				E45932261E005D8900040DA2 /* RetentionController.m in Sources */,
 				203793DE1DF8227C00992510 /* GYReflection.m in Sources */,
 				20FBCA171DF644A20009167F /* OnlyTitleTableViewCell.m in Sources */,
 				E416CD011DF5E9F8002A6E60 /* ZZCameraBrowerCell.m in Sources */,
+				E45932031E00331100040DA2 /* SelectButton.m in Sources */,
 				E416CD051DF5E9F8002A6E60 /* ZZPhotoController.m in Sources */,
 				E49352191DF70CA900145486 /* shopData.m in Sources */,
 				E4F13A731DFC1CA8004860F4 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -2419,6 +2560,7 @@
 				E416CD101DF5E9F8002A6E60 /* ZZPhotoPickerFooterView.m in Sources */,
 				E416CD6B1DF5ED7B002A6E60 /* OnePopTableViewCell.m in Sources */,
 				E493526D1DF7267300145486 /* UIView+Frame.m in Sources */,
+				E459323A1E0073B700040DA2 /* AskPriceList.m in Sources */,
 				E4F13A6F1DFC1CA8004860F4 /* IQUIView+Hierarchy.m in Sources */,
 				E464CB591DFEE73E008DDB12 /* HMScanerCardViewController.m in Sources */,
 				E416CD6D1DF5ED7B002A6E60 /* PopTableViewCell.m in Sources */,
@@ -2442,6 +2584,7 @@
 				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				20FBCA111DF643500009167F /* BuyerViewController.m in Sources */,
 				203793C11DF6DBC000992510 /* MySalerViewController.m in Sources */,
+				E459322F1E005DBB00040DA2 /* AskPriceCell.m in Sources */,
 				203793E41DF99BE600992510 /* ClientBaseInfo.m in Sources */,
 				E493521F1DF70CA900145486 /* ZMJMyProductionCell.m in Sources */,
 				E416CC071DF5E9F2002A6E60 /* AppDelegate.m in Sources */,
@@ -2467,6 +2610,7 @@
 				E49352121DF70CA900145486 /* InfoSendViewController.m in Sources */,
 				E416CBFB1DF5E9E9002A6E60 /* BUYImportView.m in Sources */,
 				E416CBC31DF5E9E1002A6E60 /* BuyerEditFSecondCell.m in Sources */,
+				E45932251E005D8900040DA2 /* ReservedController.m in Sources */,
 				E416CD361DF5EB4C002A6E60 /* ProductiPulishController.m in Sources */,
 				E416CD691DF5ED7B002A6E60 /* NameContentTableViewCell.m in Sources */,
 				E416CBC51DF5E9E1002A6E60 /* MemberOneViewCell.m in Sources */,
@@ -2474,6 +2618,7 @@
 				20FBCA551DF6629B0009167F /* BriefProductTableViewCell.m in Sources */,
 				E4F13A701DFC1CA8004860F4 /* IQUIViewController+Additions.m in Sources */,
 				E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */,
+				E45932231E005D8900040DA2 /* AlreadyController.m in Sources */,
 				E416CD811DF5ED84002A6E60 /* SearchBarView.m in Sources */,
 				E49352251DF70CA900145486 /* PicsCell.m in Sources */,
 				E464CB721DFF0258008DDB12 /* MemBerSecondCell.m in Sources */,
@@ -2486,6 +2631,7 @@
 				20FBCA1D1DF646B40009167F /* MyBuyerTableViewCell.m in Sources */,
 				E4F13A911DFC645F004860F4 /* CreateBuerPDF.m in Sources */,
 				E49352141DF70CA900145486 /* ZMJEditViewController.m in Sources */,
+				E45932331E0065AA00040DA2 /* BuyerLable.m in Sources */,
 				E416CBFE1DF5E9E9002A6E60 /* BUYTypeView.m in Sources */,
 				E416CD0D1DF5E9F8002A6E60 /* ZZPhotoHud.m in Sources */,
 				E49352181DF70CA900145486 /* DetailShopViewController.m in Sources */,
@@ -2496,7 +2642,6 @@
 				E4F13A6C1DFC1CA7004860F4 /* IQNSArray+Sort.m in Sources */,
 				E49352131DF70CA900145486 /* MyProductionController.m in Sources */,
 				E416CD3B1DF5EB4C002A6E60 /* ExhibitionViewCell.m in Sources */,
-				E464CB9D1DFF2F99008DDB12 /* AskWayController.m in Sources */,
 				E4F13A771DFC1CA8004860F4 /* IQTitleBarButtonItem.m in Sources */,
 				E464CB9A1DFF2EB9008DDB12 /* AskPriceSupplyController.m in Sources */,
 				E416CD091DF5E9F8002A6E60 /* ZZPhotoDatas.m in Sources */,
@@ -2507,6 +2652,7 @@
 				20FBCA121DF643500009167F /* BUYSaoAndSupViewController.m in Sources */,
 				E4F13A711DFC1CA8004860F4 /* IQUIWindow+Hierarchy.m in Sources */,
 				E493524C1DF7200000145486 /* PeripheralBlueTooth.m in Sources */,
+				E45932371E00737100040DA2 /* AskPriceModel.m in Sources */,
 				E416CD331DF5EB4C002A6E60 /* DemandOneViewController.m in Sources */,
 				E493522F1DF70CA900145486 /* myShopView.m in Sources */,
 				E4F13A761DFC1CA8004860F4 /* IQPreviousNextView.m in Sources */,
@@ -2525,7 +2671,6 @@
 				E464CB5B1DFEE73E008DDB12 /* HMScanner.m in Sources */,
 				E493522A1DF70CA900145486 /* ZMJTypeView.m in Sources */,
 				E416CD3D1DF5EB4C002A6E60 /* IndustryView.m in Sources */,
-				20FBCA261DF6473A0009167F /* BuyerLable.m in Sources */,
 				E416CD061DF5E9F8002A6E60 /* ZZPhotoListViewController.m in Sources */,
 				E464CB141DFEC1BD008DDB12 /* AboutViewController.m in Sources */,
 				E49352231DF70CA900145486 /* FirstTableViewCell.m in Sources */,
@@ -2536,10 +2681,13 @@
 				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E416CD0C1DF5E9F8002A6E60 /* ZZPhotoBrowerCell.m in Sources */,
 				E493522B1DF70CA900145486 /* EditFirstShopCell.m in Sources */,
+				E45931F51DFFF7BF00040DA2 /* ShopListController.m in Sources */,
 				E493522E1DF70CA900145486 /* EditThreeShopCell.m in Sources */,
 				20FBCA221DF646F40009167F /* MyBuyerAskTableViewCell.m in Sources */,
 				E464CB0F1DFEBDD8008DDB12 /* NameValueTableViewCell.m in Sources */,
+				E459323D1E00830400040DA2 /* ConversionTrams.m in Sources */,
 				E416CBC61DF5E9E1002A6E60 /* MemberTwoViewCell.m in Sources */,
+				E45932241E005D8900040DA2 /* AskWayController.m in Sources */,
 				E416CBC21DF5E9E1002A6E60 /* BuyerEditFirstCell.m in Sources */,
 				E416CBBB1DF5E9E1002A6E60 /* BuyerDetailViewController.m in Sources */,
 				E493526A1DF7267300145486 /* SelectTableViewCell.m in Sources */,
