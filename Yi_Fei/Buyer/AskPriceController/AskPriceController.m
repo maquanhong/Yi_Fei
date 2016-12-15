@@ -11,7 +11,9 @@
 #import "BuyerViewController.h"
 #import "ClientSupplyController.h"
 #import "AskPriceSupplyController.h"
-#import "NewClientSupplyController.h"
+#import "ManualAddAupplyController.h"
+
+
 @interface AskPriceController ()
 @property(nonatomic,strong)NSArray *titleArray;
 @property (nonatomic, assign) BussinessType type;
@@ -65,19 +67,21 @@
     NSInteger index = sender.tag - 1000;
     if (self.type == BussinessBuyer) {
         if (index == 1) {
-            NewClientSupplyController *clientVc = [[NewClientSupplyController alloc] initWithTypeId:BussinessBuyer];
-            [self.navigationController pushViewController:clientVc animated:YES];
+ManualAddAupplyController *clientVc = [[ManualAddAupplyController alloc] init];
+    [self.navigationController pushViewController:clientVc animated:YES];
         } else if (index == 0) {
-            AskPriceSupplyController *salerVc = [[AskPriceSupplyController alloc] init];
-            [self.navigationController pushViewController:salerVc animated:YES];
+AskPriceSupplyController *salerVc = [[AskPriceSupplyController alloc] init];
+[self.navigationController pushViewController:salerVc animated:YES];
         }
     } else {
         if (index == 0) {
             ClientSupplyController *clientVc = [[ClientSupplyController alloc] init];
             [self.navigationController pushViewController:clientVc animated:YES];
         } else if (index == 1) {
-            NewClientSupplyController *clientVc = [[NewClientSupplyController alloc] initWithTypeId:BussinessSaler];
-            [self.navigationController pushViewController:clientVc animated:YES];
+            
+//            NewClientSupplyController *clientVc = [[NewClientSupplyController alloc] initWithTypeId:BussinessSaler];
+//            [self.navigationController pushViewController:clientVc animated:YES];
+            
         }
     }
 

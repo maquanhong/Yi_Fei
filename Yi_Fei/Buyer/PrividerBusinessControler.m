@@ -132,11 +132,9 @@
 #pragma mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender
 {
-    
     BuyerProductController *vc = [[BuyerProductController alloc] init];
-    BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessBuyer];
-    AskPriceController *offerVC=[[AskPriceController alloc] initWithIdType:BussinessBuyer];
-    
+    BuyerViewController *BuyerVc = [[BuyerViewController alloc] init];
+    AskPriceController *offerVC=[[AskPriceController alloc] init];
     switch (sender.tag) {
         case 0:
             [self.navigationController pushViewController:vc animated:YES];
@@ -144,10 +142,8 @@
         case 1:
             [self.navigationController pushViewController:BuyerVc animated:YES];
             break;
-            
         case 2:
             [self.navigationController pushViewController:offerVC animated:YES];
-            
             break;
         default:
             break;

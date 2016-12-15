@@ -132,7 +132,7 @@
 - (void)btnClick:(UIButton *)sender
 {
     MyProductionController *vc = [[MyProductionController alloc] init];
-    BuyerViewController *BuyerVc = [[BuyerViewController alloc] initWithTypeId:BussinessSaler];
+    BuyerViewController *BuyerVc = [[BuyerViewController alloc] init];
     AskPriceController *offerVC=[[AskPriceController alloc] initWithIdType:BussinessSaler];
     
     switch (sender.tag) {

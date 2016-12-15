@@ -1,23 +1,24 @@
 //
-//  newBuyerViewController.m
-//  YiFei
+//  ScanViewController.m
+//  Yi_Fei
 //
-//  Created by yangyan on 16/9/2.
-//  Copyright © 2016年 yous. All rights reserved.
+//  Created by yons on 16/12/14.
+//  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "newBuyerViewController.h"
+#import "ScanViewController.h"
 
-@interface newBuyerViewController ()
+@interface ScanViewController ()
 
 @end
 
-@implementation newBuyerViewController
+@implementation ScanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor redColor];
+    
+    self.view.backgroundColor  = [UIColor redColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {

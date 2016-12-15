@@ -4,18 +4,15 @@
 //
 //  Created by yons on 16/11/24.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
-//
 
 #import "AddThreeProductionController.h"
 #import "BUYbutton.h"
 #import "BuyerProductController.h"
-
 #import "FirstTableViewCell.h"
 #import "SecondTableViewCell.h"
 #import "ThreeTableViewCell.h"
 #import "FourTableViewCell.h"
 #import "tableViewFooterView.h"
-
 
 @interface AddThreeProductionController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
     FirstTableViewCell *firstCell;

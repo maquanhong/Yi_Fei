@@ -1,39 +1,37 @@
 //
-//  SalerViewController.m
+//  BuyerViewController.m
 //  YiFei
 //
 //  Created by yangyan on 16/8/30.
 //  Copyright © 2016年 yous. All rights reserved.
 //
 
-#import "AskPriceSupplyController.h"
-#import "AskWayController.h"
-#import "BuyerTableViewCell.h"
-#import "SupplyModel.h"
-#import "SupplyList.h"
+#import "BuyerViewController.h"
+#import "ZMJMyProductionCell.h"
+
+
+//#import "AddSupplyViewController.h"
+#import "NewClientSupplyController.h"
+#import "ClientBaseInfo.h"
+
+
 #import "DownSheet.h"
 #import "ScanViewController.h"
 #import "ManualAddAupplyController.h"
+#import "MySalerViewController.h"
+#import "BuyerTableViewCell.h"
+#import "SupplyList.h"
 
 
-@interface AskPriceSupplyController ()<UITextFieldDelegate,DownSheetDelegate>{
-    
-    //选择框
-     BOOL isSelect;
-    
-    
-    
+@interface BuyerViewController ()<DownSheetDelegate,UITextFieldDelegate>{;
+    BOOL isSelect;
     BOOL _isSearch;
     BOOL _btnSearch;
     BOOL _nilSearch;
     NSArray *array;
     SupplyList *_manager;
+    
 }
-#pragma mark 选择框
-@property (nonatomic, strong) DownSheet *sheet;
-@property (nonatomic, strong) NSArray *MenuList;
-
-#pragma mark 搜索框
 @property(nonatomic,strong)UITextField *textInput; //输入框
 @property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
 @property(nonatomic,strong)UITableView *tableview; //表格视图
@@ -42,13 +40,13 @@
 @property (nonatomic, strong) NSMutableArray *btnResultArr; //点击按钮时的结果
 @property (nonatomic, strong) NSMutableArray *allArray; //搜索的结果
 @property (nonatomic, strong) UILabel *numLabel; //有多少个元素
-@property (nonatomic, strong)  NSMutableArray *circleArray;
-
-@property(nonatomic,strong)UISearchController *searchC;
+@property (nonatomic, strong) NSArray *clientInfoArray;
+@property (nonatomic, strong) DownSheet *sheet;
+@property (nonatomic, strong) NSArray *MenuList;
 
 @end
 
-@implementation AskPriceSupplyController
+@implementation BuyerViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -65,37 +63,41 @@
 }
 
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
- self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [self createNavigationView];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    isSelect  = YES ;
+    [self setNav];
     [self createSearchView];
-    [self createTableView];
+    [self addContentView];
 }
 
 
-#pragma mark 创建导航栏
--(void)createNavigationView
-{
+- (void)setNav {
+    
     self.title = @"供应商列表";
-    BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
-    UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    self.navigationItem.leftBarButtonItem = barItem;
+    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    leftBtn.frame = CGRectMake(0, 0, 25, 25);
+    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem=leftBtnItem;
+    
     UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightButtonClick)];
     self.navigationItem.rightBarButtonItem=rightButton;
-    
+    self.automaticallyAdjustsScrollViewInsets=YES;
 }
 
-- (void)leftButtonClick {
+-(void)leftButtonClick{
     [self.navigationController popViewControllerAnimated:YES];
     [_sheet removeFromSuperview];
 }
 
 #pragma mark 出现头部视图
 -(void)rightButtonClick{
-    
     if (isSelect) {
         [self initDemoData];
         _sheet = [[DownSheet alloc]initWithlist:_MenuList height:0];
@@ -109,6 +111,7 @@
 }
 
 -(void)initDemoData{
+    
     DownSheetModel *Model1 = [[DownSheetModel alloc]init];
     Model1.icon = @"saoyisao-0";
     Model1.title = @"扫一扫";
@@ -117,18 +120,19 @@
     Model2.title = @"手动添加供应商";
     _MenuList = [[NSArray alloc]init];
     _MenuList = @[Model1,Model2];
+    
 }
 
 -(void)didSelectIndex:(NSInteger)index{
+    
     if (index == 0) {
     ScanViewController *scanVC = [[ScanViewController alloc] init];
-    [self.navigationController pushViewController:scanVC animated:YES];
+        [self.navigationController pushViewController:scanVC animated:YES];
     }else if (index == 1){
     ManualAddAupplyController *manualVC = [[ManualAddAupplyController alloc] init];
     [self.navigationController pushViewController:manualVC animated:YES];
     }
 }
-
 
 #pragma mark 设置搜索框
 -(void)createSearchView{
@@ -189,14 +193,19 @@
         make.height.mas_equalTo(40);
         make.trailing.mas_equalTo(_searchBackView).offset(-15);
     }];
-  [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
-    
+    [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)clickBtnSearch{
+
 }
 
 
--(void)createTableView{
-    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(0, 125, WIDTH, HEIGHT- 125 )style:UITableViewStylePlain];
-    _tableview.rowHeight = 70;
+
+-(void)addContentView{
+    self.tableview=[[UITableView alloc] initWithFrame:CGRectMake(0, 124, WIDTH, HEIGHT- 124 )style:UITableViewStylePlain];
+    _tableView.backgroundColor = [UIColor redColor];
+    self.tableview.rowHeight = 70;
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     [self.view addSubview:self.tableview];
@@ -206,13 +215,14 @@
 #pragma Mark -- 事件处理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _listArray.count;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdent=@"spCell";
+    static NSString *cellIdent=@"supplyCell";
     BuyerTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
     if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self options:nil]lastObject];
+cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self options:nil]lastObject];
     }
     SupplyModel *model = _listArray[indexPath.row];
     NSString *path_document = NSHomeDirectory();
@@ -228,8 +238,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    AskWayController *salerVC=[[AskWayController alloc] init];
-    [self.navigationController pushViewController:salerVC animated:YES];
+    MySalerViewController *mySalerVC=[[MySalerViewController alloc] init];
+    [self.navigationController pushViewController:mySalerVC animated:YES];
 }
 
 
@@ -243,7 +253,65 @@
 
 
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+//向左拖动cell的时候，会调用该方法
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+//修改cell自带的删除按钮上文字
+- (NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
+}
+
+
+//删除模式下，点击“-”按钮，不会调用该方法，点击cell上的“Delete”按钮，才会调用该方法
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    _manager = [SupplyList defaultManager];
+    SupplyModel *model ;
+    if (_isSearch == YES) {
+        model = _searchResultArr[indexPath.row];
+    }else if (_btnSearch == YES){
+        model = _btnResultArr[indexPath.row];
+    }else{
+        model = _listArray[indexPath.row];
+    }
+    [_manager deleteNameFromTable:model.supplyName];
+    if (_isSearch == YES) {
+        [_searchResultArr removeObjectAtIndex:indexPath.row];
+    }else if (_btnSearch == YES){
+        [_btnResultArr removeObjectAtIndex:indexPath.row];
+    }else{
+        [_listArray removeObjectAtIndex:indexPath.row];
+        [_allArray removeObjectAtIndex:indexPath.row];
+    }
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_tableview reloadData];
+}
+
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_sheet removeFromSuperview];
+}
+
+
+
+
+
 @end
+
+
+
+
+
+
+
 
 
 

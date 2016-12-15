@@ -24,7 +24,7 @@
     
     //设置属性
     lable.text=text;
-    lable.textColor=[UIColor lightGrayColor];
+    lable.textColor = Ttcolor;
     
     //圆角
     lable.layer.cornerRadius = 5.0;

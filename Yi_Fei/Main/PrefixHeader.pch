@@ -28,6 +28,7 @@
 #import "GDataXMLNode.h"
 #import "SVProgressHUD.h"
 #import "PopView.h"
+#import "SupplyModel.h"
 
 
 #pragma mark 颜色的的设置

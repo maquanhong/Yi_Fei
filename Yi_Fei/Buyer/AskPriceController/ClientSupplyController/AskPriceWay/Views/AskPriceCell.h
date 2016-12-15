@@ -10,11 +10,15 @@
 
 @interface AskPriceCell : UITableViewCell
 
+@property (nonatomic,strong) UIImageView *iconImageView;
 
+@property (nonatomic,strong) UILabel *titleLabel;
 
+@property (nonatomic,strong) UILabel *price;
 
 
 @end
+
 
 
 

@@ -339,12 +339,6 @@ UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bound
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
-    if (dataModel.shopName.length > 0 ) {
-        cell.nameShop.text=[NSString stringWithFormat:@"￥%@",dataModel.shopName];
-    }else{
-        cell.nameShop.text  =  @"";
-    }
-    
     if (dataModel.shopPrice.length > 0 ) {
 cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{

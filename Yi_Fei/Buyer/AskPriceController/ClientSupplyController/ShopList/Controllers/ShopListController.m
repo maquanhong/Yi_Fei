@@ -308,7 +308,7 @@
     [_typeOneView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(backView).offset(10);
         make.centerY.equalTo(backView);
-        make.size.mas_equalTo(CGSizeMake(90, 20));
+        make.size.mas_equalTo(CGSizeMake(90, 25));
     }];
     
     _typeTwoView = [[ZMJTypeView alloc] init];
@@ -320,7 +320,7 @@
     [_typeTwoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_typeOneView.mas_right).offset(10);
         make.centerY.equalTo(backView);
-        make.size.mas_equalTo(CGSizeMake(150, 20));
+        make.size.mas_equalTo(CGSizeMake(150, 25));
     }];
     _typeTwoView.tag = 9001;
     _typeTwoView.hidden = YES;
@@ -337,6 +337,7 @@
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:self.tableview];
+    
 }
 
 

@@ -8,11 +8,13 @@
 
 #import "AlreadyController.h"
 #import "AskPriceList.h"
+#import "AskPriceCell.h"
 
 @interface AlreadyController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     BOOL _isSearch;
     BOOL _btnSearch;
     BOOL _nilSearch;
+    AskPriceCell *cell;
 
 }
 @property(nonatomic,strong)AskPriceList *askManager;
@@ -35,7 +37,6 @@
 
 //数据的加载
 -(void)loadData{
-    
     //获取单例对象
     _askManager = [AskPriceList defaultManager];
     //可变数组初始化
@@ -57,7 +58,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self createSearchView];
-//    [self addContentView];
+    [self addContentView];
     
     
 }
@@ -111,7 +112,7 @@
         make.trailing.equalTo(self.view).offset(-10);
         make.centerY.mas_equalTo(imageBackView.mas_centerY);
         make.height.mas_equalTo(40);
-        make.width.mas_equalTo(60);
+        make.width.mas_equalTo(50);
     }];
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
     
@@ -186,11 +187,11 @@
 #pragma mark 创建tableView视图
 -(void)addContentView{
     
-//    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 20, WIDTH-20, HEIGHT-50 )style:UITableViewStylePlain];
-//    self.tableview.delegate = self;
-//    self.tableview.dataSource = self;
-//    self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//    [self.view addSubview:self.tableview];
+    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 50, WIDTH-20, HEIGHT- 50 )style:UITableViewStylePlain];
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
+    self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self.view addSubview:self.tableview];
     
     
     UIView *haderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH-20, 45)];
@@ -227,7 +228,67 @@
 
 
 
+#pragma Mark -- 事件处理
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (_isSearch == YES) {
+        return _searchResultArr.count;
+    }else if (_btnSearch == YES){
+        return _btnResultArr.count;
+    }else if (_nilSearch == YES){
+        return _listArray.count;
+    }else{
+        return _listArray.count;
+    }
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdent=@"cell";
+    cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
+    if (cell==nil) {
+        cell=[[AskPriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
+    }
+    AskPriceModel *dataModel = [[AskPriceModel alloc] init];
+    if (_isSearch == YES) {
+        //赋值对应的对象
+        dataModel = _searchResultArr[indexPath.row];
+        _isSearch = NO;
+    }else if (_nilSearch == YES){
+        dataModel = _listArray[indexPath.row];
+        _nilSearch = NO;
+    }else if (_btnSearch == YES){
+        dataModel = _listArray[indexPath.row];
+        _btnSearch = NO;
+    }else{
+        dataModel = _listArray[indexPath.row];
+    }
+    NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
+    cell.iconImageView.image= [UIImage imageWithContentsOfFile:imagePath];
+  
+    if (dataModel.shopPrice.length > 0 ) {
+        cell.price.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
+    }else{
+        cell.price.text  =  @"";
+    }
+    
+//    cell.delegate = self;
+    cell.selected = UITableViewCellSelectionStyleNone;
+    _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    return cell;
+}
+
+
+#pragma mark 点击页面进行跳转
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 110;
+}
 
 
 
