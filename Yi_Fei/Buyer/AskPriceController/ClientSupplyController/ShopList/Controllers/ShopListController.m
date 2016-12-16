@@ -22,7 +22,7 @@
     BOOL _btnSearch;
     BOOL _nilSearch;
     NSString *_time;
-    UWDatePickerView *_pickerView;
+    UWDatePickerView *_pickerView;  
     NSInteger _index;
 }
 @property(nonatomic,strong)AskPriceList *askManager;
@@ -131,24 +131,26 @@
             NSString *flag = [NSString stringWithFormat:@"%ld",_index];
             AskPriceModel *model;
             if (_index == 2) {
-            model = [conversion  trams:dataModel tag:flag time:_time];
+    model = [conversion trams:dataModel tag:flag time:_time supplyName:self.model.supplyName];
             }else{
-            model = [conversion  trams:dataModel tag:flag time:nil];
+    model = [conversion trams:dataModel tag:flag time:nil supplyName:self.model.supplyName];
             }
             _askManager = [AskPriceList defaultManager];
             [_askManager insertDataModel:model];
         }
-        AskWayController *myVC = [[ AskWayController alloc] init];
+      AskWayController *myVC = [[ AskWayController alloc] init];
         for (AskWayController * controller in self.navigationController.viewControllers) { //遍历
             if ([controller isKindOfClass:[AskWayController class]]) { //这里判断是否为你想要跳转的页面
-                myVC = controller;
-                myVC.flag = [NSString stringWithFormat:@"%ld",_index];
+            myVC = controller;
+            myVC.flag = [NSString stringWithFormat:@"%ld",_index];
             }
         }
         if (myVC) {
             [self.navigationController popToViewController:myVC animated:YES]; //跳转
         }
     }else{
+        AskWayController *myVC = [[ AskWayController alloc] init];
+        myVC.flag = [NSString stringWithFormat:@"%ld",_index];
         [self.navigationController popViewControllerAnimated:YES];
     }
  

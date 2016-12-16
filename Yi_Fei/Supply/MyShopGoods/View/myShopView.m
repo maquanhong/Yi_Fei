@@ -34,8 +34,6 @@
     lable.layer.borderColor = Lgcolor.CGColor;
     lable.layer.borderWidth = width;
     
-    //背景颜色
-    lable.backgroundColor=[UIColor whiteColor];
 //    lable.textAlignment=NSTextAlignmentCenter;
     return lable;
 }

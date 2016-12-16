@@ -16,7 +16,7 @@
 
 + (void) initialize
 {
-    [[UINavigationBar appearance] setBarTintColor:NAVCOLOR];
+    [[UINavigationBar appearance] setBarTintColor:BACKCOLOR];
     //设置左右两侧的文字为黑色
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     //设置中间标题的字体颜色或者大小，两者必须兼有

@@ -14,7 +14,7 @@
 
 
 
--(AskPriceModel*)trams:(ProductionData*)model tag:(NSString*)tag time:(NSString*)time;
+-(AskPriceModel*)trams:(ProductionData*)model tag:(NSString*)tag time:(NSString*)time supplyName:(NSString*)supplyName;
 
 
 

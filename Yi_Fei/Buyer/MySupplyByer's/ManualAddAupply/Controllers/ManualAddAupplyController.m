@@ -102,13 +102,21 @@ UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBt
 }
 
 -(void)clickBtnNextController{
- 
-    NSString *str1 = [UserDefaultManager getDataByKey:@"oneTF"];
+    
     NSString *str2 = [UserDefaultManager getDataByKey:@"twoTF"];
+    NSString *str1 = [UserDefaultManager getDataByKey:@"oneTF"];
+    if (str1.length > 0 &&str2.length == 0 ) {
+    _model.supplyName = str1;
+    }
+    if (str2.length > 0 && str1.length ==0) {
+    _model.supplyName = str2;
+    }
+    if (str2.length > 0 &&str1.length > 0) {
     _model.supplyName = [NSString stringWithFormat:@"%@%@",str1,str2];
+    }
+    [self remindView:_model.supplyName  companyName:_model.companyName];
     [UserDefaultManager removeDataWithKey:@"oneTF"];
     [UserDefaultManager removeDataWithKey:@"twoTF"];
-    [self remindView:str1 flamiy:str2 companyName:_model.companyName];
     NSMutableArray *address = [NSMutableArray array];
     if (sixCell.typeOneView.nameLabel.text.length > 0) {
         [address addObject:sixCell.typeOneView.nameLabel.text];
@@ -158,7 +166,7 @@ UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBt
 }
 
 
--(void)remindView:(NSString*)name flamiy:(NSString*)flamiy  companyName:(NSString*)companyName{
+-(void)remindView:(NSString*)name  companyName:(NSString*)companyName{
     
     if (name.length == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"姓或名字不能为空" preferredStyle:UIAlertControllerStyleAlert];
@@ -175,13 +183,6 @@ UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBt
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
 
-    }else if (flamiy.length == 0){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"姓或名字不能为空" preferredStyle:UIAlertControllerStyleAlert];
-        //确定按钮
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        }] ;
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

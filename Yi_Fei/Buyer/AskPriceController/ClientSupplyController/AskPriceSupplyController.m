@@ -228,7 +228,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    AskWayController *salerVC=[[AskWayController alloc] init];
+    AskWayController *salerVC= [[AskWayController alloc] init];
+    SupplyModel *model = _listArray[indexPath.row];
+    salerVC.model = model;
     [self.navigationController pushViewController:salerVC animated:YES];
 }
 

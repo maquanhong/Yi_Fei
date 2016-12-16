@@ -10,4 +10,7 @@
 
 @interface AlreadyController : UIViewController
 
+@property (nonatomic,strong)SupplyModel *model;
+
+
 @end

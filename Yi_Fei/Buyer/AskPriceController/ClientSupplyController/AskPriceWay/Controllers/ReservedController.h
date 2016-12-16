@@ -10,4 +10,8 @@
 
 @interface ReservedController : UIViewController
 
+
+@property (nonatomic,strong) SupplyModel *model;
+
+
 @end

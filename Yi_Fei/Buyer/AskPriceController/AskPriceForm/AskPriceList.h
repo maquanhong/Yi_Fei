@@ -27,8 +27,9 @@
 - (void)deleteNameFromTable:(int)dataId;
 
 //查询所有
-- (NSArray *)getData;
+//- (NSArray *)getData;
 
+- (NSArray *)getDataWith:(NSString*)dataId;
 
 
 @end

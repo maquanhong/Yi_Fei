@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AskPriceCellDelegate <NSObject>
+
+-(void)clickcell:(UITableViewCell*)cell num:(NSInteger)num;
+
+@end
+
+
+
 @interface AskPriceCell : UITableViewCell
+
+@property (nonatomic,weak) id<AskPriceCellDelegate> delegate;
 
 @property (nonatomic,strong) UIImageView *iconImageView;
 
@@ -16,6 +26,7 @@
 
 @property (nonatomic,strong) UILabel *price;
 
+@property(nonatomic,strong)UIButton *selectBtn;
 
 @end
 

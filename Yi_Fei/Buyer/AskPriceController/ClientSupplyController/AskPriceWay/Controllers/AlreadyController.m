@@ -9,14 +9,23 @@
 #import "AlreadyController.h"
 #import "AskPriceList.h"
 #import "AskPriceCell.h"
+#import "AskPriceModel.h"
+#import "AskWayController.h"
+#import "SendWwayController.h"
+#import "EditPriceController.h"
+#import "PreparePriceController.h"
+#import "RetentionPriceController.h"
 
-@interface AlreadyController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
+
+
+@interface AlreadyController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,AskPriceCellDelegate>{
     BOOL _isSearch;
     BOOL _btnSearch;
     BOOL _nilSearch;
-    AskPriceCell *cell;
-
+    BOOL _isPress;
+   
 }
+
 @property(nonatomic,strong)AskPriceList *askManager;
 @property(nonatomic,strong)UITextField *textInput; //输入框
 @property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
@@ -24,7 +33,6 @@
 @property (nonatomic, strong) NSMutableArray *searchResultArr; //输入时的结果
 @property (nonatomic, strong) NSMutableArray *btnResultArr; //点击按钮时的结果
 @property (nonatomic, strong) NSMutableArray *allArray; //搜索的结果
-;
 
 @end
 
@@ -39,28 +47,25 @@
 -(void)loadData{
     //获取单例对象
     _askManager = [AskPriceList defaultManager];
+    AskPriceModel *model = [[AskPriceModel alloc] init];
+    _listArray= [NSMutableArray array];
     //可变数组初始化
-    _listArray = [NSMutableArray arrayWithArray:[_askManager getData]];
-    _allArray = [NSMutableArray array];
-    for (NSInteger i = 0 ; i < _listArray.count; i++) {
-        AskPriceModel *dataModel = [[AskPriceModel alloc] init];
-        dataModel = _listArray[i];
-        if (dataModel.shopName.length != 0 ) {
-            [_allArray addObject:dataModel.shopName];
-        }else{
-            [_allArray addObject:[NSNull null]];
+     NSMutableArray *array = [NSMutableArray arrayWithArray:[_askManager getDataWith:self.model.supplyName]];
+
+    for (NSInteger i = 0 ; i < array.count ; i++) {
+        model = array[i];
+        if ([model.flag integerValue] == 0) {
+        [_listArray addObject:model];
         }
     }
-    [_tableview reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _isPress = YES;
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self createSearchView];
     [self addContentView];
-    
-    
 }
 
 #pragma mark 创建搜索框
@@ -90,7 +95,7 @@
     imageView.image = [UIImage imageNamed:@"sousuo"];
     [imageBackView addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(imageBackView).offset(20);
+        make.leading.mas_equalTo(imageBackView).offset(10);
         make.centerY.mas_equalTo(imageBackView.mas_centerY);
         make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
@@ -115,8 +120,6 @@
         make.width.mas_equalTo(50);
     }];
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
-    
-    
 }
 
 #pragma mark 点击搜索按钮
@@ -179,19 +182,25 @@
     NSString *py = [pinyin stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *pys = [NSString stringWithFormat:@"%@%@%@%@%@%@",[pinyin uppercaseString],[pinyin lowercaseString],[pinyin capitalizedString],[py uppercaseString],[py lowercaseString],[py capitalizedString]];
     return pys;
+    
 }
-
-
 
 
 #pragma mark 创建tableView视图
 -(void)addContentView{
     
-    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 50, WIDTH-20, HEIGHT- 50 )style:UITableViewStylePlain];
+    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 50, WIDTH-20, HEIGHT- 160 )style:UITableViewStylePlain];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableview.allowsSelectionDuringEditing=YES;
+    
     [self.view addSubview:self.tableview];
+
+    UILongPressGestureRecognizer *lp = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGesture:)];
+    //触发长按手势的最小时间间隔，秒
+    lp.minimumPressDuration = 0.5;
+    [self.tableview addGestureRecognizer:lp];
     
     
     UIView *haderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH-20, 45)];
@@ -216,15 +225,35 @@
     [nameLabel sizeToFit];
     nameLabel.textColor=[UIColor blackColor];
     nameLabel.font=[UIFont systemFontOfSize:18.0];
-    nameLabel.text=@" 供应商A";
+    nameLabel.text= self.model.supplyName ;
     [haderView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(haderView).offset(120);
         make.centerY.mas_equalTo(haderView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
+        make.trailing.mas_equalTo(haderView).offset(-10);
+        make.height.mas_equalTo(25);
     }];
     self.tableview.tableHeaderView = haderView;
 }
+
+
+
+//- (void)longPressGesture:(UILongPressGestureRecognizer*)lp{
+//
+//    if(lp.state == UIGestureRecognizerStateBegan){
+//   CGPoint p = [lp locationInView:self.tableview ];
+//NSIndexPath *indexPath = [self.tableview indexPathForRowAtPoint:p];
+//        NSLog(@"%ld",indexPath.row);
+//        
+//    }
+//
+//}
+
+
+
+
+
+
 
 
 
@@ -243,7 +272,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdent=@"cell";
-    cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
+    AskPriceCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
     if (cell==nil) {
         cell=[[AskPriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
     }
@@ -272,8 +301,12 @@
     }else{
         cell.price.text  =  @"";
     }
-    
-//    cell.delegate = self;
+    if (dataModel.shopName.length > 0 ) {
+    cell.titleLabel.text = dataModel.shopName;
+    }else{
+    cell.titleLabel.text  =  @"";
+    }
+    cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;
@@ -296,6 +329,11 @@
 
 
 
+//编辑样式
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleNone;
+}
 
 
 
@@ -326,7 +364,108 @@
 
 
 
+- (void)longPressGesture:(UILongPressGestureRecognizer*)lp{
+    if(lp.state == UIGestureRecognizerStateBegan){
+        
+        if (_isPress) {
+            [self.tableview setEditing:!self.tableview.isEditing animated:YES];
+            NSArray *allCells=[self.tableview visibleCells];
+            for(AskPriceCell *cell in allCells)
+            {
+                cell.selectBtn.hidden=NO;
+                cell.selectBtn.selected=NO;
+            }
+            AskWayController *myVC = [[ AskWayController alloc] init];
+            for (AskWayController * controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[AskWayController class]]) {
+                    myVC = controller;
+                }
+            }
+            myVC.rightBtnOne.hidden = YES;
+            myVC.rightBtnTwo.hidden = NO;
+            [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
+            _isPress = NO;
+        }else{
+            NSArray *allCells=[self.tableview visibleCells];
+            for(AskPriceCell *cell in allCells)
+                cell.selectBtn.hidden=YES;
+            AskWayController *myVC = [[ AskWayController alloc] init];
+            for (AskWayController * controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[AskWayController class]]) {
+                    myVC = controller;
+                }
+            }
+            myVC.rightBtnOne.hidden = NO;
+            myVC.rightBtnTwo.hidden = YES;
+            _isPress = YES;
+        }
+    }
+}
 
+
+-(void)sendVC{
+    AskWayController *myVC = [[ AskWayController alloc] init];
+    for (AskWayController * controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[AskWayController class]]) {
+            myVC = controller;
+        }
+    }
+SendWwayController *sendVC = [[SendWwayController alloc] init];
+    sendVC.flag = 0;
+[myVC.navigationController pushViewController:sendVC animated:YES];
+}
+
+
+- (void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{
+
+    NSIndexPath *indexPath =  [_tableview indexPathForCell:cell];
+    NSInteger  index = indexPath.row;
+    switch (num) {
+        case 1250:
+        {
+PreparePriceController *prepareVC = [[PreparePriceController alloc] init];
+    prepareVC.model = _listArray[index];
+[self.navigationController pushViewController:prepareVC animated:YES];
+        }
+            break;
+        case 1251:
+        {
+RetentionPriceController *prepareVC = [[RetentionPriceController alloc] init];
+prepareVC.model = _listArray[index];
+[self.navigationController pushViewController:prepareVC animated:YES];
+        }
+            break;
+        case 1252:
+        {
+EditPriceController *prepareVC = [[EditPriceController alloc] init];
+prepareVC.model = _listArray[index];
+[self.navigationController pushViewController:prepareVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSArray *allCells=[self.tableview visibleCells];
+    for(AskPriceCell *cell in allCells)
+        cell.selectBtn.hidden=YES;
+    AskWayController *myVC = [[ AskWayController alloc] init];
+    for (AskWayController * controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[AskWayController class]]) {
+            myVC = controller;
+        }
+    }
+    myVC.rightBtnOne.hidden = NO;
+    myVC.rightBtnTwo.hidden = YES;
+}
 
 
 

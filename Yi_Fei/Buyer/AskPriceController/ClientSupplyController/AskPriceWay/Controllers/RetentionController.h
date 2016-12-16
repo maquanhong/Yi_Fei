@@ -10,4 +10,16 @@
 
 @interface RetentionController : UIViewController
 
+
+@property (nonatomic,strong) SupplyModel *model;
+
+
 @end
+
+
+
+
+
+
+
+

@@ -15,7 +15,10 @@
 
 @property (nonatomic,copy) NSString  *flag;
 
+@property (nonatomic,strong)SupplyModel *model;
 
+@property (nonatomic,strong)UIButton *rightBtnOne;
 
+@property (nonatomic,strong)UIButton *rightBtnTwo;
 
 @end

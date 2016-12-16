@@ -31,26 +31,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = YES;
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     isSelect = YES;
     [self setNav];
-    [self createScrollerView];
-    
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+self.navigationController.navigationBar.hidden = NO;
 }
 
 #pragma mark 设置导航栏
 -(void)setNav {
-    self.title = @"询价";
+    
+    UIView *backView = [[UIView alloc] init];
+    backView.backgroundColor = BACKCOLOR;
+    [self.view addSubview:backView];
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.view);
+        make.trailing.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.height.mas_equalTo(64);
+    }];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"询价";
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.view addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(backView).offset(10);
+        make.centerX.equalTo(backView);
+        make.height.mas_equalTo(20);
+    }];
+    
     UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
-    leftBtn.frame = CGRectMake(0, 0, 25, 25);
-    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-    
+    [backView addSubview:leftBtn];
+    [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.view).offset(10);
+        make.centerY.equalTo(backView).offset(10);
+        make.size.mas_equalTo(CGSizeMake(30, 40));
+    }];
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem=leftBtnItem;
     
-    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addProduct)];
-    self.navigationItem.rightBarButtonItem=rightButton;
+    
+    _rightBtnOne = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_rightBtnOne setImage:[UIImage imageNamed:@"xinjian"] forState:UIControlStateNormal];
+    [backView addSubview:_rightBtnOne];
+    [_rightBtnOne mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self.view).offset(-10);
+        make.centerY.equalTo(backView).offset(10);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    [_rightBtnOne addTarget:self action:@selector(addProduct) forControlEvents:UIControlEventTouchUpInside];
+    
+    _rightBtnTwo = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_rightBtnTwo setImage:[UIImage imageNamed:@"点点"] forState:UIControlStateNormal];
+    [backView addSubview:_rightBtnTwo];
+    [_rightBtnTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(self.view).offset(-10);
+        make.centerY.equalTo(backView).offset(10);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    _rightBtnTwo.hidden = YES;
 }
 
 - (void)leftButtonClick {
@@ -86,6 +131,7 @@
 -(void)didSelectIndex:(NSInteger)index{
     if (index == 0) {
     ShopListController *shopListVC = [[ShopListController alloc] init];
+    shopListVC.model = self.model;
     [self.navigationController pushViewController:shopListVC animated:YES];
     }else if (index == 1){
     AddOneProductionController *addOneVc = [[AddOneProductionController alloc] init];
@@ -98,8 +144,11 @@
 -(void)createScrollerView{
     
     AlreadyController *oneView = [[AlreadyController alloc] init];
+    oneView.model = self.model;
     ReservedController *twoView = [[ReservedController alloc] init];
-    RetentionController *threeView = [[RetentionController alloc] init];
+    twoView.model = self.model;
+RetentionController *threeView = [[RetentionController alloc] init];
+    threeView.model = self.model;
     CCZSegementController *segement = [CCZSegementController segementControllerWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64) titles:@[@"已报价",@"预留报价",@"留样报价"]];
     [segement setSegementTintColor:COLOR];
     [segement setSegementViewControllers:@[oneView,twoView,threeView]];
@@ -110,6 +159,12 @@
     }];
     [self.view addSubview:segement.view];
     [self addChildViewController:segement];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self createScrollerView];
+self.navigationController.navigationBar.hidden = YES;
 }
 
 
@@ -127,79 +182,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
-
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 1;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *identify = @"cell";
-//    QueryPriceTableViewCell *cell = (QueryPriceTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identify];
-//    if (!cell) {
-//        cell = [[QueryPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-//    }
-//    cell.delegate = self;
-//    cell.productImageView.image = [UIImage imageNamed:@"logo.png"];
-//    
-//    cell.nameLabel.text = @"梦幻水晶吊灯";
-//    cell.nameLabel.font = [UIFont systemFontOfSize:19];
-//    cell.pricelabel.text = @"价格：200";
-//    [cell.queryBtn setTitle:@"询价" forState:UIControlStateNormal];
-//    [cell.imageQueryBtn setTitle:@"留样询价" forState:UIControlStateNormal];
-//    return cell;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 100;
-//}
-//
-//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-//    
-//}
-//
-//#pragma mark QueryPriceTableViewCellDelegate
-//- (void)queryPrice:(QueryPriceTableViewCell *)cell {
-//    AskProductPriceTableViewController *askVc = [[AskProductPriceTableViewController alloc] init];
-//    [self.navigationController pushViewController:askVc animated:YES];
-//}
-//
-//- (void)imageQueryPrice:(QueryPriceTableViewCell *)cell {
-//    ImageAskProductPriceTableViewController *askVc = [[ImageAskProductPriceTableViewController alloc] init];
-//    [self.navigationController pushViewController:askVc animated:YES];
-//}
-//
-//
-//
-//
-//
-//
-//#pragma mark XHSegmentControlDelegate
-//- (void)xhSegmentSelectAtIndex:(NSInteger)index animation:(BOOL)animation {
-//    
-//}
-//
-//
-//-(void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
-//    [_sheet removeFromSuperview];
-//    
-//}
 
 
 @end

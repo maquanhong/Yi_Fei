@@ -35,7 +35,6 @@ static AskPriceList * manager=nil;
 }
 
 
-
 - (instancetype)init
 {
     if(self=[super init]){
@@ -44,7 +43,7 @@ static AskPriceList * manager=nil;
         _dataBase = [[FMDatabase alloc]initWithPath:path];
         //如果创建成功 打开
         if ([_dataBase open]) {
-            NSString *createSql = @"create table if not exists addYiFei(ind integer PRIMARY KEY AUTOINCREMENT,companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000),time  varchar(1024),flag varchar(1024),count varchar(1024) )";
+            NSString *createSql = @"create table if not exists AskPrice(ind integer PRIMARY KEY AUTOINCREMENT,companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000),time  varchar(1024),flag varchar(1024),count varchar(1024) ,cleintName varchar(1024))";
             //integer 数字  varchar字符串   glob 二进制数据NSData
             if ([_dataBase executeUpdate:createSql]){
                 //executeUpdate 返回值是BOOL
@@ -60,21 +59,23 @@ static AskPriceList * manager=nil;
 
 //插入
 - (void)insertDataModel:(AskPriceModel *)model{
-    NSString * insertSql = @"insert into addYiFei(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,shopPicture,time,flag,count) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,model.time,model.flag,model.count];
+    
+    NSString * insertSql = @"insert into AskPrice(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,shopPicture,time,flag,count,cleintName) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,model.time,model.flag,model.count,model.cleintName];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
         NSLog(@"插入成功");
     }
+    
 }
 
 //修改数据
 - (void)updateDataModel:(AskPriceModel *)model number:(int)number  {
     
-    NSString *sql = [NSString stringWithFormat:@"update addYiFei set companyID = ?, shopName = ?,shopSize = ?, shopMed = ?, shopColor = ? ,shopPrice = ? ,shopHuoBi = ?, shopTiaoK = ?,shopAdderss= ?, shopDescribe = ? , shopInfo = ? ,shopCustom = ?,shopContent = ?,shopPicture = ?,time = ?,flag = ?,count = ?  where  ind = ?"];
+    NSString *sql = [NSString stringWithFormat:@"update AskPrice set companyID = ?, shopName = ?,shopSize = ?, shopMed = ?, shopColor = ? ,shopPrice = ? ,shopHuoBi = ?, shopTiaoK = ?,shopAdderss= ?, shopDescribe = ? , shopInfo = ? ,shopCustom = ?,shopContent = ?,shopPicture = ?,time = ?,flag = ?,count = ?,cleintName = ?  where  ind = ?"];
     NSString *str = [NSString stringWithFormat:@"%d",number];
-    BOOL success = [_dataBase executeUpdate:sql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,model.time,model.flag,model.count,str];
+    BOOL success = [_dataBase executeUpdate:sql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,model.time,model.flag,model.count,model.cleintName,str];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -85,7 +86,7 @@ static AskPriceList * manager=nil;
 //查找
 - (BOOL)isHasDataIDFromTable:(int)dataId;
 {
-    NSString * isSql = @"select *from addYiFei where ind =?";
+    NSString * isSql = @"select *from AskPrice where ind =?";
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,dataId];
     //[set next] 查找当前行 找到继续中查找下一行
@@ -99,18 +100,18 @@ static AskPriceList * manager=nil;
 //删除
 - (void)deleteNameFromTable:(int)dataId
 {
-    NSString * deleteSql = @"delete from addYiFei where ind = ?";
+    NSString * deleteSql = @"delete from AskPrice where ind = ?";
     if ([_dataBase executeUpdate:deleteSql,dataId]) {
         NSLog(@"删除成功");
     }
 }
 
 
-#pragma mark 从创建的数据库中读取所有的值
-- (NSArray *)getData{
+
+- (NSArray *)getDataWith:(NSString*)dataId{
     
-    NSString *resultSql = @"select *from addYiFei";
-    FMResultSet * set = [_dataBase executeQuery:resultSql];
+   NSString * resultSql = @"select *from AskPrice where cleintName =?";
+    FMResultSet * set = [_dataBase executeQuery:resultSql,dataId];
     NSMutableArray * arr = [NSMutableArray array];
     while ([set next]) {
         AskPriceModel* model = [[AskPriceModel alloc]init];
@@ -131,22 +132,12 @@ static AskPriceList * manager=nil;
         model.time = [set stringForColumn:@"time"];
         model.count = [set stringForColumn:@"count"];
         model.flag = [set stringForColumn:@"flag"];
+        model.cleintName = [set stringForColumn:@"cleintName"];
         model.ind = [set  intForColumn:@"ind" ];
         [arr addObject:model];
     }
     return arr;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

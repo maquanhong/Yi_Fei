@@ -10,7 +10,7 @@
 
 @implementation ConversionTrams
 
--(AskPriceModel*)trams:(ProductionData*)model tag:(NSString *)tag time:(NSString*)time{
+-(AskPriceModel*)trams:(ProductionData*)model tag:(NSString*)tag time:(NSString*)time supplyName:(NSString*)supplyName{
     AskPriceModel *askModel = [[AskPriceModel alloc] init];
     askModel.flag = tag;
     askModel.companyID = model.companyID;
@@ -27,6 +27,7 @@
     askModel.shopCustom = model.shopCustom;
     askModel.shopContent = model.shopContent;
     askModel.shopPicture = model.shopPicture;
+    askModel.cleintName = supplyName;
     askModel.time = time;
     return askModel;
 }
