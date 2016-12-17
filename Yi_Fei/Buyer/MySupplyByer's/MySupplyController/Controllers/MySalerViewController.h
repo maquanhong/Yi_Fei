@@ -10,4 +10,9 @@
 
 @interface MySalerViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableV;
+
+
+@property(nonatomic,strong)SupplyModel *model;
+
+
 @end

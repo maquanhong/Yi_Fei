@@ -623,6 +623,35 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *backView = [[UIView alloc] initWithFrame:CGRectZero];
     return backView;

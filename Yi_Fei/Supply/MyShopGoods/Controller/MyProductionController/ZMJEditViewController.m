@@ -71,7 +71,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _nameArray = @[@"公司货号",@"商品名称",@"商品尺寸",@"商品材质",@"商品颜色",@"商品价格",@"商品备注"];
+_nameArray = @[@"公司货号",@"商品名称",@"商品尺寸",@"商品材质",@"商品颜色",@"商品价格",@"商品备注"];
     _index=0;
     _number = 0;
     _flag = 0;
@@ -315,29 +315,31 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         }
             break;
         case 2304:
-            if (_shopObj.shopColor.length != 0) {
-                firstCell.textF.text = _shopObj.shopColor;
-            }else{
-                firstCell.textF.text = @"";
-            }       {
+        {
+      NSLog(@"%@",_shopObj.shopColor);
+    if (_shopObj.shopColor.length != 0) {
+    firstCell.textF.text = _shopObj.shopColor;
+    }else{
+    firstCell.textF.text = @"";
+    }
         }
             break;
         case 2305:
         {
-            if (_shopObj.shopPrice.length != 0) {
-                firstCell.textF.text = _shopObj.shopPrice;
-            }else{
-                firstCell.textF.text = @"";
-            }
+    if (_shopObj.shopPrice.length != 0) {
+        firstCell.textF.text = _shopObj.shopPrice;
+    }else{
+        firstCell.textF.text = @"";
+    }
         }
             break;
         case 2306:
         {
-            if (_shopObj.shopDescribe.length != 0) {
-                firstCell.textF.text = _shopObj.shopDescribe;
-            }else{
-                firstCell.textF.text = @"";
-            }
+        if (_shopObj.shopDescribe.length != 0) {
+            firstCell.textF.text = _shopObj.shopDescribe;
+        }else{
+            firstCell.textF.text = @"";
+        }
         }
             break;
             
@@ -359,7 +361,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             break;
         case 2301:
         {
-        _shopObj.shopName = textField.text;
+    _shopObj.shopName = textField.text;
         }
             break;
         case 2302:
@@ -375,7 +377,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         case 2304:
         {
             
-     _shopObj.shopColor = firstCell.textF.text;
+     _shopObj.shopColor = textField.text;
         }
             break;
         case 2305:
@@ -398,14 +400,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView{
     _shopObj.shopInfo = textView.text;
-    return YES;
-}
-
-#pragma mark textView的代理方法
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];//按回车取消第一相应者
-    }
     return YES;
 }
 
@@ -442,8 +436,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             return 0;
         }
 }
-
-
 
 -(void)clickViewTag:(NSInteger)tag{
 
@@ -578,27 +570,105 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString *str1;
     NSString *str2;
-    if (textField.tag == 2600) {
-        if (textField.text.length == 0) {
-            str1=[NSString stringWithFormat:@"%@",@"ABC"];
-        }else{
-            str1=[NSString stringWithFormat:@"%@",textField.text];
+    switch (textField.tag) {
+        case 2600:
+        {
+    if (textField.text.length == 0) {
+        str1=[NSString stringWithFormat:@"%@",@"ABC"];
+    }else{
+        str1=[NSString stringWithFormat:@"%@",textField.text];
+    }
+    [_shopCustomType addObject:str1];
+    NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
+    _shopObj.shopCustom  =   str;
         }
-        [_shopCustomType addObject:str1];
-        NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
-          NSLog(@"拼接后的字符串是2===== %@",str);
-        _shopObj.shopCustom  =   str;
-    
-    }else if(textField.tag == 2601){
-        if (textField.text.length == 0) {
-            str2=[NSString stringWithFormat:@"%@",@"ABC"];
-        }else{
-            str2 = [NSString stringWithFormat:@"%@",textField.text];
-        }
-        [_shopCustomContent addObject:str2];
+            break;
+        case 2601:
+        {
+    if (textField.text.length == 0) {
+        str2=[NSString stringWithFormat:@"%@",@"ABC"];
+    }else{
+        str2 = [NSString stringWithFormat:@"%@",textField.text];
+    }
+    [_shopCustomContent addObject:str2];
     NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
-     NSLog(@"拼接后的字符串是2===== %@",str);
-        _shopObj.shopContent  =   str;
+    _shopObj.shopContent  =   str;
+        }
+            break;
+        case 2300:
+        {
+    if (textField.text.length > 0) {
+        _shopObj.companyID = textField.text;
+    }else{
+        _shopObj.companyID = @"";
+    }
+        }
+            break;
+        case 2301:
+        {
+    if (textField.text.length > 0) {
+        _shopObj.shopName = textField.text;
+    }else{
+        _shopObj.shopName = @"";
+    }
+        }
+            break;
+        case 2302:
+        {
+        if (textField.text.length > 0) {
+        _shopObj.shopSize = textField.text;
+        }else{
+        _shopObj.shopSize = @"";
+        }
+        }
+            break;
+        case 2303:
+        {
+    if (textField.text.length > 0) {
+        _shopObj.shopMed = textField.text;
+    }else{
+        _shopObj.shopMed = @"";
+    }
+        }
+            break;
+        case 2304:
+        {
+    if (textField.text.length > 0) {
+        _shopObj.shopColor = textField.text;
+    }else{
+        _shopObj.shopColor = @"";
+    }
+        }
+            break;
+        case 2305:
+        {
+    if (textField.text.length > 0) {
+        _shopObj.shopPrice = textField.text;
+    }else{
+        _shopObj.shopPrice = @"";
+    }
+        }
+            break;
+        case 2306:
+        {
+    if (textField.text.length > 0) {
+        _shopObj.shopDescribe = textField.text;
+    }else{
+        _shopObj.shopDescribe = @"";
+    }
+        }
+            break;
+        case 1302:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopAdderss = textField.text;
+            }else{
+                _shopObj.shopAdderss = @"";
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 
@@ -663,7 +733,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 
 - (void)presentCameraSingle {
     _flag = 1;
-    
     ZZCameraController *cameraController = [[ZZCameraController alloc]init];
     cameraController.takePhotoOfMax = 8;
     
@@ -713,6 +782,7 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
+    
     FMDBOneList  *manager = [FMDBOneList defaultManager];
     [manager updateDataModel:_shopObj number:_shopObj.ind];
     [self.navigationController popViewControllerAnimated:YES];

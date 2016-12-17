@@ -87,6 +87,7 @@
     _tableView.backgroundColor=[UIColor whiteColor];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *footView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     UIButton *btn = [BUYButton creatBtnWithBgColor:NAVCOLOR borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:[UIColor whiteColor] text:@"确定"];
     [btn addTarget:self action:@selector(clickBtnNextController) forControlEvents:UIControlEventTouchUpInside];
@@ -161,10 +162,11 @@
             if (firstCell == nil) {
                 firstCell = [[FirstTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer1];
             }
-            firstCell.titileLabel.text = @"商品简介";
-            firstCell.contentLabel.placeholder = @"请输入商品相关介绍";
+            firstCell.titileLabel.text =  @"商品备注";
+            firstCell.contentLabel.placeholder =  @"请勿沾水/勿靠近火源";
             firstCell.selectionStyle =  UITableViewCellSelectionStyleNone;
-            _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            firstCell.contentLabel.delegate = self;
+            firstCell.contentLabel.tag = 1260;
             return firstCell;
         }else{
             static NSString *identifer2 =@"secondCell";
@@ -172,8 +174,8 @@
             if (secondCell == nil) {
                 secondCell = [[FourTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer2];
             }
-            secondCell.titileLabel.text = @"商品备注";
-            secondCell.holderLabel.text = @"请勿沾水/勿靠近火源";
+            secondCell.titileLabel.text = @"商品简介";
+            secondCell.holderLabel.text = @"请输入商品相关介绍";
             secondCell.selectionStyle =  UITableViewCellSelectionStyleNone;
             secondCell.textView.delegate = self;
             return secondCell;
@@ -208,19 +210,21 @@
     }
 }
 #pragma mark textView的代理
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    secondCell.holderLabel.hidden = YES;
-    return YES;
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    if (textView.text.length > 0) {
+        _shopObj.shopInfo = textView.text;
+    }else{
+        _shopObj.shopInfo = @"";
+    }
 }
 
-
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView
-{
-    secondCell.holderLabel.hidden = NO;
-    return YES;
+- (void)textViewDidChange:(UITextView *)textView{
+    if (textView.text.length > 0) {
+        secondCell.holderLabel.hidden = YES;
+    }else{
+        secondCell.holderLabel.hidden = NO;
+    }
 }
-
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -352,7 +356,7 @@
         NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
         _shopObj.shopCustom=str;
         //    NSLog(@"拼接后的字符串是===== %@",str);
-    }else{
+    }else if (textField.tag == 2601){
         if (textField.text.length == 0) {
             str2=[NSString stringWithFormat:@"%@",@"ABC"];
         }else{
@@ -362,16 +366,13 @@
         NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
         _shopObj.shopContent=str;
         //        NSLog(@"拼接后的字符串是2===== %@",str);
+    }else if (textField.tag == 1260){
+        if (textField.text.length > 0) {
+            _shopObj.shopDescribe = textField.text;
+        }else{
+            _shopObj.shopDescribe = @"";
+        }
     }
-}
-
-
-#pragma mark textView的代理方法
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];//按回车取消第一相应者
-    }
-    return YES;
 }
 
 

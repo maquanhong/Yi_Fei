@@ -92,7 +92,7 @@
         make.size.mas_equalTo(CGSizeMake(100, 25));
     }];
 
-    
+    _textFThree.tag = 2002;
     
     
     

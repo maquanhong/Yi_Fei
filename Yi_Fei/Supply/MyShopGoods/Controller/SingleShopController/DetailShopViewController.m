@@ -99,11 +99,6 @@
 #pragma mark 进入最后的页面
 - (void)btnClick:(UIButton*)btn
 {
-    if (_backView.textFThree.text.length > 0) {
-        _shopObj.shopAdderss = _backView.textFThree.text;
-    }else{
-        _shopObj.shopColor = @"";
-    }
     ZMJGoodParamViewController *paramVC = [[ ZMJGoodParamViewController alloc] init];
     paramVC.shopObj = _shopObj;
     [self.navigationController pushViewController:paramVC animated:YES];
@@ -117,17 +112,22 @@
 
     switch (textField.tag) {
         case 2000:
+        {
+
         if (textField.text.length > 0) {
     _shopObj.shopColor = textField.text;
         }else{
     _shopObj.shopColor = @"";
         }
+    }
             break;
         case 2001:
+        {
         if (textField.text.length > 0) {
             _shopObj.shopPrice = textField.text;
         }else{
             _shopObj.shopPrice = @"";
+        }
         }
             break;
     }

@@ -542,31 +542,109 @@
 
 
 #pragma UITextField代理
-
 //编辑结束监听
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString *str1;
     NSString *str2;
-    if (textField.tag == 2600) {
-        if (textField.text.length == 0) {
-            str1=[NSString stringWithFormat:@"%@",@"ABC"];
-        }else{
-            str1=[NSString stringWithFormat:@"%@",textField.text];
+    switch (textField.tag) {
+        case 2600:
+        {
+            if (textField.text.length == 0) {
+                str1=[NSString stringWithFormat:@"%@",@"ABC"];
+            }else{
+                str1=[NSString stringWithFormat:@"%@",textField.text];
+            }
+            [_shopCustomType addObject:str1];
+            NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
+            _shopObj.shopCustom  =   str;
         }
-        [_shopCustomType addObject:str1];
-        NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
-        _shopObj.shopCustom=str;
-        //    NSLog(@"拼接后的字符串是===== %@",str);
-    }else{
-        if (textField.text.length == 0) {
-            str2=[NSString stringWithFormat:@"%@",@"ABC"];
-        }else{
-            str2=[NSString stringWithFormat:@"%@",textField.text];
+            break;
+        case 2601:
+        {
+            if (textField.text.length == 0) {
+                str2=[NSString stringWithFormat:@"%@",@"ABC"];
+            }else{
+                str2 = [NSString stringWithFormat:@"%@",textField.text];
+            }
+            [_shopCustomContent addObject:str2];
+            NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
+            _shopObj.shopContent  =   str;
         }
-        [_shopCustomContent addObject:str2];
-        NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
-        _shopObj.shopContent=str;
-        //        NSLog(@"拼接后的字符串是2===== %@",str);
+            break;
+        case 2300:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.companyID = textField.text;
+            }else{
+                _shopObj.companyID = @"";
+            }
+        }
+            break;
+        case 2301:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopName = textField.text;
+            }else{
+                _shopObj.shopName = @"";
+            }
+        }
+            break;
+        case 2302:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopSize = textField.text;
+            }else{
+                _shopObj.shopSize = @"";
+            }
+        }
+            break;
+        case 2303:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopMed = textField.text;
+            }else{
+                _shopObj.shopMed = @"";
+            }
+        }
+            break;
+        case 2304:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopColor = textField.text;
+            }else{
+                _shopObj.shopColor = @"";
+            }
+        }
+            break;
+        case 2305:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopPrice = textField.text;
+            }else{
+                _shopObj.shopPrice = @"";
+            }
+        }
+            break;
+        case 2306:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopDescribe = textField.text;
+            }else{
+                _shopObj.shopDescribe = @"";
+            }
+        }
+            break;
+        case 1302:
+        {
+            if (textField.text.length > 0) {
+                _shopObj.shopAdderss = textField.text;
+            }else{
+                _shopObj.shopAdderss = @"";
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 
@@ -709,8 +787,6 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-
-
 
 
 

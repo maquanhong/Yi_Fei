@@ -239,18 +239,9 @@ cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self opt
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MySalerViewController *mySalerVC=[[MySalerViewController alloc] init];
+    mySalerVC.model = _listArray[indexPath.row];
     [self.navigationController pushViewController:mySalerVC animated:YES];
 }
-
-
-
-
-
-
-
-
-
-
 
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

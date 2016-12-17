@@ -344,7 +344,7 @@ cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{
 cell.priceL.text  =  @"";
     }
-  
+    cell.nameShop.text= dataModel.shopName;
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
     _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
