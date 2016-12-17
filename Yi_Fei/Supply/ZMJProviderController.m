@@ -10,7 +10,7 @@
 #import "UIView+Layout.h"
 #import "BUYButton.h"
 #import "MyProductionController.h"
-#import "BuyerViewController.h"
+#import "SupplyListController.h"
 #import "AskPriceController.h"
 #import "Macro.h"
 
@@ -132,8 +132,9 @@
 - (void)btnClick:(UIButton *)sender
 {
     MyProductionController *vc = [[MyProductionController alloc] init];
-    BuyerViewController *BuyerVc = [[BuyerViewController alloc] init];
-    AskPriceController *offerVC=[[AskPriceController alloc] initWithIdType:BussinessSaler];
+    SupplyListController *BuyerVc = [[SupplyListController alloc] init];
+    
+    AskPriceController *offerVC=[[AskPriceController alloc] init];
     
     switch (sender.tag) {
         case 0:

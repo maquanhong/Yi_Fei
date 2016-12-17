@@ -38,6 +38,10 @@
 
 @property (nonatomic, copy) NSString *shopPicture; //上传图片
 
+@property (nonatomic, copy) NSString *num; //商品数量
 
+@property (nonatomic, copy) NSString *shopSpecific; //商品规格
+
+@property (nonatomic, copy) NSString *time; //商品规格
 
 @end

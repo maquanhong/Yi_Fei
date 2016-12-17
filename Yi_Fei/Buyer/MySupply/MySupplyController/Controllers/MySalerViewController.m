@@ -1,30 +1,51 @@
 //
-//  MyBuyerViewController.m
+//  MySalerViewController.m
 //  YiFei
 //
 //  Created by yangyan on 16/9/2.
 //  Copyright © 2016年 yous. All rights reserved.
 //
 
-#import "MyBuyerViewController.h"
+#import "MySalerViewController.h"
 #import "MyBuyerTableViewCell.h"
 #import "MyBuyerInfoTableViewCell.h"
-//#import "MyBuyerAskTableViewCell.h"
+#import "MyBuyerAskTableViewCell.h"
 #import "ClientInfoTableViewCell.h"
 #import "NameContentTableViewCell.h"
 #import "ZESegmentedsView.h"
 #import "OnlyTitleTableViewCell.h"
-//#import "AddSupplyViewController.h"
-@interface MyBuyerViewController ()<ZESegmentedsViewDelegate>
+
+#import "BriefProductTableViewCell.h"
+#import "ProductListController.h"
+#import "CardNameController.h"
+
+
+
+@interface MySalerViewController ()<ZESegmentedsViewDelegate>
 {
-    UIView *addTableV;
+    NewTwoList  *_manager;
 }
+@property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
+
 @property (nonatomic, assign) NSInteger  selectIndexInSection1;
 @property (nonatomic, assign) NSInteger  selectIndexInSection2;
 @property (nonatomic, assign) BOOL bShowAddView;
 @end
 
-@implementation MyBuyerViewController
+@implementation MySalerViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadData];
+}
+
+//数据的加载
+-(void)loadData{
+    _manager = [NewTwoList newListManager];
+    _listArray = [NSMutableArray arrayWithArray:[_manager getData]];
+}
+
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -33,6 +54,16 @@
     }
     return self;
 }
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title=@"我的供应商";
+    [self setNav];
+    self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    [self addContentView];
+}
+
 - (void)setNav {
     UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -42,88 +73,17 @@
     
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem=leftBtnItem;
-    
-    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(rightButtonClick)];
-    self.navigationItem.rightBarButtonItem=rightButton;
-    self.automaticallyAdjustsScrollViewInsets=YES;
 }
 
 - (void)leftButtonClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)rightButtonClick {
-    self.bShowAddView = !self.bShowAddView;
-    //获取当前顶层的窗口
-    UIWindow *awindow=[[UIApplication sharedApplication].windows lastObject];
-    if (self.bShowAddView) {
-        addTableV=[[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT)];
-        addTableV.backgroundColor=[UIColor clearColor];
-        UIView *bgView = [[UIView alloc] initWithFrame:addTableV.bounds];
-        bgView.backgroundColor = [UIColor blackColor];
-        bgView.alpha = 0.6;
-        [addTableV addSubview:bgView];
-        [awindow addSubview:addTableV];
-        NSArray *imgArray=@[@"saoyisao-.png",@"shoudong.png"];
-        NSArray *titleArray=@[@"扫一扫",@"手动添加供应商"];
-        for (int i=0; i<2; i++) {
-            UIView *backV=[[UIView alloc] init];
-            backV.backgroundColor = [UIColor whiteColor];
-            [backV sizeToFit];
-            backV.frame=CGRectMake(0, 41*i, WIDTH, 41);
-            [addTableV addSubview:backV];
-            
-            UIImageView *imgV=[[UIImageView alloc] init];
-            imgV.contentMode = UIViewContentModeCenter;
-            imgV.frame=CGRectMake(10, 5, 30, 30);
-            imgV.image=[UIImage imageNamed:imgArray[i]];
-            [backV addSubview:imgV];
-            
-            
-            UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-            [btn sizeToFit];
-            btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 70, 30);
-            if (i==1) {
-                btn.frame=CGRectMake(CGRectGetMaxX(imgV.frame), 5, 130, 30);
-                [btn addTarget:self action:@selector(btn2Click:) forControlEvents:UIControlEventTouchUpInside];
-            } else {
-                [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-            }
-            btn.tag=70+i;
-            btn.titleLabel.font=[UIFont systemFontOfSize:15.0];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [btn setTitle:titleArray[i] forState:UIControlStateNormal];
-            [backV addSubview:btn];
-            
-            
-            UIView *lineV=[[UIView alloc] init];
-            lineV.frame=CGRectMake(0, CGRectGetMaxY(backV.frame) - 1, WIDTH, 1);
-            lineV.backgroundColor=[UIColor lightGrayColor];
-            [backV addSubview:lineV];
-        }
-    }else{
-        [addTableV removeFromSuperview];
-    }
-
-}
-
-//-(void)btnClick:(UIButton *)sender{
-//    
-//    AddSupplyViewController *addSuVC=[[AddSupplyViewController alloc] init];
-//    [self.navigationController pushViewController:addSuVC animated:YES];
-//    [addTableV removeFromSuperview];
-//}
 
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title=@"我的客户";
-    [self setNav];
-    self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
-    [self addContentView];
-}
+
+
 
 
 -(void)addContentView{
@@ -133,7 +93,7 @@
     self.tableV.delegate=self;
     self.tableV.dataSource=self;
     self.tableV.backgroundColor=[UIColor groupTableViewBackgroundColor];
-    
+    self.tableV.separatorStyle =  UITableViewCellSeparatorStyleNone;
     self.tableV.tableHeaderView.backgroundColor=[UIColor groupTableViewBackgroundColor];
     self.tableV.tableHeaderView.layer.masksToBounds=YES;
     self.tableV.tableHeaderView.layer.cornerRadius=5.0;
@@ -142,12 +102,9 @@
 }
 
 #pragma Mark -- 事件处理
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
-}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -156,6 +113,8 @@
     } else if (section == 1) {
         return 1;
     } else if (section == 2) {
+        return 1;
+    } else if (section == 3) {
         return 2;
     }
     return 0;
@@ -163,16 +122,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return 40;
+        return 60;
     }else if (indexPath.section==1){
         if (self.selectIndexInSection1 == 0) {
-            return 120;
+            return 180;
         } else if (self.selectIndexInSection1 == 1) {
             return 60;
         } else {
-            return 40;
+            return 60;
         }
         
+    } else if (indexPath.section == 2) {
+        return 120;
     }else{
         if (self.selectIndexInSection2 == 0) {
             return 230;
@@ -195,7 +156,11 @@
         cell.layer.cornerRadius=5.0;
         cell.backgroundColor=[UIColor whiteColor];
         cell.imagV.backgroundColor=[UIColor orangeColor];
-        cell.label.text=@"客户C公司的名称";
+        cell.label.text= _model.supplyName;
+        NSString *path_document = NSHomeDirectory();
+        //设置一个图片的存储路径
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
+        cell.imagV.image  = [UIImage imageWithContentsOfFile:imagePath];
         return cell;
     }else if (indexPath.section==1){
         
@@ -205,6 +170,7 @@
             if (cell==nil) {
                 cell=[[ClientInfoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent2];
             }
+            cell.model = _model;
 
             return cell;
         } else if (self.selectIndexInSection1 == 1) {
@@ -224,13 +190,24 @@
             if (cell==nil) {
                 cell=[[OnlyTitleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent4];
             }
-            
-            
+            cell.discrible.text = _model.otherNote;
             return cell;
         }
         return nil;
         
-    }else{
+    } else if (indexPath.section == 2) {
+        static NSString *cellIdent9=@"morecell";
+        BriefProductTableViewCell *cell = (BriefProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdent9];
+        if (!cell) {
+            cell = [[BriefProductTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent9];
+        }
+        ProductionData *dataModel = [[ProductionData alloc] init];
+        if (_listArray.count > 0) {
+            dataModel = _listArray[0];
+            cell.model = dataModel;
+        }
+        return cell;
+    } else{
         
         if (self.selectIndexInSection2 == 0) {
             static NSString *cellIdent5=@"cell3_0";
@@ -238,7 +215,7 @@
 //            if (cell==nil) {
 //                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent5];
 //            }
-            
+//            
 //            cell.productLabel.text = @"商品名称：复古吊灯";
 //            cell.typeLabel.text = @"规格：按钮式开关";
 //            cell.skinLabel.text = @"材质：PVC塑料";
@@ -252,9 +229,9 @@
             static NSString *cellIdent6=@"cell3_1";
 //            AskPriceTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent6];
 //            if (cell==nil) {
-//                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
+//                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
 //            }
-            
+//            
 //            cell.productLabel.text = @"商品名称：复古吊灯";
 //            cell.typeLabel.text = @"规格：按钮式开关";
 //            cell.skinLabel.text = @"材质：PVC塑料";
@@ -283,50 +260,144 @@
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 30)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 30)];
+        view.backgroundColor = [UIColor whiteColor];
+        UILabel *label = [[UILabel alloc] init];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"客户C";
-        return label;
+        label.text = @"供应商C";
+        label.font = [UIFont systemFontOfSize:16];
+        [view addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(view);
+            make.height.mas_equalTo(20);
+        }];
+        UIButton *cardBtn = [[UIButton alloc] init];
+        cardBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        cardBtn.layer.cornerRadius = 5;
+        [cardBtn setTitle:@"供应商名片" forState:UIControlStateNormal];
+        [cardBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cardBtn setBackgroundColor:[UIColor colorWithRed:36/255.0 green:127/255.0 blue:211/255.0 alpha:1.0f]];
+        [view addSubview:cardBtn];
+        [cardBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.trailing.equalTo(view).offset(-10);
+            make.centerY.equalTo(label);
+            make.height.mas_equalTo(25);
+            make.width.mas_equalTo(75);
+        }];
+    [cardBtn addTarget:self action:@selector(supplyCard) forControlEvents:UIControlEventTouchUpInside];
+        return view;
     } else if (section == 1) {
-        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(20, 5, WIDTH-40, 30) segmentedCount:3 segmentedTitles:@[@"客户资料",@"交易记录",@"备忘客户爱好"] selectIndex:self.selectIndexInSection1];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+        view.backgroundColor = [UIColor whiteColor];
+    ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(10, 10, WIDTH-40, 30) segmentedCount:3 segmentedTitles:@[@"供应商资料",@"交易记录",@"备忘供应商爱好"] selectIndex:self.selectIndexInSection1];
         segmentView.delegate = self;
         segmentView.tag = 10000 + section;
-        return segmentView;
-    } else if (section == 2) {
-        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(20, 5, WIDTH-40, 30) segmentedCount:3 segmentedTitles:@[@"最新询价",@"留样询价",@"客户预留询价"] selectIndex:self.selectIndexInSection2];
+        [view addSubview:segmentView];
+        return view;
+    } else if (section == 3) {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, WIDTH, 15)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"供应商报价";
+        [view addSubview:label];
+        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(20, 35, WIDTH-40, 30) segmentedCount:3 segmentedTitles:@[@"最新报价",@"留样报价",@"预留报价"] selectIndex:self.selectIndexInSection2];
         segmentView.delegate = self;
         segmentView.tag = 10000 + section;
-        return segmentView;
+        [view addSubview:segmentView];
+        return view;
     }
-    
     return nil;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(void)supplyCard{
+    CardNameController *cardVC = [[CardNameController alloc] init];
+    cardVC.model = _model;
+    [self.navigationController pushViewController:cardVC animated:YES];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ProductListController *proVc = [[ProductListController alloc] init];
+    [self.navigationController pushViewController:proVc animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 40;
+    } else if (section == 1) {
+        return 50;
+    } else if (section == 2) {
+        return 0.00000001;
+    } else if (section == 3) {
+        return 80;
+    }
+    return 0;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+   
+    if (section == 1) {
+        return 0.00000001;
+    }else{
+        return 10;
+    }
+
+}
+
+
+
+
 
 #pragma mark ZESegmentedsViewDelegate
 - (void)selectedZESegmentedsViewItemAtIndex:(NSInteger)selectedItemIndex zeView:(ZESegmentedsView *)zeView {
     if ((zeView.tag - 10000) == 1) {
-        self.selectIndexInSection1 = selectedItemIndex;
-        
+    self.selectIndexInSection1 = selectedItemIndex;
     } else if ((zeView.tag - 10000) == 2) {
     self.selectIndexInSection2 = selectedItemIndex;
-    
     }
-    [self.tableV reloadSections:[NSIndexSet indexSetWithIndex:zeView.tag - 10000] withRowAnimation:UITableViewRowAnimationNone];
+[self.tableV reloadSections:[NSIndexSet indexSetWithIndex:zeView.tag - 10000] withRowAnimation:UITableViewRowAnimationNone];
 }
 
+
+
+
+
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
