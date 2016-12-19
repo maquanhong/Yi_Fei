@@ -23,7 +23,7 @@
     [super awakeFromNib];
 
     
-    
+    self.bottomView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     
     

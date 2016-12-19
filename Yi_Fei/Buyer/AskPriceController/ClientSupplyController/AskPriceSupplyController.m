@@ -219,7 +219,7 @@
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
     cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
-    cell.textLable.text = model.supplyName;
+    cell.titleLabel.text = model.supplyName;
     cell.nextLabel.text = model.companyName;
     return cell;
 }

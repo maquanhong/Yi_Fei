@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface IndustryTypeTableViewCell : UITableViewCell
+
 @property (nonatomic, strong, readonly) UILabel  *titleLabel;
+
 @end

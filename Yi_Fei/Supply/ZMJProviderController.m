@@ -11,7 +11,7 @@
 #import "BUYButton.h"
 #import "MyProductionController.h"
 #import "SupplyListController.h"
-#import "AskPriceController.h"
+#import "OfferController.h"
 #import "Macro.h"
 
 @interface ZMJProviderController ()
@@ -134,7 +134,7 @@
     MyProductionController *vc = [[MyProductionController alloc] init];
     SupplyListController *BuyerVc = [[SupplyListController alloc] init];
     
-    AskPriceController *offerVC=[[AskPriceController alloc] init];
+    OfferController *offerVC=[[OfferController alloc] init];
     
     switch (sender.tag) {
         case 0:

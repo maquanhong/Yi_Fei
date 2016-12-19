@@ -8,16 +8,20 @@
 
 #import "EditPriceController.h"
 #import "EditFirstShopCell.h"
-#import "EditSelectViewCell.h"
 #import "ThreeViewCell.h"
 #import "FourViewCell.h"
 #import "UWDatePickerView.h"
 #import "AskPriceList.h"
 
-@interface EditPriceController ()<UITableViewDelegate,UITableViewDataSource,FourViewCellDelegate,UITextFieldDelegate,UITextViewDelegate,EditSelectViewCellDelegate,SSPopupDelegate,UWDatePickerViewDelegate>{
+@interface EditPriceController ()<UITableViewDelegate,UITableViewDataSource,FourViewCellDelegate,UITextFieldDelegate,UITextViewDelegate,EditSelectViewCellDelegate,SSPopupDelegate,UWDatePickerViewDelegate,SelectOneViewDelegate>{
   UWDatePickerView *_pickerView;
     EditFirstShopCell *firstCell;
+    
+    EditSelectOneViewCell *oneCell;
     EditSelectViewCell *secondCell;
+    SelectOneView  *SlOneCell;
+    SelectTwoView  *SlSecondCell;
+    
     ThreeViewCell  *threeCell;
     FourViewCell  *fourCell;
     NSInteger _index;
@@ -37,32 +41,29 @@
 @property(copy  ,nonatomic) NSArray *picArray;
 @property(copy  ,nonatomic) NSArray *rmbArray;
 @property(copy  ,nonatomic) NSArray *typeArray;
+@property(copy  ,nonatomic) NSArray *oneArray;
+@property(copy  ,nonatomic) NSArray *twoArray;
 @end
 
 @implementation EditPriceController
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self setDataFromeModel:firstCell.textF];
-    [self getTypeFromModel:secondCell.typeOne];
-    [self  getDataFromeModel:threeCell.textView];
-}
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     _flag = 0;
-    _index = 3;
+    _index = 1;
 _rmbArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
     _typeArray = @[@"EXW",@"CFR",@"CIF",@"FOB"];
 _nameArray = @[@"公司货号",@"商品名称",@"商品价格",@"商品规格",@"商品材质",@"商品尺寸",@"商品颜色",@"商品数量"];
-_typeOneArray = @[@"货币类型",@"价格条款",@"询价类型",@"预留时间"];
-_typeTwoArray = @[@"人民币",@"EXW",@"留样询价",@"选择预留询价时间"];
+_typeOneArray = @[@"货币类型",@"价格条款"];
+
+_typeTwoArray = @[@"人民币",@"EXW"];
+_oneArray = @[@"询价类型",@"预留时间"];
+_twoArray = @[@"留样询价",@"选择预留询价时间"];
 _textViewArray = @[@"商品备注",@"商品简介"];
 _askArray = @[@"已报价",@"预留报价",@"留样报价"];
     [self createnavigationView];
     [self addContentView];
+    
 }
 
 #pragma mark 创建导航栏
@@ -106,6 +107,7 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
     }];
     _tableView.tableFooterView=footView;
     [certainBtn addTarget:self action:@selector(clickBtnNext) forControlEvents:UIControlEventTouchUpInside];
+   [self getTypeViewOneFromModel:SlOneCell.typeOne];
 }
 
 -(void)clickBtnNext{
@@ -118,16 +120,18 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
 
 #pragma Mark -->tableVie的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 5;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return 8;
-    }if (section == 1) {
-         return _index;
-    }if (section == 2) {
+    }else if (section == 1) {
+         return 2;
+    }else if (section == 2) {
+        return _index;
+    }else if (section == 3) {
         return 2;
     }else{
         return 1;
@@ -147,21 +151,65 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
     firstCell.nameLabel.text = _nameArray[indexPath.row];
     firstCell.selectionStyle =  UITableViewCellSelectionStyleNone;
     firstCell.textF.tag = 2610 + indexPath.row;
+        [self setDataFromeModel:firstCell.textF];
         return firstCell;
     }else if (indexPath.section == 1){
+        if (indexPath.row == 0 ) {
         static NSString *identifer2 =@"editSecondCell";
-    secondCell  = [tableView dequeueReusableCellWithIdentifier:identifer2];
+        secondCell  = [tableView dequeueReusableCellWithIdentifier:identifer2];
         if (secondCell == nil) {
-    secondCell = [[EditSelectViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer2];
+            secondCell = [[EditSelectViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer2];
         }
-    secondCell.textFiled.delegate = self;
-    secondCell.textFiled.tag = 8780 + indexPath.row;
-    secondCell.delegate = self;
-    secondCell.typeLabel.text = _typeOneArray[indexPath.row];
-    secondCell.typeOne.nameLabel.text = _typeTwoArray[indexPath.row];
-    secondCell.typeOne.tag = 6700 + indexPath.row;
-    return secondCell;
+        secondCell.textFiled.delegate = self;
+        secondCell.textFiled.tag = 8780 ;
+        secondCell.delegate = self;
+        secondCell.typeLabel.text = _typeOneArray[indexPath.row];
+        secondCell.typeOne.nameLabel.text = _typeTwoArray[indexPath.row];
+        secondCell.typeOne.tag = 6700;
+        [self getTypeOneFromModel:secondCell.typeOne];
+        return secondCell;
+        }else{
+        static NSString *identifer6 =@"editOneCell";
+        oneCell  = [tableView dequeueReusableCellWithIdentifier:identifer6];
+        if (oneCell == nil) {
+            oneCell = [[EditSelectOneViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer6];
+        }
+        oneCell.textFiled.delegate = self;
+        oneCell.textFiled.tag = 8781 ;
+        oneCell.delegate = self;
+        oneCell.typeLabel.text = _typeOneArray[indexPath.row];
+        oneCell.typeOne.nameLabel.text = _typeTwoArray[indexPath.row];
+        oneCell.typeOne.tag = 6701;
+        [self getTypeTwoFromModel:oneCell.typeOne];
+        return oneCell;
+        }
     }else if (indexPath.section == 2){
+    
+        if (indexPath.row == 0) {
+        static NSString *identifer7 =@"addOneCell";
+        SlOneCell = [tableView dequeueReusableCellWithIdentifier:identifer7];
+        if (SlOneCell == nil) {
+            SlOneCell = [[SelectOneView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer7];
+        }
+        SlOneCell.delegate = self;
+        SlOneCell.typeLabel.text = _oneArray[indexPath.row];
+        SlOneCell.typeOne.nameLabel.text = _twoArray[indexPath.row];
+            SlOneCell.typeOne.tag = 6800;
+        return SlOneCell;
+        }else{
+            static NSString *identifer5 =@"addTwoCell";
+            SlSecondCell = [tableView dequeueReusableCellWithIdentifier:identifer5];
+            if (SlSecondCell == nil) {
+                SlSecondCell = [[SelectTwoView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer5];
+            }
+            SlSecondCell.delegate = self;
+            SlSecondCell.typeLabel.text = _oneArray[indexPath.row];
+            SlSecondCell.typeOne.nameLabel.text = _twoArray[indexPath.row];
+            SlSecondCell.typeOne.tag = 6801;
+            [self getTypeViewTwoFromModel:SlSecondCell.typeOne];
+            return SlSecondCell;
+        }
+    }else if (indexPath.section == 3){
         static NSString *identifer = @"threeCell";
         threeCell = [tableView dequeueReusableCellWithIdentifier:identifer];
         if (!threeCell) {
@@ -170,6 +218,7 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
     threeCell.textView.delegate = self;
     threeCell.textView.tag = 8500 +indexPath.row;
     threeCell.nameLabel.text = _textViewArray[indexPath.row];
+    [self  getDataFromeModel:threeCell.textView];
         return threeCell;
     }else {
         static NSString *identifer = @"fourCell";
@@ -264,9 +313,9 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 2) {
+    if (indexPath.section == 3) {
         return 100;
-    }else if (indexPath.section == 3) {
+    }else if (indexPath.section == 4) {
         return 130;
     }else{
         return 44;
@@ -375,22 +424,19 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
     }
 }
 
--(void)getTypeFromModel:(ZMJTypeView*)typeView{
-   
-    switch (typeView.tag) {
-        case 6700:
-        {
+#pragma mark 第二组
+-(void)getTypeOneFromModel:(ZMJTypeView*)typeView{
     if (_model.shopHuoBi.length > 0) {
-    secondCell.typeOne.nameLabel.text = _model.shopHuoBi;
+        secondCell.typeOne.nameLabel.text = _model.shopHuoBi;
     }else{
-   secondCell.typeOne.nameLabel.text = @"";
+        secondCell.typeOne.nameLabel.text = @"";
     }
-        }
-            break;
-        case 6701:
-        {
+}
+
+-(void)getTypeTwoFromModel:(ZMJTypeView*)typeView{
+    
     if (_model.shopTiaoK.length > 0) {
-        secondCell.typeOne.nameLabel.text = _model.shopTiaoK;
+        oneCell.typeOne.nameLabel.text = _model.shopTiaoK;
         if ([_model.shopTiaoK isEqualToString:@"FOB"]) {
             UITextField *textField = [self.view viewWithTag:8781];
             textField.hidden = NO;
@@ -401,35 +447,32 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
             }
         }
     }else{
-    secondCell.typeOne.nameLabel.text = @"";
+        oneCell.typeOne.nameLabel.text = @"";
     }
-        }
-            break;
-        case 6702:
-        {
+    
+}
+
+
+#pragma mark 第三组
+
+-(void)getTypeViewOneFromModel:(ZMJTypeView*)typeView{
     NSInteger flag = [_model.flag integerValue];
-            
-            NSLog(@"%@",_model.flag);
-        if ( flag == 0) {
-    secondCell.typeOne.nameLabel.text = _askArray[flag];
-        }else if (flag == 1){
-    secondCell.typeOne.nameLabel.text = _askArray[flag];
-        }else{
-    secondCell.typeOne.nameLabel.text = _askArray[flag];
-        }
-    }
-            break;
-        case 6703:
-        {
-    if (_model.time.length > 0) {
-    secondCell.typeOne.nameLabel.text = _model.time;
+    if ( flag == 0) {
+        SlOneCell.typeOne.nameLabel.text = _askArray[flag];
+    }else if (flag == 1){
+        SlOneCell.typeOne.nameLabel.text = _askArray[flag];
     }else{
-    secondCell.typeOne.nameLabel.text = @"选择预留询价时间";
+        SlOneCell.typeOne.nameLabel.text = _askArray[flag];
     }
-        }
-            break;
-        default:
-            break;
+}
+
+
+-(void)getTypeViewTwoFromModel:(ZMJTypeView*)typeView{
+    
+    if (_model.time.length > 0) {
+        SlSecondCell.typeOne.nameLabel.text = _model.time;
+    }else{
+        SlSecondCell.typeOne.nameLabel.text = @"选择预留询价时间";
     }
 }
 
@@ -506,46 +549,9 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
 
 
 
-- (void)clickView:(ZMJTypeView *)view{
-    
-    switch (view.tag) {
-        case 6700:
-        {
-    SSPopup* selection=[[SSPopup alloc]init];
-    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
-    selection.index = _rmbArray.count;
-    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-    selection.SSPopupDelegate=self;
-    [self.view  addSubview:selection];
-    [selection CreateTableview:_rmbArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-    ZMJTypeView *typyOne = [self.view viewWithTag:6700];
-        typyOne.nameLabel.text = _rmbArray[tag];
-    }];
-        }
-            break;
-        case 6701:
-        {
-    SSPopup* selection=[[SSPopup alloc]init];
-    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
-    selection.index = _typeArray.count;
-    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-    selection.SSPopupDelegate=self;
-    [self.view  addSubview:selection];
-    [selection CreateTableview:_typeArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-    ZMJTypeView *typyOne = [self.view viewWithTag:6701];
-    typyOne.nameLabel.text = _typeArray[tag];
-       UITextField *filedOne = [self.view viewWithTag:8781];
-    if ([_typeArray[tag] isEqualToString:@"FOB"]) {
-        filedOne.hidden= NO;
-        filedOne.delegate = self;
-    }else{
-        filedOne.hidden= YES;
-    }
-    }];
-        }
-            break;
-        case 6702:
-        {
+
+- (void)clicTypeOnekView:(ZMJTypeView *)view{
+
     SSPopup* selection=[[SSPopup alloc]init];
     selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
     selection.index = _askArray.count;
@@ -553,40 +559,72 @@ _askArray = @[@"已报价",@"预留报价",@"留样报价"];
     selection.SSPopupDelegate=self;
     [self.view  addSubview:selection];
     [selection CreateTableview:_askArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-        ZMJTypeView *typyOne = [self.view viewWithTag:6702];
-        typyOne.nameLabel.text = _askArray[tag];
-        NSLog(@"%@",_askArray[tag]);
+        SlOneCell.typeOne.nameLabel.text = _askArray[tag];
         if ([_askArray[tag] isEqualToString:@"预留报价"]) {
-            _index = 4 ;
-            [_tableView reloadData];
+            _index = 2 ;
         }else{
-            _index = 3 ;
-        [_tableView reloadData];
+            _index = 1 ;
         }
     }];
-    }
-            break;
-        case 6703:
-        {
+
+}
+
+
+-(void)clicTypeTwoView:(ZMJTypeView *)view{
+
     _pickerView = [UWDatePickerView instanceDatePickerView];
     _pickerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     [_pickerView setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.3]];
     _pickerView.delegate = self;
     _pickerView.type = DateTypeOfStart;
     [self.view addSubview:_pickerView];
-        }
-            break;
-        default:
-            break;
-    }
+
+
 }
+
+
+
+
+- (void)clickOneView:(ZMJTypeView *)view{
+
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = _rmbArray.count;
+    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:_rmbArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+    secondCell.typeOne.nameLabel.text = _rmbArray[tag];
+    }];
+
+}
+
+
+- (void)clickTwoView:(ZMJTypeView *)view{
+    
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = _typeArray.count;
+    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:_typeArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+        oneCell.typeOne.nameLabel.text = _typeArray[tag];
+        if ([_typeArray[tag] isEqualToString:@"FOB"]) {
+            oneCell.textFiled.hidden= NO;
+            oneCell.textFiled.delegate = self;
+        }else{
+            oneCell.textFiled.hidden= YES;
+        }
+    }];
+}
+
 
 - (void)getSelectDate:(NSString *)date type:(DateType)type {
     switch (type) {
         case DateTypeOfStart:
         {
-    ZMJTypeView *typeView = [self.view viewWithTag:6703];
-    typeView.nameLabel.text = date;
+    SlSecondCell.typeOne.nameLabel.text = date;
             _model.time = date;
         }
             break;

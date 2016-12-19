@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Macro.h"
+
 @interface AskPriceController : UIViewController
-- (instancetype)initWithIdType:(BussinessType)type;
+
+
 @end

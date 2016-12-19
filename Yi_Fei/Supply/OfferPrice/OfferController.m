@@ -1,32 +1,31 @@
 //
-//  offerViewController.m
-//  YiFei
-//  Created by yangyan on 16/9/9.
-//  Copyright © 2016年 yous. All rights reserved.
+//  OfferController.m
+//  Yi_Fei
+//
+//  Created by yons on 16/12/18.
+//  Copyright © 2016年 ZMJPersonal. All rights reserved.
+//
 
-
-
-#import "AskPriceController.h"
+#import "OfferController.h"
 #import "BUYButton.h"
-#import "BuyerViewController.h"
-#import "AskPriceSupplyController.h"
-#import "ManualAddAupplyController.h"
+#import "CustomController.h"
+#import "CustomerController.h"
 
 
-@interface AskPriceController ()
+@interface OfferController ()
+
 
 @property(nonatomic,strong)NSArray *titleArray;
 
-
 @end
 
-@implementation AskPriceController
+@implementation OfferController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTool];
-        self.title = @"询价";
+    self.title = @"报价";
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self addContentView];
 }
@@ -37,7 +36,7 @@
 }
 
 -(void)addContentView{
-       _titleArray=@[@"供应商",@"新建供应商"];
+    _titleArray=@[@"客户",@"新建客户"];
     
     for (int i=0; i<_titleArray.count; i++) {
         UIButton *button=[BUYButton creatBtnWithBgColor:NAVCOLOR borderColor:NAVCOLOR borderWidth:0 titleColor:[UIColor whiteColor] text:[self.titleArray objectAtIndex:i]];
@@ -49,16 +48,16 @@
     }
 }
 
+
 -(void)buttonClick:(UIButton *)sender{
     NSInteger index = sender.tag - 1000;
-        if (index == 1) {
-ManualAddAupplyController *clientVc = [[ManualAddAupplyController alloc] init];
+    if (index == 1) {
+   CustomerController *salerVc = [[CustomerController alloc] init];
+    [self.navigationController pushViewController:salerVc animated:YES];
+    } else if (index == 0) {
+    CustomController *clientVc = [[CustomController alloc] init];
     [self.navigationController pushViewController:clientVc animated:YES];
-        } else if (index == 0) {
-AskPriceSupplyController *salerVc = [[AskPriceSupplyController alloc] init];
-[self.navigationController pushViewController:salerVc animated:YES];
-        }
-    
+    }
 }
 
 
@@ -67,9 +66,31 @@ AskPriceSupplyController *salerVc = [[AskPriceSupplyController alloc] init];
 
 
 
-
-
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,21 +1,15 @@
 
 //
-//  EditSelectViewCell.m
+//  SelectTwoView.m
 //  Yi_Fei
 //
-//  Created by yons on 16/12/16.
+//  Created by ZMJ on 16/12/19.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "EditSelectViewCell.h"
+#import "SelectTwoView.h"
 
-@interface EditSelectViewCell ()
-
-
-@end
-
-
-@implementation EditSelectViewCell
+@implementation SelectTwoView
 
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -50,29 +44,12 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView)];
     [_typeOne addGestureRecognizer:tap];
     
-    _textFiled = [[UITextField alloc] init];
-    _textFiled.layer.cornerRadius = 5;
-    _textFiled.layer.borderWidth = 1.0;
-    _textFiled.layer.borderColor = BACKCOLOR.CGColor;
-    [self addSubview:_textFiled];
-    _textFiled.hidden = YES;
-    
     [_typeOne mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.left.mas_equalTo(_typeLabel.mas_right).offset(10);
-        make.right.mas_equalTo(_textFiled.mas_left).offset(-10);
         make.height.mas_equalTo(25);
-        make.width.mas_equalTo(_textFiled);
+        make.width.mas_equalTo((WIDTH - 100) / 2 );
     }];
-    
-    [_textFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.left.mas_equalTo(_typeOne.mas_right).offset(10);
-        make.trailing.mas_equalTo(self).offset(-10);
-        make.height.mas_equalTo(25);
-        make.width.mas_equalTo(_typeOne);
-    }];
-    
     
     UIView *backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -83,13 +60,13 @@
         make.trailing.mas_equalTo(self);
         make.height.mas_equalTo(1);
     }];
-
+    
 }
 
 
 -(void)clickTypeView{
-    if ([self.delegate respondsToSelector:@selector(clickOneView:)]) {
-        [self.delegate clickOneView:_typeOne];
+    if ([self.delegate respondsToSelector:@selector(clicTypeTwoView:)]) {
+        [self.delegate clicTypeTwoView:_typeOne];
     }
 }
 
@@ -108,47 +85,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end
-
-
-
-
-
-
-
-
-
-

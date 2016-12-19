@@ -39,7 +39,7 @@
 
 
     _listImageView = [[UIImageView alloc] init];
-    _listImageView.image= [UIImage imageNamed:@"xiala2"];
+    _listImageView.image= [UIImage imageNamed:@"xiala"];
     [self addSubview:_listImageView];
  
     _lineView = [[UIView alloc] init];

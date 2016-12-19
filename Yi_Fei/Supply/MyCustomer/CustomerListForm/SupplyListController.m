@@ -10,6 +10,10 @@
 #import "DownSheet.h"
 #import "CustomerModel.h"
 #import "CustomerList.h"
+#import "CustomerController.h"
+#import "CustomerScanController.h"
+#import "BuyerTableViewCell.h"
+#import "DetailCustomerController.h"
 
 @interface SupplyListController ()<DownSheetDelegate,UITextFieldDelegate>{;
     BOOL isSelect;
@@ -44,7 +48,7 @@
     _manager = [CustomerList  defaultManager];
     //可变数组初始化
     _listArray = [NSMutableArray arrayWithArray:[_manager getData]];
-    [_tableview reloadData];
+    NSLog(@"%ld",_listArray.count);
 }
 
 
@@ -111,16 +115,15 @@
 
 
 
-//-(void)didSelectIndex:(NSInteger)index{
-//    
-//    if (index == 0) {
-//        ScanViewController *scanVC = [[ScanViewController alloc] init];
-//        [self.navigationController pushViewController:scanVC animated:YES];
-//    }else if (index == 1){
-//        ManualAddAupplyController *manualVC = [[ManualAddAupplyController alloc] init];
-//        [self.navigationController pushViewController:manualVC animated:YES];
-//    }
-//}
+-(void)didSelectIndex:(NSInteger)index{
+    if (index == 0) {
+        CustomerScanController *scanVC = [[CustomerScanController alloc] init];
+        [self.navigationController pushViewController:scanVC animated:YES];
+    }else if (index == 1){
+        CustomerController *manualVC = [[CustomerController alloc] init];
+        [self.navigationController pushViewController:manualVC animated:YES];
+    }
+}
 
 
 
@@ -189,6 +192,8 @@
 
 -(void)clickBtnSearch{
     
+    
+    
 }
 
 
@@ -209,30 +214,29 @@
     
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    static NSString *cellIdent=@"supplyCell";
-//    BuyerTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
-//    if (!cell) {
-//        cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self options:nil]lastObject];
-//    }
-//    SupplyModel *model = _listArray[indexPath.row];
-//    NSString *path_document = NSHomeDirectory();
-//    //设置一个图片的存储路径
-//    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
-//    cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
-//    cell.textLable.text = model.supplyName;
-//    cell.nextLabel.text = model.companyName;
-//    return cell;
-//}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdent=@"supplyCell";
+    BuyerTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent];
+    if (!cell) {
+    cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self options:nil]lastObject];
+    }
+    CustomerModel *model = _listArray[indexPath.row];
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
+    cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+    cell.titleLabel.text = model.supplyName;
+    cell.nextLabel.text = model.companyName;
+    return cell;
+}
 
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    MySalerViewController *mySalerVC=[[MySalerViewController alloc] init];
-//    mySalerVC.model = _listArray[indexPath.row];
-//    [self.navigationController pushViewController:mySalerVC animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DetailCustomerController *mySalerVC=[[DetailCustomerController alloc] init];
+    mySalerVC.model = _listArray[indexPath.row];
+    [self.navigationController pushViewController:mySalerVC animated:YES];
+}
 
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -252,7 +256,6 @@
 
 //删除模式下，点击“-”按钮，不会调用该方法，点击cell上的“Delete”按钮，才会调用该方法
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     _manager = [CustomerList defaultManager];
     CustomerModel *model ;
   [_manager deleteNameFromTable:model.supplyName];

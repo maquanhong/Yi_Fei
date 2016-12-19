@@ -1,21 +1,14 @@
-
 //
-//  EditSelectViewCell.m
+//  EditSelectOneViewCell.m
 //  Yi_Fei
 //
-//  Created by yons on 16/12/16.
+//  Created by ZMJ on 16/12/19.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
-#import "EditSelectViewCell.h"
+#import "EditSelectOneViewCell.h"
 
-@interface EditSelectViewCell ()
-
-
-@end
-
-
-@implementation EditSelectViewCell
+@implementation EditSelectOneViewCell
 
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -83,13 +76,13 @@
         make.trailing.mas_equalTo(self);
         make.height.mas_equalTo(1);
     }];
-
+    
 }
 
 
 -(void)clickTypeView{
-    if ([self.delegate respondsToSelector:@selector(clickOneView:)]) {
-        [self.delegate clickOneView:_typeOne];
+    if ([self.delegate respondsToSelector:@selector(clickTwoView:)]) {
+        [self.delegate clickTwoView:_typeOne];
     }
 }
 
@@ -106,49 +99,4 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end
-
-
-
-
-
-
-
-
-
-
