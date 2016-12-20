@@ -13,6 +13,18 @@
 		203793DC1DF8227C00992510 /* GYModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D21DF8227C00992510 /* GYModelObject.m */; };
 		203793DD1DF8227C00992510 /* GYDCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D61DF8227C00992510 /* GYDCUtilities.m */; };
 		203793DE1DF8227C00992510 /* GYReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 203793D81DF8227C00992510 /* GYReflection.m */; };
+		208D0E331E09869E00B5775A /* BabyBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E221E09869E00B5775A /* BabyBluetooth.m */; };
+		208D0E341E09869E00B5775A /* BabyCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E241E09869E00B5775A /* BabyCallback.m */; };
+		208D0E351E09869E00B5775A /* BabyCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E261E09869E00B5775A /* BabyCentralManager.m */; };
+		208D0E361E09869E00B5775A /* BabyDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E281E09869E00B5775A /* BabyDefine.m */; };
+		208D0E371E09869E00B5775A /* BabyOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E2A1E09869E00B5775A /* BabyOptions.m */; };
+		208D0E381E09869E00B5775A /* BabyPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E2C1E09869E00B5775A /* BabyPeripheralManager.m */; };
+		208D0E391E09869E00B5775A /* BabyRhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E2E1E09869E00B5775A /* BabyRhythm.m */; };
+		208D0E3A1E09869E00B5775A /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E301E09869E00B5775A /* BabySpeaker.m */; };
+		208D0E3B1E09869E00B5775A /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E321E09869E00B5775A /* BabyToy.m */; };
+		208D0E441E0992AC00B5775A /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E401E0992AC00B5775A /* Language.m */; };
+		208D0E451E0992AC00B5775A /* LanguageContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 208D0E431E0992AC00B5775A /* LanguageContainer.m */; };
+		208D0E481E0993B400B5775A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 208D0E4A1E0993B400B5775A /* Localizable.strings */; };
 		20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9D61DF640EA0009167F /* UIImage+Tool.m */; };
 		20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9DD1DF640EA0009167F /* IconContenTableVIewCell.m */; };
 		20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBC9E11DF640EA0009167F /* ProductModelStepOneTableViewController.m */; };
@@ -338,6 +350,31 @@
 		203793D61DF8227C00992510 /* GYDCUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYDCUtilities.m; sourceTree = "<group>"; };
 		203793D71DF8227C00992510 /* GYReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYReflection.h; sourceTree = "<group>"; };
 		203793D81DF8227C00992510 /* GYReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYReflection.m; sourceTree = "<group>"; };
+		208D0E211E09869E00B5775A /* BabyBluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBluetooth.h; sourceTree = "<group>"; };
+		208D0E221E09869E00B5775A /* BabyBluetooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBluetooth.m; sourceTree = "<group>"; };
+		208D0E231E09869E00B5775A /* BabyCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCallback.h; sourceTree = "<group>"; };
+		208D0E241E09869E00B5775A /* BabyCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCallback.m; sourceTree = "<group>"; };
+		208D0E251E09869E00B5775A /* BabyCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCentralManager.h; sourceTree = "<group>"; };
+		208D0E261E09869E00B5775A /* BabyCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCentralManager.m; sourceTree = "<group>"; };
+		208D0E271E09869E00B5775A /* BabyDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyDefine.h; sourceTree = "<group>"; };
+		208D0E281E09869E00B5775A /* BabyDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyDefine.m; sourceTree = "<group>"; };
+		208D0E291E09869E00B5775A /* BabyOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyOptions.h; sourceTree = "<group>"; };
+		208D0E2A1E09869E00B5775A /* BabyOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyOptions.m; sourceTree = "<group>"; };
+		208D0E2B1E09869E00B5775A /* BabyPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPeripheralManager.h; sourceTree = "<group>"; };
+		208D0E2C1E09869E00B5775A /* BabyPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPeripheralManager.m; sourceTree = "<group>"; };
+		208D0E2D1E09869E00B5775A /* BabyRhythm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyRhythm.h; sourceTree = "<group>"; };
+		208D0E2E1E09869E00B5775A /* BabyRhythm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyRhythm.m; sourceTree = "<group>"; };
+		208D0E2F1E09869E00B5775A /* BabySpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabySpeaker.h; sourceTree = "<group>"; };
+		208D0E301E09869E00B5775A /* BabySpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabySpeaker.m; sourceTree = "<group>"; };
+		208D0E311E09869E00B5775A /* BabyToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyToy.h; sourceTree = "<group>"; };
+		208D0E321E09869E00B5775A /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
+		208D0E3F1E0992AC00B5775A /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
+		208D0E401E0992AC00B5775A /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
+		208D0E411E0992AC00B5775A /* LanguageChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageChange.h; sourceTree = "<group>"; };
+		208D0E421E0992AC00B5775A /* LanguageContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageContainer.h; sourceTree = "<group>"; };
+		208D0E431E0992AC00B5775A /* LanguageContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageContainer.m; sourceTree = "<group>"; };
+		208D0E491E0993B400B5775A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		208D0E4C1E09948600B5775A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		20FBC9D51DF640EA0009167F /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
 		20FBC9D61DF640EA0009167F /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
 		20FBC9DC1DF640EA0009167F /* IconContenTableVIewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconContenTableVIewCell.h; sourceTree = "<group>"; };
@@ -947,6 +984,43 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		208D0E201E09869E00B5775A /* BabyBlueTooth */ = {
+			isa = PBXGroup;
+			children = (
+				208D0E211E09869E00B5775A /* BabyBluetooth.h */,
+				208D0E221E09869E00B5775A /* BabyBluetooth.m */,
+				208D0E231E09869E00B5775A /* BabyCallback.h */,
+				208D0E241E09869E00B5775A /* BabyCallback.m */,
+				208D0E251E09869E00B5775A /* BabyCentralManager.h */,
+				208D0E261E09869E00B5775A /* BabyCentralManager.m */,
+				208D0E271E09869E00B5775A /* BabyDefine.h */,
+				208D0E281E09869E00B5775A /* BabyDefine.m */,
+				208D0E291E09869E00B5775A /* BabyOptions.h */,
+				208D0E2A1E09869E00B5775A /* BabyOptions.m */,
+				208D0E2B1E09869E00B5775A /* BabyPeripheralManager.h */,
+				208D0E2C1E09869E00B5775A /* BabyPeripheralManager.m */,
+				208D0E2D1E09869E00B5775A /* BabyRhythm.h */,
+				208D0E2E1E09869E00B5775A /* BabyRhythm.m */,
+				208D0E2F1E09869E00B5775A /* BabySpeaker.h */,
+				208D0E301E09869E00B5775A /* BabySpeaker.m */,
+				208D0E311E09869E00B5775A /* BabyToy.h */,
+				208D0E321E09869E00B5775A /* BabyToy.m */,
+			);
+			path = BabyBlueTooth;
+			sourceTree = "<group>";
+		};
+		208D0E3E1E0992AC00B5775A /* International */ = {
+			isa = PBXGroup;
+			children = (
+				208D0E3F1E0992AC00B5775A /* Language.h */,
+				208D0E401E0992AC00B5775A /* Language.m */,
+				208D0E411E0992AC00B5775A /* LanguageChange.h */,
+				208D0E421E0992AC00B5775A /* LanguageContainer.h */,
+				208D0E431E0992AC00B5775A /* LanguageContainer.m */,
+			);
+			path = International;
+			sourceTree = "<group>";
+		};
 		20FBC9D41DF640EA0009167F /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1121,6 +1195,7 @@
 				E416C92A1DF5D802002A6E60 /* LaunchScreen.storyboard */,
 				E416C92D1DF5D802002A6E60 /* Info.plist */,
 				E416C91D1DF5D802002A6E60 /* main.m */,
+				208D0E4A1E0993B400B5775A /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1388,6 +1463,8 @@
 		E416CC601DF5E9F8002A6E60 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				208D0E3E1E0992AC00B5775A /* International */,
+				208D0E201E09869E00B5775A /* BabyBlueTooth */,
 				E464CB9E1DFF3463008DDB12 /* Classes */,
 				E464CB4B1DFEE73E008DDB12 /* QRCode */,
 				203793C81DF8227C00992510 /* GYDataCenter */,
@@ -2712,8 +2789,7 @@
 				TargetAttributes = {
 					E416C9181DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 38KT7R7UZ8;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					E416C9311DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
@@ -2729,6 +2805,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = E416C9101DF5D802002A6E60;
 			productRefGroup = E416C91A1DF5D802002A6E60 /* Products */;
@@ -2782,6 +2859,7 @@
 				E464CB851DFF1090008DDB12 /* SystemSettingCell.xib in Resources */,
 				E49352401DF711AA00145486 /* industry.txt in Resources */,
 				E41199CB1E04367500D55C94 /* FirstViewCell.xib in Resources */,
+				208D0E481E0993B400B5775A /* Localizable.strings in Resources */,
 				E47BCFF91E05D92E00BA7DFF /* CardOneCell.xib in Resources */,
 				E4F5B35E1E01AFFE0084F7F4 /* address.txt in Resources */,
 				E416CD661DF5ED7B002A6E60 /* down.jpg in Resources */,
@@ -2878,6 +2956,7 @@
 				E47BD0041E05D92E00BA7DFF /* BriefProductTableViewCell.m in Sources */,
 				E416CD3C1DF5EB4C002A6E60 /* BuyCustomerView.m in Sources */,
 				E45931F91DFFFC5200040DA2 /* ShopListCell.m in Sources */,
+				208D0E351E09869E00B5775A /* BabyCentralManager.m in Sources */,
 				E416C91E1DF5D802002A6E60 /* main.m in Sources */,
 				E416CD0A1DF5E9F8002A6E60 /* ZZPhotoListModel.m in Sources */,
 				E47BD0001E05D92E00BA7DFF /* ProductListController.m in Sources */,
@@ -2890,6 +2969,7 @@
 				E47BCFF11E05D92E00BA7DFF /* FourCell.m in Sources */,
 				BC4B8CD01E06F239007C384A /* SelectTwoView.m in Sources */,
 				E416CD041DF5E9F8002A6E60 /* ZZPhotoBrowerViewController.m in Sources */,
+				208D0E381E09869E00B5775A /* BabyPeripheralManager.m in Sources */,
 				E464CB031DFEB7BF008DDB12 /* SettingTableViewController.m in Sources */,
 				E416CCFB1DF5E9F8002A6E60 /* ZZBrowserPickerViewController.m in Sources */,
 				E49352221DF70CA900145486 /* ZMJAddGoodsOneCell.m in Sources */,
@@ -2912,6 +2992,7 @@
 				E416CD321DF5EB4C002A6E60 /* BusinessChanceViewController.m in Sources */,
 				E49352241DF70CA900145486 /* FourTableViewCell.m in Sources */,
 				E416CBF71DF5E9E9002A6E60 /* BUYHomeControl.m in Sources */,
+				208D0E451E0992AC00B5775A /* LanguageContainer.m in Sources */,
 				E416CD031DF5E9F8002A6E60 /* ZZCameraPickerCell.m in Sources */,
 				E416CCEA1DF5E9F8002A6E60 /* ZZAlumAnimation.m in Sources */,
 				E416CD6F1DF5ED7B002A6E60 /* TextFieldTableViewCell.m in Sources */,
@@ -2929,6 +3010,7 @@
 				E464CAFD1DFEB651008DDB12 /* UserInfoView.m in Sources */,
 				20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */,
 				E464CBA61DFF3463008DDB12 /* DownSheetCell.m in Sources */,
+				208D0E441E0992AC00B5775A /* Language.m in Sources */,
 				E464CB7C1DFF0F67008DDB12 /* SystemSettingViewController.m in Sources */,
 				20FBC9E81DF640EA0009167F /* UIImage+Tool.m in Sources */,
 				E45932261E005D8900040DA2 /* RetentionController.m in Sources */,
@@ -2961,10 +3043,12 @@
 				20FBC9ED1DF640EA0009167F /* ProductModelStepOneTableViewController.m in Sources */,
 				E464CB0A1DFEBD21008DDB12 /* BasicInfoTableViewController.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
+				208D0E3B1E09869E00B5775A /* BabyToy.m in Sources */,
 				E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */,
 				E416CBC01DF5E9E1002A6E60 /* NewTwoList.m in Sources */,
 				E416CD071DF5E9F8002A6E60 /* ZZPhotoPickerViewController.m in Sources */,
 				E416CCFA1DF5E9F8002A6E60 /* ZZBrowserPickerCell.m in Sources */,
+				208D0E361E09869E00B5775A /* BabyDefine.m in Sources */,
 				E49352261DF70CA900145486 /* SecondTableViewCell.m in Sources */,
 				E49352201DF70CA900145486 /* SendDataTwoViewCell.m in Sources */,
 				E459322F1E005DBB00040DA2 /* AskPriceCell.m in Sources */,
@@ -2984,6 +3068,7 @@
 				E47BCFF61E05D92E00BA7DFF /* ThreeCell.m in Sources */,
 				E47BCFFB1E05D92E00BA7DFF /* HeaderView.m in Sources */,
 				E47BD0141E05DA2F00BA7DFF /* CustomerList.m in Sources */,
+				208D0E341E09869E00B5775A /* BabyCallback.m in Sources */,
 				E45AC1441E06F5E300DC89D7 /* CustomerScanController.m in Sources */,
 				E464CB5D1DFEE73E008DDB12 /* HMScannerController.m in Sources */,
 				E47BD0051E05D92E00BA7DFF /* MyBuyerTableViewCell.m in Sources */,
@@ -3008,6 +3093,7 @@
 				E416CBDD1DF5E9E5002A6E60 /* InformationCell.m in Sources */,
 				E45AC1401E06F43E00DC89D7 /* CustomerController.m in Sources */,
 				E4F13A701DFC1CA8004860F4 /* IQUIViewController+Additions.m in Sources */,
+				208D0E371E09869E00B5775A /* BabyOptions.m in Sources */,
 				E416CD881DF5EDF3002A6E60 /* DownListBgView.m in Sources */,
 				E45932231E005D8900040DA2 /* AlreadyController.m in Sources */,
 				E49352251DF70CA900145486 /* PicsCell.m in Sources */,
@@ -3075,6 +3161,7 @@
 				E416CBFC1DF5E9E9002A6E60 /* BUYTextView.m in Sources */,
 				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E41199CC1E04367500D55C94 /* SecondViewCell.m in Sources */,
+				208D0E331E09869E00B5775A /* BabyBluetooth.m in Sources */,
 				E416CD0C1DF5E9F8002A6E60 /* ZZPhotoBrowerCell.m in Sources */,
 				E493522B1DF70CA900145486 /* EditFirstShopCell.m in Sources */,
 				E47BCFEE1E05D92E00BA7DFF /* EightCell.m in Sources */,
@@ -3085,6 +3172,7 @@
 				20FBCA221DF646F40009167F /* MyBuyerAskTableViewCell.m in Sources */,
 				E464CB0F1DFEBDD8008DDB12 /* NameValueTableViewCell.m in Sources */,
 				E459323D1E00830400040DA2 /* ConversionTrams.m in Sources */,
+				208D0E3A1E09869E00B5775A /* BabySpeaker.m in Sources */,
 				E416CBC61DF5E9E1002A6E60 /* MemberTwoViewCell.m in Sources */,
 				E45932241E005D8900040DA2 /* AskWayController.m in Sources */,
 				E47BCFFE1E05D92E00BA7DFF /* AskONeController.m in Sources */,
@@ -3100,6 +3188,7 @@
 				E464CB6F1DFF0248008DDB12 /* MemberFirstCell.m in Sources */,
 				E4932B3F1E0701DC00E21E0E /* DetailCustomerController.m in Sources */,
 				E49352671DF7267300145486 /* TapButton.m in Sources */,
+				208D0E391E09869E00B5775A /* BabyRhythm.m in Sources */,
 				E49352691DF7267300145486 /* HYActivityView.m in Sources */,
 				20FBC9EB1DF640EA0009167F /* IconContenTableVIewCell.m in Sources */,
 				E416CBFA1DF5E9E9002A6E60 /* BUYRegisterControl.m in Sources */,
@@ -3138,6 +3227,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		208D0E4A1E0993B400B5775A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				208D0E491E0993B400B5775A /* en */,
+				208D0E4C1E09948600B5775A /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E416C9251DF5D802002A6E60 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3161,6 +3259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -3208,6 +3307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -3250,7 +3350,7 @@
 			baseConfigurationReference = B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 38KT7R7UZ8;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
@@ -3284,7 +3384,7 @@
 			baseConfigurationReference = 1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 38KT7R7UZ8;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
