@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "EditPriceController.h"
-#import "AskPriceModel.h"
+#import "OfferPriceModel.h"
 #import "EditSelectViewCell.h"
 #import "EditSelectOneViewCell.h"
 #import "SelectOneView.h"
 #import "SelectTwoView.h"
 
+
 @interface EditPriceController : UIViewController<EditSelectOneViewCellDelegate,SelectOneViewDelegate,SelectTwoViewDelegate>
 
-@property (nonatomic,strong) AskPriceModel *model;
+@property (nonatomic,strong) OfferPriceModel *model;
 
 @end

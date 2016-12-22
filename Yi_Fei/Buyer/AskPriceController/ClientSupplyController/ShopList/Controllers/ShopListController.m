@@ -11,9 +11,9 @@
 #import "BuyerEditProductController.h"
 #import "ZMJTypeView.h"
 #import "UWDatePickerView.h"
-#import "AskPriceModel.h"
+#import "OfferPriceModel.h"
 #import "AskWayController.h"
-#import "AskPriceList.h"
+#import "OfferPriceList.h"
 #import "ConversionTrams.h"
 
 @interface ShopListController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ShopListCellDelegate,SSPopupDelegate,UWDatePickerViewDelegate>{
@@ -25,7 +25,7 @@
     UWDatePickerView *_pickerView;  
     NSInteger _index;
 }
-@property(nonatomic,strong)AskPriceList *askManager;
+@property(nonatomic,strong)OfferPriceList *askManager;
 @property(nonatomic,strong)ZMJTypeView *typeOneView;
 @property(nonatomic,strong)ZMJTypeView *typeTwoView;
 @property(nonatomic,strong)UITextField *textInput; //输入框
@@ -129,13 +129,13 @@
           }
             ConversionTrams *conversion = [[ConversionTrams alloc] init];
             NSString *flag = [NSString stringWithFormat:@"%ld",_index];
-            AskPriceModel *model;
+            OfferPriceModel *model;
             if (_index == 2) {
     model = [conversion trams:dataModel tag:flag time:_time supplyName:self.model.supplyName];
             }else{
     model = [conversion trams:dataModel tag:flag time:nil supplyName:self.model.supplyName];
             }
-            _askManager = [AskPriceList defaultManager];
+            _askManager = [OfferPriceList defaultManager];
             [_askManager insertDataModel:model];
         }
       AskWayController *myVC = [[ AskWayController alloc] init];

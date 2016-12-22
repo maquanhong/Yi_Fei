@@ -18,6 +18,7 @@
 #import "BriefProductTableViewCell.h"
 #import "ProductListController.h"
 #import "CardNameController.h"
+#import "AskPriceTableViewCell.h"
 
 
 
@@ -146,6 +147,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section==0) {
         static NSString *cellIdent1=@"cell";
         MyBuyerTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent1];
@@ -174,18 +176,16 @@
 
             return cell;
         } else if (self.selectIndexInSection1 == 1) {
-            static NSString *cellIdent3=@"cell2_1";
-            NameContentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent3];
+        static NSString *cellIdent3 = @"cell2_1";
+    NameContentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent3];
             if (cell==nil) {
-                cell=[[NameContentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent3];
+    cell=[[NameContentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent3];
             }
-            
             cell.titleLabel.text = @"商品名称：复古吊灯";
             cell.contentLabel.text = @"规格：按钮式开关";
-            
             return cell;
         } else if (self.selectIndexInSection1 == 2) {
-            static NSString *cellIdent4=@"cell2_2";
+            static NSString *cellIdent4 = @"cell2_2";
             OnlyTitleTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent4];
             if (cell==nil) {
                 cell=[[OnlyTitleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent4];
@@ -194,52 +194,54 @@
             return cell;
         }
         return nil;
-        
     } else if (indexPath.section == 2) {
-        static NSString *cellIdent9=@"morecell";
-        BriefProductTableViewCell *cell = (BriefProductTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdent9];
+        
+        static NSString *cellIdent6 = @"morecell";
+    BriefProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent6];
         if (!cell) {
-            cell = [[BriefProductTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent9];
+            cell = [[BriefProductTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
         }
-        ProductionData *dataModel = [[ProductionData alloc] init];
+    ProductionData *dataModel = [[ProductionData alloc] init];
         if (_listArray.count > 0) {
             dataModel = _listArray[0];
             cell.model = dataModel;
         }
-        return cell;
-    } else{
         
+        return cell;
+    }
+    else{
+    
         if (self.selectIndexInSection2 == 0) {
             static NSString *cellIdent5=@"cell3_0";
-//            AskPriceTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent5];
-//            if (cell==nil) {
-//                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent5];
-//            }
-//            
-//            cell.productLabel.text = @"商品名称：复古吊灯";
-//            cell.typeLabel.text = @"规格：按钮式开关";
-//            cell.skinLabel.text = @"材质：PVC塑料";
-//            cell.sizeLabel.text = @"尺寸：60cm";
-//            cell.colorLabel.text = @"颜色：米黄色";
-//            cell.countLabel.text = @"数量：30";
-//            cell.markLabel.text = @"备注：总经理";
-//            return cell;
+            AskPriceTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent5];
+            if (cell==nil) {
+                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent5];
+            }
+            
+            cell.productLabel.text = @"商品名称：复古吊灯";
+            cell.typeLabel.text = @"规格：按钮式开关";
+            cell.skinLabel.text = @"材质：PVC塑料";
+            cell.sizeLabel.text = @"尺寸：60cm";
+            cell.colorLabel.text = @"颜色：米黄色";
+            cell.countLabel.text = @"数量：30";
+            cell.markLabel.text = @"备注：总经理";
+            return cell;
 
         } else if (self.selectIndexInSection2 == 1) {
             static NSString *cellIdent6=@"cell3_1";
-//            AskPriceTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent6];
-//            if (cell==nil) {
-//                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
-//            }
-//            
-//            cell.productLabel.text = @"商品名称：复古吊灯";
-//            cell.typeLabel.text = @"规格：按钮式开关";
-//            cell.skinLabel.text = @"材质：PVC塑料";
-//            cell.sizeLabel.text = @"尺寸：60cm";
-//            cell.colorLabel.text = @"颜色：米黄色";
-//            cell.countLabel.text = @"数量：30";
-//            cell.markLabel.text = @"备注：总经理";
-//            return cell;
+            AskPriceTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent6];
+            if (cell==nil) {
+                cell=[[AskPriceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
+            }
+            
+            cell.productLabel.text = @"商品名称：复古吊灯";
+            cell.typeLabel.text = @"规格：按钮式开关";
+            cell.skinLabel.text = @"材质：PVC塑料";
+            cell.sizeLabel.text = @"尺寸：60cm";
+            cell.colorLabel.text = @"颜色：米黄色";
+            cell.countLabel.text = @"数量：30";
+            cell.markLabel.text = @"备注：总经理";
+            return cell;
         } else if (self.selectIndexInSection2 == 2) {
             static NSString *cellIdent7=@"cell3_2";
             NameContentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent7];

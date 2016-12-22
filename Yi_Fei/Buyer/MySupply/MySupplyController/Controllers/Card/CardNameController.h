@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomerModel.h"
 
 @interface CardNameController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
@@ -14,6 +15,10 @@
 @property (nonatomic,strong) UITableView *tableView;
 
 @property(nonatomic,strong)SupplyModel *model;
+
+
+
+
 
 
 @end

@@ -159,7 +159,7 @@ UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBt
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil] ;
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
-    }else{
+    }else if((_model.supplyName.length != 0) && (_model.companyName.length != 0) ){
     [manager insertDataModel:_model];
     [self.navigationController popViewControllerAnimated:YES];
     }

@@ -33,9 +33,8 @@
         make.bottom.equalTo(self);;
     }];
     
-    
     _backView  = [[UIView alloc] init];
-    _backView.backgroundColor =  [UIColor colorWithWhite:0.f alpha:0.7];
+    _backView.backgroundColor =  [UIColor colorWithWhite:0.f alpha:0.3];
     [_backView sizeToFit];
     [self addSubview:_backView];
     [_backView mas_makeConstraints:^(MASConstraintMaker *make) {

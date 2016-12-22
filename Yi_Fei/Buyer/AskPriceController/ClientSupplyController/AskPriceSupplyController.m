@@ -20,14 +20,13 @@
     
     //选择框
      BOOL isSelect;
-    
-    
-    
+
     BOOL _isSearch;
     BOOL _btnSearch;
     BOOL _nilSearch;
     NSArray *array;
     SupplyList *_manager;
+    
 }
 #pragma mark 选择框
 @property (nonatomic, strong) DownSheet *sheet;

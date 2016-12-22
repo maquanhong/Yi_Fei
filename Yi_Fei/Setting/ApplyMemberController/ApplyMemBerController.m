@@ -72,7 +72,7 @@
     _labelOne.font = [UIFont systemFontOfSize:14];
     [_backView addSubview:_labelOne];
     [_labelOne mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_backView.mas_centerY);
+        make.centerY.mas_equalTo(_backView.mas_centerY).offset(5);
         make.leading.equalTo(_backView).offset(15);
         make.height.mas_equalTo(20);
     }];
@@ -83,7 +83,7 @@
     _labelTwo.font = [UIFont systemFontOfSize:14];
     [_backView addSubview:_labelTwo];
     [_labelTwo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_backView.mas_centerY);
+        make.centerY.mas_equalTo(_backView.mas_centerY).offset(5);
         make.left.equalTo(_labelOne.mas_right).offset(10);
         make.height.mas_equalTo(20);
     }];
@@ -95,7 +95,7 @@
     [_certainBtn setTitle:@"确认支付" forState:UIControlStateNormal];
     [_backView addSubview:_certainBtn];
     [_certainBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_backView.mas_centerY);
+        make.centerY.mas_equalTo(_backView.mas_centerY).offset(5);
         make.trailing.equalTo(self.view).offset(-20);
         make.size.mas_equalTo(CGSizeMake(100, 30));
     }];
@@ -188,10 +188,10 @@
     seperator.backgroundColor = RGB(211, 211, 211);
     [headView addSubview:seperator];
     [seperator mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(headView);
-        make.trailing.mas_equalTo(headView);
-        make.bottom.mas_equalTo(headView.mas_bottom);
-        make.height.mas_equalTo(1);
+        make.leading.equalTo(headView);
+        make.trailing.equalTo(headView);
+        make.bottom.equalTo(headView);
+        make.height.mas_equalTo(0.1);
     }];
     return headView;
 }

@@ -12,51 +12,62 @@
 #import "BUYButton.h"
 
 @interface IdentifyViewController ()
-@property (nonatomic, strong) UIView *bgImageView;
-@property (nonatomic, strong) UIView  *bgView;
-@property (nonatomic, strong) UIImage  *navBackgroundImage;
-@property (nonatomic, strong) UIImageView * headimageVIew;
+{
+    UIView *_backView ;
+}
+
+
+@property (nonatomic,strong)UIImageView *imageVIew ;
+
 @end
 
 @implementation IdentifyViewController
 
-- (void)setNav {
-    
-    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
-    leftBtn.frame = CGRectMake(0, 0, 25, 25);
-    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
-    
-    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem=leftBtnItem;
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
+
 - (void)leftButtonClick {
-    
-    [self.navigationController.navigationBar setBackgroundImage:self.navBackgroundImage forBarMetrics:UIBarMetricsDefault];
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNav];
-    self.title = @"我的二维码";
-    self.navBackgroundImage = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    _bgImageView = [[UIView alloc] initForAutoLayout];
-    _bgImageView.backgroundColor = UIColorFromRGB(0x4fc2f9);
-    [self.view addSubview:self.bgImageView];
-    [self addViewConstraints];
+    _backView = [[UIView alloc] init];
+    _backView.backgroundColor =  UIColorFromRGB(0x4fc2f9);
+    [self.view addSubview:_backView];
+    [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.view);
+        make.trailing.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
+    
+    BackButton *btn = [[BackButton alloc] init];
+    [btn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, 20, 25, 25);
+    [_backView addSubview:btn];
+[btn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"我的二维码";
+    titleLabel.font = [UIFont systemFontOfSize:16];
+    [_backView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view).offset(20);
+        make.centerX.equalTo(self.view);
+        make.height.mas_equalTo(20);
+    }];
     [self createQrCodeImage];
     
-    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     saveBtn.backgroundColor = BACKCOLOR;
     saveBtn.layer.cornerRadius = 10;
     [saveBtn setTitle:@"保存二维码" forState:UIControlStateNormal];
     [saveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_bgImageView addSubview:saveBtn];
+    [_backView addSubview:saveBtn];
     [saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view.mas_bottom).offset(-50);
         make.centerX.equalTo(self.view.mas_centerX);
@@ -65,43 +76,35 @@
     [saveBtn addTarget:self action:@selector(saveImageView) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)addViewConstraints {
-    
-    [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-    [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-    [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [self.bgImageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
-
-}
 
 
 -(void)createQrCodeImage{
     
-    _bgView = [[UIView alloc] init];
-    _bgView.backgroundColor = [UIColor whiteColor];
-    [_bgImageView addSubview:_bgView];
-    [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.center.equalTo(_bgImageView);
+   UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
+    [_backView addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.center.equalTo(_backView);
     make.size.mas_equalTo(CGSizeMake(WIDTH - 30, WIDTH - 30));
     }];
     
-    _headimageVIew = [[UIImageView alloc] init];
-    [_bgView addSubview:_headimageVIew];
-    [_headimageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(_bgView);
-        make.size.mas_equalTo(CGSizeMake(WIDTH - 60 ,WIDTH - 60));
+   UIImageView *imageVIew = [[UIImageView alloc] init];
+    [view addSubview:imageVIew];
+    [imageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(view);
+        make.size.mas_equalTo(CGSizeMake(200 ,200));
     }];
 
     NSString *cardName = @"易非";
     UIImage *avatar = [UIImage imageNamed:@"erwei"];
     [HMScannerController cardImageWithCardName:cardName avatar:avatar scale:0.2 completion:^(UIImage *image) {
-        _headimageVIew.image = image;
+        imageVIew.image = image;
     }];
 }
 
 -(void)saveImageView{
-    if (self.headimageVIew.image) {
-UIImageWriteToSavedPhotosAlbum(self.headimageVIew.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    if (self.imageVIew.image) {
+UIImageWriteToSavedPhotosAlbum(self.imageVIew.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }
 }
 
@@ -122,6 +125,7 @@ UIImageWriteToSavedPhotosAlbum(self.headimageVIew.image, self, @selector(image:d
 }
 
 -(BOOL)isOK:(NSString *)str{
+    
     if (str==nil || [str isEqualToString:@""]) {
         [self showMessage:@"未保存成功"];
         return NO;
@@ -132,18 +136,10 @@ UIImageWriteToSavedPhotosAlbum(self.headimageVIew.image, self, @selector(image:d
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
 
 
 

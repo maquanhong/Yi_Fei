@@ -99,14 +99,18 @@
     self.moreLabel.text = @"查看更多";
     self.titleLabel.text = @"商品列表";
     self.iconImageView.image = [UIImage imageNamed:@"shangpin_icon"];
+    if (model.shopPicture.length > 0) {
     NSArray *arrayimg=[model.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     self.productImageView.image= [UIImage imageWithContentsOfFile:imagePath];
+    }
+    if (model.shopName.length > 0) {
     self.productNameLabel.text =  model.shopName ;
+    }
     _nextView.image = [UIImage imageNamed:@"more"];
-    
+
 }
 
 

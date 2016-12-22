@@ -43,6 +43,7 @@
     }];
 
     _oneTF = [[UITextField alloc] init];
+    _oneTF.font = [UIFont systemFontOfSize:14];
     [self addSubview:_oneTF];
     [_oneTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_surname.mas_right).offset(5);
@@ -62,6 +63,7 @@
     
 
     _twoTF = [[UITextField alloc] init];
+    _twoTF.font = [UIFont systemFontOfSize:14];
     [self addSubview:_twoTF];
     [_twoTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_name.mas_right).offset(5);

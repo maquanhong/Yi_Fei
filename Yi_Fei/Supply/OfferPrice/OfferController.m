@@ -24,22 +24,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTool];
+    [self setNav];
     self.title = @"报价";
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self addContentView];
 }
 
-- (void)setNavTool
-{
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
+- (void)setNav {
+    
+    self.navigationItem.title = @"报价";
+    UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    leftBtn.frame = CGRectMake(0, 0, 25, 25);
+    UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem=leftBtnItem;
+    
 }
+
+- (void)leftButtonClick {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+
+
 
 -(void)addContentView{
     _titleArray=@[@"客户",@"新建客户"];
-    
     for (int i=0; i<_titleArray.count; i++) {
-        UIButton *button=[BUYButton creatBtnWithBgColor:NAVCOLOR borderColor:NAVCOLOR borderWidth:0 titleColor:[UIColor whiteColor] text:[self.titleArray objectAtIndex:i]];
+        UIButton *button=[BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:BACKCOLOR text:[self.titleArray objectAtIndex:i]];
         [button sizeToFit];
         button.tag = 1000 + i;
         button.frame=CGRectMake(10, 64+10+60*i + 30 * i, WIDTH-20, 60);
@@ -55,7 +72,7 @@
    CustomerController *salerVc = [[CustomerController alloc] init];
     [self.navigationController pushViewController:salerVc animated:YES];
     } else if (index == 0) {
-    CustomController *clientVc = [[CustomController alloc] init];
+  CustomController *clientVc = [[CustomController alloc] init];
     [self.navigationController pushViewController:clientVc animated:YES];
     }
 }

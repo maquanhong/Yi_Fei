@@ -8,8 +8,6 @@
 
 #import "ProductListController.h"
 #import "QueryPriceTableViewCell.h"
-#import "AskONeController.h"
-#import "AskTwoController.h"
 #import "CardNameController.h"
 
 @interface ProductListController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,QueryPriceTableViewCellDelegate>
@@ -67,8 +65,6 @@
 -(void)leftButtonClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
 
 
 #pragma mark 创建搜索框
@@ -181,21 +177,7 @@
     return 110;
 }
 
-#pragma mark QueryPriceTableViewCellDelegate
-- (void)queryPrice:(QueryPriceTableViewCell *)index {
-    NSIndexPath *indexpath = [_tableview indexPathForCell:index];
-   AskONeController *prepareVC = [[AskONeController alloc] init];
-    prepareVC.model = _listArray[indexpath.row];
-   [self.navigationController pushViewController:prepareVC animated:YES];
-    
-}
 
-- (void)imageQueryPrice:(QueryPriceTableViewCell *)index {
-    AskTwoController *prepareVC = [[AskTwoController alloc] init];
-    NSIndexPath *indexpath = [_tableview indexPathForCell:index];
-    prepareVC.model = _listArray[indexpath.row];
-    [self.navigationController pushViewController:prepareVC animated:YES];
-}
 
 
 //设置编辑cell的样式（可省略）

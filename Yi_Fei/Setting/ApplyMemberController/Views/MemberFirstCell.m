@@ -70,9 +70,10 @@
     }];
     
     _nameLableTwo = [[UILabel alloc] init];
-    _nameLableTwo.text = @"会费：";
+    _nameLableTwo.text = @"会费:";
+  _nameLableTwo.font=[UIFont systemFontOfSize:14.0];
     [self addSubview:_nameLableTwo];
-    [_nameLableTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_nameLableTwo mas_makeConstraints:^(MASConstraintMaker *make){
         make.right.mas_equalTo(_typeView.mas_left).offset(-5);
         make.centerY.mas_equalTo(self.mas_centerY);
         make.height.mas_equalTo(20);

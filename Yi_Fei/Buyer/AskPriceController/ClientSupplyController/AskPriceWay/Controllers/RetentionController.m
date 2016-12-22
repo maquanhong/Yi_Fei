@@ -7,19 +7,23 @@
 //
 
 #import "RetentionController.h"
-#import "AskPriceList.h"
-#import "AskPriceCell.h"
+#import "OfferPriceList.h"
+#import "BuyerAskCell.h"
 #import "AskWayController.h"
 #import "SendWwayController.h"
+#import "EditPriceController.h"
 
 
-@interface RetentionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
-    BOOL _isSearch;
-    BOOL _btnSearch;
-    BOOL _nilSearch;
+@interface RetentionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>
+{
     BOOL _isPress;
+    BOOL _isSelect;
 }
-@property(nonatomic,strong)AskPriceList *askManager;
+
+@property (nonatomic, strong)NSMutableArray *circleArray; //存放选中的商品
+@property(nonatomic,strong)OfferPriceList *askManager;
+
+
 @property(nonatomic,strong)UITextField *textInput; //输入框
 @property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
 @property(nonatomic,strong)UITableView *tableview; //表格视图
@@ -40,12 +44,11 @@
 //数据的加载
 -(void)loadData{
     //获取单例对象
-    _askManager = [AskPriceList defaultManager];
-    AskPriceModel *model = [[AskPriceModel alloc] init];
+    _askManager = [OfferPriceList defaultManager];
+    OfferPriceModel *model = [[OfferPriceModel alloc] init];
     _listArray= [NSMutableArray array];
     //可变数组初始化
-    NSMutableArray *array = [NSMutableArray arrayWithArray:[_askManager getDataWith:self.model.supplyName]];
-    
+ NSMutableArray *array = [NSMutableArray arrayWithArray:[_askManager getDataWith:self.model.supplyName]];
     for (NSInteger i = 0 ; i < array.count ; i++) {
         model = array[i];
         if ([model.flag integerValue] == 2) {
@@ -58,6 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      _isPress = YES;
+    _circleArray = [NSMutableArray array];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self createSearchView];
     [self addContentView];
@@ -121,69 +125,6 @@
     
 }
 
-#pragma mark 点击搜索按钮
--(void)clickBtnSearch{
-    
-    _btnSearch = YES;
-    [_btnResultArr removeAllObjects];
-    int k = 0;
-    for (NSString *str in _allArray) {
-        NSString *ste = [NSString stringWithFormat:@"%@",str];
-        NSRange range = [ste rangeOfString:_textInput.text];
-        NSString *tpinyin = [self transform:ste];
-        NSRange rangeTpinyin = [tpinyin rangeOfString:_textInput.text];
-        if (range.length || rangeTpinyin.length) {
-            [_btnResultArr addObject:_listArray[k]];
-            NSLog(@"%@",_btnResultArr);
-        }
-        k++;
-        [_tableview reloadData];
-    }
-}
-
-#pragma mark textFiled的点击事件
-- (void)textFieldDidChange:(UITextField *)textField{
-    
-    if (textField.text.length == 0) {
-        _nilSearch = YES;
-        [_tableview reloadData];
-    }else{
-        _isSearch = YES;
-        [_searchResultArr removeAllObjects];
-        [self textFileSearch:textField.text];
-    }
-}
-
--(void)textFileSearch:(NSString *)TextField
-{
-    [_searchResultArr removeAllObjects];
-    int k = 0;
-    for (NSString *str in _allArray) {
-        NSString *ste = [NSString stringWithFormat:@"%@",str];
-        NSRange range = [ste rangeOfString:TextField];
-        NSString *tpinyin = [self transform:ste];
-        NSRange rangeTpinyin = [tpinyin rangeOfString:TextField];
-        if (range.length || rangeTpinyin.length) {
-            [_searchResultArr addObject:_listArray[k]];
-        }
-        k++;
-        [_tableview reloadData];
-    }
-}
-
-
-#pragma mark 将输入的字母转换为文字
-- (NSString *)transform:(NSString *)chinese
-{
-    NSMutableString *pinyin = [chinese mutableCopy];
-    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
-    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
-    NSString *py = [pinyin stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *pys = [NSString stringWithFormat:@"%@%@%@%@%@%@",[pinyin uppercaseString],[pinyin lowercaseString],[pinyin capitalizedString],[py uppercaseString],[py lowercaseString],[py capitalizedString]];
-    return pys;
-    
-}
-
 
 #pragma mark 创建tableView视图
 -(void)addContentView{
@@ -238,37 +179,18 @@
 
 #pragma Mark -- 事件处理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (_isSearch == YES) {
-        return _searchResultArr.count;
-    }else if (_btnSearch == YES){
-        return _btnResultArr.count;
-    }else if (_nilSearch == YES){
         return _listArray.count;
-    }else{
-        return _listArray.count;
-    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdent=@"cell";
-    AskPriceCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdent];
-    if (cell==nil) {
-        cell=[[AskPriceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent];
+    static NSString *identifer = @"BuyerAskCell";
+    BuyerAskCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    if (!cell) {
+        cell = [[BuyerAskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
-    AskPriceModel *dataModel = [[AskPriceModel alloc] init];
-    if (_isSearch == YES) {
-        //赋值对应的对象
-        dataModel = _searchResultArr[indexPath.row];
-        _isSearch = NO;
-    }else if (_nilSearch == YES){
-        dataModel = _listArray[indexPath.row];
-        _nilSearch = NO;
-    }else if (_btnSearch == YES){
-        dataModel = _listArray[indexPath.row];
-        _btnSearch = NO;
-    }else{
-        dataModel = _listArray[indexPath.row];
-    }
+    OfferPriceModel *dataModel = [[OfferPriceModel alloc] init];
+    dataModel = _listArray[indexPath.row];
+    
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
@@ -285,9 +207,9 @@
     }else{
         cell.titleLabel.text  =  @"";
     }
-    
+    cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
-    _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     return cell;
 }
 
@@ -328,12 +250,12 @@
 
 
 
-
 - (void)longPressGesture:(UILongPressGestureRecognizer*)lp{
+    
     if(lp.state == UIGestureRecognizerStateBegan){
         if (_isPress) {
             NSArray *allCells=[self.tableview visibleCells];
-            for(AskPriceCell *cell in allCells)
+            for(BuyerAskCell *cell in allCells)
             {
                 cell.selectBtn.hidden=NO;
                 cell.selectBtn.selected=NO;
@@ -350,7 +272,7 @@
             _isPress = NO;
         }else{
             NSArray *allCells=[self.tableview visibleCells];
-            for(AskPriceCell *cell in allCells)
+            for(BuyerAskCell *cell in allCells)
                 cell.selectBtn.hidden=YES;
             AskWayController *myVC = [[ AskWayController alloc] init];
             for (AskWayController * controller in self.navigationController.viewControllers) {
@@ -373,15 +295,65 @@
             myVC = controller;
         }
     }
-    SendWwayController *sendVC = [[SendWwayController alloc] init];
-        sendVC.flag = 2;
-    [myVC.navigationController pushViewController:sendVC animated:YES];
+    if (_circleArray.count > 0) {
+        SendWwayController *sendVC = [[SendWwayController alloc] init];
+        sendVC.numCount = 0;
+        [myVC.navigationController pushViewController:sendVC animated:YES];
+    }
 }
 
 
-- (void)clickVC:(UIViewController *)controller {
-    [self.navigationController pushViewController:controller animated:YES];
+
+
+-(void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{
+    NSIndexPath *indexPath =  [_tableview indexPathForCell:cell];
+    NSInteger  index = indexPath.row;
+    switch (num) {
+        case 1280:
+        {
+    EditPriceController *prepareVC = [[EditPriceController alloc] init];
+        prepareVC.model = _listArray[index];
+[self.navigationController pushViewController:prepareVC animated:YES];
+        }
+            break;
+        case 1281:
+        {
+    _askManager = [OfferPriceList defaultManager];
+    OfferPriceModel *model = [[OfferPriceModel alloc] init];
+    model = _listArray[index];
+    [_askManager deleteNameFromTable:model.ind];
+    [_listArray removeObjectAtIndex:index];
+    [_tableview deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_tableview reloadData];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    
 }
+
+
+
+
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSArray *allCells=[self.tableview visibleCells];
+    for(BuyerAskCell *cell in allCells)
+        cell.selectBtn.hidden=YES;
+    AskWayController *myVC = [[ AskWayController alloc] init];
+    for (AskWayController * controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[AskWayController class]]) {
+            myVC = controller;
+        }
+    }
+    myVC.rightBtnOne.hidden = NO;
+    myVC.rightBtnTwo.hidden = YES;
+}
+
 
 
 

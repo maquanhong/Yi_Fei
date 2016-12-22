@@ -36,6 +36,7 @@
     }];
     
     _phoneText = [[UITextField alloc] init];
+     _phoneText.font = [UIFont systemFontOfSize:14];
     [self addSubview:_phoneText];
     [_phoneText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_phoneNumber.mas_right).offset(5);

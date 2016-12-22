@@ -90,6 +90,7 @@
     _otherText.layer.cornerRadius = 5;
     _otherText.layer.borderWidth = 1.0;
     _otherText.layer.borderColor = BACKCOLOR.CGColor;
+    _otherText.font = [UIFont systemFontOfSize:14];
     _otherText.placeholder = @"其他";
     [self addSubview:_otherText];
   

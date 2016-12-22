@@ -23,8 +23,6 @@
 #import "CustomerList.h"
 #import "CustomerModel.h"
 
-
-
 @interface CustomerController ()<UITextFieldDelegate,UITextViewDelegate,ThreeCellDelegate,SSPopupDelegate,SixCellDelegate,SevenDelegate>
 {
     FirstCell  *firstCell;
@@ -48,7 +46,6 @@
 @property (nonatomic,strong)IndustryModel *industryModel;
 @property (nonatomic,strong)CustomerModel *model;
 @property (nonatomic,strong)NSMutableArray *eamilArray;
-
 //照片
 @property (nonatomic,strong)NSArray *imageArray;
 @property(copy  ,nonatomic) NSArray *picArray;
@@ -151,7 +148,6 @@
         [industry addObject:strOne];
     }
     _model.industryType = [industry componentsJoinedByString:@"|"];
-    
     CustomerList  *manager = [CustomerList defaultManager];
     //查询
     if ([manager isHasDataIDFromTable:_model.supplyName]) {
@@ -160,7 +156,7 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil] ;
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
-    }else{
+    }else if((_model.supplyName.length != 0) && (_model.companyName.length != 0) ) {
         [manager insertDataModel:_model];
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -186,8 +182,6 @@
         
     }
 }
-
-
 
 
 #pragma Mark -- 事件处理

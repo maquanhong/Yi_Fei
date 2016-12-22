@@ -30,7 +30,7 @@
     _nameLabel.textAlignment=NSTextAlignmentCenter;
     [self addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(self).offset(15);
+        make.leading.mas_equalTo(self).offset(10);
         make.centerY.mas_equalTo(self.mas_centerY);
         make.height.mas_equalTo(25);
         make.width.mas_equalTo(60);

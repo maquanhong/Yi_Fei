@@ -38,13 +38,14 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self setNav];
     self.title = @"关于EasyFair";
-    _menuArray = @[@"功能介绍",@"系统通知",@"帮助与反馈",@"检查新版本"];
-    _aboutTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 1, WIDTH, HEIGHT - 200) style:UITableViewStylePlain];
+    _menuArray = @[@"功能介绍",@"系统通知",@"联系客服",@"检查新版本"];
+    _aboutTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT - 180) style:UITableViewStylePlain];
     _aboutTableView.dataSource = self;
     _aboutTableView.delegate = self;
+    self.aboutTableView.scrollEnabled = NO;
     [self.view addSubview:self.aboutTableView];
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 150)];
     headerView.backgroundColor = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   UIColor groupTableViewBackgroundColor];
     _logoImageView = [[UIImageView alloc] init];
     _logoImageView.image = [[UIImage imageNamed:@"logo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -52,10 +53,11 @@
     [self.logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(headerView.mas_centerX);
         make.centerY.equalTo(headerView.mas_centerY).offset(-10);
-        make.size.mas_equalTo(CGSizeMake(120, 120));
+        make.size.mas_equalTo(CGSizeMake(80, 80));
     }];
     
     _versionLabel = [[UILabel alloc] init];
+    _versionLabel.font = [UIFont systemFontOfSize:14];
     _versionLabel.textAlignment = NSTextAlignmentCenter;
     _versionLabel.textColor = BACKCOLOR;
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
@@ -89,14 +91,10 @@
         make.top.equalTo(titleLabel.mas_bottom).offset(10);
         make.height.mas_equalTo(15);
     }];
-    
 }
 
 
 #pragma mark UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.menuArray count];
@@ -110,12 +108,9 @@
     }
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.text = [self.menuArray objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-}
-#pragma mark UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
 }
 
 

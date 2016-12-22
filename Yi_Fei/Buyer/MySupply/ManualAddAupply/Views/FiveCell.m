@@ -39,6 +39,7 @@
     }];
 
     _emailText = [[UITextField alloc] init];
+    _emailText.font = [UIFont systemFontOfSize:14];
     _emailText.layer.cornerRadius = 5;
     _emailText.layer.borderWidth = 1.0;
     _emailText.layer.borderColor = BACKCOLOR.CGColor;

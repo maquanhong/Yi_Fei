@@ -32,14 +32,11 @@
     [self.iconImageView autoSetDimension:ALDimensionWidth toSize:30];
     
     [self.titleLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-    [self.titleLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.iconImageView withOffset:15];
+    [self.titleLabel autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.iconImageView withOffset:10];
     [self.titleLabel autoSetDimension:ALDimensionWidth toSize:280];
-    [self.titleLabel autoSetDimension:ALDimensionHeight toSize:20];
+    [self.titleLabel autoSetDimension:ALDimensionHeight toSize:16];
 }
 
-- (void)awakeFromNib {
-    // Initialization code
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -61,7 +58,7 @@
         _titleLabel = [[UILabel alloc] initForAutoLayout];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.font = [UIFont systemFontOfSize:17];
+        _titleLabel.font = [UIFont systemFontOfSize:14];
     }
     return _titleLabel;
 }

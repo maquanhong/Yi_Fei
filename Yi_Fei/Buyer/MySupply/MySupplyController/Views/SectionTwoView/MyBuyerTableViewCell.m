@@ -45,7 +45,6 @@
         make.width.mas_equalTo(50);
     }];
     
-    
     _label=[[UILabel alloc] init];
     [_label sizeToFit];;
     _label.font=[UIFont systemFontOfSize:18.0];
@@ -56,7 +55,6 @@
         make.centerY.equalTo(_imagV);
         make.height.mas_equalTo(20);
     }];
-
     
 }
 
