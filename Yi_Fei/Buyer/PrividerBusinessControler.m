@@ -95,9 +95,7 @@
     label.x = Lx;
     label.y = Ly;
     [symbol addSubview:label];
-    
     symbol.frame = CGRectMake(0, 64, WIDTH, CGRectGetMaxY(img.frame)+20);
-    
     [self.view addSubview:symbol];
 }
 
@@ -117,17 +115,14 @@
         UIButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:COLOR text:str];
         btn.tag = i;
         if (i == 0) {
-            btn = [BUYButton creatBtnWithBgColor:COLOR borderColor:nil borderWidth:0 titleColor:[UIColor whiteColor] text:str];
+            btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:COLOR text:str];
         }
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
         CGFloat y = CGRectGetMaxY(_symView.frame) + margin1 + i * (margin2+h);
         btn.frame = CGRectMake(x, y, w, h);
         [self.view addSubview:btn];
     }
 }
-
 
 #pragma mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender

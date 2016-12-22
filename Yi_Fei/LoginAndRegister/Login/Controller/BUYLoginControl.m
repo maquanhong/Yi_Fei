@@ -30,11 +30,13 @@
     return _btns;
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = COLOR;
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     //添加控件1
     [self addLogo];
     
@@ -80,10 +82,7 @@
     [self.versionLabel autoSetDimension:ALDimensionHeight toSize:20];
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
+
 
 #pragma mark - 添加logo
 - (void)addLogo
@@ -153,4 +152,17 @@
     [self.view endEditing:YES];
 }
 
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+
+
 @end
+
+
+
+
+

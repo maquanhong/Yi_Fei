@@ -74,11 +74,12 @@
     for (AskWayController * controller in self.navigationController.viewControllers) {
         if ([controller isKindOfClass:[AskWayController class]]) {
             myVC = controller;
-        myVC.flag = [NSString stringWithFormat:@"%ld",self.flag];
+        myVC.flag = [NSString stringWithFormat:@"%ld",self.numCount];
         }
     }
 if (myVC) {
     //跳转
+    myVC.flag = [NSString stringWithFormat:@"%ld",self.numCount];
     [self.navigationController popToViewController:myVC animated:YES];
     }
 }

@@ -41,6 +41,7 @@
     }];
     
     _textField = [[UITextField alloc] init];
+    _textField.font = [UIFont systemFontOfSize:14];
     [self addSubview:_textField];
     [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_companyName.mas_right).offset(5);

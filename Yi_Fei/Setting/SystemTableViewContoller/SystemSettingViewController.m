@@ -9,6 +9,9 @@
 #import "SystemSettingViewController.h"
 #import "PureLayout.h"
 #import "SystemSettingCell.h"
+#import "TemplateOne.h"
+
+
 
 @interface SystemSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -36,6 +39,24 @@
     [self.view addSubview:self.systemTableView];
     _systemTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self addViewConstraints];
+    [self createNavigationView];
+}
+
+
+
+#pragma mark 创建navgationView
+-(void)createNavigationView
+{
+    self.navigationItem.title = @"系统设置";
+    BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    self.navigationItem.leftBarButtonItem = barItem;
+    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)leftButtonClick{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)addViewConstraints {
@@ -56,12 +77,6 @@
     NSArray *subMenuArray = [dic objectForKey:title];
     return [subMenuArray count];
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    NSDictionary *dic = [self.menuArray objectAtIndex:section];
-//    NSString *title = [[dic allKeys] firstObject];
-//    return title;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dic = [self.menuArray objectAtIndex:indexPath.section];
@@ -100,8 +115,8 @@
     cell.labelTwo.hidden = YES;
     cell.labelThree.hidden = YES;
     cell.backView.hidden = NO;
-        
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -145,6 +160,25 @@ headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.000001;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (indexPath.section == 3) {
+        if (indexPath.row == 1) {
+        TemplateOne  *tempVC = [[TemplateOne alloc] init];
+        [self.navigationController pushViewController:tempVC animated:YES];
+        }
+    }
+
+}
+
+
+
+
+
+
+
 
 
 

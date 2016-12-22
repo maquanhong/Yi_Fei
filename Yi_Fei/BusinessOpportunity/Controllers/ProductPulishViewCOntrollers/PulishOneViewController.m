@@ -10,12 +10,16 @@
 #import "SearchView.h"
 #import "BuyCustomerView.h"
 #import "GDataXMLNode.h"
+#import "IndustryModel.h"
 
 @interface PulishOneViewController ()<SSPopupDelegate>
 {
-    NSInteger _index;
-    NSInteger _number;
+    NSInteger _indexOne;
+    NSInteger _indexTwo;
 }
+
+@property (nonatomic,strong)IndustryModel *industryModel;
+
 #pragma mark 类型坐标
 @property (nonatomic,strong) UIButton  *addBtn;   //添加按钮
 @property (nonatomic,strong) SearchView  *searchView; //搜索框
@@ -59,11 +63,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [self AnalysisData];
     [self createSearchView];
-    
 }
-
 
 #pragma mark 布局界面
 -(void)createSearchView{
@@ -120,11 +121,12 @@
     _chooseLabel = [[UILabel alloc] init];
     _chooseLabel.font = [UIFont systemFontOfSize:14];
     _chooseLabel.text = @"选择采购商";
+   _chooseLabel.textAlignment = NSTextAlignmentCenter;
     [_backView addSubview:_chooseLabel];
     [_chooseLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(_backView).offset(10);
+        make.leading.mas_equalTo(_backView).offset(5);
         make.top.mas_equalTo(_backView.mas_top).offset(20);
-        make.size.mas_equalTo(CGSizeMake(70, 20));
+        make.size.mas_equalTo(CGSizeMake(75, 20));
     }];
     
     
@@ -142,12 +144,13 @@
     
     _typeLabel = [[UILabel alloc] init];
     _typeLabel.text = @"行业类型";
+    _typeLabel.textAlignment = NSTextAlignmentCenter;
     _typeLabel.font = [UIFont systemFontOfSize:14];
     [_backView addSubview:_typeLabel];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_chooseLabel);
         make.top.mas_equalTo(_chooseLabel.mas_bottom).offset(20 + height);
-        make.size.mas_equalTo(CGSizeMake(70, 20));
+        make.size.mas_equalTo(CGSizeMake(75, 20));
     }];
     
     _industryOneView = [[BuyCustomerView alloc] init];;
@@ -212,11 +215,12 @@
     _productLabel = [[UILabel alloc] init];
     _productLabel.font = [UIFont systemFontOfSize:14];
     _productLabel.text = @"商品选择";
+    _productLabel.textAlignment = NSTextAlignmentCenter;
     [_backView addSubview:_productLabel];
     [_productLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_typeLabel);
         make.top.mas_equalTo(_typeLabel.mas_bottom).offset(60 + height );
-        make.size.mas_equalTo(CGSizeMake(70, 20));
+        make.size.mas_equalTo(CGSizeMake(75, 20));
     }];
     
     _chooseProductView = [[BuyCustomerView alloc] init];
@@ -235,6 +239,7 @@
     _priceLabel = [[UILabel alloc] init];
     _priceLabel.font = [UIFont systemFontOfSize:14];
     _priceLabel.text = @"价格区间";
+    _priceLabel.textAlignment = NSTextAlignmentCenter;
     [_backView addSubview:_priceLabel];
     [_priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_productLabel);
@@ -279,6 +284,7 @@
     _infoLabel = [[UILabel alloc] init];
     _infoLabel.font = [UIFont systemFontOfSize:14];
     _infoLabel.text = @"商品简介";
+  _infoLabel.textAlignment = NSTextAlignmentCenter;
     [_backView addSubview:_infoLabel];
     [_infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_priceLabel);
@@ -302,6 +308,7 @@
     _publishLabel = [[UILabel alloc] init];
     _publishLabel.font = [UIFont systemFontOfSize:14];
     _publishLabel.text = @"发布方式";
+   _publishLabel.textAlignment = NSTextAlignmentCenter;
     [_backView addSubview:_publishLabel];
     [_publishLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_infoLabel);
@@ -337,128 +344,32 @@
 }
 
 
--(void)AnalysisData{
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"industry" ofType:@"txt"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    
-    //创建XmlDocument对象 并初始化
-    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:data error:nil];
-    //获取根节点
-    GDataXMLElement *rootElement = [doc rootElement];
-    _elementArray= [rootElement children];
-    _oneTypeArray = [NSMutableArray array];
-    _twoTypeArray = [NSMutableArray array];
-    _threeTypeArray = [NSMutableArray array];
-    for (NSInteger i = 0 ; i < _elementArray.count; i++) {
-        GDataXMLElement *oneElement = [_elementArray objectAtIndex:i];
-        GDataXMLNode *oneNode = [oneElement attributeForName:@"Name"];
-        [_oneTypeArray addObject:[oneNode stringValue]];
-        //进行第二轮解析
-        NSMutableArray *twoArray = [NSMutableArray array];
-        if ([oneElement children].count != 0) {
-            NSArray *two = [oneElement children];
-            for (NSInteger j = 0; j < two.count; j++) {
-                
-                GDataXMLElement *twoElement = [two objectAtIndex:j];
-                GDataXMLNode *twoNode = [twoElement attributeForName:@"Name"];
-                [twoArray addObject:[twoNode stringValue]];
-                
-                NSMutableArray *threeArray = [NSMutableArray array];
-                if ([twoElement children].count != 0) {
-                    NSArray *three = [twoElement children];
-                    for (NSInteger n = 0; n < three.count; n++) {
-                        GDataXMLElement *threeElement = [three objectAtIndex:n];
-                        GDataXMLNode *threeNode = [threeElement attributeForName:@"Name"];
-                        [threeArray addObject:[threeNode stringValue]];
-                    }
-                    [_threeTypeArray addObject:threeArray];
-                }else{
-                    [threeArray addObject:[NSNull null]];
-                    [_threeTypeArray addObject:threeArray];
-                }
-            }
-            [_twoTypeArray addObject:twoArray];
-        }else{
-            [twoArray addObject:[NSNull null]];
-            [_twoTypeArray addObject:twoArray];
-        }
-    }
-}
 
 
 -(void)clickView:(id)sender
 {
     UITapGestureRecognizer * singleTap = (UITapGestureRecognizer *)sender;
     NSInteger index = [singleTap view].tag;
-    
     switch (index) {
         case 18000:
         {
-            SSPopup* selection=[[SSPopup alloc]init];
-            selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
-            selection.index = _oneTypeArray.count;
-            selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-            selection.SSPopupDelegate=self;
-            [self.view  addSubview:selection];
-            [selection CreateTableview:_oneTypeArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-                _industryOneView.nameLabel.text = _oneTypeArray[tag];
-                _index = tag;
-                NSString *twoStr = _twoTypeArray[_index][0];
-                if (![twoStr isKindOfClass:[NSNull class]]) {
-                    _industryTwoView.nameLabel.text = twoStr;
-                }else{
-                    _industryTwoView.nameLabel.text = @"";
-                }
-                
-                NSString *threeStr = _threeTypeArray[_index][0];
-                if (![threeStr isKindOfClass:[NSNull class]]) {
-                    _industryThreeView.nameLabel.text = threeStr;
-                }else{
-                    _industryThreeView.nameLabel.text = @"";
-                }
-            }];
+            _industryModel = [[IndustryModel alloc] init];
+            NSMutableArray *array = [_industryModel   getAllIndustry];
+            [self getAllIndestry:[array copy]];
         }
             break;
         case 18001:
         {
-            SSPopup* selection=[[SSPopup alloc]init];
-            selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
-            for (NSString *str  in _twoTypeArray[_index]) {
-                if (![str isKindOfClass:[NSNull class]]) {
-                    selection.index = [_twoTypeArray[_index] count];
-                }
-            }
-            selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-            selection.SSPopupDelegate=self;
-            [self.view  addSubview:selection];
-            [selection CreateTableview:_twoTypeArray[_index] withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-                _industryTwoView.nameLabel.text = _twoTypeArray[_index][tag];
-                _number = tag;
-                NSString *threeStr = _threeTypeArray[tag][0];
-                if (![threeStr isKindOfClass:[NSNull class]]) {
-                    _industryThreeView.nameLabel.text = threeStr;
-                }else{
-                    _industryThreeView.nameLabel.text = @"";
-                }
-            }];
+            _industryModel = [[IndustryModel alloc] init];
+            NSMutableArray *array = [_industryModel getIndustryTwo:_indexOne];
+            [self getIndestry:[array copy]];
         }
             break;
         case 18002:
         {
-            SSPopup* selection=[[SSPopup alloc]init];
-            selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
-            for (NSString *str  in _threeTypeArray[_number]) {
-                if (![str isKindOfClass:[NSNull class]]) {
-                    selection.index = [_threeTypeArray[_number] count];
-                }
-            }
-            selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-            selection.SSPopupDelegate=self;
-            [self.view  addSubview:selection];
-            [selection CreateTableview:_threeTypeArray[_number] withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-                _industryThreeView.nameLabel.text = _threeTypeArray[_number][tag];
-            }];
+            _industryModel = [[IndustryModel alloc] init];
+            NSMutableArray *array = [_industryModel getIndustryNumber:_indexOne threeNumber:_indexTwo];
+            [self getThreeIndestry:[array copy]];
             
         }
             break;
@@ -466,8 +377,92 @@
             break;
     }
     
+}
+
+
+//得到全部
+-(void)getAllIndestry:(NSArray*)array{
     
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = array.count;
+    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height );
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:array withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+        _indexOne = tag;
+        if ([array[tag] length] > 0) {
+            _industryOneView.nameLabel.text = array[tag];
+        }else{
+            _industryOneView.nameLabel.text = @"";
+        }
+        
+        _industryModel = [[IndustryModel alloc] init];
+        NSString *str = [_industryModel getAllIndustry:_indexOne ];
+        if ([str length] > 0) {
+            _industryTwoView.nameLabel.text = str;
+            _industryTwoView.userInteractionEnabled = YES;
+        }else{
+            _industryTwoView.nameLabel.text = @"";
+            _industryTwoView.userInteractionEnabled = NO;
+        }
+        
+        _industryModel = [[IndustryModel alloc] init];
+        NSString *strOne = [_industryModel getAllIndustryTwo:_indexOne ];
+        if ([strOne length] > 0) {
+            _industryThreeView.nameLabel.text = strOne;
+            _industryThreeView.userInteractionEnabled = YES;
+        }else{
+            _industryThreeView.nameLabel.text = @"";
+            _industryThreeView.userInteractionEnabled = NO;
+        }
+    }];
+}
+
+
+-(void)getIndestry:(NSArray*)array{
     
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = array.count;
+    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height );
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:array withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+        _indexTwo = tag;
+        if ([array[tag] length] > 0) {
+            _industryTwoView.nameLabel.text = array[tag];
+        }else{
+            _industryTwoView.nameLabel.text = @"";
+        }
+        _industryModel = [[IndustryModel alloc] init];
+        NSString *strOne = [_industryModel getIndustryTwo:_indexOne threeNumber:_indexTwo];
+        if ([strOne length] > 0) {
+            _industryThreeView.nameLabel.text = strOne;
+        }else{
+            _industryThreeView.nameLabel.text = @"";
+        }
+    }];
+}
+
+
+
+-(void)getThreeIndestry:(NSArray*)array{
+    
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = array.count;
+    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height );
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:array withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+        _indexTwo = tag;
+        if ([array[tag] length] > 0) {
+            _industryThreeView.nameLabel.text = array[tag];
+        }else{
+            _industryThreeView.nameLabel.text = @"";
+        }
+    }];
 }
 
 

@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _titleArray = [NSMutableArray array];
     _industryArray =[_model.industryType componentsSeparatedByString:@"|"];
     self.navigationController.navigationBar.hidden = YES;

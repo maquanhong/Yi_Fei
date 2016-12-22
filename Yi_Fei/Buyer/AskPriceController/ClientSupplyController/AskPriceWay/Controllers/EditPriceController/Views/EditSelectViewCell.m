@@ -50,27 +50,11 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView)];
     [_typeOne addGestureRecognizer:tap];
     
-    _textFiled = [[UITextField alloc] init];
-    _textFiled.layer.cornerRadius = 5;
-    _textFiled.layer.borderWidth = 1.0;
-    _textFiled.layer.borderColor = BACKCOLOR.CGColor;
-    [self addSubview:_textFiled];
-    _textFiled.hidden = YES;
-    
     [_typeOne mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.left.mas_equalTo(_typeLabel.mas_right).offset(10);
-        make.right.mas_equalTo(_textFiled.mas_left).offset(-10);
         make.height.mas_equalTo(25);
-        make.width.mas_equalTo(_textFiled);
-    }];
-    
-    [_textFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self);
-        make.left.mas_equalTo(_typeOne.mas_right).offset(10);
-        make.trailing.mas_equalTo(self).offset(-10);
-        make.height.mas_equalTo(25);
-        make.width.mas_equalTo(_typeOne);
+        make.width.mas_equalTo((WIDTH - 90) / 2);
     }];
     
     

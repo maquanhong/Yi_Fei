@@ -115,6 +115,7 @@
     _addressText.layer.borderWidth = 1.0;
     _addressText.layer.borderColor = BACKCOLOR.CGColor;
     _addressText.placeholder = @"详细地址";
+    _addressText.font = [UIFont systemFontOfSize:14];
     [self addSubview:_addressText];
     [_addressText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(_typeThreeView);

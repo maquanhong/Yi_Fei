@@ -54,6 +54,7 @@
     _textFiled.layer.borderWidth = 1.0;
     _textFiled.layer.borderColor = BACKCOLOR.CGColor;
     _textFiled.placeholder = @"自定义";
+    _textFiled.font = [UIFont systemFontOfSize:14];
     [self addSubview:_textFiled];
     [_textFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_typeOneView.mas_right).offset(10);

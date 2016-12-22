@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoView : UIView
+
+@property (nonatomic, strong, readonly) UIImageView *backgImageView;
+
 @property (nonatomic, strong, readonly) UIImageView *logoImageView;
-@property (nonatomic, strong, readonly) UIImageView *backgroundImageView;
+
 @property (nonatomic, strong, readonly) UILabel *nameLabel;
+
 @property (nonatomic, strong, readonly) UILabel *levelLabel;
+
+
 @end

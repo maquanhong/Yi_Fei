@@ -10,6 +10,6 @@
 
 @interface SendWwayController : UIViewController
 
-@property (nonatomic,assign) NSInteger flag;
+@property (nonatomic,assign) NSInteger numCount;
 
 @end

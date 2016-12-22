@@ -114,13 +114,10 @@
 //应该在下面的方法中隐藏标签栏，不能在viewDidLoad里面隐藏
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma  mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender
@@ -146,5 +143,19 @@
             break;
     }
 }
+
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+
+
+
+
+
 
 @end

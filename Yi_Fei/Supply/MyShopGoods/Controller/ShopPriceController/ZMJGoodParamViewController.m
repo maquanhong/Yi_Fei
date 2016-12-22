@@ -403,7 +403,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
 #pragma mark 上传的事件
 -(void)clickUpBtn{
 
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"选择" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"获取图片方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self clickPhotoAlbum];
     }];

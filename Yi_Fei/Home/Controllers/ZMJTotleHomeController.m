@@ -23,35 +23,68 @@
 
 @implementation ZMJTotleHomeController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     //导航条的设置
-    [self setNavToolBar];
-    
+    [self setNav];
     //添加图片轮播图
     [self addPictures];
-    
     //添加按钮
     [self addBtns];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
 
 #pragma  mark - 设置导航条
-- (void)setNavToolBar
+- (void)setNav
 {
     //标题
-    self.title = @"EasyFair";
-#warning 左右两侧的图片 --  需要添加
-    //左右两侧的图标
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"zhanghu_icon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showUserInfo)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"xiaoxi_icon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showMessage)];
+    UIView *backView = [[UIView alloc] init];
+    backView.backgroundColor = BACKCOLOR;
+    [self.view addSubview:backView];
+    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.view);
+        make.trailing.equalTo(self.view);
+        make.height.mas_equalTo(64);
+        make.top.mas_equalTo(self.view.mas_top);
+    }];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"EasyFair";
+    titleLabel.textColor = [UIColor whiteColor];
+    [backView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(backView.mas_centerX);
+        make.height.mas_equalTo(20);
+        make.top.mas_equalTo(backView.mas_top).offset(30);
+    }];
+    
+    UIButton *leftBtn = [[UIButton alloc] init];
+  [leftBtn setImage:[UIImage imageNamed:@"zhanghu_icon.png"] forState:UIControlStateNormal];
+    [backView addSubview:leftBtn];
+    [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(backView).offset(10);
+        make.size.mas_equalTo(CGSizeMake(25, 25));
+        make.top.equalTo(backView).offset(30);
+    }];
+    [leftBtn addTarget:self action:@selector(showUserInfo) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIButton *rightBtn = [[UIButton alloc] init];
+    [rightBtn setImage:[UIImage imageNamed:@"xiaoxi_icon.png"] forState:UIControlStateNormal];
+    [backView addSubview:rightBtn];
+    [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.trailing.equalTo(backView).offset(-10);
+        make.size.mas_equalTo(CGSizeMake(25, 25));
+        make.top.mas_equalTo(backView.mas_top).offset(30);
+    }];
+[rightBtn addTarget:self action:@selector(showMessage) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)showUserInfo {
@@ -100,10 +133,10 @@
     
     for (int i = 0; i < 3; i++) {
         NSString *str = strs[i];
-        UIButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:COLOR text:str];
+        UIButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:BACKCOLOR text:str];
         btn.tag = i;
         if (i == 0) {
-            btn = [BUYButton creatBtnWithBgColor:COLOR borderColor:nil borderWidth:0 titleColor:[UIColor whiteColor] text:str];
+    btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:BACKCOLOR text:str];
         }
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         //frame
@@ -141,4 +174,21 @@
     }
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+
+
+
+
+
 @end
+
+
+
+
+
+

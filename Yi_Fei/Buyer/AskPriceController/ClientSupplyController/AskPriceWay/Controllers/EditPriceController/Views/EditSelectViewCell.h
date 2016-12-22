@@ -20,7 +20,6 @@
 @property (nonatomic,weak) id<EditSelectViewCellDelegate> delegate;
 
 @property (nonatomic,strong) ZMJTypeView *typeOne;
-@property (nonatomic,strong) UITextField *textFiled;
 
 @property (nonatomic,strong) UILabel  *typeLabel;
 

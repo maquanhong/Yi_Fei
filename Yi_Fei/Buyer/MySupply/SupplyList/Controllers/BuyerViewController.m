@@ -197,7 +197,6 @@
 
 -(void)addContentView{
     self.tableview=[[UITableView alloc] initWithFrame:CGRectMake(0, 124, WIDTH, HEIGHT- 124 )style:UITableViewStylePlain];
-    _tableView.backgroundColor = [UIColor redColor];
     self.tableview.rowHeight = 70;
     self.tableview.delegate = self;
     self.tableview.dataSource = self;

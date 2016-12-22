@@ -45,7 +45,7 @@
     
     
     _listImageView = [[UIImageView alloc] init];
-    _listImageView.image= [UIImage imageNamed:@"xiala2"];
+    _listImageView.image= [UIImage imageNamed:@"xiala"];
     [self addSubview:_listImageView];
     [_listImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.mas_centerY).offset(2);

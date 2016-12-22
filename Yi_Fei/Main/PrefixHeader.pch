@@ -36,9 +36,7 @@
 #define  BACKCOLOR [UIColor colorWithRed:58/255.0 green:165/255.0 blue:245/255.0 alpha:1.0]
 
 
-
-
-
+#define  INTERFACECOLOR [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0]
 
 
 

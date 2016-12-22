@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AskPriceModel.h"
+#import "OfferPriceModel.h"
 #import "ProductionData.h"
 
 @interface ConversionTrams : NSObject
 
 
 
--(AskPriceModel*)trams:(ProductionData*)model tag:(NSString*)tag time:(NSString*)time supplyName:(NSString*)supplyName;
+-(OfferPriceModel*)trams:(ProductionData*)model tag:(NSString*)tag time:(NSString*)time supplyName:(NSString*)supplyName;
 
 
 
