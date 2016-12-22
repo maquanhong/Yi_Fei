@@ -7,7 +7,7 @@
 //
 
 #import "ParsingController.h"
-#import "DHxlsReader.h"
+#import "BRAOfficeDocumentPackage.h"
 
 @interface ParsingController ()
 
@@ -17,26 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    NSString *path = [[NSBundle mainBundle ] pathForResource:@"ImportPrice.xls" ofType:nil];
-
-DHxlsReader *reader = [DHxlsReader xlsReaderWithPath:path];
-  assert(reader);
-//  NSMutableArray *oneArray = [NSMutableArray array];
-    //excel表中第几行开始
-    int row = 1;
-//    while(row < 2 ) {
-    
-        DHcell *cell ;
-        for (NSInteger i = 1; i < 5; i++) {
-        NSString *str = [NSString stringWithFormat:@"%ld",i];
-        int col = [str intValue];
-        cell = [reader cellInWorkSheetIndex:0 row:1 col:col];
-    if(cell.type == cellBlank) break;
-          NSLog(@"%@",cell.dump);
-    
-        }
-        row++;
+    NSString *documentPath = [[NSBundle mainBundle] pathForResource:@"nihao" ofType:@"xlsx"];
+    BRAOfficeDocumentPackage *spreadsheet = [BRAOfficeDocumentPackage open:documentPath];
+    BRAWorksheet *firstWorksheet = spreadsheet.workbook.worksheets[0];
+    NSString *formula = [[firstWorksheet cellForCellReference:@"公司货号"] formulaString];
+    UIImage *image = [firstWorksheet imageForCellReference:@"产品图片一"].uiImage;
     }
 
     
