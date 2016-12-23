@@ -9,6 +9,7 @@
 #import "AddController.h"
 #import "BUYButton.h"
 #import "AddOneController.h"
+#import "ParsingController.h"
 
 @interface AddController ()
 
@@ -60,8 +61,8 @@
     AddOneController *salerVc = [[AddOneController alloc] init];
     [self.navigationController pushViewController:salerVc animated:YES];
     } else if (index == 0) {
-//        CustomController *clientVc = [[CustomController alloc] init];
-//        [self.navigationController pushViewController:clientVc animated:YES];
+    ParsingController *clientVc = [[ParsingController alloc] init];
+    [self.navigationController pushViewController:clientVc animated:YES];
     }
     
 }

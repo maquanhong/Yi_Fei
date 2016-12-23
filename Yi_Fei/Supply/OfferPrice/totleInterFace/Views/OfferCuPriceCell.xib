@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="359" height="84"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="359" height="83"/>
+                <rect key="frame" x="0.0" y="0.0" width="359" height="84"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mv0-RF-OC3">
@@ -34,10 +34,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVk-nD-TZB">
-                        <rect key="frame" x="78" y="44" width="70" height="20"/>
+                        <rect key="frame" x="78" y="44" width="70" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="7lC-UP-tKd"/>
-                            <constraint firstAttribute="height" constant="20" id="kLd-Hx-OSo"/>
+                            <constraint firstAttribute="height" constant="25" id="kLd-Hx-OSo"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="留样报价"/>
@@ -46,7 +46,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOE-Vv-tKn">
-                        <rect key="frame" x="158" y="44" width="70" height="20"/>
+                        <rect key="frame" x="158" y="44" width="70" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="预留报价"/>
                         <connections>
@@ -76,7 +76,7 @@
                 <outlet property="oneBtn" destination="JOE-Vv-tKn" id="Hm3-bf-8wI"/>
                 <outlet property="titleLabel" destination="aHV-Xg-cZA" id="wdf-Ha-AeZ"/>
             </connections>
-            <point key="canvasLocation" x="-3" y="-30"/>
+            <point key="canvasLocation" x="26" y="-67"/>
         </tableViewCell>
     </objects>
 </document>

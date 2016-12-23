@@ -12,12 +12,19 @@
 #import "BuyerProductController.h"
 #import "BuyerViewController.h"
 #import "AskPriceController.h"
+#import "UserModel.h"
+#import "UserList.h"
+#import "UserDefaultManager.h"
+
 
 @interface PrividerBusinessControler ()
+{
+    UserModel *oneModel;
+}
 
-@property (nonatomic,weak) UIView *symView;
+@property (nonatomic,strong) UIView *symView;
 
-@property (nonatomic,weak) UIImageView *navBarHairlineImageView;
+
 
 @end
 
@@ -25,78 +32,96 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.s
-    self.view.backgroundColor = [UIColor whiteColor];
-    _navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-    //设置导航条
-    [self setNavTool];
+    self.view.backgroundColor = INTERFACECOLOR;
     //添加标志图片
     [self addSymbol];
-    
     //添加按钮
     [self addBtns];
 }
 
-- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
-    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
-        return (UIImageView *)view;
-    }
-    for (UIView *subview in view.subviews) {
-        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
-        if (imageView) {
-            return imageView;
-        }
-    }
-    return nil;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _navBarHairlineImageView.hidden = YES;
+    self.navigationController.navigationBar.hidden = YES;
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    _navBarHairlineImageView.hidden = NO;
+    self.navigationController.navigationBar.hidden = NO;
 }
 
-#pragma mark - 设置导航条
-- (void)setNavTool
-{
-    self.title = @"我是采购商";
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-}
 
 #pragma mark - 添加标志图片
 - (void)addSymbol
 {
-    UIView *symbol = [[UIView alloc] init];
+    
+    UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     _symView = symbol;
-    symbol.backgroundColor = [UIColor colorWithRed:0/255.0 green:138.0/255.0 blue:244/255.0 alpha:1.0];
+    symbol.backgroundColor =  BACKCOLOR;
+    
     //添加标志图
     UIImageView *img = [[UIImageView alloc] init];
-    img.image = [UIImage imageNamed:@"logo.png"];
     img.layer.cornerRadius = 5;
     img.layer.masksToBounds = YES;
-    CGFloat x = 40;
-    CGFloat y = 20;
-    CGFloat w = 80;
-    CGFloat h = 68;
-    img.frame = CGRectMake(x, y, w, h);
     [symbol addSubview:img];
+    [img mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(symbol).offset(15);
+        make.bottom.mas_equalTo(symbol.mas_bottom).offset(-50);
+        make.size.mas_equalTo(CGSizeMake(80, 80));
+    }];
+    
+    
+    //获取单例对象
+    UserList *manager = [UserList defaultManager];
+    //可变数组初始化
+    oneModel = [[ UserModel alloc] init];
+    NSString *str = [UserDefaultManager getDataByKey:@"link"];
+    oneModel = [manager getDataWith:str];
+    
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    if (oneModel.picture.length > 0) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",oneModel.picture]];
+        img.image = [UIImage imageWithContentsOfFile:imagePath];
+        
+    }
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text  = @"我是供应商";
+    titleLabel.textColor = [UIColor whiteColor];
+    [symbol addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(symbol);
+        make.top.mas_equalTo(symbol.mas_top).offset(30);
+        make.height.mas_equalTo(20);
+    }];
+    
+    UIButton *btn = [[UIButton alloc] init];
+    [btn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    [symbol addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(symbol).offset(10);
+        make.top.mas_equalTo(symbol.mas_top).offset(20);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+    }];
+    [btn addTarget:self action:@selector(returnNextView) forControlEvents:UIControlEventTouchUpInside];
     
     //添加公司名称
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"百倍云科技有限公司";
-    label.font = [UIFont systemFontOfSize:15];
+    label.text = oneModel.name;
+    label.font = [UIFont systemFontOfSize:16];
     label.textColor = [UIColor whiteColor];
     [label sizeToFit];
-    CGFloat Lx = CGRectGetMaxX(img.frame)+26;
-    CGFloat Ly = CGRectGetMaxY(img.frame) - img.height*0.5 - label.height*0.5;
-    label.x = Lx;
-    label.y = Ly;
     [symbol addSubview:label];
-    symbol.frame = CGRectMake(0, 64, WIDTH, CGRectGetMaxY(img.frame)+20);
     [self.view addSubview:symbol];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(img.mas_right).offset(15);
+        make.centerY.equalTo(img);
+        make.height.mas_equalTo(20);
+    }];
+}
+
+
+-(void)returnNextView{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 添加下面三个按钮
@@ -144,6 +169,16 @@
             break;
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -61,12 +61,14 @@
     oneModel = [manager getDataWith:str];
     
     UserInfoView *headerView = [[UserInfoView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 180)];
+    headerView.logoImageView.layer.cornerRadius = 5;
+    headerView.logoImageView.layer.masksToBounds = YES;
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
     if (oneModel.picture.length > 0) {
         NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",oneModel.picture]];
         headerView.backgImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
-        headerView.logoImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+    headerView.logoImageView.image = [UIImage imageWithContentsOfFile:imagePath];
     }else{
     headerView.backgImageView.image = [UIImage imageNamed:@"h1"];
     headerView.logoImageView.image = [UIImage imageNamed:@"h1"];

@@ -13,8 +13,15 @@
 #import "SupplyListController.h"
 #import "OfferController.h"
 #import "Macro.h"
+#import "UserModel.h"
+#import "UserList.h"
+#import "UserDefaultManager.h"
 
 @interface ZMJProviderController ()
+{
+    UserModel *oneModel;
+}
+
 
 @property (nonatomic,strong) UIView *symView;
 
@@ -31,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.view.backgroundColor = INTERFACECOLOR;
     //添加标志图片
     [self addSymbol];
     //添加按钮
@@ -45,9 +52,9 @@
 UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     _symView = symbol;
     symbol.backgroundColor =  BACKCOLOR;
+    
     //添加标志图
     UIImageView *img = [[UIImageView alloc] init];
-    img.image = [UIImage imageNamed:@"logo.png"];
     img.layer.cornerRadius = 5;
     img.layer.masksToBounds = YES;
     [symbol addSubview:img];
@@ -56,6 +63,22 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
         make.bottom.mas_equalTo(symbol.mas_bottom).offset(-50);
         make.size.mas_equalTo(CGSizeMake(80, 80));
     }];
+    
+    
+    //获取单例对象
+    UserList *manager = [UserList defaultManager];
+    //可变数组初始化
+    oneModel = [[ UserModel alloc] init];
+    NSString *str = [UserDefaultManager getDataByKey:@"link"];
+    oneModel = [manager getDataWith:str];
+    
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    if (oneModel.picture.length > 0) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",oneModel.picture]];
+       img.image = [UIImage imageWithContentsOfFile:imagePath];
+        
+    }
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text  = @"我是供应商";
@@ -79,14 +102,14 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     
     //添加公司名称
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"百倍云科技有限公司";
-    label.font = [UIFont systemFontOfSize:15];
+    label.text = oneModel.name;
+    label.font = [UIFont systemFontOfSize:16];
     label.textColor = [UIColor whiteColor];
     [label sizeToFit];
     [symbol addSubview:label];
     [self.view addSubview:symbol];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(img.mas_right).offset(30);
+        make.left.mas_equalTo(img.mas_right).offset(15);
         make.centerY.equalTo(img);
         make.height.mas_equalTo(20);
     }];

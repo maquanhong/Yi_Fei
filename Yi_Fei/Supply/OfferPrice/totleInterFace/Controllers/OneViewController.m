@@ -34,8 +34,6 @@
     _isPress = YES;
     [self setNav];
     [self createTableView];
-    
-
 }
 
 - (void)setNav {
