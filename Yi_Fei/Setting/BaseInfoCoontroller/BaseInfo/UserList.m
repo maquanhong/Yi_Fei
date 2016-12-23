@@ -39,14 +39,9 @@ static UserList * manager=nil;
         //很据路径创建表
         _dataBase = [[FMDatabase alloc]initWithPath:path];
         //如果创建成功 打开
-
         if ([_dataBase open]) {
-            
             NSString *createSql = @"create table if not exists User(ind integer PRIMARY KEY AUTOINCREMENT,picture varchar(6000),name varchar(1024),industry varchar(1024),size varchar(1024),business varchar(1024),product varchar(1024),url varchar(1024),adderss varchar(1024),link varchar(1024),phone varchar(1024),email varchar(1024),position varchar(1024))";
-            //integer 数字  varchar字符串   glob 二进制数据NSData
             if ([_dataBase executeUpdate:createSql]){
-                //executeUpdate 返回值是BOOL
-                //executeUpdate 增、删、改、创建 都是使用这个方法
                 NSLog(@"创建成功");
             }else{
                 NSLog(@"%@",[_dataBase lastErrorMessage]);
@@ -70,7 +65,7 @@ static UserList * manager=nil;
 
 //修改数据
 - (void)updateDataModel:(UserModel*)model data:(NSString*)data {
-    NSString *sql = [NSString stringWithFormat:@"update User set picture = ?, name = ?,industry = ?, size = ?, business = ? ,product = ? ,url = ?, adderss = ?,link= ?, phone = ? , email = ? ,position = ?  where  link = ?"];
+    NSString *sql = [NSString stringWithFormat:@"update User set picture = ?, name = ?,industry = ?, size = ?, business = ? ,product = ? ,url = ?, adderss = ?,link= ?, phone = ? , email = ? ,position = ?  where  phone = ?"];
     BOOL success = [_dataBase executeUpdate:sql,model.picture,model.name,model.industry,model.size,model.business,model.product,model.url,model.adderss,model.link,model.phone,model.email,model.position,data];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
@@ -82,7 +77,7 @@ static UserList * manager=nil;
 //查找
 - (BOOL)isHasDataIDFromTable:(NSString*)data
 {
-    NSString * isSql = @"select *from User where link =?";
+    NSString * isSql = @"select *from User where phone =?";
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,data];
     //[set next] 查找当前行 找到继续中查找下一行
@@ -95,9 +90,8 @@ static UserList * manager=nil;
 }
 
 
-
 - (UserModel *)getDataWith:(NSString*)data{
-    NSString * resultSql = @"select *from User where link =?";
+    NSString * resultSql = @"select *from User where phone =?";
     FMResultSet * set = [_dataBase executeQuery:resultSql,data];
     UserModel* model ;
     while ([set next]) {

@@ -57,7 +57,7 @@
     UserList *manager = [UserList defaultManager];
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
-    NSString *str = [UserDefaultManager getDataByKey:@"link"];
+    NSString *str = [UserDefaultManager getDataByKey:@"user"];
     oneModel = [manager getDataWith:str];
     
     UserInfoView *headerView = [[UserInfoView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 180)];

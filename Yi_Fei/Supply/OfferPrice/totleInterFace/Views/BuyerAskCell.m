@@ -80,7 +80,7 @@
     
     _price  = [[UILabel alloc] init];
     _price.font = [UIFont systemFontOfSize:14];
-    _price.textColor = [UIColor brownColor];
+    _price.textColor = PRICECOLOR;
     [self addSubview:_price];
     [_price mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_priceLabel.mas_right);

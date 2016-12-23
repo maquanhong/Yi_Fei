@@ -226,9 +226,13 @@
     CustomerModel *model = _listArray[indexPath.row];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
+    if (model.companyLogo.length > 0) {
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
     cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
-    cell.titleLabel.text = model.supplyName;
+    }else{
+    cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
+    }
+    cell.titleLabel.text = model.customerName;
     cell.nextLabel.text = model.companyName;
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     return cell;
@@ -262,7 +266,7 @@
     _manager = [CustomerList defaultManager];
     CustomerModel *model ;
     model = _listArray[indexPath.row];
-  [_manager deleteNameFromTable:model.supplyName];
+  [_manager deleteNameFromTable:model.customerName];
   [_listArray removeObjectAtIndex:indexPath.row];
   [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [_tableView reloadData];

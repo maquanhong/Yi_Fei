@@ -8,14 +8,25 @@
 
 #import "AboutViewController.h"
 #import "PureLayout.h"
+#import "UserList.h"
+#import "UserModel.h"
+#import "UserDefaultManager.h"
+
 @interface AboutViewController ()<UITableViewDelegate, UITableViewDataSource>
+{
+    UserModel *oneModel;
+}
+
 @property (nonatomic, strong) UITableView *aboutTableView;
 @property (nonatomic, strong) UIImageView *logoImageView;
 @property (nonatomic, strong) UILabel     *versionLabel;
 @property (nonatomic, strong) NSArray     *menuArray;
+
 @end
 
 @implementation AboutViewController
+
+
 
 - (void)setNav {
     
@@ -39,23 +50,45 @@
     [self setNav];
     self.title = @"关于EasyFair";
     _menuArray = @[@"功能介绍",@"系统通知",@"联系客服",@"检查新版本"];
-    _aboutTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT - 180) style:UITableViewStylePlain];
+    NSInteger height;
+    if (WIDTH == 414) {
+        height = 320;
+    }else if (WIDTH == 375){
+     height = 230;
+    }else{
+    height = 140;
+    }
+    _aboutTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT - height) style:UITableViewStylePlain];
+    _aboutTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _aboutTableView.dataSource = self;
     _aboutTableView.delegate = self;
     self.aboutTableView.scrollEnabled = NO;
     [self.view addSubview:self.aboutTableView];
-    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 150)];
-    headerView.backgroundColor = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   UIColor groupTableViewBackgroundColor];
+    headerView.backgroundColor = INTERFACECOLOR;
     _logoImageView = [[UIImageView alloc] init];
-    _logoImageView.image = [[UIImage imageNamed:@"logo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    _logoImageView.layer.cornerRadius = 5;
+     _logoImageView.layer.masksToBounds = YES;
     [headerView addSubview:self.logoImageView];
     [self.logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(headerView.mas_centerX);
         make.centerY.equalTo(headerView.mas_centerY).offset(-10);
         make.size.mas_equalTo(CGSizeMake(80, 80));
     }];
-    
+    //获取单例对象
+    UserList *manager = [UserList defaultManager];
+    //可变数组初始化
+    oneModel = [[ UserModel alloc] init];
+    NSString *str = [UserDefaultManager getDataByKey:@"user"];
+    oneModel = [manager getDataWith:str];
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    if (oneModel.picture.length > 0) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",oneModel.picture]];
+        _logoImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+        _logoImageView.image = [UIImage imageNamed:@"Null"];
+    }
     _versionLabel = [[UILabel alloc] init];
     _versionLabel.font = [UIFont systemFontOfSize:14];
     _versionLabel.textAlignment = NSTextAlignmentCenter;
@@ -69,7 +102,6 @@
         make.height.mas_equalTo(15);
     }];
     self.aboutTableView.tableHeaderView = headerView;
-    self.aboutTableView.tableFooterView = [[UIView alloc] init];
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"使用条款和隐私政策";
     titleLabel.textColor = BACKCOLOR;
@@ -108,16 +140,23 @@
     }
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.text = [self.menuArray objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [cell addSubview:view];
+    [view  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(cell.mas_bottom);
+        make.leading.equalTo(cell);
+        make.trailing.equalTo(cell);
+        make.height.mas_equalTo(1);
+    }];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-
-
-
-
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
 
 
 

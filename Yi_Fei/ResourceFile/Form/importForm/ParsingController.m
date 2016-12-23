@@ -20,9 +20,10 @@
     self.view.backgroundColor = INTERFACECOLOR;
     
     NSString *documentPath = [[NSBundle mainBundle] pathForResource:@"nihao" ofType:@"xlsx"];
+    
     BRAOfficeDocumentPackage *spreadsheet = [BRAOfficeDocumentPackage open:documentPath];
     BRAWorksheet *firstWorksheet = spreadsheet.workbook.worksheets[0];
-    NSString *formula = [[firstWorksheet cellForCellReference:@"公司货号"] formulaString];
+    NSString *formula = [[firstWorksheet cellForCellReference:@"商品名称"] formulaString];
      NSLog(@"%@",formula);
     UIImage *image = [firstWorksheet imageForCellReference:@"产品图片一"].uiImage;
     NSLog(@"%@",image);

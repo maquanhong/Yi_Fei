@@ -16,6 +16,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self addView];
     }
     return self;
@@ -130,7 +131,7 @@
         {
         ShopListDetailController *detailVC = [[ShopListDetailController alloc] init];
         if ([self.delegate respondsToSelector:@selector(clickView:index:)]) {
-            [self.delegate clickView:detailVC index:self];
+        [self.delegate clickView:detailVC index:self];
           }
         }
             break;

@@ -10,7 +10,6 @@
 #import "AddOneProductionController.h"
 #import "BuyerProductTableViewCell.h"
 #import "BuyerDetailViewController.h"
-#import "MemberController.h"
 
 
 @interface BuyerProductController ()<ZMJMyProductionCellDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
@@ -235,7 +234,7 @@
 #pragma mark 创建tableView视图
 -(void)addContentView{
     
-    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 140, WIDTH-20, HEIGHT-140 )style:UITableViewStylePlain];
+    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 120, WIDTH-20, HEIGHT-120 )style:UITableViewStylePlain];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -294,31 +293,11 @@
         make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
         make.size.mas_equalTo(CGSizeMake(100, 20));
     }];
-    
-    UIButton *memberBtn = [[UIButton alloc] init];
-    memberBtn.backgroundColor = [UIColor redColor];
-    [memberBtn setTitle:@"申请会员" forState:UIControlStateNormal];
-    memberBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [memberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    memberBtn.backgroundColor = COLOR;
-    memberBtn.layer.cornerRadius = 5;
-    [haderView addSubview:memberBtn];
-    [memberBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(haderView).offset(-5);
-        make.centerY.mas_equalTo(haderView.mas_centerY).offset(-2);
-        make.size.mas_equalTo(CGSizeMake(70, 25));
-    }];
-    [ memberBtn addTarget:self action:@selector(clickMemberBtn) forControlEvents:UIControlEventTouchUpInside];
     self.tableview.tableHeaderView = haderView;
     
 }
 
--(void)clickMemberBtn{
-    
-    MemberController  *memVC = [[MemberController alloc] init];
-    [self.navigationController pushViewController:memVC animated:YES];
-    
-}
+
 
 
 #pragma Mark -- 事件处理
@@ -358,8 +337,13 @@
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-    cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    if ([arrayimg[0] length] > 0) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
+        cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+        cell.imgV.image= [UIImage imageNamed:@"Null"];
+    }
+   
     cell.nameShop.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
     if (dataModel.shopPrice.length > 0 ) {
     cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];

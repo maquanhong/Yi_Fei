@@ -33,4 +33,14 @@
 
 
 
+@property (weak, nonatomic) IBOutlet UIView *lineView;
+
+
+
+
 @end
+
+
+
+
+

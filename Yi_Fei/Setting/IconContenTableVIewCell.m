@@ -58,7 +58,7 @@
         _titleLabel = [[UILabel alloc] initForAutoLayout];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.font = [UIFont systemFontOfSize:16];
     }
     return _titleLabel;
 }

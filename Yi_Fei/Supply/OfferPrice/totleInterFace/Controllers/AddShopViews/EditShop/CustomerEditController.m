@@ -10,13 +10,15 @@
 #import "EditFirstShopCell.h"
 #import "FourViewCell.h"
 #import "UWDatePickerView.h"
-#import "OfferPriceList.h"
 #import "FooterView.h"
 #import "SecondTableViewCell.h"
 #import "ThreeViewCell.h"
+#import "AskPriceModel.h"
+#import "AskPriceList.h"
 
 @interface CustomerEditController ()<UITableViewDelegate,UITableViewDataSource,FourViewCellDelegate,UITextFieldDelegate,UITextViewDelegate,EditSelectViewCellDelegate,SSPopupDelegate,UWDatePickerViewDelegate,SelectOneViewDelegate,FooterViewDelegate>{
     
+    AskPriceList *_manager;
     UWDatePickerView *_pickerView;
     EditFirstShopCell *firstCell;
     EditSelectViewCell *secondCell;
@@ -28,7 +30,6 @@
     FourViewCell  *sevenCell;
     NSInteger _index;
     NSInteger _flag;
-     OfferPriceList *_manager;
      NSInteger _clickNum;
      NSInteger _number;
      NSInteger _num;
@@ -79,7 +80,7 @@
 
 
 - (void)setNav {
-    self.navigationItem.title = @"报价清单";
+    self.navigationItem.title = @"商品信息修改";
     BackButton* leftBtn= [BackButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     leftBtn.frame = CGRectMake(0, 0, 25, 25);
@@ -111,9 +112,9 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 
 
 - (void)clickBtn{
-
-
-
+    _manager = [AskPriceList defaultManager];
+    [_manager updateDataModel:_model number:_model.ind];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -73,7 +73,7 @@
     UserList *manager = [UserList defaultManager];
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
-    NSString *str = [UserDefaultManager getDataByKey:@"link"];
+    NSString *str = [UserDefaultManager getDataByKey:@"user"];
     oneModel = [manager getDataWith:str];
     
     NSString *path_document = NSHomeDirectory();
@@ -81,7 +81,6 @@
     if (oneModel.picture.length > 0) {
         NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",oneModel.picture]];
         img.image = [UIImage imageWithContentsOfFile:imagePath];
-        
     }
     
     UILabel *titleLabel = [[UILabel alloc] init];

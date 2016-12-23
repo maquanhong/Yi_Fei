@@ -69,7 +69,7 @@
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
     header.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
-    header.nameLabel.text = _model.supplyName;
+    header.nameLabel.text = _model.customerName;
     if (_model.position.length >0) {
         header.titleLabel.text = [NSString stringWithFormat:@"%@",_model.position];
     }else if (_model.companyName.length > 0){

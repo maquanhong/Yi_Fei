@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AskPriceModel.h"
 
 @interface OneViewController : UIViewController
 
+@property (nonatomic,strong) NSString *customerName;
 
 
 @end

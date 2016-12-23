@@ -301,7 +301,6 @@
 		E4866E081E0D293600D608F7 /* BuyerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D7A1E0D293600D608F7 /* BuyerDetailViewController.m */; };
 		E4866E091E0D293600D608F7 /* BuyerEditProductController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D7C1E0D293600D608F7 /* BuyerEditProductController.m */; };
 		E4866E0A1E0D293600D608F7 /* BuyerProductController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D7E1E0D293600D608F7 /* BuyerProductController.m */; };
-		E4866E0B1E0D293600D608F7 /* MemberController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D801E0D293600D608F7 /* MemberController.m */; };
 		E4866E0C1E0D293600D608F7 /* SendInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D821E0D293600D608F7 /* SendInfoController.m */; };
 		E4866E0D1E0D293600D608F7 /* ProductionData.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D861E0D293600D608F7 /* ProductionData.m */; };
 		E4866E0E1E0D293600D608F7 /* NewTwoList.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866D891E0D293600D608F7 /* NewTwoList.m */; };
@@ -348,6 +347,9 @@
 		E4866E371E0D293600D608F7 /* SupplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DEC1E0D293600D608F7 /* SupplyModel.m */; };
 		E4866E381E0D293600D608F7 /* PrividerBusinessControler.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DEE1E0D293600D608F7 /* PrividerBusinessControler.m */; };
 		E4866E3A1E0D2DC400D608F7 /* xunjia.xls in Resources */ = {isa = PBXBuildFile; fileRef = E4866E391E0D2DC400D608F7 /* xunjia.xls */; };
+		E4866E781E0D6B0100D608F7 /* AddContinueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866E771E0D6B0100D608F7 /* AddContinueCell.m */; };
+		E4866E7B1E0D777A00D608F7 /* TranslationObjec.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866E7A1E0D777A00D608F7 /* TranslationObjec.m */; };
+		E4866E7E1E0D9D2400D608F7 /* DicttionAndJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866E7D1E0D9D2400D608F7 /* DicttionAndJSON.m */; };
 		E49352401DF711AA00145486 /* industry.txt in Resources */ = {isa = PBXBuildFile; fileRef = E493523B1DF711AA00145486 /* industry.txt */; };
 		E493524B1DF7200000145486 /* CentralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E49352481DF7200000145486 /* CentralBlueTooth.m */; };
 		E493524C1DF7200000145486 /* PeripheralBlueTooth.m in Sources */ = {isa = PBXBuildFile; fileRef = E493524A1DF7200000145486 /* PeripheralBlueTooth.m */; };
@@ -962,8 +964,6 @@
 		E4866D7C1E0D293600D608F7 /* BuyerEditProductController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerEditProductController.m; sourceTree = "<group>"; };
 		E4866D7D1E0D293600D608F7 /* BuyerProductController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerProductController.h; sourceTree = "<group>"; };
 		E4866D7E1E0D293600D608F7 /* BuyerProductController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerProductController.m; sourceTree = "<group>"; };
-		E4866D7F1E0D293600D608F7 /* MemberController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberController.h; sourceTree = "<group>"; };
-		E4866D801E0D293600D608F7 /* MemberController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberController.m; sourceTree = "<group>"; };
 		E4866D811E0D293600D608F7 /* SendInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInfoController.h; sourceTree = "<group>"; };
 		E4866D821E0D293600D608F7 /* SendInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInfoController.m; sourceTree = "<group>"; };
 		E4866D851E0D293600D608F7 /* ProductionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductionData.h; sourceTree = "<group>"; };
@@ -1052,6 +1052,12 @@
 		E4866DED1E0D293600D608F7 /* PrividerBusinessControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrividerBusinessControler.h; sourceTree = "<group>"; };
 		E4866DEE1E0D293600D608F7 /* PrividerBusinessControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrividerBusinessControler.m; sourceTree = "<group>"; };
 		E4866E391E0D2DC400D608F7 /* xunjia.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = xunjia.xls; sourceTree = "<group>"; };
+		E4866E761E0D6B0100D608F7 /* AddContinueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContinueCell.h; sourceTree = "<group>"; };
+		E4866E771E0D6B0100D608F7 /* AddContinueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContinueCell.m; sourceTree = "<group>"; };
+		E4866E791E0D777A00D608F7 /* TranslationObjec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationObjec.h; sourceTree = "<group>"; };
+		E4866E7A1E0D777A00D608F7 /* TranslationObjec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationObjec.m; sourceTree = "<group>"; };
+		E4866E7C1E0D9D2400D608F7 /* DicttionAndJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DicttionAndJSON.h; sourceTree = "<group>"; };
+		E4866E7D1E0D9D2400D608F7 /* DicttionAndJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DicttionAndJSON.m; sourceTree = "<group>"; };
 		E493523B1DF711AA00145486 /* industry.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = industry.txt; sourceTree = "<group>"; };
 		E49352471DF7200000145486 /* CentralBlueTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralBlueTooth.h; sourceTree = "<group>"; };
 		E49352481DF7200000145486 /* CentralBlueTooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralBlueTooth.m; sourceTree = "<group>"; };
@@ -1594,6 +1600,8 @@
 		E416CC611DF5E9F8002A6E60 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E4866E7C1E0D9D2400D608F7 /* DicttionAndJSON.h */,
+				E4866E7D1E0D9D2400D608F7 /* DicttionAndJSON.m */,
 				E4F5B3661E01B4710084F7F4 /* NSArray+log.h */,
 				E4F5B3671E01B4710084F7F4 /* NSArray+log.m */,
 				E4F5B3631E01B4610084F7F4 /* NSDictionary+log.h */,
@@ -1999,27 +2007,11 @@
 		E4866BE91E0D28F100D608F7 /* CustomerList */ = {
 			isa = PBXGroup;
 			children = (
-				E4866BEA1E0D28F100D608F7 /* Controllers */,
-				E4866BEB1E0D28F100D608F7 /* Models */,
 				E4866BEC1E0D28F100D608F7 /* SupplyListController.h */,
 				E4866BED1E0D28F100D608F7 /* SupplyListController.m */,
 				E4866BEE1E0D28F100D608F7 /* Views */,
 			);
 			path = CustomerList;
-			sourceTree = "<group>";
-		};
-		E4866BEA1E0D28F100D608F7 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E4866BEB1E0D28F100D608F7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E4866BEE1E0D28F100D608F7 /* Views */ = {
@@ -2410,6 +2402,10 @@
 			children = (
 				E4866C781E0D28F100D608F7 /* AddMyProductionController.h */,
 				E4866C791E0D28F100D608F7 /* AddMyProductionController.m */,
+				E4866E761E0D6B0100D608F7 /* AddContinueCell.h */,
+				E4866E771E0D6B0100D608F7 /* AddContinueCell.m */,
+				E4866E791E0D777A00D608F7 /* TranslationObjec.h */,
+				E4866E7A1E0D777A00D608F7 /* TranslationObjec.m */,
 			);
 			path = MyShopProduction;
 			sourceTree = "<group>";
@@ -2856,8 +2852,6 @@
 				E4866D7C1E0D293600D608F7 /* BuyerEditProductController.m */,
 				E4866D7D1E0D293600D608F7 /* BuyerProductController.h */,
 				E4866D7E1E0D293600D608F7 /* BuyerProductController.m */,
-				E4866D7F1E0D293600D608F7 /* MemberController.h */,
-				E4866D801E0D293600D608F7 /* MemberController.m */,
 				E4866D811E0D293600D608F7 /* SendInfoController.h */,
 				E4866D821E0D293600D608F7 /* SendInfoController.m */,
 			);
@@ -3368,8 +3362,8 @@
 				TargetAttributes = {
 					E416C9181DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = MXESESKBVY;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 3XWJ99968H;
+						ProvisioningStyle = Automatic;
 					};
 					E416C9311DF5D802002A6E60 = {
 						CreatedOnToolsVersion = 8.1;
@@ -3530,7 +3524,6 @@
 				206E886F1E0C2A49005A7F19 /* BRAWorksheet.m in Sources */,
 				E416C91E1DF5D802002A6E60 /* main.m in Sources */,
 				E4866C9D1E0D28F100D608F7 /* CustomerScanController.m in Sources */,
-				E4866E0B1E0D293600D608F7 /* MemberController.m in Sources */,
 				E416CD0A1DF5E9F8002A6E60 /* ZZPhotoListModel.m in Sources */,
 				206E88571E0C2A49005A7F19 /* BRAColumn.m in Sources */,
 				E4866E1B1E0D293600D608F7 /* FiveCell.m in Sources */,
@@ -3630,6 +3623,7 @@
 				E464CB591DFEE73E008DDB12 /* HMScanerCardViewController.m in Sources */,
 				206E88771E0C2A49005A7F19 /* ioapi.c in Sources */,
 				E416CBFD1DF5E9E9002A6E60 /* BUYTitleButton.m in Sources */,
+				E4866E7E1E0D9D2400D608F7 /* DicttionAndJSON.m in Sources */,
 				E4F13A6E1DFC1CA8004860F4 /* IQUITextFieldView+Additions.m in Sources */,
 				E4866CA31E0D28F100D608F7 /* ZMJGoodParamViewController.m in Sources */,
 				E4F13A741DFC1CA8004860F4 /* IQTextView.m in Sources */,
@@ -3671,6 +3665,7 @@
 				E4866CCE1E0D28F100D608F7 /* ZMJProviderController.m in Sources */,
 				E4866CC61E0D28F100D608F7 /* OneViewController.m in Sources */,
 				E4866E031E0D293600D608F7 /* ConversionTrams.m in Sources */,
+				E4866E781E0D6B0100D608F7 /* AddContinueCell.m in Sources */,
 				E49352661DF7267300145486 /* BackButton.m in Sources */,
 				E416CBF61DF5E9E9002A6E60 /* BUYButton.m in Sources */,
 				206E88631E0C2A49005A7F19 /* BRAOfficeDocumentPackage.m in Sources */,
@@ -3787,6 +3782,7 @@
 				E4866CA71E0D28F100D608F7 /* DetailViewFirstCell.m in Sources */,
 				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E4866D1E1E0D290D00D608F7 /* BasicInfoTableViewController.m in Sources */,
+				E4866E7B1E0D777A00D608F7 /* TranslationObjec.m in Sources */,
 				206E88551E0C2A49005A7F19 /* BRACellFormat.m in Sources */,
 				E4866E311E0D293600D608F7 /* OnlyTitleTableViewCell.m in Sources */,
 				208D0E331E09869E00B5775A /* BabyBluetooth.m in Sources */,
@@ -3981,7 +3977,7 @@
 			baseConfigurationReference = B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = MXESESKBVY;
+				DEVELOPMENT_TEAM = 3XWJ99968H;
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -4006,8 +4002,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haimiao.schoolOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "352edc6b-fefb-49d0-8020-4dfe5b430cb5";
-				PROVISIONING_PROFILE_SPECIFIER = schoolOnline_development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -4016,7 +4012,7 @@
 			baseConfigurationReference = 1BA8A587BB0957304586628D /* Pods-Yi_Fei.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3XWJ99968H;
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = Yi_Fei/Main/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (

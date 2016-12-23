@@ -104,15 +104,15 @@
     NSString *str2 = [UserDefaultManager getDataByKey:@"twoTF"];
     NSString *str1 = [UserDefaultManager getDataByKey:@"oneTF"];
     if (str1.length > 0 &&str2.length == 0 ) {
-        _model.supplyName = str1;
+        _model.customerName = str1;
     }
     if (str2.length > 0 && str1.length ==0) {
-        _model.supplyName = str2;
+        _model.customerName = str2;
     }
     if (str2.length > 0 &&str1.length > 0) {
-        _model.supplyName = [NSString stringWithFormat:@"%@%@",str1,str2];
+        _model.customerName = [NSString stringWithFormat:@"%@%@",str1,str2];
     }
-    [self remindView:_model.supplyName  companyName:_model.companyName];
+    [self remindView:_model.customerName  companyName:_model.companyName];
     [UserDefaultManager removeDataWithKey:@"oneTF"];
     [UserDefaultManager removeDataWithKey:@"twoTF"];
     NSMutableArray *address = [NSMutableArray array];
@@ -150,13 +150,13 @@
     _model.industryType = [industry componentsJoinedByString:@"|"];
     CustomerList  *manager = [CustomerList defaultManager];
     //查询
-    if ([manager isHasDataIDFromTable:_model.supplyName]) {
+    if ([manager isHasDataIDFromTable:_model.customerName]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"此供应商已经添加过" preferredStyle:UIAlertControllerStyleAlert];
         //确定按钮
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil] ;
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
-    }else if((_model.supplyName.length != 0) && (_model.companyName.length != 0) ) {
+    }else if((_model.customerName.length != 0) && (_model.companyName.length != 0) ) {
         [manager insertDataModel:_model];
         [self.navigationController popViewControllerAnimated:YES];
     }

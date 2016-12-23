@@ -26,6 +26,8 @@
     self.oneBtn.tag = 1346;
     self.oneBtn.layer.borderColor =  [UIColor lightGrayColor].CGColor;
     
+    self.lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
 }
 
 

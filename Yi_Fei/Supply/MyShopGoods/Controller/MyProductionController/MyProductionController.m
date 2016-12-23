@@ -233,11 +233,10 @@ ZMJNewProductionController *shopVC=[[ZMJNewProductionController alloc] init];
     return pys;
 }
 
-
 #pragma mark 创建tableView视图
 -(void)addContentView{
-
-    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 140, WIDTH-20, HEIGHT-140 )style:UITableViewStylePlain];
+    
+    _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 120, WIDTH-20, HEIGHT-120 )style:UITableViewStylePlain];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -337,8 +336,13 @@ UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:haderView.bound
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-    cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    if ([arrayimg[0] length] > 0) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
+        cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+    cell.imgV.image= [UIImage imageNamed:@"Null"];
+    }
+
     if (dataModel.shopPrice.length > 0 ) {
 cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{

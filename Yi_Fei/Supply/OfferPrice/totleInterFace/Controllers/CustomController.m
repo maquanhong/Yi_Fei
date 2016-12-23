@@ -165,6 +165,7 @@
     _tableView.rowHeight = 70;
     _tableView.delegate=self;
     _tableView.dataSource=self;
+_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
 
 }
@@ -185,9 +186,13 @@
     CustomerModel *model = _listArray[indexPath.row];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
-    cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
-    cell.titleLabel.text = model.supplyName;
+    if (model.companyLogo.length > 0) {
+NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
+cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
+    }
+    cell.titleLabel.text = model.customerName;
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.delegate = self;
     return cell;
@@ -201,17 +206,21 @@
 
 
 - (void)clickCell:(UITableViewCell *)cell index:(NSInteger)index{
-
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     switch (index) {
         case 1345:
         {
     OneViewController *customVC = [[OneViewController alloc] init];
+    CustomerModel *model = _listArray[indexPath.row];
+            customVC.customerName = model.customerName;
     [self.navigationController pushViewController:customVC animated:YES];
         }
             break;
         case 1346:
         {
   TwoViewController *ReserveVC = [[TwoViewController alloc] init];
+    CustomerModel *model = _listArray[indexPath.row];
+        ReserveVC.customerName = model.customerName;
   [self.navigationController pushViewController:ReserveVC animated:YES];
         }
             break;

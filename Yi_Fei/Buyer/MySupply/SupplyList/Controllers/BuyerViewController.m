@@ -219,13 +219,16 @@ cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self opt
     SupplyModel *model = _listArray[indexPath.row];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
+    if (model.companyLogo.length > 0) {
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
-    cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
+    }
     cell.titleLabel.text = model.supplyName;
     cell.nextLabel.text = model.companyName;
     return cell;
 }
-
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

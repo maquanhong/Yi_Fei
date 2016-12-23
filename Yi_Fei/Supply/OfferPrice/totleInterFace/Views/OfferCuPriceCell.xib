@@ -53,14 +53,24 @@
                             <action selector="clickPrepareBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g5Z-FW-9kE"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPj-sG-0cJ">
+                        <rect key="frame" x="0.0" y="83" width="359" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="TR6-iT-eQD"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="dPj-sG-0cJ" secondAttribute="trailing" id="17r-f7-V1c"/>
                     <constraint firstItem="RVk-nD-TZB" firstAttribute="top" secondItem="aHV-Xg-cZA" secondAttribute="bottom" constant="10" id="3bI-nG-FYM"/>
                     <constraint firstItem="RVk-nD-TZB" firstAttribute="leading" secondItem="aHV-Xg-cZA" secondAttribute="leading" id="6bA-2I-Nba"/>
                     <constraint firstItem="JOE-Vv-tKn" firstAttribute="baseline" secondItem="RVk-nD-TZB" secondAttribute="firstBaseline" id="H5K-go-jcs"/>
                     <constraint firstItem="RVk-nD-TZB" firstAttribute="top" secondItem="JOE-Vv-tKn" secondAttribute="top" id="O23-dZ-eCU"/>
                     <constraint firstItem="JOE-Vv-tKn" firstAttribute="firstBaseline" secondItem="RVk-nD-TZB" secondAttribute="baseline" id="S1K-6v-0zC"/>
                     <constraint firstItem="JOE-Vv-tKn" firstAttribute="leading" secondItem="RVk-nD-TZB" secondAttribute="trailing" constant="10" id="UtT-cc-cfH"/>
+                    <constraint firstAttribute="bottom" secondItem="dPj-sG-0cJ" secondAttribute="bottom" id="Xc4-Sl-68b"/>
+                    <constraint firstItem="dPj-sG-0cJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="a3I-yl-LXR"/>
                     <constraint firstAttribute="trailingMargin" secondItem="aHV-Xg-cZA" secondAttribute="trailing" constant="10" id="iZ4-Ml-MXD"/>
                     <constraint firstItem="aHV-Xg-cZA" firstAttribute="top" secondItem="mv0-RF-OC3" secondAttribute="top" id="jXM-F1-kQN"/>
                     <constraint firstItem="mv0-RF-OC3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="k3C-ym-7N5"/>
@@ -72,11 +82,12 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="iconImageView" destination="mv0-RF-OC3" id="4iR-XJ-r6I"/>
+                <outlet property="lineView" destination="dPj-sG-0cJ" id="uQk-98-ENX"/>
                 <outlet property="nextBtn" destination="RVk-nD-TZB" id="ZKM-Gn-1UF"/>
                 <outlet property="oneBtn" destination="JOE-Vv-tKn" id="Hm3-bf-8wI"/>
                 <outlet property="titleLabel" destination="aHV-Xg-cZA" id="wdf-Ha-AeZ"/>
             </connections>
-            <point key="canvasLocation" x="26" y="-67"/>
+            <point key="canvasLocation" x="-62.5" y="-84"/>
         </tableViewCell>
     </objects>
 </document>

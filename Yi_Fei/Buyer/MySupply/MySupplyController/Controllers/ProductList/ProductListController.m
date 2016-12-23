@@ -159,9 +159,13 @@
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
+    if ([arrayimg[0] length] > 0)  {
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.iconImage.image= [UIImage imageWithContentsOfFile:imagePath];
-    cell.titleLabel.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
+    }else{
+  cell.iconImage.image= [UIImage imageNamed:@"Null"];
+    }
+  cell.titleLabel.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
     if (dataModel.shopPrice.length > 0 ) {
         cell.priceLabel.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{
@@ -176,9 +180,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110;
 }
-
-
-
 
 //设置编辑cell的样式（可省略）
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPat{

@@ -9,7 +9,7 @@
 #import "AddController.h"
 #import "BUYButton.h"
 #import "AddOneController.h"
-#import "ParsingController.h"
+#import "AddMyProductionController.h"
 
 @interface AddController ()
 
@@ -58,10 +58,13 @@
     
     NSInteger index = sender.tag - 1000;
     if (index == 1) {
-    AddOneController *salerVc = [[AddOneController alloc] init];
+  AddOneController *salerVc = [[AddOneController alloc] init];
     [self.navigationController pushViewController:salerVc animated:YES];
     } else if (index == 0) {
-    ParsingController *clientVc = [[ParsingController alloc] init];
+        
+        
+AddMyProductionController *clientVc = [[AddMyProductionController alloc] init];
+        clientVc.identify = _identifer;
     [self.navigationController pushViewController:clientVc animated:YES];
     }
     

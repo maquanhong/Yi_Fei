@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) int ind;
 
-@property (nonatomic, copy) NSString *supplyName;  //姓名
+@property (nonatomic, copy) NSString *customerName;  //姓名
 
 @property (nonatomic, copy) NSString *companyName; //公司名称
 

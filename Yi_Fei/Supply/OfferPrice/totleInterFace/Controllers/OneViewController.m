@@ -13,9 +13,13 @@
 #import "FooterView.h"
 #import "AddController.h"
 #import "CustomerEditController.h"
+#import "UserDefaultManager.h"
+#import "AskPriceModel.h"
+#import "AskPriceList.h"
 
 @interface OneViewController ()<UITableViewDelegate,UITableViewDataSource,BuyerAskCellDelegate,FooterViewDelegate>
 {
+    AskPriceList *_manager;
         BOOL _isPress;
         BOOL _isSelect;
 }
@@ -23,13 +27,42 @@
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *circleArray;
 
+//数据源
+@property(nonatomic,strong)NSMutableArray *listArray;
+
+
 @end
 
 @implementation OneViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _listArray = [NSMutableArray array];
+    [self loadData];
+}
+
+-(void)loadData{
+    
+    //获取单例对象
+    _manager = [AskPriceList defaultManager];
+    //可变数组初始化
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[_manager getDataWith:_customerName]];
+    for (NSInteger i = 0 ; i < array.count; i++) {
+    AskPriceModel *dataModel = [[AskPriceModel alloc] init];
+            dataModel = array[i];
+        if ([dataModel.record isEqualToString:@"retention"]  ) {
+            [_listArray addObject:dataModel];
+        }
+    }
+    [_tableView reloadData];
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = INTERFACECOLOR;
+[UserDefaultManager saveDataWithValue:_customerName key:@"retention"];
     _circleArray = [NSMutableArray array];
     _isPress = YES;
     [self setNav];
@@ -44,13 +77,13 @@
     UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem=leftBtnItem;
-
     BackButton* rightBtn= [BackButton buttonWithType:UIButtonTypeCustom];
 [rightBtn setImage:[UIImage imageNamed:@"点点"] forState:UIControlStateNormal];
     rightBtn.frame = CGRectMake(0, 0, 25, 25);
     UIBarButtonItem* rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
 [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = rightBtnItem;
+    
 }
 
 - (void)leftButtonClick {
@@ -77,6 +110,7 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 155, WIDTH-20, HEIGHT-155 )style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     UILongPressGestureRecognizer *lp = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGesture:)];
     //触发长按手势的最小时间间隔，秒
@@ -92,6 +126,7 @@
 -(void)clickBtn{
     
     AddController *addVC = [[AddController alloc] init];
+    addVC.identifer = 7;
     [self.navigationController pushViewController:addVC animated:YES];
     
 }
@@ -99,7 +134,7 @@
 
 #pragma mark tableView的代理
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return _listArray.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -108,14 +143,25 @@
     if (!cell) {
  cell = [[BuyerAskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
-   cell.iconImageView.image = [UIImage imageNamed:@"h1"];
-   cell.titleLabel.text = @"ajfajfoie";
-   cell.price.text = @"514+145";
+    AskPriceModel *dataModel = _listArray[indexPath.row];
+NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    if ([arrayimg[0] length] > 0) {
+    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
+   cell.iconImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+   cell.iconImageView.image = [UIImage imageNamed:@"Null"];
+    }
+   cell.titleLabel.text = dataModel.shopName;
+    if (dataModel.shopPrice.length > 0 ) {
+  cell.price.text = [NSString stringWithFormat:@"¥%@",dataModel.shopPrice];
+    }else{
+  cell.price.text = @"";
+    }
    cell.delegate = self;
     return cell;
 }
-
-
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -123,14 +169,15 @@
 }
 
 
-
-
 -(void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{
 
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    
     switch (num) {
         case 1280:
         {
     CustomerEditController *editVC = [[CustomerEditController alloc] init];
+    editVC.model = _listArray[indexPath.row];
     [self.navigationController pushViewController:editVC animated:YES];
         }
             break;

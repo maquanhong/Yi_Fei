@@ -26,8 +26,6 @@
 @property(nonatomic,copy)NSString *shopAdderss;  //码头地址
 
 
-
-
 @property (nonatomic, copy) NSString *shopDescribe;//商品备注
 @property (nonatomic, copy) NSString *shopInfo;  //商品简介
 

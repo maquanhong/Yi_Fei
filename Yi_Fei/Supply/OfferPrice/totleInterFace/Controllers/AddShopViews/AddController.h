@@ -10,7 +10,7 @@
 
 @interface AddController : UIViewController
 
-
+@property (nonatomic,assign) NSInteger identifer;
 
 
 @end

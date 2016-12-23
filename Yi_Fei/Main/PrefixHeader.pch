@@ -38,7 +38,8 @@
 
 #define  INTERFACECOLOR [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0]
 
-
+//价格颜色
+#define  PRICECOLOR [UIColor colorWithRed:241/255.0 green:139/255.0 blue:0/255.0 alpha:1.0]
 
 
 

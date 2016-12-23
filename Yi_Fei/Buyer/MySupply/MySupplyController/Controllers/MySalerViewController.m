@@ -161,8 +161,13 @@
         cell.label.text= _model.supplyName;
         NSString *path_document = NSHomeDirectory();
         //设置一个图片的存储路径
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
-        cell.imagV.image  = [UIImage imageWithContentsOfFile:imagePath];
+        if ([_model.companyLogo length] > 0) {
+    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
+    cell.imagV.image  = [UIImage imageWithContentsOfFile:imagePath];
+        }else{
+    cell.imagV.image  = [UIImage imageNamed:@"Null"];
+        }
+       
         return cell;
     }else if (indexPath.section==1){
         

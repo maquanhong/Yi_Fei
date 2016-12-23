@@ -14,6 +14,7 @@
 #import "UserModel.h"
 #import "UserList.h"
 #import "UserDefaultManager.h"
+#import "DicttionAndJSON.h"
 
 @interface BasicInfoTableViewController ()<UITextFieldDelegate>
 {
@@ -30,7 +31,6 @@
 @property (nonatomic, strong) NSArray  *enMenuArray;
 @property (nonatomic, assign) NSInteger  selectIndex;
 @property (nonatomic, strong) NSArray  *showNameValeArray;
-
 @end
 
 @implementation BasicInfoTableViewController
@@ -66,21 +66,33 @@
     model.phone = [UserDefaultManager getDataByKey:@"phone"];
     model.email = [UserDefaultManager getDataByKey:@"email"];
     model.adderss = [UserDefaultManager getDataByKey:@"adderss"];
-        if (model.link.length > 0 ) {
-            if ([manager isHasDataIDFromTable:model.link]) {
-        [manager updateDataModel:model data:model.link];
+    DicttionAndJSON *json = [[DicttionAndJSON alloc] init];
+    
+    NSArray *valueArr = [NSArray arrayWithObjects:model.name, model.industry,model.size,model.business,model.product,model.url,model.link,model.position,model.phone,model.email,model.adderss, nil];
+        NSArray *keyArr = [NSArray arrayWithObjects:@"name", @"industry", @"size",@"business",@"product",@"url",@"link",@"position",@"phone",@"email",@"adderss", nil];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjects:valueArr forKeys:keyArr];
+    NSString *str = [json  dictionaryToJson:dict];
+    [UserDefaultManager  saveDataWithValue:str key:@"info"];
+    
+        if (model.phone.length > 0 ) {
+            if (model.name.length == 0) {
+              [self setWarning:@"公司名称不能为空"];
+            }
+            if ([manager isHasDataIDFromTable:model.phone]) {
+        [manager updateDataModel:model data:model.phone];
             }else{
                 [manager insertDataModel:model];
             }
-    [UserDefaultManager saveDataWithValue:model.link key:@"user"];
+    [UserDefaultManager saveDataWithValue:model.phone key:@"user"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [self setWarning];
+            [self setWarning:@"电话号码不能为空"];
         }
 }
 
--(void)setWarning{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"联系人不能为空" preferredStyle:UIAlertControllerStyleAlert];
+-(void)setWarning:(NSString*)identifer{
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:identifer preferredStyle:UIAlertControllerStyleAlert];
     //确定按钮
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil] ;
     [alert addAction:action];

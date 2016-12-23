@@ -37,12 +37,12 @@ static CustomerList * manager=nil;
 - (instancetype)init
 {
     if(self=[super init]){
-        NSString * path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Custromer.db"];
+    NSString * path=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Custromer.db"];
         //很据路径创建表
-        _dataBase = [[FMDatabase alloc]  initWithPath:path];
+    _dataBase = [[FMDatabase alloc]  initWithPath:path];
         //如果创建成功 打开
-        if ([_dataBase open]) {
-    NSString *createSql = @"create table if not exists Custromer(ind integer PRIMARY KEY AUTOINCREMENT,supplyName varchar(1024),companyName varchar(1024),position varchar(1024),phone varchar(1024),emailAddress varchar(1024),companyAddress varchar(1024),industryType varchar(1024),companyLogo varchar(1024),otherNote varchar(1024) )";
+    if ([_dataBase open]) {
+    NSString *createSql = @"create table if not exists Custromer(ind integer PRIMARY KEY AUTOINCREMENT,customerName varchar(1024),companyName varchar(1024),position varchar(1024),phone varchar(1024),emailAddress varchar(1024),companyAddress varchar(1024),industryType varchar(1024),companyLogo varchar(1024),otherNote varchar(1024) )";
         if ([_dataBase executeUpdate:createSql]){
                 NSLog(@"创建成功");
             }else{
@@ -55,8 +55,8 @@ static CustomerList * manager=nil;
 
 //插入
 - (void)insertDataModel:(CustomerModel *)model{
-    NSString * insertSql = @"insert into Custromer(supplyName,companyName,position,phone,emailAddress,companyAddress,industryType,companyLogo,otherNote) values(?,?,?,?,?,?,?,?,?)";
-    BOOL success=[_dataBase executeUpdate:insertSql,model.supplyName,model.companyName,model.position,model.phone,model.emailAddress,model.companyAddress,model.industryType,model.companyLogo,model.otherNote];
+    NSString * insertSql = @"insert into Custromer(customerName,companyName,position,phone,emailAddress,companyAddress,industryType,companyLogo,otherNote) values(?,?,?,?,?,?,?,?,?)";
+    BOOL success=[_dataBase executeUpdate:insertSql,model.customerName,model.companyName,model.position,model.phone,model.emailAddress,model.companyAddress,model.industryType,model.companyLogo,model.otherNote];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -67,9 +67,9 @@ static CustomerList * manager=nil;
 //修改数据
 - (void)updateDataModel:(CustomerModel *)model number:(int)number  {
     
-    NSString *sql = [NSString stringWithFormat:@"update Custromer set supplyName = ?, companyName = ?,position = ?, phone = ?, emailAddress = ? ,companyAddress = ? ,industryType = ?, companyLogo = ?,otherNote= ?  where  ind = ?"];
+    NSString *sql = [NSString stringWithFormat:@"update Custromer set customerName = ?, companyName = ?,position = ?, phone = ?, emailAddress = ? ,companyAddress = ? ,industryType = ?, companyLogo = ?,otherNote= ?  where  ind = ?"];
     NSString *str = [NSString stringWithFormat:@"%d",number];
-    BOOL success = [_dataBase executeUpdate:sql,model.supplyName,model.companyName,model.position,model.phone,model.emailAddress,model.companyAddress,model.industryType,model.companyLogo,model.otherNote,str];
+    BOOL success = [_dataBase executeUpdate:sql,model.customerName,model.companyName,model.position,model.phone,model.emailAddress,model.companyAddress,model.industryType,model.companyLogo,model.otherNote,str];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -80,7 +80,7 @@ static CustomerList * manager=nil;
 //查找
 - (BOOL)isHasDataIDFromTable:(NSString*)dataId;
 {
-    NSString * isSql = @"select *from Custromer where supplyName =?";
+    NSString * isSql = @"select *from Custromer where customerName =?";
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,dataId];
     //[set next] 查找当前行 找到继续中查找下一行
@@ -94,7 +94,7 @@ static CustomerList * manager=nil;
 //删除
 - (void)deleteNameFromTable:(NSString*)dataId
 {
-    NSString * deleteSql = @"delete from Custromer where supplyName = ?";
+    NSString * deleteSql = @"delete from Custromer where customerName = ?";
     if ([_dataBase executeUpdate:deleteSql,dataId]) {
         NSLog(@"删除成功");
     }
@@ -109,7 +109,7 @@ static CustomerList * manager=nil;
     NSMutableArray * arr = [NSMutableArray array];
     while ([set next]) {
         CustomerModel* model = [[CustomerModel alloc]init];
-        model.supplyName = [set stringForColumn:@"supplyName"];
+        model.customerName = [set stringForColumn:@"customerName"];
         model.companyName = [set stringForColumn:@"companyName"];
         model.position=[set stringForColumn:@"position"];
         model.phone=[set stringForColumn:@"phone"];

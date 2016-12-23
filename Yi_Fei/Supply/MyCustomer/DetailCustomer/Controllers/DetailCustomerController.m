@@ -233,7 +233,7 @@
         view.backgroundColor = [UIColor whiteColor];
         UILabel *label = [[UILabel alloc] init];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = _model.supplyName;
+        label.text = _model.customerName;
         label.font = [UIFont systemFontOfSize:16];
         [view addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {

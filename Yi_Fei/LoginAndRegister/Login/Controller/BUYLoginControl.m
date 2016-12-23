@@ -55,7 +55,7 @@
     [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:120];
     [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
     [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:50];
-    UIImage *logoImage = [UIImage imageNamed:@"regitstlogo"];
+    UIImage *logoImage = [UIImage imageNamed:@"登录"];
     [self.logoImgView autoSetDimension:ALDimensionHeight toSize:logoImage.size.height];
     
     BUYImportView *import = [self.btns firstObject];
@@ -90,7 +90,7 @@
     UIImageView *img = [[UIImageView alloc] initForAutoLayout];
     _logoImgView = img;
     img.contentMode = UIViewContentModeCenter;
-    UIImage *logoImage = [UIImage imageNamed:@"regitstlogo"];
+    UIImage *logoImage = [UIImage imageNamed:@"登录"];
     img.image = logoImage;
     [self.view addSubview:img];
 }

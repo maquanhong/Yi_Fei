@@ -43,6 +43,8 @@
 
 @property (nonatomic, copy) NSString *shopSpecific;  //规格
 
+@property (nonatomic, copy) NSString *offTime;   //报价时间
+
 
 
 

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AskPriceModel.h"
 
 @interface TwoViewController : UIViewController
 
+@property (nonatomic,strong) NSString *customerName;
+
+
 @end
+
+
+

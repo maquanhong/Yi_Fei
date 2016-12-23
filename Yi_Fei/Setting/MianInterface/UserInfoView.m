@@ -77,7 +77,7 @@
     
     _nameLabel  = [[UILabel alloc] init];
     _nameLabel.textColor = [UIColor whiteColor];
-    _nameLabel.font = [UIFont systemFontOfSize:16];
+    _nameLabel.font = [UIFont systemFontOfSize:18];
     [_backView addSubview:_nameLabel];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(_logoImageView.mas_centerY);
