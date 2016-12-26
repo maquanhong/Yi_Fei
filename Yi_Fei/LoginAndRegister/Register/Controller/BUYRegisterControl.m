@@ -195,19 +195,20 @@
     
     
     UIButton *btn = [[UIButton alloc] init];
-    btn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    btn.layer.borderWidth  = 1.0;
-    btn.layer.cornerRadius = 8;
+    btn.backgroundColor = BACKCOLOR;
+    [btn setTitle:@"注册" forState:UIControlStateNormal];
+    btn.layer.cornerRadius = 5;
     btn.layer.masksToBounds = YES;
-    [self.view addSubview:_nextView];
-    [_nextView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self.view).offset(50);
         make.trailing.mas_equalTo(self.view).offset(-50);
         make.top.mas_equalTo(_tapView.mas_bottom).offset(30);
         make.height.mas_equalTo(40);
     }];
     
-    [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+[btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
