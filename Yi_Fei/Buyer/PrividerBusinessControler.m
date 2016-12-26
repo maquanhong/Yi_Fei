@@ -24,7 +24,7 @@
 
 @property (nonatomic,strong) UIView *symView;
 
-
+@property (nonatomic, strong) UIButton  *Btn;
 
 @end
 
@@ -127,24 +127,19 @@
 
 - (void)addBtns
 {
-    CGFloat w = 240;
-    CGFloat h = 40;
-    CGFloat x = (WIDTH-w)*0.5;
-    CGFloat margin1 = 20;
-    CGFloat margin2 = 20;
     NSArray *strs = @[@"我的商品",@"我的供应商",@"询价"];
-    
-    for (int i = 0; i < 3; i++) {
-        NSString *str = strs[i];
-        UIButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:COLOR text:str];
-        btn.tag = i;
-        if (i == 0) {
-            btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:COLOR text:str];
-        }
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        CGFloat y = CGRectGetMaxY(_symView.frame) + margin1 + i * (margin2+h);
-        btn.frame = CGRectMake(x, y, w, h);
-        [self.view addSubview:btn];
+    for (NSInteger i = 0; i < 3; i++) {
+        _Btn  = [[UIButton alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_symView.frame) + 15 + i * 60, WIDTH - 30, 50)];
+        _Btn.backgroundColor = [UIColor whiteColor];
+        [_Btn setTitle:strs[i] forState:UIControlStateNormal];
+        [_Btn setTitleColor:COLOR forState:UIControlStateNormal];
+        _Btn.layer.cornerRadius = 5.0;
+        _Btn.layer.masksToBounds =YES;
+        _Btn.tag = 2200 + i;
+        [_Btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _Btn.layer.borderColor = [UIColor lightGrayColor] .CGColor;
+        _Btn.layer.borderWidth = 1;
+        [self.view addSubview:_Btn];
     }
 }
 

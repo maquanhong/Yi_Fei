@@ -19,6 +19,8 @@
 
 @property (nonatomic,weak) SDCycleScrollView *cycleview;
 
+@property (nonatomic, strong) UIButton  *Btn;
+
 @end
 
 @implementation ZMJTotleHomeController
@@ -124,46 +126,40 @@
 #pragma mark - 添加按钮
 - (void)addBtns
 {
-    CGFloat w = 200;
-    CGFloat h = 40;
-    CGFloat x = (WIDTH-w)*0.5;
-    CGFloat margin1 = 20;
-    CGFloat margin2 = 20;
-    NSArray *strs = @[@"我是供应商",@"我是采购商",@"商机"];
-    
-    for (int i = 0; i < 3; i++) {
-        NSString *str = strs[i];
-        UIButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:BACKCOLOR text:str];
-        btn.tag = i;
-        if (i == 0) {
-    btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:BACKCOLOR text:str];
-        }
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        //frame
-        CGFloat y = CGRectGetMaxY(_cycleview.frame) + margin1 + i * (margin2+h);
-        btn.frame = CGRectMake(x, y, w, h);
-        [self.view addSubview:btn];
+    NSArray *titleArray = @[@"我是供应商",@"我是采购商",@"商机"];
+    for (NSInteger i = 0; i < 3; i++) {
+    _Btn  = [[UIButton alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_cycleview.frame) + 15 + i * 60, WIDTH - 30, 50)];
+        _Btn.backgroundColor = [UIColor whiteColor];
+        [_Btn setTitle:titleArray[i] forState:UIControlStateNormal];
+        [_Btn setTitleColor:COLOR forState:UIControlStateNormal];
+        _Btn.layer.cornerRadius = 5.0;
+        _Btn.layer.masksToBounds =YES;
+        _Btn.tag = 2200 + i;
+[_Btn addTarget:self action:@selector(NextView:) forControlEvents:UIControlEventTouchUpInside];
+        _Btn.layer.borderColor = [UIColor lightGrayColor] .CGColor;
+        _Btn.layer.borderWidth = 1;
+        [self.view addSubview:_Btn];
     }
 }
 
 #pragma  mark - btn按钮的点击事件
-- (void)btnClick:(UIButton *)sender
+- (void)NextView:(UIButton *)sender
 {
     
     switch (sender.tag) {
-        case 0: {
+        case 2200: {
             ZMJProviderController *buin = [[ZMJProviderController alloc] init];
             [self.navigationController pushViewController:buin animated:YES];
 //            NSLog(@"我是供应商");
             break;
         }
-        case 1: {
+        case 2201: {
             PrividerBusinessControler *prividerVc = [[PrividerBusinessControler alloc] init];
             [self.navigationController pushViewController:prividerVc animated:YES];
 //            NSLog(@"我是采购商");
             break;
         }
-        case 2: {
+        case 2202: {
 //            NSLog(@"商机");
             BusinessChanceViewController *bcVc = [[BusinessChanceViewController alloc] init];
             [self.navigationController pushViewController:bcVc animated:YES];

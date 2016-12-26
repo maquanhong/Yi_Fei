@@ -125,9 +125,13 @@
     //跳转到登录页面
     //1. 验证获取到的验证码是否正确
     //2. 是否点击了接受协议
+    
+    
     // 满足以上条件以后，才跳转到登录界面
-    BUYLoginControl *login = [[BUYLoginControl alloc] init];
-    [self presentViewController:login animated:YES completion:nil];
+//    BUYLoginControl *login = [[BUYLoginControl alloc] init];
+//    [self presentViewController:login animated:YES completion:nil];
+    
+    
 }
 
 #pragma mark - BUYTextViewDelegate的代理方法

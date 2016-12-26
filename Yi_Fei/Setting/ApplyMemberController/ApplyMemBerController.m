@@ -11,20 +11,27 @@
 #import "MemberFirstCell.h"
 #import "MemBerSecondCell.h"
 
-@interface ApplyMemBerController ()<UITableViewDelegate,UITableViewDataSource,MemBerSecondCellDelegate,MemberFirstCellDelegate>
+@interface ApplyMemBerController ()<UITableViewDelegate,UITableViewDataSource,MemBerSecondCellDelegate>
 {
     MemberFirstCell *firstCelll;
     MemBerSecondCell *secondCell;
 
 }
-
+//底部UI设置
 @property (nonatomic,strong)UILabel *labelOne;
 @property (nonatomic,strong)UILabel *labelTwo;
 @property (nonatomic,strong)UIButton *certainBtn;
 @property (nonatomic,strong)UIView *backView;
+
+//tableView设置
 @property (nonatomic,strong)UITableView *tableView;
+//类型
 @property (nonatomic,strong)NSArray *tileArray;
+//类型设置
 @property (nonatomic,strong)NSArray *contenArray;
+@property (nonatomic,strong)NSArray *moneyArray;
+
+//支付方式设置
 @property (nonatomic,strong)NSArray *payArray;
 
 @end
@@ -33,9 +40,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"申请付费会员";
+    self.navigationItem.title = @"申请付费会员";
     _tileArray = [[NSArray alloc] initWithObjects:@"会员类型",@"付款方式", nil];
     _payArray  = @[@{@"name":@"支付宝",@"picture":@"zhifubao"},@{@"name":@"微信",@"picture":@"weixin"}];
+    _contenArray = @[@"白钻会员",@"黄金会员",@"终生会员"];
+    _moneyArray = @[@"500/年",@"1000/年",@"10000/年"];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self createNavigationView];
     [self createUI];
@@ -115,7 +124,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 1;
+        return 3;
     }else if (section == 1){
         return 2;
     }else{
@@ -126,15 +135,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        static NSString *identifer1 = @"firstCell";
+        static NSString *identifer1 = @"MemberFirstCell";
         firstCelll  = [tableView dequeueReusableCellWithIdentifier:identifer1];
         if (firstCelll == nil) {
-            firstCelll = [[MemberFirstCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer1];
+            firstCelll = [[[NSBundle mainBundle] loadNibNamed:@"MemberFirstCell" owner:self options:nil] lastObject];
         }
-//        firstCelll.dict  =  [NSDictionary  dictionaryWithDictionary:_contenArray[indexPath.row]];
-//        firstCelll.delegate = self;
-//        firstCelll.iconImageView.tag = 2800 + indexPath.row;
-        firstCelll.selectionStyle =  UITableViewCellSelectionStyleNone;
+    firstCelll.typeLabel.text = _contenArray[indexPath.row];
+    firstCelll.moneyLabel.text = _moneyArray[indexPath.row];
+    firstCelll.selectionStyle =  UITableViewCellSelectionStyleNone;
         return firstCelll;
     }else{
         static NSString *identifer2 = @"secondCell";
@@ -148,15 +156,38 @@
         secondCell.selectionStyle =  UITableViewCellSelectionStyleNone;
         return secondCell;
     }
-    
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (indexPath.section) {
+//        <#statements#>
+//    }
+//    cell=[_tableview cellForRowAtIndexPath:indexPath];
+//    NSString *str = [NSString stringWithFormat:@"%ld",indexPath.row];
+//    if ([_circleArray containsObject:str]) {
+//        cell.selectBtn.selected = NO ;
+//        [_circleArray removeObject:str];
+//    }else{
+//        cell.selectBtn.selected = YES ;
+//        [_circleArray addObject:str];
+//    }
+
+
+
+
 }
 
 
+
+
+
+
+
+
+#pragma mark 组头设置
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
@@ -167,7 +198,6 @@
         return headerTwoView;
     }
 }
-
 
 - (UIView *)infoSendTableView:(NSString *)title {
     
@@ -191,12 +221,18 @@
         make.leading.equalTo(headView);
         make.trailing.equalTo(headView);
         make.bottom.equalTo(headView);
-        make.height.mas_equalTo(0.1);
+        make.height.mas_equalTo(1);
     }];
     return headView;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+#pragma mark tableView的高度设置
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
     return 44;
 }
 
@@ -205,21 +241,6 @@
 }
 
 
-
-#pragma mark 支付方式的选择
-- (void)payWay:(UIButton *)btn num:(UITableViewCell *)num{
-    btn.selected = !btn.selected;
-    NSIndexPath *indexPath =  [_tableView indexPathForCell:num];
-    NSInteger  index = indexPath.row;
-    if (index == 0) {
-        UIButton *button = [self.view viewWithTag:1701];
-        button.selected = NO;
-        
-    }else{
-        UIButton *button = [self.view viewWithTag:1700];
-        button.selected = NO;
-    }
-}
 
 
 

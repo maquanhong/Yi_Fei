@@ -2,30 +2,21 @@
 //  MemberFirstCell.h
 //  Yi_Fei
 //
-//  Created by yons on 16/12/12.
+//  Created by yons on 16/12/24.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "ZMJTypeView.h"
-
-@protocol MemberFirstCellDelegate <NSObject>
-
--(void)clickButton:(UIButton*)btn index:(UITableViewCell*)index;
-
-@end
 
 @interface MemberFirstCell : UITableViewCell
 
-@property (nonatomic,weak) id<MemberFirstCellDelegate> delegate;
 
-@property (nonatomic,strong) ZMJTypeView *typeView;
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *lineView;
 
 @end
-
-
-
-
-
-
-

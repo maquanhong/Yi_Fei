@@ -57,13 +57,13 @@
     [self.btnBgView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.logoImgView withOffset:50];
     [self.btnBgView autoSetDimension:ALDimensionHeight toSize:150];
     
-    BUYButton *btn = [self.btnMutableArray firstObject];
-    [btn autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:20];
-    [btn autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:20];
-    [self.btnMutableArray autoMatchViewsDimension:ALDimensionHeight];
-    [self.btnMutableArray autoMatchViewsDimension:ALDimensionWidth];
-    [self.btnMutableArray autoAlignViewsToEdge:ALEdgeLeading];
-    [self.btnMutableArray autoDistributeViewsAlongAxis:ALAxisVertical alignedTo:ALAttributeLeft withFixedSpacing:10];
+//    BUYButton *btn = [self.btnMutableArray firstObject];
+//    [btn autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
+//    [btn autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:50];
+//    [self.btnMutableArray autoMatchViewsDimension:ALDimensionHeight];
+//    [self.btnMutableArray autoMatchViewsDimension:ALDimensionWidth];
+//    [self.btnMutableArray autoAlignViewsToEdge:ALEdgeLeading];
+//    [self.btnMutableArray autoDistributeViewsAlongAxis:ALAxisVertical alignedTo:ALAttributeLeft withFixedSpacing:15];
     
     [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
     [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
@@ -89,7 +89,8 @@
 
     for (int i = 0; i < 3; i++) {
         NSString *str = strs[i];
-        BUYButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:str];
+    BUYButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:str];
+        btn.frame = CGRectMake(50, CGRectGetMaxY(self.logoImgView.frame)+ 40 +i * 65, WIDTH - 100, 40);
         btn.tag = i;
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.btnMutableArray addObject:btn];
@@ -104,7 +105,7 @@
     NSString *version = (NSString *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     NSString *str = [NSString stringWithFormat:@"V %@",version];
     label.text=str;
-    label.font = [UIFont systemFontOfSize:11];
+    label.font = [UIFont systemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
     _versionLabel = label;
     label.textColor = [UIColor whiteColor];
@@ -123,8 +124,10 @@
 - (void)btnClick:(UIButton *)sender
 {
     //注册控制器
-    BUYRegisterControl *reg = [[BUYRegisterControl alloc] init];
     BUYLoginControl *login = [[BUYLoginControl alloc] init];
+    
+    BUYRegisterControl *reg = [[BUYRegisterControl alloc] init];
+  
     
     switch (sender.tag) {
         case 0:

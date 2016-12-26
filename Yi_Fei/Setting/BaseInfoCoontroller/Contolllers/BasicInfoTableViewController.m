@@ -14,7 +14,6 @@
 #import "UserModel.h"
 #import "UserList.h"
 #import "UserDefaultManager.h"
-#import "DicttionAndJSON.h"
 
 @interface BasicInfoTableViewController ()<UITextFieldDelegate>
 {
@@ -55,33 +54,25 @@
      UserList *manager = [UserList defaultManager];
     UserModel *model = [[UserModel alloc] init];
     model.picture = [UserDefaultManager getDataByKey:@"path"];
-    model.name =  [UserDefaultManager getDataByKey:@"name"];
+    model.name = [UserDefaultManager getDataByKey:@"name"];
     model.industry = [UserDefaultManager getDataByKey:@"industry"];
-    model.size =  [UserDefaultManager getDataByKey:@"size"];
+    model.size = [UserDefaultManager getDataByKey:@"size"];
     model.business = [UserDefaultManager getDataByKey:@"business"];
     model.product = [UserDefaultManager getDataByKey:@"product"];
-    model.url =  [UserDefaultManager getDataByKey:@"url"];
-    model.link =  [UserDefaultManager getDataByKey:@"link"];
-    model.position =  [UserDefaultManager getDataByKey:@"position"];
+    model.url = [UserDefaultManager getDataByKey:@"url"];
+    model.link = [UserDefaultManager getDataByKey:@"link"];
+    model.position = [UserDefaultManager getDataByKey:@"position"];
     model.phone = [UserDefaultManager getDataByKey:@"phone"];
     model.email = [UserDefaultManager getDataByKey:@"email"];
     model.adderss = [UserDefaultManager getDataByKey:@"adderss"];
-    DicttionAndJSON *json = [[DicttionAndJSON alloc] init];
-    
-    NSArray *valueArr = [NSArray arrayWithObjects:model.name, model.industry,model.size,model.business,model.product,model.url,model.link,model.position,model.phone,model.email,model.adderss, nil];
-        NSArray *keyArr = [NSArray arrayWithObjects:@"name", @"industry", @"size",@"business",@"product",@"url",@"link",@"position",@"phone",@"email",@"adderss", nil];
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjects:valueArr forKeys:keyArr];
-    NSString *str = [json  dictionaryToJson:dict];
-    [UserDefaultManager  saveDataWithValue:str key:@"info"];
-    
         if (model.phone.length > 0 ) {
             if (model.name.length == 0) {
-              [self setWarning:@"公司名称不能为空"];
+        [self setWarning:@"公司名称不能为空"];
             }
             if ([manager isHasDataIDFromTable:model.phone]) {
         [manager updateDataModel:model data:model.phone];
             }else{
-                [manager insertDataModel:model];
+        [manager insertDataModel:model];
             }
     [UserDefaultManager saveDataWithValue:model.phone key:@"user"];
             [self.navigationController popViewControllerAnimated:YES];
@@ -228,7 +219,7 @@
     switch (index) {
         case 0:
         {
-    if (oneModel.name.length > 0 ) {
+    if (oneModel.name.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.name;
     }else{
     textFiled.text = @"";
@@ -237,7 +228,7 @@
             break;
         case 1:
         {
-    if (oneModel.industry.length > 0 ) {
+    if (oneModel.industry.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.industry;
     }else{
         textFiled.text = @"";
@@ -246,7 +237,7 @@
             break;
         case 2:
         {
-    if (oneModel.size.length > 0 ) {
+    if (oneModel.size.length > 0 ||[oneModel.name isEqualToString:@"0"] ) {
         textFiled.text = oneModel.size;
     }else{
         textFiled.text = @"";
@@ -255,7 +246,7 @@
             break;
         case 3:
         {
-    if (oneModel.business.length > 0 ) {
+    if (oneModel.business.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.business;
     }else{
         textFiled.text = @"";
@@ -264,7 +255,7 @@
             break;
         case 4:
         {
-    if (oneModel.product.length > 0 ) {
+    if (oneModel.product.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.product;
     }else{
         textFiled.text = @"";
@@ -273,7 +264,7 @@
             break;
         case 5:
         {
-    if (oneModel.url.length > 0 ) {
+    if (oneModel.url.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.url;
     }else{
         textFiled.text = @"";
@@ -282,7 +273,7 @@
             break;
         case 6:
         {
-    if (oneModel.adderss.length > 0 ) {
+    if (oneModel.adderss.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.adderss;
     }else{
         textFiled.text = @"";
@@ -291,7 +282,7 @@
             break;
         case 7:
         {
-    if (oneModel.link.length > 0 ) {
+    if (oneModel.link.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.link;
     }else{
         textFiled.text = @"";
@@ -300,7 +291,7 @@
             break;
         case 8:
         {
-    if (oneModel.position.length > 0 ) {
+    if (oneModel.position.length > 0 || [oneModel.name isEqualToString:@"0"]) {
         textFiled.text = oneModel.position;
     }else{
         textFiled.text = @"";
@@ -309,7 +300,7 @@
             break;
         case 9:
         {
-        if (oneModel.phone.length > 0 ) {
+        if (oneModel.phone.length > 0 || [oneModel.name isEqualToString:@"0"]) {
             textFiled.text = oneModel.phone;
         }else{
             textFiled.text = @"";
@@ -318,7 +309,7 @@
             break;
         case 10:
         {
-            if (oneModel.email.length > 0 ) {
+            if (oneModel.email.length > 0 || [oneModel.name isEqualToString:@"0"]) {
                 textFiled.text = oneModel.email;
             }else{
                 textFiled.text = @"";

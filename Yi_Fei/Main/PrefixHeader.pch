@@ -9,6 +9,11 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+
 #import "FMDBOneList.h" //建的第一张表
 #import "shopData.h"
 

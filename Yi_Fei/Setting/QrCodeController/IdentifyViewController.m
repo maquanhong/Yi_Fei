@@ -10,16 +10,20 @@
 #import "PureLayout.h"
 #import "HMScannerController.h"
 #import "BUYButton.h"
+#import "UserModel.h"
+#import "UserList.h"
 #import "UserDefaultManager.h"
+#import "DicttionAndJSON.h"
 
 @interface IdentifyViewController ()
 {
     UIView *_backView ;
+    UserModel *oneModel;
 }
+
 
 @property (nonatomic,strong)UIImageView *imageVIew ;
 
-@property (nonatomic,strong)NSString *infoStr ;
 
 @end
 
@@ -28,18 +32,24 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self getData];
 }
-
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self  setNav];
-   [self createQrCodeImage];
+ 
+}
 
-    _infoStr = [UserDefaultManager getDataByKey:@"info"];
-    NSLog(@"%@",_infoStr);
-    
+-(void)getData{
+    //获取单例对象
+    UserList *manager = [UserList defaultManager];
+    //可变数组初始化
+    oneModel = [[ UserModel alloc] init];
+    NSString *str = [UserDefaultManager getDataByKey:@"user"];
+    oneModel = [manager getDataWith:str];
+     [self createQrCodeImage];
 }
 
 #pragma mark 设置导航栏
@@ -90,8 +100,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-
 #pragma mark 创建二维码
 -(void)createQrCodeImage{
     
@@ -104,15 +112,84 @@
     }];
     
    UIImageView *imageVIew = [[UIImageView alloc] init];
+    imageVIew.layer.cornerRadius = 5;
+    imageVIew.layer.masksToBounds = YES;
     [view addSubview:imageVIew];
     [imageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(view);
         make.size.mas_equalTo(CGSizeMake(200 ,200));
     }];
-
-    NSString *cardName = @"易非";
-    UIImage *avatar = [UIImage imageNamed:@"erwei"];
-    [HMScannerController cardImageWithCardName:cardName avatar:avatar scale:0.2 completion:^(UIImage *image) {
+    DicttionAndJSON *json = [[DicttionAndJSON alloc] init];
+    NSMutableArray *valueArr = [NSMutableArray array];
+    
+    if ([oneModel.name length] <= 0) {
+        oneModel.name = @"0";
+    }
+    
+    if ([oneModel.industry length] <= 0 ) {
+   oneModel.industry = @"0";
+    }
+    
+    if ([oneModel.size length] <= 0 ) {
+     oneModel.size = @"0";
+    }
+    
+    if ([oneModel.business length] <= 0 ) {
+       oneModel.business = @"0";
+    }
+    
+    if ([oneModel.product length] <= 0 ) {
+        oneModel.product = @"0";
+    }
+    
+    if ([oneModel.url length] <= 0 ) {
+         oneModel.url = @"0";
+    }
+    
+    if ([oneModel.link length] <= 0 ) {
+           oneModel.link =@"0";
+    }
+    
+    if ([oneModel.position length] <= 0 ) {
+     oneModel.position = @"0";
+    }
+    
+    if ([oneModel.phone length] <= 0 ) {
+      oneModel.phone = @"0";
+    }
+    
+    if ([oneModel.email length] <= 0 ) {
+     oneModel.email = @"0";
+    }
+    
+    if ([oneModel.email length] <= 0 ) {
+       oneModel.adderss = @"0";
+    }
+    
+    [valueArr addObject:oneModel.name];
+    [valueArr addObject:oneModel.industry];
+    [valueArr addObject:oneModel.size];
+    [valueArr addObject:oneModel.business];
+    [valueArr addObject:oneModel.product];
+    [valueArr addObject:oneModel.link];
+    [valueArr addObject:oneModel.url];
+    [valueArr addObject:oneModel.position];
+    [valueArr addObject:oneModel.phone];
+    [valueArr addObject:oneModel.email];
+    [valueArr addObject:oneModel.adderss];
+    NSArray *keyArr = [NSArray arrayWithObjects:@"name",@"industry", @"size",@"business",@"product",@"url",@"link",@"position",@"phone",@"email",@"adderss", nil];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjects:valueArr forKeys:keyArr];
+    NSString *str = [json  dictionaryToJson:dict];
+    UIImage *avatar;
+    NSString *path_document = NSHomeDirectory();
+    //设置一个图片的存储路径
+    if (oneModel.picture.length > 0) {
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",oneModel.picture]];
+     avatar = [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+    avatar = [UIImage imageNamed:@"Null"];
+    }
+    [HMScannerController cardImageWithCardName:str avatar:avatar scale:0.2 completion:^(UIImage *image) {
         imageVIew.image = image;
     }];
 }

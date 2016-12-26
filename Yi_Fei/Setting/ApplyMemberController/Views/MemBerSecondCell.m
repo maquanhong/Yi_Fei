@@ -35,18 +35,16 @@
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(self).offset(-20);
         make.centerY.mas_equalTo(self.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.size.mas_equalTo(CGSizeMake(15, 15));
     }];
     [_iconImageView addTarget:self action:@selector(clicikBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     
     _pictureImage =[[UIImageView alloc] init];
     [self addSubview:_pictureImage];
     [_pictureImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self).offset(20);
         make.centerY.mas_equalTo(self.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
     
     _nameLable =[[UILabel alloc] init];
