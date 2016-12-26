@@ -7,9 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TypeView.h"
+
+@protocol BUYTypeViewDelegate <NSObject>
+
+-(void)clickViewTag:(NSInteger)tag;
+
+@end
+
+
+
 
 @interface BUYTypeView : UIView
 
-+ (instancetype) creatTypeView;
+@property(nonatomic,weak)id<BUYTypeViewDelegate> delegate;
+
+@property (nonatomic,strong) TypeView *typeOne;
+
+@property (nonatomic,strong) TypeView *typeTwo;
+
+@property (nonatomic,strong) TypeView *typeThree;
+
+@property (nonatomic,strong) TypeView *typeFour;
+
+
 
 @end

@@ -76,6 +76,7 @@
 		20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */; };
 		20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA291DF647CA0009167F /* ZESegmentedsView.m */; };
 		D880CC91BDD229530EC6ECC3 /* libPods-Yi_Fei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */; };
+		E415217F1E11722F00E3910E /* AcceptView.m in Sources */ = {isa = PBXBuildFile; fileRef = E415217E1E11722F00E3910E /* AcceptView.m */; };
 		E416C91E1DF5D802002A6E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E416C91D1DF5D802002A6E60 /* main.m */; };
 		E416C9271DF5D802002A6E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E416C9251DF5D802002A6E60 /* Main.storyboard */; };
 		E416C9291DF5D802002A6E60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E416C9281DF5D802002A6E60 /* Assets.xcassets */; };
@@ -171,6 +172,7 @@
 		E45932091E00482800040DA2 /* UWDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932071E00482800040DA2 /* UWDatePickerView.m */; };
 		E459320A1E00482800040DA2 /* UWDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E45932081E00482800040DA2 /* UWDatePickerView.xib */; };
 		E45932331E0065AA00040DA2 /* BuyerLable.m in Sources */ = {isa = PBXBuildFile; fileRef = E45932321E0065AA00040DA2 /* BuyerLable.m */; };
+		E45E75751E11596F00A9A1B7 /* TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E75741E11596F00A9A1B7 /* TypeView.m */; };
 		E464CB591DFEE73E008DDB12 /* HMScanerCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB4D1DFEE73E008DDB12 /* HMScanerCardViewController.m */; };
 		E464CB5A1DFEE73E008DDB12 /* HMScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E464CB4E1DFEE73E008DDB12 /* HMScanner.bundle */; };
 		E464CB5B1DFEE73E008DDB12 /* HMScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E464CB501DFEE73E008DDB12 /* HMScanner.m */; };
@@ -542,6 +544,8 @@
 		20FBCA291DF647CA0009167F /* ZESegmentedsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZESegmentedsView.m; sourceTree = "<group>"; };
 		4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yi_Fei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yi_Fei.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yi_Fei/Pods-Yi_Fei.debug.xcconfig"; sourceTree = "<group>"; };
+		E415217D1E11722F00E3910E /* AcceptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptView.h; sourceTree = "<group>"; };
+		E415217E1E11722F00E3910E /* AcceptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptView.m; sourceTree = "<group>"; };
 		E416C9191DF5D802002A6E60 /* Yi_Fei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yi_Fei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E416C91D1DF5D802002A6E60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E416C9261DF5D802002A6E60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -714,6 +718,8 @@
 		E45932081E00482800040DA2 /* UWDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UWDatePickerView.xib; sourceTree = "<group>"; };
 		E45932311E0065AA00040DA2 /* BuyerLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerLable.h; sourceTree = "<group>"; };
 		E45932321E0065AA00040DA2 /* BuyerLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerLable.m; sourceTree = "<group>"; };
+		E45E75731E11596F00A9A1B7 /* TypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeView.h; sourceTree = "<group>"; };
+		E45E75741E11596F00A9A1B7 /* TypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeView.m; sourceTree = "<group>"; };
 		E464CB4C1DFEE73E008DDB12 /* HMScanerCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScanerCardViewController.h; sourceTree = "<group>"; };
 		E464CB4D1DFEE73E008DDB12 /* HMScanerCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScanerCardViewController.m; sourceTree = "<group>"; };
 		E464CB4E1DFEE73E008DDB12 /* HMScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HMScanner.bundle; sourceTree = "<group>"; };
@@ -1567,6 +1573,10 @@
 				E416CBF31DF5E9E9002A6E60 /* BUYTitleButton.m */,
 				E416CBF41DF5E9E9002A6E60 /* BUYTypeView.h */,
 				E416CBF51DF5E9E9002A6E60 /* BUYTypeView.m */,
+				E45E75731E11596F00A9A1B7 /* TypeView.h */,
+				E45E75741E11596F00A9A1B7 /* TypeView.m */,
+				E415217D1E11722F00E3910E /* AcceptView.h */,
+				E415217E1E11722F00E3910E /* AcceptView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1596,7 +1606,6 @@
 				203793C81DF8227C00992510 /* GYDataCenter */,
 				E4F13A461DFC1CA7004860F4 /* IQKeyboardManager */,
 				20FBCA271DF647CA0009167F /* ZESementeds */,
-				E416CD831DF5EDF3002A6E60 /* DownListButton */,
 				E416CC611DF5E9F8002A6E60 /* Tools */,
 				E416CC741DF5E9F8002A6E60 /* ZZPhotoKit */,
 			);
@@ -1606,6 +1615,7 @@
 		E416CC611DF5E9F8002A6E60 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E416CD831DF5EDF3002A6E60 /* DownListButton */,
 				E4866E7C1E0D9D2400D608F7 /* DicttionAndJSON.h */,
 				E4866E7D1E0D9D2400D608F7 /* DicttionAndJSON.m */,
 				E4F5B3661E01B4710084F7F4 /* NSArray+log.h */,
@@ -1909,7 +1919,8 @@
 				E416CD861DF5EDF3002A6E60 /* DownListButton.h */,
 				E416CD871DF5EDF3002A6E60 /* DownListButton.m */,
 			);
-			path = DownListButton;
+			name = DownListButton;
+			path = ../DownListButton;
 			sourceTree = "<group>";
 		};
 		E442120A1DF9E1990083BC1F /* importForm */ = {
@@ -3680,6 +3691,7 @@
 				E4866E2D1E0D293600D608F7 /* ClientInfoTableViewCell.m in Sources */,
 				206E88621E0C2A49005A7F19 /* BRAOfficeDocument.m in Sources */,
 				E4F5B35A1E01A7B70084F7F4 /* UserDefaultManager.m in Sources */,
+				E415217F1E11722F00E3910E /* AcceptView.m in Sources */,
 				E4866CCE1E0D28F100D608F7 /* ZMJProviderController.m in Sources */,
 				E4866CC61E0D28F100D608F7 /* OneViewController.m in Sources */,
 				E4866E031E0D293600D608F7 /* ConversionTrams.m in Sources */,
@@ -3802,6 +3814,7 @@
 				20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */,
 				E4866D1E1E0D290D00D608F7 /* BasicInfoTableViewController.m in Sources */,
 				E4866E7B1E0D777A00D608F7 /* TranslationObjec.m in Sources */,
+				E45E75751E11596F00A9A1B7 /* TypeView.m in Sources */,
 				206E88551E0C2A49005A7F19 /* BRACellFormat.m in Sources */,
 				E4866E311E0D293600D608F7 /* OnlyTitleTableViewCell.m in Sources */,
 				208D0E331E09869E00B5775A /* BabyBluetooth.m in Sources */,

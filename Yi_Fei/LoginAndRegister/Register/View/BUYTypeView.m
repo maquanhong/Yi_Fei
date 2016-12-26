@@ -12,149 +12,167 @@
 
 @interface BUYTypeView ()
 
-@property (nonatomic,weak) UILabel *label;
+@property (nonatomic,strong) UILabel *typeLabel;
 
-@property (nonatomic,strong) NSMutableArray *btns;
-
-@property (nonatomic,strong) NSMutableArray *Slines;
-
-@property (nonatomic,weak) UIView *HLine;
+@property (nonatomic,strong) UIView *lineOne;
+@property (nonatomic,strong) UIView *lineTwo;
+@property (nonatomic,strong) UIView *lineThree;
 
 @end
 
 @implementation BUYTypeView
 
-- (NSMutableArray *)btns
-{
-    if (!_btns) {
-        _btns = [NSMutableArray array];
+- (instancetype)initWithFrame:(CGRect)frame{
+
+    if (self = [super initWithFrame:frame]) {
+        [self addViews];
     }
-    return _btns;
+    return self;
 }
 
-- (NSMutableArray *)Slines
-{
-    if (!_Slines) {
-        _Slines = [NSMutableArray array];
+-(void)addViews{
+
+   _typeLabel = [[UILabel alloc] init];
+    _typeLabel.textColor = [UIColor colorWithRed:151/255.0 green:151/255.0 blue:151/255.0 alpha:1.0];
+    _typeLabel.text = @"行业类型";
+    _typeLabel.textAlignment = NSTextAlignmentCenter;
+    _typeLabel.font = [UIFont systemFontOfSize:15];
+    [self addSubview:_typeLabel];
+    [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self);
+        make.bottom.mas_equalTo(self);
+        make.top.mas_equalTo(self.mas_top);
+        make.width.mas_equalTo(80);
+    }];
+   
+    _lineOne = [[UIView alloc] init];
+    _lineOne.backgroundColor = [UIColor grayColor];
+    [self addSubview:_lineOne];
+    [_lineOne mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_typeLabel.mas_right);
+        make.bottom.mas_equalTo(self.mas_bottom);
+        make.top.mas_equalTo(self.mas_top);
+        make.width.mas_equalTo(1.0);
+    }];
+    
+    _lineTwo = [[UIView alloc] init];
+    _lineTwo.backgroundColor = [UIColor grayColor];
+    [self addSubview:_lineTwo];
+    [_lineTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_lineOne.mas_right);
+        make.centerY.mas_equalTo(self.mas_centerY);
+        make.trailing.mas_equalTo(self);
+        make.height.mas_equalTo(0.6);
+    }];
+    
+    CGFloat width = self.frame.size.width / 2;
+     _lineThree= [[UIView alloc] init];
+    _lineThree.backgroundColor = [UIColor grayColor];
+    [self addSubview:_lineThree];
+    [_lineThree mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(self.mas_bottom);
+        make.top.mas_equalTo(self.mas_top);
+        make.width.mas_equalTo(1.0);
+        make.centerX.mas_equalTo(width + 40);
+    }];
+    
+    _typeOne = [[TypeView alloc] init];
+    _typeOne.titleLabel.text = @"照明设备";
+    [self addSubview:_typeOne];
+    
+    _typeTwo = [[TypeView alloc] init];
+    _typeTwo.titleLabel.text = @"照明应用系统";
+    [self addSubview:_typeTwo];
+    
+    _typeThree = [[TypeView alloc] init];
+    _typeThree.titleLabel.text = @"装饰照明";
+    [self addSubview:_typeThree];
+    
+    _typeFour = [[TypeView alloc] init];
+    [self addSubview:_typeFour];
+    
+    [_typeOne mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_typeLabel.mas_right).offset(2);
+        make.top.equalTo(self);
+        make.bottom.mas_equalTo(self.mas_centerY).offset(-2);
+        make.width.equalTo(_typeTwo);
+    }];
+    _typeOne.tag = 1465;
+    UITapGestureRecognizer *tapOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
+    [_typeOne addGestureRecognizer:tapOne];
+    
+    
+    [_typeTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_typeOne.mas_right).offset(3);
+        make.top.equalTo(self);
+        make.trailing.equalTo(self);
+        make.bottom.mas_equalTo(self.mas_centerY).offset(-2);
+        make.width.equalTo(_typeOne);
+    }];
+    
+    _typeTwo.tag = 1467;
+    UITapGestureRecognizer *tapTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
+    [_typeTwo addGestureRecognizer:tapTwo];
+    
+    
+    [_typeThree mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_typeLabel.mas_right).offset(2);
+        make.top.mas_equalTo(self.mas_centerY).offset(2);
+        make.bottom.equalTo(self);
+        make.width.equalTo(_typeFour);
+    }];
+    
+    _typeThree.tag = 1468;
+    UITapGestureRecognizer *tapThree = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
+    [_typeThree addGestureRecognizer:tapThree];
+    
+    
+    
+    
+    [_typeFour mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_typeThree.mas_right).offset(3);
+        make.top.equalTo(self.mas_centerY).offset(2);
+        make.bottom.mas_equalTo(self);
+        make.trailing.equalTo(self);
+        make.width.equalTo(_typeThree);
+    }];
+    
+    _typeFour.tag = 1467;
+    UITapGestureRecognizer *tapFour = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTypeView:)];
+    [_typeFour addGestureRecognizer:tapFour];
+    
+    
+
+}
+
+
+-(void)clickTypeView:(id)sender{
+    
+    UITapGestureRecognizer * singleTap = (UITapGestureRecognizer *)sender;
+    NSInteger tag = [singleTap view].tag;
+    if ([self.delegate respondsToSelector:@selector(clickViewTag:)]) {
+        [self.delegate clickViewTag:tag];
     }
-    return _Slines;
 }
 
-+ (instancetype) creatTypeView
-{
-    BUYTypeView *view = [[self alloc] init];
-    
-    //设置边框为圆角
-    view.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    view.layer.borderWidth = 1;
-    view.layer.cornerRadius = 5;
-    view.layer.masksToBounds = YES;
-    
-    //添加子控件
-    [view addSubViews];
-    return view;
-}
 
-#pragma mark - 添加子控件
-- (void) addSubViews
-{
-    //@“行业类型”
-    [self addLabel];
-    
-    //四个button
-    [self addFourBtns];
-    
-    //添加横竖线
-    [self addLines];
-}
 
-- (void)addLabel
-{
-    UILabel *label = [[UILabel alloc] init];
-    label.textColor = [UIColor colorWithRed:151/255.0 green:151/255.0 blue:151/255.0 alpha:1.0];
-    label.text = @"行业类型";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:15];
-    _label = label;
-    [self addSubview:label];
-}
 
-- (void)addFourBtns
-{
-    NSArray *arrs = @[@"照明设备",@"照明应用",@"装饰照明",@"灯罩灯柱"];
-    for (int i=0; i<4; i++) {
-        NSString *str = arrs[i];
-        BUYTitleButton *btn = [BUYTitleButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:str forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"xiala.png"] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:15];
-        btn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [btn setTitleColor:COLOR forState:UIControlStateNormal];
-        [self.btns addObject:btn];
-        [self addSubview:btn];
-    }
-}
 
-- (void)addLines
 
-{
-    //两条竖线
-    for (int i=0; i<2; i++) {
-        UIView *viewS = [[UIView alloc] init];
-        viewS.backgroundColor = [UIColor lightGrayColor];
-        [self.Slines addObject:viewS];
-        [self addSubview:viewS];
-    }
-    
-    //一条横线
-    UIView *viewH = [[UIView alloc] init];
-    viewH.backgroundColor = [UIColor lightGrayColor];
-    _HLine = viewH;
-    [self addSubview:viewH];
-}
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    
-    //行业类型
-    [self.label sizeToFit];
-    self.label.x = 8;
-    self.label.y = (self.bounds.size.height - self.label.height)*0.5;
-    
-    //btn
-    CGFloat x1 = CGRectGetMaxX(self.label.frame)+14;
-    CGFloat W = (self.bounds.size.width-self.label.width)*0.5-8;
-    CGFloat H = (self.bounds.size.height-self.label.height)*0.5;
-    CGFloat y1 = (self.height-H*2)*0.5;
-    for (int i=0; i<4; i++) {
-        UIButton *btn = self.btns[i];
-        CGFloat colum = i % 2;
-        CGFloat row = i / 2;
-        CGFloat x = x1+colum*W;
-        CGFloat y = y1+row*H;
-        btn.frame = CGRectMake(x, y, W, H);
-        NSLog(@"%@",NSStringFromCGRect(btn.frame));
-    }
-    
-    //线的位置
-    CGFloat LW = 1;
-    CGFloat LH = self.height;
-    CGFloat LX = x1;
-    for (int i=0; i<2; i++) {
-        UIView *line = self.Slines[i];
 
-        if (i==1) {
-            LX = x1+W;
-        }
-        line.frame = CGRectMake(LX, 0, LW, LH);
-    }
-    
-    CGFloat SH = 1;
-    UIButton *btn = self.btns[0];
-    CGFloat SY = CGRectGetMaxY(btn.frame);
-    self.HLine.frame = CGRectMake(x1, SY, self.width-self.label.width, SH);
-}
+
+
 
 @end
+
+
+
+
+
+
+
+
+
+

@@ -30,13 +30,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = COLOR;
+    [self setNav];
     //添加最下面版本号
     [self addVersion];
     [self createLogon];
 }
 
 
+-(void)setNav{
 
+    BackButton *btn = [[BackButton alloc] init];
+    [btn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    btn.layer.cornerRadius = 15;
+    btn.layer.masksToBounds = YES;
+    btn.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.5];
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view).offset(10);
+        make.top.mas_equalTo(self.view.mas_top).offset(25);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+  [btn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+- (void)leftButtonClick {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - 添加版本号
 - (void) addVersion

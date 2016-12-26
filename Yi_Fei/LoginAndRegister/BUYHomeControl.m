@@ -16,105 +16,73 @@
 @interface BUYHomeControl ()
 @property (nonatomic,strong) UIImageView *logoImgView;
 @property (nonatomic, strong) UILabel  *versionLabel;
-@property (nonatomic, strong) NSMutableArray *btnMutableArray;
-@property (nonatomic, strong) UIView  *btnBgView;
+
 @end
 
 @implementation BUYHomeControl
 
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _btnMutableArray = [NSMutableArray array];
     self.view.backgroundColor = COLOR;
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    //添加控件1
-    [self addLogo];
     
-    //添加控件2
-    _btnBgView = [[UIView alloc] initForAutoLayout];
-    [self.view addSubview:self.btnBgView];
     [self addBtn];
-    
     //添加最下面版本号
     [self addVersion];
     [self addViewConstraints];
 }
 
-- (void)addViewConstraints {
-    
-    [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:120];
-    [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
-    [self.logoImgView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:50];
-    UIImage *logoImage = [UIImage imageNamed:@"登录"];
-    [self.logoImgView autoSetDimension:ALDimensionHeight toSize:logoImage.size.height];
-    
-    [self.btnBgView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [self.btnBgView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
-    [self.btnBgView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.logoImgView withOffset:50];
-    [self.btnBgView autoSetDimension:ALDimensionHeight toSize:150];
-    
-//    BUYButton *btn = [self.btnMutableArray firstObject];
-//    [btn autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:50];
-//    [btn autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:50];
-//    [self.btnMutableArray autoMatchViewsDimension:ALDimensionHeight];
-//    [self.btnMutableArray autoMatchViewsDimension:ALDimensionWidth];
-//    [self.btnMutableArray autoAlignViewsToEdge:ALEdgeLeading];
-//    [self.btnMutableArray autoDistributeViewsAlongAxis:ALAxisVertical alignedTo:ALAttributeLeft withFixedSpacing:15];
-    
-    [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
-    [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-    [self.versionLabel autoSetDimension:ALDimensionHeight toSize:20];
-}
-
-#pragma mark - 添加logo
-- (void)addLogo
-{
-    UIImageView *img = [[UIImageView alloc] initForAutoLayout];
-    _logoImgView = img;
-    img.contentMode = UIViewContentModeCenter;
-    UIImage *logoImage = [UIImage imageNamed:@"登录"];
-    img.image = logoImage;
-    [self.view addSubview:img];
-}
 
 #pragma makr - 添加三个按钮去
 - (void)addBtn
 {
-    NSArray *strs = @[@"登录",@"注册",@"试用"];
+    _logoImgView = [[UIImageView alloc] init];
+    _logoImgView.contentMode = UIViewContentModeCenter;
+    _logoImgView.image = [UIImage imageNamed:@"登录"];
+    [self.view addSubview:_logoImgView];
+    [_logoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top).offset(120);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.size.mas_equalTo(CGSizeMake(50, 50));
+    }];
+    
+  NSArray *strs = @[@"登录",@"注册",@"试用"];
+BUYButton *btnOne = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:strs[0]];
+    btnOne.tag = 1530;
+    [self.view addSubview:btnOne];
+    [btnOne mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view).offset(50);
+         make.trailing.mas_equalTo(self.view).offset(-50);
+        make.top.mas_equalTo(_logoImgView.mas_bottom).offset(75);
+        make.height.mas_equalTo(40);
+    }];
+[btnOne addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
 
-    for (int i = 0; i < 3; i++) {
-        NSString *str = strs[i];
-    BUYButton *btn = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:str];
-        btn.frame = CGRectMake(50, CGRectGetMaxY(self.logoImgView.frame)+ 40 +i * 65, WIDTH - 100, 40);
-        btn.tag = i;
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.btnMutableArray addObject:btn];
-        [self.btnBgView addSubview:btn];
-    }
-}
-
-#pragma mark - 添加版本号
-- (void) addVersion
-{
-    UILabel *label = [[UILabel alloc] initForAutoLayout];
-    NSString *version = (NSString *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    NSString *str = [NSString stringWithFormat:@"V %@",version];
-    label.text=str;
-    label.font = [UIFont systemFontOfSize:12];
-    label.textAlignment = NSTextAlignmentCenter;
-    _versionLabel = label;
-    label.textColor = [UIColor whiteColor];
-    [self.view addSubview:label];
+   BUYButton *btnTwo = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:strs[1]];
+    btnTwo.tag = 1531;
+    [self.view addSubview:btnTwo];
+    [btnTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view).offset(50);
+        make.trailing.mas_equalTo(self.view).offset(-50);
+        make.top.mas_equalTo(btnOne.mas_bottom).offset(25);
+        make.height.mas_equalTo(40);
+    }];
+ [btnTwo addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+BUYButton *btnThree = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:strs[2]];
+    btnThree.tag = 1532;
+    [self.view addSubview:btnThree];
+    [btnThree mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self.view).offset(50);
+        make.trailing.mas_equalTo(self.view).offset(-50);
+        make.top.mas_equalTo(btnTwo.mas_bottom).offset(25);
+        make.height.mas_equalTo(40);
+    }];
+  [btnThree addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 //应该在下面的方法中隐藏标签栏，不能在viewDidLoad里面隐藏
-- (void) viewWillAppear:(BOOL)animated
-{
+- (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -123,30 +91,26 @@
 #pragma  mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender
 {
+    NSLog(@"%ld",sender.tag);
     //注册控制器
     BUYLoginControl *login = [[BUYLoginControl alloc] init];
-    
     BUYRegisterControl *reg = [[BUYRegisterControl alloc] init];
-  
+ZMJTotleHomeController *trialVC = [[ZMJTotleHomeController alloc] init];
     
     switch (sender.tag) {
-        case 0:
-//            NSLog(@"登录");
+        case 1530:
 [self.navigationController pushViewController:login animated:YES];
             break;
-        case 1:
-//            NSLog(@"注册");
+        case 1531:
   [self.navigationController pushViewController:reg animated:YES];
             break;
-            
-        case 2:
-//            NSLog(@"试用");
+        case 1532:
+[self.navigationController pushViewController:trialVC animated:YES];
             break;
         default:
             break;
     }
 }
-
 
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -161,4 +125,69 @@
 
 
 
+
+
+
+
+
+
+
+#pragma mark - 添加版本号
+- (void)addViewConstraints {
+    
+    [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+    [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
+    [self.versionLabel autoSetDimension:ALDimensionHeight toSize:20];
+}
+
+
+- (void) addVersion
+{
+    UILabel *label = [[UILabel alloc] initForAutoLayout];
+    NSString *version = (NSString *)[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *str = [NSString stringWithFormat:@"V %@",version];
+    label.text=str;
+    label.font = [UIFont systemFontOfSize:12];
+    label.textAlignment = NSTextAlignmentCenter;
+    _versionLabel = label;
+    label.textColor = [UIColor whiteColor];
+    [self.view addSubview:label];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

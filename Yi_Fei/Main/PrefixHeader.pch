@@ -9,10 +9,9 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-
+//界面
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 
 #import "FMDBOneList.h" //建的第一张表
 #import "shopData.h"
@@ -38,26 +37,42 @@
 
 #pragma mark 颜色的的设置
 
+//背景颜色
 #define  BACKCOLOR [UIColor colorWithRed:58/255.0 green:165/255.0 blue:245/255.0 alpha:1.0]
 
-
+//主界面颜色
 #define  INTERFACECOLOR [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0]
 
 //价格颜色
 #define  PRICECOLOR [UIColor colorWithRed:241/255.0 green:139/255.0 blue:0/255.0 alpha:1.0]
 
-
-
-
-
-
+//宽高
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
+
+
 #define COLOR [UIColor colorWithRed:70/255.0 green:201/255.0 blue:250/255.0 alpha:1.0]
+
+
 #define NAVCOLOR [UIColor colorWithRed:48/255.0 green:127/255.0 blue:205/255.0 alpha:1.0]
+
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
-
-
 #endif /* PrefixHeader_pch */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
