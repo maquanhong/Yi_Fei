@@ -30,6 +30,7 @@
     [CentralBlueTooth shareManager];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
+    NSLog(@"cacacac");
     
     return YES;
 }
