@@ -1,19 +1,4 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
-    - AFNetworking/NSURLSession
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -30,7 +15,6 @@ PODS:
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
-  - AFNetworking
   - FMDB
   - GDataXML-HTML
   - libxlsxwriter
@@ -42,7 +26,6 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   GDataXML-HTML: 7adc03668cab35c288f1dbb8929a179f0fece898
   libxlsxwriter: 6c3aeb6104402e21cb1833663d79b76d3acea083
@@ -53,6 +36,6 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: e49f3c1660a21f8f1d28b878cd8c1aad8a1049ad
+PODFILE CHECKSUM: 35db11ccefd033d701cf3bf315fb5eb97c6e5fb6
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.1.1

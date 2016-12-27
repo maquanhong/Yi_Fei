@@ -76,7 +76,12 @@
 		20FBCA231DF646F40009167F /* MyBuyerInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA211DF646F40009167F /* MyBuyerInfoTableViewCell.m */; };
 		20FBCA2A1DF647CA0009167F /* ZESegmentedsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FBCA291DF647CA0009167F /* ZESegmentedsView.m */; };
 		D880CC91BDD229530EC6ECC3 /* libPods-Yi_Fei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */; };
+		E41361B11E126AAB00D001A7 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41361B01E126AAB00D001A7 /* ScanViewController.m */; };
+		E41361B41E126BD200D001A7 /* ScanQrcodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41361B31E126BD200D001A7 /* ScanQrcodeController.m */; };
+		E41361B71E126C0000D001A7 /* ScanCardCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = E41361B61E126C0000D001A7 /* ScanCardCustomer.m */; };
 		E415217F1E11722F00E3910E /* AcceptView.m in Sources */ = {isa = PBXBuildFile; fileRef = E415217E1E11722F00E3910E /* AcceptView.m */; };
+		E41521821E11908000E3910E /* ScanQrcode.m in Sources */ = {isa = PBXBuildFile; fileRef = E41521811E11908000E3910E /* ScanQrcode.m */; };
+		E41521851E11909C00E3910E /* ScanCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41521841E11909C00E3910E /* ScanCardController.m */; };
 		E416C91E1DF5D802002A6E60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E416C91D1DF5D802002A6E60 /* main.m */; };
 		E416C9271DF5D802002A6E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E416C9251DF5D802002A6E60 /* Main.storyboard */; };
 		E416C9291DF5D802002A6E60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E416C9281DF5D802002A6E60 /* Assets.xcassets */; };
@@ -340,7 +345,6 @@
 		E4866E2F1E0D293600D608F7 /* MyBuyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DD91E0D293600D608F7 /* MyBuyerTableViewCell.m */; };
 		E4866E301E0D293600D608F7 /* NameContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DDB1E0D293600D608F7 /* NameContentTableViewCell.m */; };
 		E4866E311E0D293600D608F7 /* OnlyTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DDD1E0D293600D608F7 /* OnlyTitleTableViewCell.m */; };
-		E4866E321E0D293600D608F7 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DDF1E0D293600D608F7 /* ScanViewController.m */; };
 		E4866E331E0D293600D608F7 /* BuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DE31E0D293600D608F7 /* BuyerViewController.m */; };
 		E4866E341E0D293600D608F7 /* BuyerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4866DE61E0D293600D608F7 /* BuyerTableViewCell.m */; };
 		E4866E351E0D293600D608F7 /* BuyerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4866DE71E0D293600D608F7 /* BuyerTableViewCell.xib */; };
@@ -544,8 +548,18 @@
 		20FBCA291DF647CA0009167F /* ZESegmentedsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZESegmentedsView.m; sourceTree = "<group>"; };
 		4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yi_Fei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F5D5D6CEABFCA13239E6D7 /* Pods-Yi_Fei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yi_Fei.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yi_Fei/Pods-Yi_Fei.debug.xcconfig"; sourceTree = "<group>"; };
+		E41361AF1E126AAB00D001A7 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		E41361B01E126AAB00D001A7 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		E41361B21E126BD200D001A7 /* ScanQrcodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanQrcodeController.h; sourceTree = "<group>"; };
+		E41361B31E126BD200D001A7 /* ScanQrcodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanQrcodeController.m; sourceTree = "<group>"; };
+		E41361B51E126C0000D001A7 /* ScanCardCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCardCustomer.h; sourceTree = "<group>"; };
+		E41361B61E126C0000D001A7 /* ScanCardCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCardCustomer.m; sourceTree = "<group>"; };
 		E415217D1E11722F00E3910E /* AcceptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptView.h; sourceTree = "<group>"; };
 		E415217E1E11722F00E3910E /* AcceptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptView.m; sourceTree = "<group>"; };
+		E41521801E11908000E3910E /* ScanQrcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanQrcode.h; sourceTree = "<group>"; };
+		E41521811E11908000E3910E /* ScanQrcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanQrcode.m; sourceTree = "<group>"; };
+		E41521831E11909C00E3910E /* ScanCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCardController.h; sourceTree = "<group>"; };
+		E41521841E11909C00E3910E /* ScanCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCardController.m; sourceTree = "<group>"; };
 		E416C9191DF5D802002A6E60 /* Yi_Fei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yi_Fei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E416C91D1DF5D802002A6E60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E416C9261DF5D802002A6E60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1044,8 +1058,6 @@
 		E4866DDB1E0D293600D608F7 /* NameContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameContentTableViewCell.m; sourceTree = "<group>"; };
 		E4866DDC1E0D293600D608F7 /* OnlyTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlyTitleTableViewCell.h; sourceTree = "<group>"; };
 		E4866DDD1E0D293600D608F7 /* OnlyTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlyTitleTableViewCell.m; sourceTree = "<group>"; };
-		E4866DDE1E0D293600D608F7 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		E4866DDF1E0D293600D608F7 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		E4866DE21E0D293600D608F7 /* BuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerViewController.h; sourceTree = "<group>"; };
 		E4866DE31E0D293600D608F7 /* BuyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerViewController.m; sourceTree = "<group>"; };
 		E4866DE51E0D293600D608F7 /* BuyerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerTableViewCell.h; sourceTree = "<group>"; };
@@ -1399,6 +1411,19 @@
 				4F80621F7E6E4C3C7BAA0E96 /* libPods-Yi_Fei.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E41361AE1E126AAB00D001A7 /* ScanSupplyController */ = {
+			isa = PBXGroup;
+			children = (
+				E41361AF1E126AAB00D001A7 /* ScanViewController.h */,
+				E41361B01E126AAB00D001A7 /* ScanViewController.m */,
+				E41361B21E126BD200D001A7 /* ScanQrcodeController.h */,
+				E41361B31E126BD200D001A7 /* ScanQrcodeController.m */,
+				E41361B51E126C0000D001A7 /* ScanCardCustomer.h */,
+				E41361B61E126C0000D001A7 /* ScanCardCustomer.m */,
+			);
+			path = ScanSupplyController;
 			sourceTree = "<group>";
 		};
 		E416C9101DF5D802002A6E60 = {
@@ -2104,6 +2129,10 @@
 			children = (
 				E4866C0D1E0D28F100D608F7 /* CustomerScanController.h */,
 				E4866C0E1E0D28F100D608F7 /* CustomerScanController.m */,
+				E41521801E11908000E3910E /* ScanQrcode.h */,
+				E41521811E11908000E3910E /* ScanQrcode.m */,
+				E41521831E11909C00E3910E /* ScanCardController.h */,
+				E41521841E11909C00E3910E /* ScanCardController.m */,
 			);
 			path = ScanController;
 			sourceTree = "<group>";
@@ -2954,10 +2983,9 @@
 		E4866D9B1E0D293600D608F7 /* MySupply */ = {
 			isa = PBXGroup;
 			children = (
+				E41361AE1E126AAB00D001A7 /* ScanSupplyController */,
 				E4866D9C1E0D293600D608F7 /* ManualAddAupply */,
 				E4866DB81E0D293600D608F7 /* MySupplyController */,
-				E4866DDE1E0D293600D608F7 /* ScanViewController.h */,
-				E4866DDF1E0D293600D608F7 /* ScanViewController.m */,
 				E4866DE01E0D293600D608F7 /* SupplyList */,
 				E4866DE81E0D293600D608F7 /* SupplyListModel */,
 			);
@@ -3598,6 +3626,8 @@
 				E4866D2A1E0D290D00D608F7 /* TemplateList.m in Sources */,
 				206E88701E0C2A49005A7F19 /* BRAWorksheetDrawing.m in Sources */,
 				E4866CC21E0D28F100D608F7 /* AddTwoController.m in Sources */,
+				E41361B71E126C0000D001A7 /* ScanCardCustomer.m in Sources */,
+				E41361B11E126AAB00D001A7 /* ScanViewController.m in Sources */,
 				206E88511E0C2A49005A7F19 /* BRACalcChain.m in Sources */,
 				E4866CAA1E0D28F100D608F7 /* ShareActivity.m in Sources */,
 				208D0E451E0992AC00B5775A /* LanguageContainer.m in Sources */,
@@ -3661,6 +3691,7 @@
 				E4F13A8E1DFC643B004860F4 /* CreateSupplyPDF.m in Sources */,
 				E4F5B3681E01B4710084F7F4 /* NSArray+log.m in Sources */,
 				E4866D1D1E0D290D00D608F7 /* UserModel.m in Sources */,
+				E41521821E11908000E3910E /* ScanQrcode.m in Sources */,
 				E416CD0E1DF5E9F8002A6E60 /* ZZPhotoListCell.m in Sources */,
 				E4866CCA1E0D28F100D608F7 /* HeaderOneView.m in Sources */,
 				206E88731E0C2A49005A7F19 /* NativeFont+BoldItalic.m in Sources */,
@@ -3779,7 +3810,6 @@
 				E4866E331E0D293600D608F7 /* BuyerViewController.m in Sources */,
 				E4866E131E0D293600D608F7 /* BuyerEditThreeCell.m in Sources */,
 				E4A7F6051E0EC1220008B5A6 /* LogonView.m in Sources */,
-				E4866E321E0D293600D608F7 /* ScanViewController.m in Sources */,
 				E4F13A891DFC5E8B004860F4 /* PopView.m in Sources */,
 				E4866D281E0D290D00D608F7 /* TemplateThree.m in Sources */,
 				E4866CAC1E0D28F100D608F7 /* SendDataTwoViewCell.m in Sources */,
@@ -3790,6 +3820,7 @@
 				206E887C1E0C2A49005A7F19 /* XMLDictionary.m in Sources */,
 				206E88671E0C2A49005A7F19 /* BRARelationships.m in Sources */,
 				E4866C9C1E0D28F100D608F7 /* CustomerController.m in Sources */,
+				E41521851E11909C00E3910E /* ScanCardController.m in Sources */,
 				206E885B1E0C2A49005A7F19 /* BRAContentTypesDefaultExtension.m in Sources */,
 				E464CB5B1DFEE73E008DDB12 /* HMScanner.m in Sources */,
 				E4866C9F1E0D28F100D608F7 /* MyProductionController.m in Sources */,
@@ -3841,6 +3872,7 @@
 				E416CBDC1DF5E9E5002A6E60 /* ZMJTotleHomeController.m in Sources */,
 				E44212141DF9E1990083BC1F /* ParsingController.m in Sources */,
 				E4866D2C1E0D290D00D608F7 /* OneTemplateCell.m in Sources */,
+				E41361B41E126BD200D001A7 /* ScanQrcodeController.m in Sources */,
 				E49352681DF7267300145486 /* CCZSegementController.m in Sources */,
 				E4866D2B1E0D290D00D608F7 /* TemplateModel.m in Sources */,
 				E49352671DF7267300145486 /* TapButton.m in Sources */,

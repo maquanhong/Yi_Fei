@@ -190,7 +190,7 @@ ZMJNewProductionController *shopVC=[[ZMJNewProductionController alloc] init];
 
 #pragma mark textFiled的点击事件
 - (void)textFieldDidChange:(UITextField *)textField{
-
+    
     if (textField.text.length == 0) {
         _nilSearch = YES;
         [_tableview reloadData];
@@ -199,13 +199,10 @@ ZMJNewProductionController *shopVC=[[ZMJNewProductionController alloc] init];
         [_searchResultArr removeAllObjects];
         [self textFileSearch:textField.text];
     }
-   
 }
-
 
 -(void)textFileSearch:(NSString *)TextField
 {
-    
     [_searchResultArr removeAllObjects];
     int k = 0;
     for (NSString *str in _allArray) {
@@ -220,7 +217,6 @@ ZMJNewProductionController *shopVC=[[ZMJNewProductionController alloc] init];
         [_tableview reloadData];
     }
 }
-
 
 #pragma mark 将输入的字母转换为文字
 - (NSString *)transform:(NSString *)chinese

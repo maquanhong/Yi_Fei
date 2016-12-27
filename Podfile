@@ -10,8 +10,8 @@ pod 'MBProgressHUD'
 pod 'PureLayout'
 pod 'SDWebImage'
 pod 'libxlsxwriter'
-pod 'AFNetworking'
 pod 'GDataXML-HTML'
+
 
 
 

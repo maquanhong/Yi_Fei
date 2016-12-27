@@ -48,8 +48,10 @@
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
     NSString *str = [UserDefaultManager getDataByKey:@"user"];
-    oneModel = [manager getDataWith:str];
-     [self createQrCodeImage];
+    if (str.length > 0) {
+        oneModel = [manager getDataWith:str];
+        [self createQrCodeImage];
+    }
 }
 
 #pragma mark 设置导航栏
@@ -93,7 +95,7 @@
         make.size.mas_equalTo(CGSizeMake(WIDTH - 100 , 50));
     }];
     [saveBtn addTarget:self action:@selector(saveImageView) forControlEvents:UIControlEventTouchUpInside];
-
+    
 }
 
 - (void)leftButtonClick {
@@ -111,11 +113,11 @@
     make.size.mas_equalTo(CGSizeMake(WIDTH - 40, WIDTH - 40));
     }];
     
-   UIImageView *imageVIew = [[UIImageView alloc] init];
-    imageVIew.layer.cornerRadius = 5;
-    imageVIew.layer.masksToBounds = YES;
-    [view addSubview:imageVIew];
-    [imageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
+   _imageVIew = [[UIImageView alloc] init];
+    _imageVIew.layer.cornerRadius = 5;
+    _imageVIew.layer.masksToBounds = YES;
+    [view addSubview:_imageVIew];
+    [_imageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(view);
         make.size.mas_equalTo(CGSizeMake(200 ,200));
     }];
@@ -162,7 +164,7 @@
      oneModel.email = @"0";
     }
     
-    if ([oneModel.email length] <= 0 ) {
+    if ([oneModel.adderss length] <= 0  ) {
        oneModel.adderss = @"0";
     }
     
@@ -190,7 +192,7 @@
     avatar = [UIImage imageNamed:@"Null"];
     }
     [HMScannerController cardImageWithCardName:str avatar:avatar scale:0.2 completion:^(UIImage *image) {
-        imageVIew.image = image;
+        _imageVIew.image = image;
     }];
 }
 

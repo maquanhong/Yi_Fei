@@ -24,7 +24,9 @@
 
 @property (nonatomic,strong) UIView *symView;
 
-@property (nonatomic, strong) UIButton  *Btn;
+@property (nonatomic, strong) UIButton  *btnOne;
+@property (nonatomic, strong) UIButton  *btnTwo;
+@property (nonatomic, strong) UIButton  *btnThree;
 
 @end
 
@@ -50,18 +52,17 @@
 - (void)addSymbol
 {
     
-UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
-    _symView = symbol;
-    symbol.backgroundColor =  BACKCOLOR;
+_symView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
+    _symView.backgroundColor =  BACKCOLOR;
     
     //添加标志图
     UIImageView *img = [[UIImageView alloc] init];
     img.layer.cornerRadius = 5;
     img.layer.masksToBounds = YES;
-    [symbol addSubview:img];
+    [_symView addSubview:img];
     [img mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(symbol).offset(30);
-        make.bottom.mas_equalTo(symbol.mas_bottom).offset(-50);
+        make.leading.equalTo(_symView).offset(30);
+        make.bottom.mas_equalTo(_symView.mas_bottom).offset(-50);
         make.size.mas_equalTo(CGSizeMake(80, 80));
     }];
     
@@ -84,19 +85,19 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text  = @"我是供应商";
     titleLabel.textColor = [UIColor whiteColor];
-    [symbol addSubview:titleLabel];
+    [_symView addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(symbol);
-        make.top.mas_equalTo(symbol.mas_top).offset(30);
+        make.centerX.equalTo(_symView);
+        make.top.mas_equalTo(_symView.mas_top).offset(30);
         make.height.mas_equalTo(20);
     }];
     
     UIButton *btn = [[UIButton alloc] init];
     [btn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
-    [symbol addSubview:btn];
+    [_symView addSubview:btn];
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(symbol).offset(10);
-        make.top.mas_equalTo(symbol.mas_top).offset(20);
+        make.leading.equalTo(_symView).offset(10);
+        make.top.mas_equalTo(_symView.mas_top).offset(20);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     [btn addTarget:self action:@selector(returnNextView) forControlEvents:UIControlEventTouchUpInside];
@@ -107,8 +108,8 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     label.font = [UIFont systemFontOfSize:16];
     label.textColor = [UIColor whiteColor];
     [label sizeToFit];
-    [symbol addSubview:label];
-    [self.view addSubview:symbol];
+    [_symView addSubview:label];
+    [self.view addSubview:_symView];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(img.mas_right).offset(15);
         make.centerY.equalTo(img);
@@ -124,20 +125,67 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
 #pragma mark - 添加下面三个按钮
 - (void)addBtns
 {
+    
     NSArray *strs = @[@"我的商品",@"我的客户",@"报价"];
-    for (NSInteger i = 0; i < 3; i++) {
-        _Btn  = [[UIButton alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_symView.frame) + 15 + i * 60, WIDTH - 30, 50)];
-        _Btn.backgroundColor = [UIColor whiteColor];
-        [_Btn setTitle:strs[i] forState:UIControlStateNormal];
-        [_Btn setTitleColor:COLOR forState:UIControlStateNormal];
-        _Btn.layer.cornerRadius = 5.0;
-        _Btn.layer.masksToBounds =YES;
-        _Btn.tag = 2200 + i;
-        [_Btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        _Btn.layer.borderColor = [UIColor lightGrayColor] .CGColor;
-        _Btn.layer.borderWidth = 1;
-        [self.view addSubview:_Btn];
-    }
+    _btnOne = [[UIButton alloc] init];
+    [_btnOne setTitle:strs[0] forState:UIControlStateNormal];
+    _btnOne.backgroundColor = [UIColor whiteColor];
+    _btnOne.layer.borderColor = [UIColor lightGrayColor].CGColor;
+     _btnOne.layer.borderWidth = 1.0;
+    _btnOne.layer.cornerRadius = 5;
+    _btnOne.layer.masksToBounds = YES;
+    _btnOne.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_btnOne setTitleColor:COLOR forState:UIControlStateNormal];
+    [self.view addSubview:_btnOne];
+    [_btnOne mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_symView.mas_bottom).offset(10);
+        make.leading.mas_equalTo(self.view).offset(20);
+        make.trailing.mas_equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(50);
+    }];
+    _btnOne.tag = 1864;
+    [_btnOne addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    _btnTwo = [[UIButton alloc] init];
+    [_btnTwo setTitle:strs[1] forState:UIControlStateNormal];
+    _btnTwo.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_btnTwo setTitleColor:COLOR forState:UIControlStateNormal];
+    _btnTwo.backgroundColor = [UIColor whiteColor];
+    _btnTwo.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _btnTwo.layer.borderWidth = 1.0;
+    _btnTwo.layer.cornerRadius = 5;
+    _btnTwo.layer.masksToBounds = YES;
+    [self.view addSubview:_btnTwo];
+    [_btnTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_btnOne.mas_bottom).offset(10);
+        make.leading.mas_equalTo(self.view).offset(20);
+        make.trailing.mas_equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(50);
+    }];
+    _btnTwo.tag = 1865;
+    [_btnTwo addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    _btnThree = [[UIButton alloc] init];
+    [_btnThree setTitle:strs[0] forState:UIControlStateNormal];
+    _btnThree.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_btnThree setTitleColor:COLOR forState:UIControlStateNormal];
+    _btnThree.backgroundColor = [UIColor whiteColor];
+    _btnThree.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _btnThree.layer.borderWidth = 1.0;
+    _btnThree.layer.cornerRadius = 5;
+    _btnThree.layer.masksToBounds = YES;
+    [self.view addSubview:_btnThree];
+    [_btnThree mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_btnTwo.mas_bottom).offset(10);
+        make.leading.mas_equalTo(self.view).offset(20);
+        make.trailing.mas_equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(50);
+    }];
+    _btnThree.tag = 1866;
+    [_btnThree addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 #pragma mark - btn按钮的点击事件
@@ -147,13 +195,13 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     SupplyListController *BuyerVc = [[SupplyListController alloc] init];
     OfferController *offerVC=[[OfferController alloc] init];
     switch (sender.tag) {
-        case 0:
+        case 1864:
             [self.navigationController pushViewController:vc animated:YES];
             break;
-        case 1:
+        case 1865:
             [self.navigationController pushViewController:BuyerVc animated:YES];
             break;
-        case 2:
+        case 1866:
             [self.navigationController pushViewController:offerVC animated:YES];
             break;
         default:
@@ -166,6 +214,10 @@ UIView *symbol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
 }
+
+
+
+
 
 
 @end

@@ -37,14 +37,10 @@
 
 @implementation SupplyListController
 
-
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self loadData];
 }
-
-
 
 
 //数据的加载
@@ -55,8 +51,6 @@
     _listArray = [NSMutableArray arrayWithArray:[_manager getData]];
     [self addContentView];
 }
-
-
 
 
 - (void)viewDidLoad {

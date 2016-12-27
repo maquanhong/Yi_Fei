@@ -24,7 +24,10 @@
 
 @property (nonatomic,strong) UIView *symView;
 
-@property (nonatomic, strong) UIButton  *Btn;
+@property (nonatomic, strong) UIButton  *btnOne;
+@property (nonatomic, strong) UIButton  *btnTwo;
+@property (nonatomic, strong) UIButton  *btnThree;
+
 
 @end
 
@@ -128,19 +131,62 @@
 - (void)addBtns
 {
     NSArray *strs = @[@"我的商品",@"我的供应商",@"询价"];
-    for (NSInteger i = 0; i < 3; i++) {
-        _Btn  = [[UIButton alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_symView.frame) + 15 + i * 60, WIDTH - 30, 50)];
-        _Btn.backgroundColor = [UIColor whiteColor];
-        [_Btn setTitle:strs[i] forState:UIControlStateNormal];
-        [_Btn setTitleColor:COLOR forState:UIControlStateNormal];
-        _Btn.layer.cornerRadius = 5.0;
-        _Btn.layer.masksToBounds =YES;
-        _Btn.tag = 2200 + i;
-        [_Btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        _Btn.layer.borderColor = [UIColor lightGrayColor] .CGColor;
-        _Btn.layer.borderWidth = 1;
-        [self.view addSubview:_Btn];
-    }
+    _btnOne = [[UIButton alloc] init];
+    [_btnOne setTitle:strs[0] forState:UIControlStateNormal];
+    _btnOne.backgroundColor = [UIColor whiteColor];
+    _btnOne.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _btnOne.layer.borderWidth = 1.0;
+    _btnOne.layer.cornerRadius = 5;
+    _btnOne.layer.masksToBounds = YES;
+    _btnOne.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_btnOne setTitleColor:COLOR forState:UIControlStateNormal];
+    [self.view addSubview:_btnOne];
+    [_btnOne mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_symView.mas_bottom).offset(10);
+        make.leading.mas_equalTo(self.view).offset(20);
+        make.trailing.mas_equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(50);
+    }];
+    _btnOne.tag = 1677;
+    [_btnOne addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _btnTwo = [[UIButton alloc] init];
+    [_btnTwo setTitle:strs[1] forState:UIControlStateNormal];
+    _btnTwo.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_btnTwo setTitleColor:COLOR forState:UIControlStateNormal];
+    _btnTwo.backgroundColor = [UIColor whiteColor];
+    _btnTwo.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _btnTwo.layer.borderWidth = 1.0;
+    _btnTwo.layer.cornerRadius = 5;
+    _btnTwo.layer.masksToBounds = YES;
+    [self.view addSubview:_btnTwo];
+    [_btnTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_btnOne.mas_bottom).offset(10);
+        make.leading.mas_equalTo(self.view).offset(20);
+        make.trailing.mas_equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(50);
+    }];
+    _btnTwo.tag = 1678;
+    [_btnTwo addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _btnThree = [[UIButton alloc] init];
+    [_btnThree setTitle:strs[0] forState:UIControlStateNormal];
+    _btnThree.titleLabel.font = [UIFont systemFontOfSize:18];
+    [_btnThree setTitleColor:COLOR forState:UIControlStateNormal];
+    _btnThree.backgroundColor = [UIColor whiteColor];
+    _btnThree.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _btnThree.layer.borderWidth = 1.0;
+    _btnThree.layer.cornerRadius = 5;
+    _btnThree.layer.masksToBounds = YES;
+    [self.view addSubview:_btnThree];
+    [_btnThree mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_btnTwo.mas_bottom).offset(10);
+        make.leading.mas_equalTo(self.view).offset(20);
+        make.trailing.mas_equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(50);
+    }];
+    _btnThree.tag = 1679;
+    [_btnThree addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - btn按钮的点击事件
@@ -150,33 +196,19 @@
     BuyerViewController *BuyerVc = [[BuyerViewController alloc] init];
     AskPriceController *offerVC=[[AskPriceController alloc] init];
     switch (sender.tag) {
-        case 0:
+        case 1677:
             [self.navigationController pushViewController:vc animated:YES];
             break;
-        case 1:
+        case 1678:
             [self.navigationController pushViewController:BuyerVc animated:YES];
             break;
-        case 2:
+        case 1679:
             [self.navigationController pushViewController:offerVC animated:YES];
             break;
         default:
             break;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
