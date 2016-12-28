@@ -91,13 +91,20 @@
 
 - (void)btnClick:(UIButton *)sender
 {
-    ScanQrcode *qrVC = [[ScanQrcode alloc] init];
+
     ScanCardController *cardVC = [[ScanCardController alloc] init];
+    
+    ScanQrcode *qrVC = [[ScanQrcode alloc] init];
+       qrVC.style = [self setQRCode];
+       qrVC.isQQSimulator = YES;
+       qrVC.isVideoZoom = YES;
     
     
     switch (sender.tag) {
         case 1870:
+        {
     [self.navigationController pushViewController:qrVC animated:YES];
+        }
             break;
         case 1871:
     [self.navigationController pushViewController:cardVC animated:YES];
@@ -106,6 +113,38 @@
             break;
     }
 }
+
+
+-(LBXScanViewStyle*)setQRCode{
+
+    //设置扫码区域参数设置
+    //创建参数对象
+    LBXScanViewStyle *style = [[LBXScanViewStyle alloc]init];
+    
+    //矩形区域中心上移，默认中心点为屏幕中心点
+    style.centerUpOffset = 44;
+    
+    //扫码框周围4个角的类型,设置为外挂式
+    style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle_Outer;
+    
+    //扫码框周围4个角绘制的线条宽度
+    style.photoframeLineW = 6;
+    
+    //扫码框周围4个角的宽度
+    style.photoframeAngleW = 24;
+    
+    //扫码框周围4个角的高度
+    style.photoframeAngleH = 24;
+    
+    //扫码框内 动画类型 --线条上下移动
+    style.anmiationStyle = LBXScanViewAnimationStyle_LineMove;
+    
+    //线条上下移动图片
+    style.animationImage = [UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_light_green"];
+    return style;
+}
+
+
 
 
 

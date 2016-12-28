@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditCardSupplyCell" rowHeight="43" id="KGk-i7-Jjw" customClass="EditCardSupplyCell">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="43"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="406" height="42"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsp-dm-RSX">
+                        <rect key="frame" x="18" y="11.5" width="80" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Kr2-OL-y9l"/>
+                            <constraint firstAttribute="height" constant="20" id="P1O-9O-v31"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-0b-Std">
+                        <rect key="frame" x="103" y="0.0" width="1" height="42.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="iNE-Bl-hXl"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fuw-7r-E2i">
+                        <rect key="frame" x="109" y="1" width="289" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Dka-qS-t0a"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Fuw-7r-E2i" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3Pp-sW-Sjp"/>
+                    <constraint firstItem="EgT-0b-Std" firstAttribute="leading" secondItem="Fsp-dm-RSX" secondAttribute="trailing" constant="5" id="4Kz-gj-pyJ"/>
+                    <constraint firstAttribute="bottom" secondItem="EgT-0b-Std" secondAttribute="bottom" id="Hld-a2-8J4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Fuw-7r-E2i" secondAttribute="trailing" id="INH-pM-wRb"/>
+                    <constraint firstItem="Fsp-dm-RSX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dBw-TZ-dok"/>
+                    <constraint firstItem="Fuw-7r-E2i" firstAttribute="leading" secondItem="EgT-0b-Std" secondAttribute="trailing" constant="5" id="daU-JX-wSw"/>
+                    <constraint firstItem="EgT-0b-Std" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tRf-7i-92a"/>
+                    <constraint firstItem="Fsp-dm-RSX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="yrz-DO-gYL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lineView" destination="EgT-0b-Std" id="vL4-y0-aH5"/>
+                <outlet property="textFiled" destination="Fuw-7r-E2i" id="YGS-ej-mNC"/>
+                <outlet property="titleLabel" destination="Fsp-dm-RSX" id="TKs-6H-dv1"/>
+            </connections>
+            <point key="canvasLocation" x="-158" y="-206"/>
+        </tableViewCell>
+    </objects>
+</document>

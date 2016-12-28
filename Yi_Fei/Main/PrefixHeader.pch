@@ -9,15 +9,21 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-//界面
+//扫描二维码
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LBXScanViewController.h"
+#import "LBXAlertAction.h"
+#import "LBXScanResult.h"
+#import "LBXScanVideoZoomView.h"
+
 
 #import "FMDBOneList.h" //建的第一张表
 #import "shopData.h"
 
 #import "ProductionData.h"
 #import "NewTwoList.h" //建的第二张表
+
 
 #import "Masonry.h"
 #import "BackButton.h"
@@ -36,7 +42,6 @@
 
 
 #pragma mark 颜色的的设置
-
 //背景颜色
 #define  BACKCOLOR [UIColor colorWithRed:58/255.0 green:165/255.0 blue:245/255.0 alpha:1.0]
 
@@ -58,6 +63,38 @@
 
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+
+
+
+#define ERROR_OK @"1"
+#define ERROR_SERVER @"服务器请求超时，请重试"
+#define ERROR_NULL @"识别结果为空，请重新拍照或者导入"
+#define ERROR_TIMEOUT @"识别错误，请检查手机时间"
+#define ERROR_NotReachable @"无网络连接，请连接网络"
+
+enum
+{
+    kerror = 0,
+    kname,
+    kcompany,
+    kdepartment,
+    kjobtitle,
+    ktel_main,
+    ktel_mobile,
+    ktel_home,
+    Ktel_inter,
+    kfax,
+    kpager,
+    kweb,
+    kemail,
+    kaddress,
+    kpostcode,
+};
+
+
+
 
 
 #endif /* PrefixHeader_pch */
