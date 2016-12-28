@@ -107,7 +107,6 @@
 
 
 #pragma mark tableView的代理
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return  _titleArray.count;
 }
