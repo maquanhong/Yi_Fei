@@ -5,4 +5,268 @@
   Created by maquanhong on 2016/12/21.
   Copyright © 2016年 ZMJPersonal. All rights reserved.
 */
+//登录注册
 "Login"="登录";
+"registered" = "注册";
+"use" = "使用";
+"account" = "请输入邮箱账号";
+"password" = "请输入密码";
+"getpassword" = "获取验证码";
+"recive" = "我已经阅读并接受";
+"proticol" = "《EasyFair服务协议》";
+"phone" = "请输入手机号或邮箱";
+"Verification" = "输入验证码";
+"Pleasepassword" = "请输入密码";
+"info" = "消息";
+"information" = "咨询消息";
+"trading" = "交易消息";
+//Home页面
+"system" = "系统消息";
+"mySupply" = "我是供应商";
+"myXustomer" = "我是采购商";
+"Business" = "商机";
+//商机
+"productPulish" = "商品发布";
+"demandPulish" = "需求发布";
+"exhibitionInfo" = "展会信息";
+//需求发布
+"add" = "添加";
+"confirmPulish" = "确认并发布";
+"chooseSupply" = "选择供应商";
+"chooseProduct" = "商品选择";
+"completeAdd" = "此供应商已添加";
+"completeProduct" = "此商品已添加";
+"mine" = "我的供应商";
+"allSupply" = "全行业供应商";
+"prompt" = "提示";
+"determine" = "确定";
+//产品发布
+"mineCustomer" = "我的客户";
+"chooseBuyer" = "选择采购商";
+"completeBuyerAdd" = "此采购商已添加";
+
+
+"account" = "请输入邮箱账号";
+"account" = "请输入邮箱账号";
+"account" = "请输入邮箱账号";
+"account" = "请输入邮箱账号";
+"account" = "请输入邮箱账号";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

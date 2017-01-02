@@ -168,7 +168,7 @@ _symView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     
     
     _btnThree = [[UIButton alloc] init];
-    [_btnThree setTitle:strs[0] forState:UIControlStateNormal];
+    [_btnThree setTitle:strs[2] forState:UIControlStateNormal];
     _btnThree.titleLabel.font = [UIFont systemFontOfSize:18];
     [_btnThree setTitleColor:COLOR forState:UIControlStateNormal];
     _btnThree.backgroundColor = [UIColor whiteColor];
@@ -185,7 +185,6 @@ _symView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     }];
     _btnThree.tag = 1866;
     [_btnThree addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 #pragma mark - btn按钮的点击事件
@@ -214,9 +213,6 @@ _symView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
 }
-
-
-
 
 
 

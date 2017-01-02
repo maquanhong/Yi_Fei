@@ -19,6 +19,9 @@
 #import "tableViewFooterView.h"
 #import "MyProductionController.h"
 #import "AskPriceList.h"
+#import "OneViewController.h"
+#import "TwoViewController.h"
+#import "UserDefaultManager.h"
 
 
 @interface AddThreeController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
@@ -78,8 +81,7 @@
 
 }
 
--(void)back
-{
+-(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -120,21 +122,35 @@
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
     }else{
-        
+        if (self.identifer == 7) {
+        _shopObj.record = @"retention";
         //进行收藏
         [manager insertDataModel:_shopObj];
-        MyProductionController *myVC = [[ MyProductionController alloc] init];
-        for (MyProductionController * controller in self.navigationController.viewControllers) { //遍历
-            if ([controller isKindOfClass:[MyProductionController class]]) { //这里判断是否为你想要跳转的页面
+        OneViewController *myVC = [[ OneViewController alloc] init];
+        for (OneViewController * controller in self.navigationController.viewControllers) { //遍历
+            if ([controller isKindOfClass:[OneViewController class]]) { //这里判断是否为你想要跳转的页面
                 myVC = controller;
             }
         }
         if (myVC) {
             [self.navigationController popToViewController:myVC animated:YES]; //跳转
         }
+        }else if (self.identifer == 8){
+        _shopObj.record = @"reserved";
+        //进行收藏
+        [manager insertDataModel:_shopObj];
+        TwoViewController *myVC = [[ TwoViewController alloc] init];
+        for (TwoViewController * controller in self.navigationController.viewControllers) { //遍历
+            if ([controller isKindOfClass:[TwoViewController class]]) { //这里判断是否为你想要跳转的页面
+                myVC = controller;
+            }
+        }
+        if (myVC) {
+    [self.navigationController popToViewController:myVC animated:YES]; //跳转
+        }
     }
 }
-
+}
 
 #pragma mark tableVie的代理方法
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -385,7 +401,6 @@
         }else{
             _shopObj.shopDescribe = @"";
         }
-        
     }
 }
 
@@ -419,7 +434,6 @@
     //   photoController.roundColor = [UIColor greenColor];
     
     [photoController showIn:self result:^(id responseObject){
-        
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
         

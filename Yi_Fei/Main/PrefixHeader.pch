@@ -39,6 +39,7 @@
 #import "SVProgressHUD.h"
 #import "PopView.h"
 #import "SupplyModel.h"
+#import "Language.h"
 
 
 #pragma mark 颜色的的设置

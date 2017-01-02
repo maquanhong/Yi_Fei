@@ -15,12 +15,15 @@
 #import "ParsingController.h"
 #import "CreateSupplyPDF.h"
 #import "AskWayController.h"
+#import "BuyerComeOut.h"
+#import "OfferPriceModel.h"
 
 
 @interface SendWwayController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate,PopViewDelegate>
 {
     SendDataViewCell *Firstell;
     SendDataTwoViewCell *secondCell;
+    BuyerComeOut *_outBuyer;
     NSInteger  _index;
     NSInteger _num;
     NSInteger _pdf;
@@ -44,6 +47,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@",@"ojgsosgrlr");
     [self createNavigationView];
     _flag = 1;
     _TitleArray = [[NSArray alloc] initWithObjects:@"发送方式",@"资料格式", nil];
@@ -205,8 +209,14 @@ if (myVC) {
 
 #pragma mark 点击发送按钮
 -(void)sendClickBtn:(UIButton*)sender{
-    if (_index == 1501 && _num == 1600) {  //发送Excel
-      
+    
+    if (_index == 1500 && _num == 1600) {  //发送Excel
+        
+        _outBuyer = [[BuyerComeOut alloc] init];
+        
+        _outBuyer.objcArray = _gggArray;
+        [_outBuyer sendToSupplyExcel];
+        
         
     }else if (_index == 1501 && _num == 1601){  //发送pdf
 
@@ -217,6 +227,7 @@ if (myVC) {
         
         NSLog(@"发送蓝牙Excel");
     }else if (_index == 1500 && _num == 1601){
+        
         
         
         NSLog(@"发送蓝牙Pdf");
@@ -325,6 +336,30 @@ if (myVC) {
         self.documentController = nil;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

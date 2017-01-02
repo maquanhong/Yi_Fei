@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScanViewController : UIViewController
+@interface ScanViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+    NSString *_dataStr;
+}
+
+@property (nonatomic, copy) NSString *resultStr;
 
 
 

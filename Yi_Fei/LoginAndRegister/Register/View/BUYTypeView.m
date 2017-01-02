@@ -89,6 +89,7 @@
     [self addSubview:_typeThree];
     
     _typeFour = [[TypeView alloc] init];
+    _typeFour.titleLabel.text = @"灯罩/灯柱";
     [self addSubview:_typeFour];
     
     [_typeOne mas_makeConstraints:^(MASConstraintMaker *make) {

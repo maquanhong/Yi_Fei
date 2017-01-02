@@ -19,6 +19,7 @@
 #import "UserModel.h"
 #import "UserList.h"
 #import "UserDefaultManager.h"
+#import "BUYHomeControl.h"
 
 
 @interface SettingTableViewController (){
@@ -169,6 +170,11 @@
             break;
     }
 }
+
+
+
+
+
 
 
 

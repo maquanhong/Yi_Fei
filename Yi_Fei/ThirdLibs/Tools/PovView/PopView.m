@@ -22,7 +22,7 @@
 @end
 @implementation PopView
 
-- (id)initWithFrame:(CGRect)frame delegate:(id<SSPopupDelegate>)delegate
+- (id)initWithFrame:(CGRect)frame delegate:(id<PopViewDelegate>)delegate
 {
     self = [super init];
     if ((self = [super initWithFrame:frame]))

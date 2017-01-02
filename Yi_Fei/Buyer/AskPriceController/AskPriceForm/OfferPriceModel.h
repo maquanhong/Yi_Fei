@@ -14,6 +14,7 @@
 
 @property (nonatomic, assign) int ind;
 
+
 @property (nonatomic, copy) NSString *flag;    //询价类型
 
 @property (nonatomic, copy) NSString *companyID; //公司货号
@@ -30,7 +31,6 @@
 @property (nonatomic, copy) NSString *shopDescribe;//商品备注
 @property (nonatomic, copy) NSString *shopInfo;  //商品简介
 
-
 @property(nonatomic,copy)NSString *shopCustom;  //自定义的商品类型
 @property(nonatomic,copy)NSString *shopContent; //自定义的商品内容
 
@@ -42,7 +42,30 @@
 @property (nonatomic, copy) NSString *shopSpecific;  //规格
 
 
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

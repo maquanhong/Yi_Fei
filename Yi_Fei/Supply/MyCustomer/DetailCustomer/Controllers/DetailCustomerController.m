@@ -31,7 +31,6 @@
 
 @implementation DetailCustomerController
 
-
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -41,11 +40,10 @@
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNav];
-    self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    self.view.backgroundColor= INTERFACECOLOR;
     [self addContentView];
 }
 
@@ -62,7 +60,6 @@
 }
 
 - (void)leftButtonClick {
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -137,12 +134,15 @@
     cell.layer.masksToBounds=YES;
     cell.layer.cornerRadius=5.0;
     cell.backgroundColor=[UIColor whiteColor];
-    cell.imagV.backgroundColor=[UIColor orangeColor];
     cell.label.text= _model.companyName;
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
-    cell.imagV.image  = [UIImage imageWithContentsOfFile:imagePath];
+        if ([_model.companyLogo length] > 0) {
+            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
+        cell.imagV.image= [UIImage imageWithContentsOfFile:imagePath];
+        }else{
+        cell.imagV.image= [UIImage imageNamed:@"Null"];
+        }
     return cell;
     }else if (indexPath.section == 1){
         
@@ -167,7 +167,6 @@
             
             return cell;
         } else if (self.selectIndexInSection1 == 2) {
-            
             static NSString *cellIdent4=@"cell2_2";
             CustomerFourCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent4];
             if (cell==nil) {

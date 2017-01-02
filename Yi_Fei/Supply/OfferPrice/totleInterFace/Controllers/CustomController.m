@@ -220,7 +220,7 @@ cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
         {
   TwoViewController *ReserveVC = [[TwoViewController alloc] init];
     CustomerModel *model = _listArray[indexPath.row];
-        ReserveVC.customerName = model.customerName;
+    ReserveVC.customerName = model.customerName;
   [self.navigationController pushViewController:ReserveVC animated:YES];
         }
             break;

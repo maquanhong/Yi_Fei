@@ -8,7 +8,6 @@
 
 #import "BUYRegisterControl.h"
 #import "BUYTypeView.h"
-#import "BUYTextView.h"
 #import "BUYAgreementController.h"
 #import "BUYLoginControl.h"
 #import "BUYButton.h"
@@ -54,7 +53,7 @@
 #pragma mark 创建navgationView
 -(void)createNavigationView
 {
-    self.navigationItem.title = @"注册";
+    self.navigationItem.title = NSLocalizedString(@"registered", nil);
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
@@ -85,7 +84,7 @@
     }];
 
     _textOne =[[UITextField alloc] init];
-    _textOne.placeholder = @"请输入手机号或邮箱";
+    _textOne.placeholder = NSLocalizedString(@"phone", nil);
     _textOne.font = [UIFont systemFontOfSize:14];
     [view addSubview:_textOne];
     [_textOne mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,13 +109,13 @@
     
 
     _textTwo =[[UITextField alloc] init];
-    _textTwo.placeholder = @"输入验证码";
+    _textTwo.placeholder =NSLocalizedString(@"Verification", nil);
     _textTwo.font = [UIFont systemFontOfSize:14];
     [backView addSubview:_textTwo];
 
     
     _getBtn  =[[UIButton alloc] init];
-    [_getBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_getBtn setTitle:NSLocalizedString(@"getpassword", nil) forState:UIControlStateNormal];
     [_getBtn setTitleColor:BACKCOLOR forState:UIControlStateNormal];
     _getBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     _getBtn.layer.borderWidth = 1.0;
@@ -152,7 +151,7 @@
     }];
     
     _textThree =[[UITextField alloc] init];
-    _textThree.placeholder = @"请输入密码";
+    _textThree.placeholder = NSLocalizedString(@"Pleasepassword", nil);
     _textThree.font = [UIFont systemFontOfSize:14];
     [_viewOne addSubview:_textThree];
     [_textThree mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -162,7 +161,6 @@
         make.height.mas_equalTo(35);
     }];
 }
-
 
 #pragma mark 创建行业类型
 -(void)createtypeView{
@@ -196,7 +194,7 @@
     
     UIButton *btn = [[UIButton alloc] init];
     btn.backgroundColor = BACKCOLOR;
-    [btn setTitle:@"注册" forState:UIControlStateNormal];
+    [btn setTitle:NSLocalizedString(@"registered", nil) forState:UIControlStateNormal];
     btn.layer.cornerRadius = 5;
     btn.layer.masksToBounds = YES;
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -230,13 +228,6 @@
 
 
 
-
-
-
-
-
-
-
 #pragma mark 三级联动
 - (void)clickViewTag:(NSInteger)tag{
     switch (tag) {
@@ -261,14 +252,12 @@
     _industryModel = [[IndustryModel alloc] init];
     NSMutableArray *array = [_industryModel getIndustryNumber:_indexOne threeNumber:_indexTwo];
     [self getThreeIndestry:[array copy]];
-      
+
         }
             break;
         default:
             break;
     }
-
-
 }
 
 //得到全部

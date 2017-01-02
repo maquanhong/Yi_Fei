@@ -10,6 +10,7 @@
 #import "BUYHomeControl.h"
 #import "NavigationControl.h"
 #import "CentralBlueTooth.h"
+#import "NSBundle+Language.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,12 @@
     //设置状态栏样式
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"myLanguage"] && ![[[NSUserDefaults standardUserDefaults] objectForKey:@"myLanguage"] isEqualToString:@""]) {
+        [NSBundle setLanguage:[[NSUserDefaults standardUserDefaults] objectForKey:@"myLanguage"]];
+    }
+    
     //设置跟控制器
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     BUYHomeControl *login = [[BUYHomeControl alloc] init];

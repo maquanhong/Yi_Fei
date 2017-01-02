@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomerScanController : UIViewController
+@interface CustomerScanController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+    NSString *_dataStr;
+}
+
+@property (nonatomic, copy) NSString *resultStr;
 
 @end

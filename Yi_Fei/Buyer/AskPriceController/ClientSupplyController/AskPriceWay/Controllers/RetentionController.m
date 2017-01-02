@@ -12,7 +12,7 @@
 #import "AskWayController.h"
 #import "SendWwayController.h"
 #import "EditPriceController.h"
-
+#import "BuyerComeOut.h"
 
 @interface RetentionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>
 {
@@ -79,7 +79,6 @@
     [searchBtn setTitleColor:COLOR forState:UIControlStateNormal];
     [self.view addSubview:searchBtn];
     
-    
     UIView *imageBackView = [[UIView alloc]init];
     imageBackView.userInteractionEnabled = YES;
     imageBackView.layer.cornerRadius = 8;
@@ -121,9 +120,9 @@
         make.width.mas_equalTo(50);
     }];
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
-    
-    
 }
+
+
 
 
 #pragma mark 创建tableView视图
@@ -134,7 +133,6 @@
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:self.tableview];
-    
     
     UILongPressGestureRecognizer *lp = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGesture:)];
     //触发长按手势的最小时间间隔，秒
@@ -194,9 +192,12 @@
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
+    if ([arrayimg[0] length] > 0) {
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.iconImageView.image= [UIImage imageWithContentsOfFile:imagePath];
-    
+    }else{
+    cell.iconImageView.image= [UIImage imageNamed:@"Null"];
+    }
     if (dataModel.shopPrice.length > 0 ) {
         cell.price.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{
@@ -217,36 +218,13 @@
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
 }
+
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -260,7 +238,7 @@
                 cell.selectBtn.hidden=NO;
                 cell.selectBtn.selected=NO;
             }
-            AskWayController *myVC = [[ AskWayController alloc] init];
+        AskWayController *myVC = [[ AskWayController alloc] init];
             for (AskWayController * controller in self.navigationController.viewControllers) {
                 if ([controller isKindOfClass:[AskWayController class]]) {
                     myVC = controller;
@@ -268,7 +246,7 @@
             }
             myVC.rightBtnOne.hidden = YES;
             myVC.rightBtnTwo.hidden = NO;
-            [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
+    [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
             _isPress = NO;
         }else{
             NSArray *allCells=[self.tableview visibleCells];
@@ -288,22 +266,27 @@
 }
 
 
+
+
 -(void)sendVC{
+    
     AskWayController *myVC = [[ AskWayController alloc] init];
     for (AskWayController * controller in self.navigationController.viewControllers) {
         if ([controller isKindOfClass:[AskWayController class]]) {
             myVC = controller;
         }
     }
+    NSMutableArray *array = [NSMutableArray array];
     if (_circleArray.count > 0) {
+        for (NSInteger i = 0 ; i < _circleArray.count; i++) {
+            [array addObject:_listArray[i]];
+        }
         SendWwayController *sendVC = [[SendWwayController alloc] init];
-        sendVC.numCount = 0;
+        sendVC.numCount = 1;
+//        sendVC.countArray = [NSArray arrayWithArray:[array copy]];
         [myVC.navigationController pushViewController:sendVC animated:YES];
     }
 }
-
-
-
 
 -(void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{
     NSIndexPath *indexPath =  [_tableview indexPathForCell:cell];
@@ -330,13 +313,7 @@
         default:
             break;
     }
-    
-    
 }
-
-
-
-
 
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -353,6 +330,57 @@
     myVC.rightBtnOne.hidden = NO;
     myVC.rightBtnTwo.hidden = YES;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

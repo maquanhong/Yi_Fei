@@ -8,7 +8,8 @@
 
 #import "AddTwoController.h"
 #import "ZMJAddGoodsTwoView.h"
-#import "ZMJGoodParamViewController.h"
+#import "AddThreeController.h"
+
 #import "BUYButton.h"
 
 
@@ -88,8 +89,9 @@
 #pragma mark 进入最后的页面
 - (void)btnClick:(UIButton*)btn
 {
-    ZMJGoodParamViewController *paramVC = [[ ZMJGoodParamViewController alloc] init];
+    AddThreeController *paramVC = [[ AddThreeController alloc] init];
     paramVC.shopObj = _shopObj;
+    paramVC.identifer = self.identifer;
     [self.navigationController pushViewController:paramVC animated:YES];
 }
 

@@ -205,47 +205,47 @@
         make.height.mas_equalTo(1);
         make.bottom.mas_equalTo(self.mas_bottom);
     }];
-    
 }
 
-- (void)setModel:(SupplyModel *)model{
-    if (model.supplyName.length > 0) {
-        _nameLabel.text = model.supplyName ;
+- (void)setModel:(CustomerModel *)model{
+    
+    if (model.customerName.length > 0) {
+        _nameLabel.text = model.customerName ;
     }else{
         _nameLabel.text = @"";
     }
-    if (model.supplyName.length > 0) {
+    if (model.phone.length > 0) {
         _telLabel.text = model.phone ;
     }else{
         _telLabel.text = @"" ;
     }
     
-    if (model.supplyName.length > 0) {
+    if (model.position.length > 0) {
         _postionLabel.text = model.position ;
     }else{
         _postionLabel.text = @"";
     }
     
-    if (model.supplyName.length > 0) {
+    if (model.emailAddress.length > 0) {
         _emailLabel.text = model.emailAddress ;
     }else{
         _emailLabel.text = @"";
     }
     
     
-    if (model.supplyName.length > 0) {
+    if (model.companyName.length > 0) {
         _companyLabel.text = model.companyName ;
     }else{
         _companyLabel.text = @"" ;
     }
     
-    if (model.supplyName.length > 0) {
+    if (model.companyAddress.length > 0) {
         _addressLabel.text = model.companyAddress ;
     }else{
         _addressLabel.text = @"" ;
     }
     
-    if (model.supplyName.length > 0) {
+    if (model.industryType.length > 0) {
         _careerLabel.text = model.industryType ;
     }else{
         _careerLabel.text = @"" ;

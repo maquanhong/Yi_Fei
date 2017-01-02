@@ -277,12 +277,10 @@
     }
     if (_circleArray.count > 0) {
         SendWwayController *sendVC = [[SendWwayController alloc] init];
-        sendVC.numCount = 0;
+        sendVC.numCount = 2;
         [myVC.navigationController pushViewController:sendVC animated:YES];
     }
 }
-
-
 
 
 -(void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{
@@ -294,9 +292,9 @@
         {
     EditPriceController *prepareVC = [[EditPriceController alloc] init];
     prepareVC.model = _listArray[index];
-    [self.navigationController pushViewController:prepareVC animated:YES];
+[self.navigationController pushViewController:prepareVC animated:YES];
         }
-            break;
+          break;
         case 1281:
         {
     _askManager = [OfferPriceList defaultManager];
@@ -307,16 +305,11 @@
     [_tableview deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [_tableview reloadData];
         }
-            break;
+          break;
         default:
-            break;
+          break;
     }
-    
-    
 }
-
-
-
 
 
 

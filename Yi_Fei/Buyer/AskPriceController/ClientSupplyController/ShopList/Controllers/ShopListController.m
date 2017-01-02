@@ -379,8 +379,13 @@
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
+    if ([arrayimg[0] length] > 0) {
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+     cell.imgV.image= [UIImage imageNamed:@"Null"];
+    }
+
     if (dataModel.shopName.length > 0 ) {
         cell.nameShop.text=[NSString stringWithFormat:@"￥%@",dataModel.shopName];
     }else{

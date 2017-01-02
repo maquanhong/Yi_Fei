@@ -182,7 +182,7 @@
         threeCell.textFiled.tag = 8781 ;
         threeCell.delegate = self;
         threeCell.typeLabel.text = @"价格条款";
-        [self getTypeTwoFromModel:threeCell.typeOne];
+        [self getTypeTwoFromModel:threeCell.typeOne ];
         return threeCell;
     }else if (indexPath.section == 3){
         if (indexPath.row == 0) {
@@ -502,12 +502,11 @@
     if (_model.shopTiaoK.length > 0) {
         threeCell.typeOne.nameLabel.text = _model.shopTiaoK;
         if ([_model.shopTiaoK isEqualToString:@"FOB"]) {
-            UITextField *textField = [self.view viewWithTag:8781];
-            textField.hidden = NO;
+          threeCell.textFiled.hidden = NO;
             if (_model.shopAdderss.length > 0) {
-                textField.text = _model.shopAdderss;
+            threeCell.textFiled.text = _model.shopAdderss;
             }else{
-                textField.text = @"";
+            threeCell.textFiled.text = @"";
             }
         }
     }else{

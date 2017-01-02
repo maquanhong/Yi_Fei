@@ -260,7 +260,7 @@
     _manager = [CustomerList defaultManager];
     CustomerModel *model ;
     model = _listArray[indexPath.row];
-  [_manager deleteNameFromTable:model.customerName];
+  [_manager deleteNameFromTable:model.phone];
   [_listArray removeObjectAtIndex:indexPath.row];
   [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [_tableView reloadData];

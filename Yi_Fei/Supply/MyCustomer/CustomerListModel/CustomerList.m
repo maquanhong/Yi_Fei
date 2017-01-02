@@ -80,7 +80,7 @@ static CustomerList * manager=nil;
 //查找
 - (BOOL)isHasDataIDFromTable:(NSString*)dataId;
 {
-    NSString * isSql = @"select *from Custromer where customerName =?";
+    NSString * isSql = @"select *from Custromer where phone =?";
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,dataId];
     //[set next] 查找当前行 找到继续中查找下一行
@@ -94,7 +94,7 @@ static CustomerList * manager=nil;
 //删除
 - (void)deleteNameFromTable:(NSString*)dataId
 {
-    NSString * deleteSql = @"delete from Custromer where customerName = ?";
+    NSString * deleteSql = @"delete from Custromer where phone = ?";
     if ([_dataBase executeUpdate:deleteSql,dataId]) {
         NSLog(@"删除成功");
     }

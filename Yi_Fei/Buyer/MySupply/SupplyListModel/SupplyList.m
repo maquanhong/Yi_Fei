@@ -86,7 +86,7 @@ static SupplyList * manager=nil;
 //查找
 - (BOOL)isHasDataIDFromTable:(NSString*)dataId;
 {
-    NSString * isSql = @"select *from supply where supplyName =?";
+    NSString * isSql = @"select *from supply where phone =?";
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,dataId];
     //[set next] 查找当前行 找到继续中查找下一行

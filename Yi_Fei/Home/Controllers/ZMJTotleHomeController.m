@@ -126,7 +126,7 @@
 #pragma mark - 添加按钮
 - (void)addBtns
 {
-    NSArray *titleArray = @[@"我是供应商",@"我是采购商",@"商机"];
+    NSArray *titleArray = @[NSLocalizedString(@"mySupply", nil),NSLocalizedString(@"myXustomer", nil),NSLocalizedString(@"Business", nil)];
     for (NSInteger i = 0; i < 3; i++) {
     _Btn  = [[UIButton alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_cycleview.frame) + 15 + i * 60, WIDTH - 30, 50)];
         _Btn.backgroundColor = [UIColor whiteColor];
@@ -150,17 +150,14 @@
         case 2200: {
             ZMJProviderController *buin = [[ZMJProviderController alloc] init];
             [self.navigationController pushViewController:buin animated:YES];
-//            NSLog(@"我是供应商");
             break;
         }
         case 2201: {
             PrividerBusinessControler *prividerVc = [[PrividerBusinessControler alloc] init];
             [self.navigationController pushViewController:prividerVc animated:YES];
-//            NSLog(@"我是采购商");
             break;
         }
         case 2202: {
-//            NSLog(@"商机");
             BusinessChanceViewController *bcVc = [[BusinessChanceViewController alloc] init];
             [self.navigationController pushViewController:bcVc animated:YES];
             break;

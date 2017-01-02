@@ -13,8 +13,6 @@
 
 @property (nonatomic,strong) UIButton *confirmBtn;
 
-
-
 @property (nonatomic,weak) UIView *shuxian;
 
 @end
@@ -27,7 +25,7 @@
     if (!_confirmBtn) {
         _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _confirmBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_confirmBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [_confirmBtn setTitle:NSLocalizedString(@"getpassword", nil) forState:UIControlStateNormal];
         [_confirmBtn setTitleColor:COLOR forState:UIControlStateNormal];
         [_confirmBtn setTitleColor:[UIColor colorWithRed:57/255.0 green:154/255.0 blue:253/255.0 alpha:1.0] forState:UIControlStateHighlighted];
         [_confirmBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -124,7 +122,6 @@
 #pragma mark - 点击获取验证码
 - (void)btnClick
 {
-    NSLog(@"获取验证码");
     //代理，让注册控制器获取邮箱号并且判断是否为邮箱
     if ([self.delegate respondsToSelector:@selector(judgeMail)]) {
         [self.delegate judgeMail];

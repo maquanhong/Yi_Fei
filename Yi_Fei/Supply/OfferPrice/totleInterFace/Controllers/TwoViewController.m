@@ -18,6 +18,7 @@
 #import "AskPriceList.h"
 
 
+
 @interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource,BuyerAskCellDelegate,FooterViewDelegate,HeaderOneViewDelegate,UWDatePickerViewDelegate>
 {
     UWDatePickerView *_pickerView;
@@ -95,9 +96,8 @@
 
 -(void)rightButtonClick{
    
-    
-}
 
+}
 
 -(void)createTableView{
     
@@ -108,7 +108,7 @@
     maskLayer.frame = _view.bounds;
     maskLayer.path = maskPath.CGPath;
     _view.layer.mask = maskLayer;
-    _view.titleLabel.text = @"激发";
+    _view.titleLabel.text = self.customerName;
     _view.delegate = self;
     [self.view addSubview:_view];
     
@@ -130,11 +130,11 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 -(void)clickBtn{
     
   AddController *addVC = [[AddController alloc] init];
-      addVC.identifer = 8;
+    addVC.identifer = 8;
+    addVC.name = self.customerName;
   [self.navigationController pushViewController:addVC animated:YES];
     
 }
-
 
 
 #pragma mark tableView的代理
@@ -188,16 +188,19 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
             break;
         case 1281:
         {
-            
-            
+    _manager = [AskPriceList defaultManager];
+    AskPriceModel *dataModel = [[AskPriceModel alloc] init];
+    dataModel = _listArray[indexPath.row];
+    [_manager deleteNameFromTable:dataModel.ind];
+    [_listArray removeObjectAtIndex:indexPath.row];
+    [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_tableView reloadData];
         }
             break;
-            
         default:
             break;
     }
 }
-
 
 #pragma mark 选择日期
 -(void)clickPiceDate{
@@ -212,7 +215,6 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _pickerView.delegate = self;
     _pickerView.type = type;
     [self.view addSubview:_pickerView];
-    
 }
 
 - (void)getSelectDate:(NSString *)date type:(DateType)type {
@@ -223,7 +225,6 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         }
             break;
         case DateTypeOfEnd:
-            
             break;
         default:
             break;

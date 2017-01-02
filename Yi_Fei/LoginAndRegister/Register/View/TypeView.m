@@ -41,7 +41,7 @@
         make.bottom.mas_equalTo(self.mas_bottom);
         
     }];
-
+    
 }
 
 

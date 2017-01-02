@@ -12,8 +12,8 @@
 #import "DetailShopViewController.h"
 #import "MyProductionController.h"
 #import "Header.h"
-
 #import "ZMJAddGoodsOneCell.h"
+
 
 @interface ZMJNewProductionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
@@ -29,7 +29,9 @@
 
 @property(nonatomic,strong)ZMJAddGoodsOneCell *cell;
 
+
 @end
+
 
 
 @implementation ZMJNewProductionController
@@ -41,6 +43,7 @@
     [self createNaviGationView];
     [self addContentView];
 }
+
 
 #pragma mark 创建导航视图
 -(void)createNaviGationView
@@ -58,11 +61,10 @@
     rightBtn.titleLabel.font=[UIFont systemFontOfSize:12.0];
     UIBarButtonItem* rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem=rightBtnItem;
-    
 }
 
--(void)back
-{
+
+-(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 

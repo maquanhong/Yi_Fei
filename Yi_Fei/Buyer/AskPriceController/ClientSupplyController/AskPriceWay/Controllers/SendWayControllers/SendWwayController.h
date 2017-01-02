@@ -12,4 +12,6 @@
 
 @property (nonatomic,assign) NSInteger numCount;
 
+@property (nonatomic,assign) NSArray *gggArray;
+
 @end

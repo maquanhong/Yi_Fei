@@ -14,16 +14,17 @@
 #import "SendWwayController.h"
 #import "EditPriceController.h"
 
+#import "BuyerComeOut.h"
+
+
 @interface AlreadyController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>
 {
     BOOL _isPress;
     BOOL _isSelect;
+    BuyerComeOut *_outBuyer;
 }
 @property (nonatomic, strong)NSMutableArray *circleArray; //存放选中的商品
 @property(nonatomic,strong)OfferPriceList *askManager;
- 
-
-
 
 @property(nonatomic,strong)UITextField *textInput; //输入框
 @property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
@@ -40,6 +41,7 @@
     [super viewWillAppear:animated];
     [self loadData];
 }
+
 //加载数据
 -(void)loadData{
     //获取单例对象
@@ -118,6 +120,23 @@
     }];
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
 }
+
+-(void)clickBtnSearch{
+
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0 ; i <_circleArray.count ; i++) {
+        NSString *index = [_circleArray objectAtIndex:i];
+        [array addObject:_listArray[[index integerValue]]];
+    }
+    
+    _outBuyer = [[BuyerComeOut alloc] init];
+    _outBuyer.objcArray = array;
+    [_outBuyer sendToSupplyExcel];
+    
+    
+}
+
+
 
 
 #pragma mark 创建tableView视图
@@ -279,14 +298,18 @@
             myVC = controller;
         }
     }
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0 ; i <_circleArray.count ; i++) {
+        NSString *index = [_circleArray objectAtIndex:i];
+        [array addObject:_listArray[[index integerValue]]];
+    }
     if (_circleArray.count > 0) {
     SendWwayController *sendVC = [[SendWwayController alloc] init];
     sendVC.numCount = 0;
+        sendVC.gggArray = [NSArray arrayWithArray:array];
     [myVC.navigationController pushViewController:sendVC animated:YES];
     }
 }
-
-
 
 
 -(void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{

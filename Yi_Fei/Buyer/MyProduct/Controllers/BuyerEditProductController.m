@@ -70,6 +70,8 @@
     _nameArray = @[@"公司货号",@"商品名称",@"商品尺寸",@"商品材质",@"商品颜色",@"商品价格",@"商品备注"];
     _customArray =[_shopObj.shopCustom componentsSeparatedByString:@"|"];
     _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
+    _shopCustomType = [NSMutableArray array];
+    _shopCustomContent = [NSMutableArray array];
     _index=0;
     _number = 0;
     _flag = 0;
@@ -218,18 +220,29 @@
         if (fourCell == nil) {
             fourCell = [[SecondTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer4];
         }
+      
+
         if (_clickNum != 1) {
             if ([_customArray[indexPath.row]  isEqualToString:@"ABC"]  ) {
                 fourCell.textFOne.text  = @"";
             }else{
-                fourCell.textFOne.text = _customArray[indexPath.row];
+                if ([_customArray[indexPath.row] isKindOfClass:[NSNull class]]) {
+                    fourCell.textFOne.text = @"";
+                }else{
+                    fourCell.textFOne.text = _customArray[indexPath.row];
+                }
             }
             if ([_bodyArray[indexPath.row]  isEqualToString:@"ABC"]) {
                 fourCell.textFTwo.text  = @"";
             }else{
-                fourCell.textFTwo.text = _bodyArray[indexPath.row];
+                if ([_bodyArray[indexPath.row] isKindOfClass:[NSNull class]]) {
+                    fourCell.textFTwo.text = @"";
+                }else{
+                    fourCell.textFTwo.text = _bodyArray[indexPath.row];
+                }
             }
         }
+
         fourCell.textFOne.delegate = self;
         fourCell.textFTwo.delegate = self;
         fourCell.textFOne.tag = 2600;
@@ -365,54 +378,6 @@
 }
 
 #pragma mark -----------------------------------
-#pragma mark 保存model的设置
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    
-    switch (textField.tag) {
-        case 2300:
-        {
-            _shopObj.companyID = textField.text;
-        }
-            break;
-        case 2301:
-        {
-            _shopObj.shopName = textField.text;
-        }
-            break;
-        case 2302:
-        {
-            _shopObj.shopSize = textField.text;
-        }
-            break;
-        case 2303:
-        {
-            _shopObj.shopMed = textField.text;
-        }
-            break;
-        case 2304:
-        {
-        _shopObj.shopColor = firstCell.textF.text;
-        }
-            break;
-        case 2305:
-        {
-            _shopObj.shopPrice = textField.text;
-        }
-            break;
-        case 2306:
-        {
-            _shopObj.shopDescribe = textField.text;
-        }
-            break;
-        default:
-            break;
-    }
-    return YES;
-    
-}
-
-
-
 -(void)clickViewTag:(NSInteger)tag{
     
     _currencyArray = @[@"人民币",@"美元",@"欧元",@"英镑",@"日元"];
@@ -557,6 +522,7 @@
             [_shopCustomType addObject:str1];
             NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
             _shopObj.shopCustom  =   str;
+       
         }
             break;
         case 2601:
@@ -567,7 +533,7 @@
                 str2 = [NSString stringWithFormat:@"%@",textField.text];
             }
             [_shopCustomContent addObject:str2];
-            NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
+        NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
             _shopObj.shopContent  =   str;
         }
             break;

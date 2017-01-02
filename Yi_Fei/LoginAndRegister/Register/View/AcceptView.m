@@ -45,7 +45,7 @@
     [_selectBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     _titleLabel =[[UILabel alloc] init];
-    _titleLabel.text = @"我已阅读并接受";
+    _titleLabel.text = NSLocalizedString(@"recive", nil);
     _titleLabel.font = [UIFont systemFontOfSize:12];
     [self  addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,7 +55,7 @@
     }];
     
     _contentLabel =[[UILabel alloc] init];
-    _contentLabel.text = @"《EasyFair服务协议》";
+    _contentLabel.text = NSLocalizedString(@"proticol", nil);
     _contentLabel.textColor = BACKCOLOR;
     _contentLabel.font = [UIFont systemFontOfSize:12];
     [self  addSubview:_contentLabel];

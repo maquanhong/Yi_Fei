@@ -12,10 +12,35 @@
 
 @interface Language : NSObject
 
+
 + (void)initialize;
+
+
 + (void)setLanguage:(NSString *)language;
+
+
 + (NSString*)currentLanguageCode;
+
+
 + (void)userSelectedLanguage:(NSString *)selectedLanguage;
+
+
 + (NSString *)get:(NSString *)key alter:(NSString *)alternate;
 
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+

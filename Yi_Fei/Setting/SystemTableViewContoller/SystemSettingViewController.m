@@ -10,10 +10,12 @@
 #import "PureLayout.h"
 #import "SystemSettingCell.h"
 #import "TemplateOne.h"
+#import "NSBundle+Language.h"
+#import "BUYHomeControl.h"
+#import "NavigationControl.h"
 
 
-
-@interface SystemSettingViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface SystemSettingViewController ()<UITableViewDelegate, UITableViewDataSource,SSPopupDelegate>
 {
     SystemSettingCell *cell;
 }
@@ -86,11 +88,11 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SystemSettingCell" owner:self options:nil] lastObject];
     }
-    
     if (indexPath.section == 0) {
     cell.labelOne.text =  [_menuArray[indexPath.section] objectForKey:title][indexPath.row];
     cell.labelTwo.text = @"默认";
     cell.labelThree.hidden = YES;
+        cell.tag = 1005;
     cell.backView.hidden = YES;
     }else if (indexPath.section == 1){
     cell.labelOne.text =  [_menuArray[indexPath.section] objectForKey:title][indexPath.row];
@@ -169,9 +171,91 @@ headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         TemplateOne  *tempVC = [[TemplateOne alloc] init];
         [self.navigationController pushViewController:tempVC animated:YES];
         }
+    }else if (indexPath.section == 0){
+        if (indexPath.row == 0) {
+            [self clickSecontionOneView];
+        }
     }
-
 }
+
+
+
+-(void)clickSecontionOneView{
+    NSArray *language = @[@"中文",@"English"];
+    SSPopup* selection=[[SSPopup alloc]init];
+    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
+    selection.index = language.count;
+    selection.frame = CGRectMake(0,0,WIDTH,HEIGHT);
+    selection.SSPopupDelegate=self;
+    [self.view  addSubview:selection];
+    [selection CreateTableview:language withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
+        SystemSettingCell *firstCell = [self.view viewWithTag:1005];
+        firstCell.labelOne.text =language[tag];
+        if ([language[tag] isEqualToString:@"English"]) {
+         [self changeLanguageTo:@"en"];
+        }else{
+         [self changeLanguageTo:@"zh-Hans"];
+        }
+    }];
+}
+
+- (void)changeLanguageTo:(NSString *)language {
+    // 设置语言
+    [NSBundle setLanguage:language];
+    // 然后将设置好的语言存储好，下次进来直接加载
+    [[NSUserDefaults standardUserDefaults] setObject:language forKey:@"myLanguage"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    BUYHomeControl *myVC = [[ BUYHomeControl alloc] init];
+    NavigationControl *nav = [[NavigationControl alloc] initWithRootViewController:myVC];
+    [UIApplication sharedApplication].keyWindow.rootViewController = nav;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

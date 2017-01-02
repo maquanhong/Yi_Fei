@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditSupplyCardController : UIViewController
+@interface EditSupplyCardController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic,strong) NSString  *str;
 
 @property (nonatomic,strong) UIImage  *image;
 
+@property (nonatomic, copy) NSString *resultStr;
 
 @end

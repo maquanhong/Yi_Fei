@@ -97,8 +97,9 @@ static AskPriceList * manager=nil;
 //删除
 - (void)deleteNameFromTable:(int)dataId
 {
+    NSString *str = [NSString stringWithFormat:@"%d",dataId];
     NSString * deleteSql = @"delete from AskPrice where ind = ?";
-    if ([_dataBase executeUpdate:deleteSql,dataId]) {
+    if ([_dataBase executeUpdate:deleteSql,str]) {
         NSLog(@"删除成功");
     }
 }
@@ -130,15 +131,12 @@ static AskPriceList * manager=nil;
     model.cleintName = [set stringForColumn:@"cleintName"];
     model.shopSpecific = [set stringForColumn:@"shopSpecific"];
     model.offTime = [set stringForColumn:@"offTime"];
-    model.ind = [set  intForColumn:@"ind" ];
+    model.ind = [set  intForColumn:@"ind"];
+      NSLog(@"%d",model.ind);
     [arr addObject:model];
    }
   return arr;
 }
-
-
-
-
 
 
 

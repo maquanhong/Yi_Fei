@@ -42,17 +42,16 @@
 }
 
 -(void)loadData{
-    
     //获取单例对象
     _manager = [AskPriceList defaultManager];
     //可变数组初始化
     NSMutableArray *array = [NSMutableArray arrayWithArray:[_manager getDataWith:_customerName]];
     for (NSInteger i = 0 ; i < array.count; i++) {
     AskPriceModel *dataModel = [[AskPriceModel alloc] init];
-            dataModel = array[i];
-        if ([dataModel.record isEqualToString:@"retention"]  ) {
-            [_listArray addObject:dataModel];
-        }
+    dataModel = array[i];
+    if ([dataModel.record isEqualToString:@"retention"]  ) {
+        [_listArray addObject:dataModel];
+    }
     }
     [_tableView reloadData];
 }
@@ -104,7 +103,7 @@
     maskLayer.frame = view.bounds;
     maskLayer.path = maskPath.CGPath;
     view.layer.mask = maskLayer;
-    view.titleLabel.text = @"激发";
+    view.titleLabel.text = self.customerName;
     [self.view addSubview:view];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 155, WIDTH-20, HEIGHT-155 )style:UITableViewStylePlain];
@@ -124,11 +123,12 @@
 }
 
 -(void)clickBtn{
-    
+
     AddController *addVC = [[AddController alloc] init];
     addVC.identifer = 7;
-    [self.navigationController pushViewController:addVC animated:YES];
-    
+    addVC.name = self.customerName;
+[self.navigationController pushViewController:addVC animated:YES];
+
 }
 
 
@@ -183,17 +183,18 @@ NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
             break;
         case 1281:
         {
-            
-            
-            
+    _manager = [AskPriceList defaultManager];
+    AskPriceModel *dataModel = [[AskPriceModel alloc] init];
+    dataModel = _listArray[indexPath.row];
+    [_manager deleteNameFromTable:dataModel.ind];
+    [_listArray removeObjectAtIndex:indexPath.row];
+    [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_tableView reloadData];
         }
             break;
-            
         default:
             break;
     }
-    
-
 }
 
 
@@ -237,6 +238,30 @@ NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

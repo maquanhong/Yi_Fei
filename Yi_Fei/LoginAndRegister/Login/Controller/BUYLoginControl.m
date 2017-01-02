@@ -82,7 +82,7 @@
     
     _logoImgView = [[UIImageView alloc] init];
     _logoImgView.contentMode = UIViewContentModeCenter;
-    _logoImgView.image = [UIImage imageNamed:@"登录"];
+    _logoImgView.image = [UIImage imageNamed:NSLocalizedString(@"Login", nil)];
     [self.view addSubview:_logoImgView];
     [_logoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(100);
@@ -90,7 +90,7 @@
         make.size.mas_equalTo(CGSizeMake(100, 100));
     }];
     
-    NSArray *arrs = @[@"请输入邮箱账号",@"请输入密码"];
+    NSArray *arrs = @[NSLocalizedString(@"account", nil),NSLocalizedString(@"password", nil)];
     NSArray *imgs = @[@"zhanghao.png",@"mima.png"];
     LogonView *oneView = [[LogonView alloc] init];
     oneView.logoImage.image = [UIImage imageNamed:imgs[0]];
@@ -123,7 +123,7 @@
     }];
     
     _loginBtn  = [[UIButton alloc] init];
-    [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [_loginBtn setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
     [_loginBtn setTitleColor:BACKCOLOR forState:UIControlStateNormal];
     _loginBtn.layer.cornerRadius = 5;
     _loginBtn.layer.masksToBounds = YES;

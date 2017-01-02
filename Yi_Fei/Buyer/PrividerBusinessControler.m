@@ -170,7 +170,7 @@
     [_btnTwo addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     _btnThree = [[UIButton alloc] init];
-    [_btnThree setTitle:strs[0] forState:UIControlStateNormal];
+    [_btnThree setTitle:strs[2] forState:UIControlStateNormal];
     _btnThree.titleLabel.font = [UIFont systemFontOfSize:18];
     [_btnThree setTitleColor:COLOR forState:UIControlStateNormal];
     _btnThree.backgroundColor = [UIColor whiteColor];

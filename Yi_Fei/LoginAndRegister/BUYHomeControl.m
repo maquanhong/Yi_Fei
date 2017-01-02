@@ -46,7 +46,8 @@
         make.size.mas_equalTo(CGSizeMake(50, 50));
     }];
     
-  NSArray *strs = @[@"登录",@"注册",@"试用"];
+    
+  NSArray *strs = @[NSLocalizedString(@"Login",nil),NSLocalizedString(@"registered",nil),NSLocalizedString(@"use",nil)];
 BUYButton *btnOne = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:nil borderWidth:0 titleColor:COLOR text:strs[0]];
     btnOne.tag = 1530;
     [self.view addSubview:btnOne];
@@ -87,11 +88,9 @@ BUYButton *btnThree = [BUYButton creatBtnWithBgColor:[UIColor whiteColor] border
     self.navigationController.navigationBar.hidden = YES;
 }
 
-
 #pragma  mark - btn按钮的点击事件
 - (void)btnClick:(UIButton *)sender
 {
-    NSLog(@"%ld",sender.tag);
     //注册控制器
     BUYLoginControl *login = [[BUYLoginControl alloc] init];
     BUYRegisterControl *reg = [[BUYRegisterControl alloc] init];
@@ -121,24 +120,13 @@ ZMJTotleHomeController *trialVC = [[ZMJTotleHomeController alloc] init];
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 #pragma mark - 添加版本号
 - (void)addViewConstraints {
     
     [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading];
     [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
     [self.versionLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-    [self.versionLabel autoSetDimension:ALDimensionHeight toSize:20];
+[self.versionLabel autoSetDimension:ALDimensionHeight toSize:20];
 }
 
 

@@ -8,9 +8,34 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AlreadyControllerDelegate <NSObject>
+
+-(void)clickView:(NSArray*)array index:(NSInteger)index;
+
+@end
+
+
+
 @interface AlreadyController : UIViewController
+
+@property (nonatomic,weak)id<AlreadyControllerDelegate> delegate;
 
 @property (nonatomic,strong)SupplyModel *model;
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

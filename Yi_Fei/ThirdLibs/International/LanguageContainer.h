@@ -10,8 +10,11 @@
 #import "LanguageChange.h"
 
 @interface LanguageContainer : NSObject
+
 + (LanguageContainer *)sharedLanguageContainer;
 - (void)addLanguageChangeController:(NSObject<LanguageChange> *)vc;
 - (void)removeLanguageChangeController:(NSObject<LanguageChange> *)vc;
 - (void)reloadUI:(void (^)())beginblock completBlock:(void (^)())completblock;
+
+
 @end

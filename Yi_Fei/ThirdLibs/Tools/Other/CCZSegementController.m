@@ -103,6 +103,7 @@ typedef void(^indexBlock)(NSInteger index);
     _containerView.delegate = self;
     _containerView.pagingEnabled = YES;
     _containerView.bounces = NO;
+    _containerView.scrollEnabled = NO;
     [self.view addSubview:_containerView];
 }
 

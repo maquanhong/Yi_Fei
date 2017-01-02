@@ -16,8 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *lineView;
 
-
-@property (weak, nonatomic) IBOutlet UITextField *textFiled;
-
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

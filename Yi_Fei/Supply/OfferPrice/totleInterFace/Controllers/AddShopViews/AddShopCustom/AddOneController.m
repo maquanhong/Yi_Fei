@@ -9,7 +9,7 @@
 #import "AddOneController.h"
 #import "ZMJAddGoodsOneCell.h"
 #import "BUYButton.h"
-#import "DetailShopViewController.h"
+#import "AddTwoController.h"
 #import "MyProductionController.h"
 #import "Header.h"
 #import "ZMJAddGoodsOneCell.h"
@@ -39,6 +39,7 @@
     _shopObjc = [[AskPriceModel alloc] init];
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self createNaviGationView];
+    _shopObjc.cleintName = self.name;
     [self addContentView];
 }
 
@@ -80,7 +81,6 @@
     }];
     _tableView.tableFooterView=footView;
     [self.view addSubview:_tableView];
-    
 }
 
 #pragma Mark -->事件处理
@@ -155,8 +155,9 @@
     UITextField *textFTwo = [self.view viewWithTag:10001];
     
     if (textFOne.text.length != 0 && textFTwo.text.length != 0 ) {
-        DetailShopViewController *detailShopVC=[[DetailShopViewController alloc] init];
+        AddTwoController *detailShopVC=[[AddTwoController alloc] init];
         detailShopVC.shopObj = _shopObjc;
+        detailShopVC.identifer = self.identifer;
         [self.navigationController pushViewController:detailShopVC animated:YES];
     }else {
         

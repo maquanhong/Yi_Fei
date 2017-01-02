@@ -11,9 +11,9 @@
 
 @interface AddThreeController : UIViewController
 
-
 @property(nonatomic,strong)AskPriceModel *shopObj;
 
+@property (nonatomic,assign) NSInteger identifer;
 
 
 @end

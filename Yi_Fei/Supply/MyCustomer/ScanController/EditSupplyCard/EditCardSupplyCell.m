@@ -16,11 +16,7 @@
     self.lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
-    
-    self.textFiled.borderStyle = UITextBorderStyleNone;
-    
-    
-    
+
     
     
     

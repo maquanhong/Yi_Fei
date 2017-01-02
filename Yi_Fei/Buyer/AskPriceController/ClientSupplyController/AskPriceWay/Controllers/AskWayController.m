@@ -12,6 +12,12 @@
 #import "DownSheet.h"
 #import "ShopListController.h"
 #import "CCZSegementController.h"
+
+
+
+
+
+
 #import "AlreadyController.h"
 #import "ReservedController.h"
 #import "RetentionController.h"
@@ -95,6 +101,7 @@ self.navigationController.navigationBar.hidden = NO;
         make.centerY.equalTo(backView).offset(10);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
+ 
     _rightBtnTwo.hidden = YES;
 }
 

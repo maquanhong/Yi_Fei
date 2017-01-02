@@ -352,7 +352,6 @@ cell.priceL.text  =  @"";
     return cell;
 }
 
-
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -364,8 +363,6 @@ cell.priceL.text  =  @"";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110;
 }
-
-
 
 #pragma mark 跳转到详情界面
 - (void)clickView:(ZMJGoodsDetailController *)controller index:(UITableViewCell *)index

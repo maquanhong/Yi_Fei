@@ -112,6 +112,7 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 
 
 - (void)clickBtn{
+    
     _manager = [AskPriceList defaultManager];
     [_manager updateDataModel:_model number:_model.ind];
     [self.navigationController popViewControllerAnimated:YES];
