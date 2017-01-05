@@ -214,12 +214,18 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self options:nil]lastObject];
     }
     SupplyModel *model = _listArray[indexPath.row];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
-    cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+    
+    if (model.companyLogo) {
+cell.iconImageView.image  = [UIImage imageWithData:model.companyLogo];
+    }else{
+    cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
+    }
+    if (model.supplyName) {
     cell.titleLabel.text = model.supplyName;
+    }
+    if (model.companyName) {
     cell.nextLabel.text = model.companyName;
+    }
     return cell;
 }
 

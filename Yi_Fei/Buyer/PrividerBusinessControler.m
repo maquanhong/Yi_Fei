@@ -76,8 +76,9 @@
     UserList *manager = [UserList defaultManager];
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
-    NSString *str = [UserDefaultManager getDataByKey:@"user"];
-    oneModel = [manager getDataWith:str];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+     NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    oneModel = [manager getDataName:strOne and:strTwo];
     
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径

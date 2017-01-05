@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "OfferPriceModel.h"
 
 @protocol BuyerAskCellDelegate <NSObject>
 
@@ -16,20 +17,17 @@
 
 @interface BuyerAskCell : UITableViewCell
 
+//@property (nonatomic,strong) OfferPriceModel *model;
 
 @property (nonatomic,weak) id<BuyerAskCellDelegate> delegate;
+
+@property(nonatomic,strong)UIButton *selectBtn;
 
 @property (nonatomic,strong) UIImageView *iconImageView;
 
 @property (nonatomic,strong) UILabel *titleLabel;
 
 @property (nonatomic,strong) UILabel *price;
-
-@property(nonatomic,strong)UIButton *selectBtn;
-
-
-
-
 
 
 @end

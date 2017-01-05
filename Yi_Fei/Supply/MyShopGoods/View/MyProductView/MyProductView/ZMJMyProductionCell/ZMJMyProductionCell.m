@@ -26,6 +26,8 @@
 -(void)addView{
     
     _imgV=[[UIImageView alloc] init];
+    _imgV.layer.cornerRadius = 5;
+    _imgV.layer.masksToBounds = YES;
     [self.imgV sizeToFit];
     [self.contentView addSubview:_imgV];
     [_imgV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,7 +70,7 @@
         make.height.mas_equalTo(20);
     }];
     
-        NSArray *array=@[@"编辑",@"询价客户"];
+        NSArray *array=@[@"编辑",@"详情"];
         for (int i=0; i<2; i++) {
             
             UIButton *button=[BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:[UIColor lightGrayColor] text:array[i]];
@@ -76,9 +78,9 @@
             button.tag=10000+i;
   [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             if (i == 0) {
-    button.frame=CGRectMake(110, 70, 50, 25);
+    button.frame=CGRectMake(110, 70, 60, 25);
             }else{
-    button.frame=CGRectMake(170, 70, 90, 25);
+    button.frame=CGRectMake(180, 70, 60, 25);
             }
     [self.contentView addSubview:button];
     }

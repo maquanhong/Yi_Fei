@@ -32,7 +32,6 @@
     NSArray *_currencyArray;
     NSArray *_typeArray;
     UIView *_backGroundView;
-    NSInteger _number;
     NSInteger _flag;
     NSString *_id;
     NSInteger _clickNum;
@@ -57,7 +56,7 @@
 @property (nonatomic,strong) NSMutableArray *shopCustomContent;
 //照片
 @property(copy  ,nonatomic) NSArray *picArray;
-@property (nonatomic,strong)NSMutableArray *array;
+@property(copy  ,nonatomic) NSMutableArray *array;
 
 @property(nonatomic,strong)NSMutableArray *otherArray;
 @property(nonatomic,strong)NSArray *customArray;
@@ -72,24 +71,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 _nameArray = @[@"公司货号",@"商品名称",@"商品尺寸",@"商品材质",@"商品颜色",@"商品价格",@"商品备注"];
-    _index=0;
-    _number = 0;
     _flag = 0;
     _clickNum = 0;
     _idNum = _shopObj.companyID;
     _picture = _shopObj.shopPicture;
     _shopCustomContent = [NSMutableArray array];
-     _shopCustomType = [NSMutableArray array];
+    _shopCustomType = [NSMutableArray array];
+    _customArray =[_shopObj.shopCustom componentsSeparatedByString:@"|"];
+    _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
+    _index=_customArray.count;
+    
     _array = [NSMutableArray array];
-    NSArray *arrayimg=[_shopObj.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
-        [_array addObject:imagePath];
+    if (_shopObj.imageOne) {
+        [_array addObject:_shopObj.imageOne];
     }
-_customArray =[_shopObj.shopCustom componentsSeparatedByString:@"|"];
-_bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
+    if (_shopObj.imageTwo) {
+        [_array addObject:_shopObj.imageTwo];
+    }
+    
+    if (_shopObj.imageThree) {
+        [_array addObject:_shopObj.imageThree];
+    }
+    
+    if (_shopObj.imageFour) {
+        [_array addObject:_shopObj.imageFour];
+    }
     self.view.backgroundColor=[UIColor whiteColor];
     [self createnavigationView];
     [self addContentView];
@@ -151,17 +157,13 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         }else if (section == 2){
             return 1;
         }else if (section == 3){
-            if (_clickNum == 1) {
-                return _number;
-            }else{
-            return  _customArray.count;
-            }
+                return _index;
         }else if (section == 4){
             if (_flag == 1) {
                 return 1;
             }else{
                 if (_array.count == 0 ) {
-                     return 0;
+                    return 0;
                 }else{
                     return 1;
                 }
@@ -234,7 +236,9 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
             fourCell.textFOne.text = _customArray[indexPath.row];
                 }
             }
-            if ([_bodyArray[indexPath.row]  isEqualToString:@"ABC"]) {
+                
+                
+            if ([_bodyArray[indexPath.row]  isEqualToString:@"ABC"] || [_bodyArray[indexPath.row] isEqualToString:@""]  ) {
                 fourCell.textFTwo.text  = @"";
             }else{
                 if ([_bodyArray[indexPath.row] isKindOfClass:[NSNull class]]) {
@@ -266,7 +270,12 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
          if (sixCell == nil) {
              sixCell = [[EditFourShopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer6];
          }
+         if (_flag == 0) {
         sixCell.imageArray = [NSArray arrayWithArray:[_array copy]];
+         }else if (_flag == 1){
+    sixCell.imageArray = [NSArray arrayWithArray:[self.picArray copy]];
+         }
+       
           return sixCell;
             }
         }else{
@@ -554,14 +563,11 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     }
 }
 
-
 #pragma mark 增加自定义的cell
 -(void)clickBtnView{
-    
     _clickNum = 1;
-       _number++;
+       _index++;
     [_tableView reloadData];
-    
 }
 
 
@@ -579,8 +585,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         str1=[NSString stringWithFormat:@"%@",textField.text];
     }
     [_shopCustomType addObject:str1];
-    NSString *str=[_shopCustomType componentsJoinedByString:@"|"];
-    _shopObj.shopCustom  =   str;
         }
             break;
         case 2601:
@@ -591,8 +595,6 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
         str2 = [NSString stringWithFormat:@"%@",textField.text];
     }
     [_shopCustomContent addObject:str2];
-    NSString *str=[_shopCustomContent componentsJoinedByString:@"|"];
-    _shopObj.shopContent  =   str;
         }
             break;
         case 2300:
@@ -704,29 +706,19 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     [photoController showIn:self result:^(id responseObject){
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
             ZZPhoto *photo = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:photo.originImage toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+            UIImage *image = photo.originImage;
+            if (i ==  0) {
+                _shopObj.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+                _shopObj.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+                _shopObj.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+                _shopObj.imageFour  = UIImagePNGRepresentation(image);
+            }
         }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture=str;
     }];
 }
 
@@ -741,41 +733,29 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
     [cameraController showIn:self result:^(id responseObject){
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
+   
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
             ZZCamera *camera = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+            UIImage *image = camera.image;
+            if (i ==  0) {
+                _shopObj.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+                _shopObj.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+                _shopObj.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+                _shopObj.imageFour  = UIImagePNGRepresentation(image);
+            }
         }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture=str;
     }];
 }
 
 
 -(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
     UIGraphicsBeginImageContext(size);
-    
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
     UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
     UIGraphicsEndImageContext();
-    
     return scaledImage;
 }
 
@@ -783,12 +763,32 @@ _bodyArray = [_shopObj.shopContent componentsSeparatedByString:@"|"];
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
     
+    if (_shopCustomType.count > 0) {
+    NSString *onestr=[_shopCustomType componentsJoinedByString:@"|"];
+        NSString *oneStr;
+        if (_shopObj.shopCustom.length > 0 ) {
+    oneStr = [NSString stringWithFormat:@"%@|%@",_shopObj.shopCustom,onestr];
+        }else{
+    oneStr = [NSString stringWithFormat:@"%@",onestr];
+        }
+    _shopObj.shopCustom  =  oneStr;
+    }
+  if (_shopCustomContent.count > 0) {
+      NSString *twostr=[_shopCustomContent componentsJoinedByString:@"|"];
+      
+      NSString *twoStr;
+      if (_shopObj.shopContent.length > 0 ) {
+    twoStr = [NSString stringWithFormat:@"%@|%@",_shopObj.shopContent,twostr];
+      }else{
+    twoStr = [NSString stringWithFormat:@"%@",twostr];
+      }
+      _shopObj.shopContent  =  twoStr;
+  }
+    
     FMDBOneList  *manager = [FMDBOneList defaultManager];
     [manager updateDataModel:_shopObj number:_shopObj.ind];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
 
 
 

@@ -8,19 +8,18 @@
 
 #import <libxlsxwriter/xlsxwriter.h>
 #import "BuyerComeOut.h"
+#import "UserDefaultManager.h"
 
 static NSString * const kFileExtension = @"xlsx";
 @implementation BuyerComeOut
-
 
 #pragma mark 导入的文件路径
 - (NSString *)importFilePath {
     
     NSAssert(self.importFileName, @"outputFileName needs to be overridden in subclasses");
-    
     NSString *documentsFolderPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString *filePath = [[documentsFolderPath stringByAppendingPathComponent:self.importFileName] stringByAppendingPathExtension:kFileExtension];
-    
+    [UserDefaultManager saveDataWithValue:filePath key:@"path"];
     return filePath;
 }
 
@@ -46,10 +45,10 @@ lxw_workbook  *workbookTwo   = workbook_new([self.importFilePath fileSystemRepre
     //参数居中
     lxw_format *center = workbook_add_format(workbookTwo);
     format_set_align(center, LXW_ALIGN_CENTER);
-    
+
     //第一行
     worksheet_set_row(worksheet, 0, 70, NULL);
-    worksheet_set_column(worksheet, 0, 25, 20, NULL);
+    worksheet_set_column(worksheet, 0, 26, 20, NULL);
     worksheet_write_string(worksheet, 0, 0, "商品货号", custom); //第一列
     worksheet_write_string(worksheet, 0, 1, "商品名称", custom); //第一列
     worksheet_write_string(worksheet, 0, 2, "商品规格", custom); //第一列
@@ -65,8 +64,8 @@ lxw_workbook  *workbookTwo   = workbook_new([self.importFilePath fileSystemRepre
     worksheet_write_string(worksheet, 0, 12, "产品图片二", custom); //第一列
     worksheet_write_string(worksheet, 0, 13, "产品图片三", custom); //第一列
     worksheet_write_string(worksheet, 0, 14, "产品图片四", custom); //第一列
-    worksheet_write_string(worksheet, 0, 15, "供应商姓名", custom); //第一列
-    worksheet_write_string(worksheet, 0, 16, "供应商公司名", custom); //第一列
+    worksheet_write_string(worksheet, 0, 15, "采购商姓名", custom); //第一列
+    worksheet_write_string(worksheet, 0, 16, "采购商公司名", custom); //第一列
     worksheet_write_string(worksheet, 0, 17, "货币类型", custom); //第一列
     worksheet_write_string(worksheet, 0, 18, "价格条款", custom); //第一列
     worksheet_write_string(worksheet, 0, 19, "自定义1", custom); //第一列
@@ -74,6 +73,7 @@ lxw_workbook  *workbookTwo   = workbook_new([self.importFilePath fileSystemRepre
     worksheet_write_string(worksheet, 0, 21, "商品简介", custom); //第一列
     worksheet_write_string(worksheet, 0, 22, "商品价格", custom); //第一列
     worksheet_write_string(worksheet, 0, 23, "码头地址", custom); //第一列
+    worksheet_write_string(worksheet, 0, 24, "询价标识", custom); //第一列
     
     for (NSInteger i = 0 ;  i < _objcArray.count; i++) {
         
@@ -110,11 +110,14 @@ lxw_workbook  *workbookTwo   = workbook_new([self.importFilePath fileSystemRepre
         const char *tenStr = [_shopObjc.time UTF8String];
         worksheet_write_string(worksheet, num, 8, tenStr, custom);
         
-//        const char *one = [_shopObjc.time UTF8String];        询价时间
-//        worksheet_write_string(worksheet, num, 9, one, custom);
+        const char *one = [_askTime UTF8String];
+        worksheet_write_string(worksheet, num, 9, one, custom);
         
         const char *two = [_shopObjc.shopDescribe UTF8String];
         worksheet_write_string(worksheet, num, 10, two, custom);
+        
+        
+        
         
         NSMutableArray *imageArray = [NSMutableArray array];
         NSArray *arrayimg=[_shopObjc.shopPicture componentsSeparatedByString:@"|"];
@@ -129,11 +132,11 @@ lxw_workbook  *workbookTwo   = workbook_new([self.importFilePath fileSystemRepre
             worksheet_insert_image(worksheet,  num,  coulm, image);
         }
     
-        const char *three = [_shopObjc.cleintName UTF8String];
+        const char *three = [_customerName UTF8String];
         worksheet_write_string(worksheet, num, 15, three, custom);
         
-//        const char *four = [_shopObjc.shopHuoBi UTF8String];
-//        worksheet_write_string(worksheet, num, 16, four, custom);  供应商公司名
+        const char *four = [_askCompanyName UTF8String];
+        worksheet_write_string(worksheet, num, 16, four, custom);
         
         const char *five = [_shopObjc.shopHuoBi UTF8String];
         worksheet_write_string(worksheet, num, 17, five, custom);
@@ -155,11 +158,15 @@ lxw_workbook  *workbookTwo   = workbook_new([self.importFilePath fileSystemRepre
         
         const char *eleven = [_shopObjc.shopAdderss UTF8String];
         worksheet_write_string(worksheet, num, 23, eleven, custom);
-
+        
+        const char *twleve = [ @"send" UTF8String];
+        worksheet_write_string(worksheet, num, 24,twleve, custom);
     }
-    
     workbook_close(workbookTwo);
 }
+
+
+
 
 
 

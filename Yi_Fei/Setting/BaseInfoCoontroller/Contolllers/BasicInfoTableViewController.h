@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UserInfoModel.h"
 @interface BasicInfoTableViewController : UITableViewController
+
+@property (nonatomic,strong) UserInfoModel *model;
 
 @end

@@ -13,12 +13,18 @@
 #import "SendWwayController.h"
 #import "EditPriceController.h"
 
+#import "BuyerComeOut.h"
+#import "UserDefaultManager.h"
+#import "UserModel.h"
+#import "UserList.h"
 
 @interface ReservedController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>
 {
     BOOL _isPress;
     BOOL _isSelect;
+    BuyerComeOut *_outBuyer;
 }
+
 @property (nonatomic, strong)NSMutableArray *circleArray; //存放选中的商品
 @property(nonatomic,strong)OfferPriceList *askManager;
 
@@ -63,11 +69,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      _isPress = YES;
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _circleArray = [NSMutableArray array];
+    self.view.backgroundColor = INTERFACECOLOR;
     [self createSearchView];
     [self addContentView];
-    
-    
 }
 
 #pragma mark 创建搜索框
@@ -124,6 +129,31 @@
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
 }
 
+-(void)clickBtnSearch{
+
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0 ; i <_circleArray.count ; i++) {
+        NSString *index = [_circleArray objectAtIndex:i];
+        [array addObject:_listArray[[index integerValue]]];
+    }
+    
+    UserList *manager = [UserList defaultManager];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    UserModel  * oneModel = [manager getDataName:strOne and:strTwo];
+    
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY/MM/dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    _outBuyer = [[BuyerComeOut alloc] init];
+    _outBuyer.objcArray = array;
+    _outBuyer.askCompanyName = oneModel.name;
+    _outBuyer.customerName = oneModel.link;
+    _outBuyer.askTime = dateString;
+    [_outBuyer sendToSupplyExcel];
+
+}
 
 
 #pragma mark 创建tableView视图
@@ -207,23 +237,29 @@
     }
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
 
 
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
+    if (_isSelect ) {
+        BuyerAskCell *cell = [_tableview cellForRowAtIndexPath:indexPath];
+        NSString *str = [NSString stringWithFormat:@"%ld",indexPath.row];
+        if ([_circleArray containsObject:str]) {
+            cell.selectBtn.selected = NO ;
+            [_circleArray removeObject:str];
+        }else{
+            cell.selectBtn.selected = YES ;
+            [_circleArray addObject:str];
+        }
+    }
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110;
 }
-
-
-
 
 
 
@@ -249,6 +285,7 @@
             myVC.rightBtnTwo.hidden = NO;
             [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
             _isPress = NO;
+            _isSelect = YES;
         }else{
             NSArray *allCells=[self.tableview visibleCells];
             for(BuyerAskCell *cell in allCells)
@@ -262,6 +299,7 @@
             myVC.rightBtnOne.hidden = NO;
             myVC.rightBtnTwo.hidden = YES;
             _isPress = YES;
+            _isSelect = NO;
         }
     }
 }

@@ -82,22 +82,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Yi_Fei/Supply/MyShopGoods/Controller/ShopPriceController/ZMJGoodParamViewController.m"
-            timestampString = "503665314.604257"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "-textViewDidEndEditing:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -160,11 +144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yi_Fei/Buyer/AskPriceController/ClientSupplyController/AskPriceWay/Controllers/ReservedController.m"
-            timestampString = "504802660.597462"
+            timestampString = "505163862.740015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "-sendVC"
             landmarkType = "7">
          </BreakpointContent>
@@ -176,11 +160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yi_Fei/Buyer/AskPriceController/ClientSupplyController/AskPriceWay/Controllers/ReservedController.m"
-            timestampString = "504802661.141614"
+            timestampString = "505163862.740015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "-sendVC"
             landmarkType = "7">
          </BreakpointContent>

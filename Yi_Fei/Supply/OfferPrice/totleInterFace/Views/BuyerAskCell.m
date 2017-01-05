@@ -15,6 +15,8 @@
 
 @property (nonatomic,strong) UIButton *deleteBtn;
 
+
+
 @property (nonatomic,strong) UIButton *editBtn;
 
 @end
@@ -135,6 +137,17 @@
     }];
     
 }
+
+//- (void)setModel:(OfferPriceModel *)model{
+//
+//    _model = model;
+//    _iconImageView.image = [UIImage imageWithData:_model.imageOne];
+//    _titleLabel.text = _model.shopName ;
+//    _price.text = _model.shopPrice;
+//    
+//}
+
+
 
 
 -(void)clickBtnNext:(UIButton*)sender{

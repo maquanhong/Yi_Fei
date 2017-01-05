@@ -34,6 +34,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "SDCollectionViewCell.h"
 
 typedef enum {
     SDCycleScrollViewPageContolAlimentRight,
@@ -176,5 +177,7 @@ typedef enum {
 
 /** 清除图片缓存（兼容旧版本方法） */
 - (void)clearCache;
+
+
 
 @end

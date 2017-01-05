@@ -29,7 +29,7 @@
 -(void)createNavigationView
 {
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
-    titleLabel.text = NSLocalizedString(@"info", nil);
+    titleLabel.text = @"消息";
     titleLabel.font = [UIFont systemFontOfSize:24];
     titleLabel.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = titleLabel;
@@ -52,13 +52,15 @@
      MessageTradeController *twoView = [[MessageTradeController alloc] init];
      MessageSystemController *threeView = [[MessageSystemController alloc] init];
     
-    CCZSegementController *segement = [CCZSegementController segementControllerWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64) titles:@[NSLocalizedString(@"information", nil),NSLocalizedString(@"trading", nil),NSLocalizedString(@"system", nil)]];
+    CCZSegementController *segement = [CCZSegementController segementControllerWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64) titles:@[@"咨询消息",@"交易消息",@"系统消息"]];
     [segement setSegementTintColor:COLOR];
     [segement setSegementViewControllers:@[oneView,twoView,threeView]];
     [segement setSelectedItemAtIndex:3];
     segement.style = CCZSegementStyleDefault;
     [segement selectedAtIndex:^(NSInteger index) {
+        
         NSLog(@"index %ld",index);
+        
     }];
     [self.view addSubview:segement.view];
     [self addChildViewController:segement];

@@ -18,7 +18,8 @@
 #import "FourTableViewCell.h"
 #import "tableViewFooterView.h"
 #import "MyProductionController.h"
-#import "AskPriceList.h"
+
+#import "CustomerProductList.h"
 #import "OneViewController.h"
 #import "TwoViewController.h"
 #import "UserDefaultManager.h"
@@ -33,8 +34,6 @@
     NSInteger _index;
     NSInteger _flag;
 }
-
-
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)tableViewFooterView *footView;
 
@@ -67,7 +66,6 @@
     self.view.backgroundColor=[UIColor whiteColor];
     [self createNavigationView];
     [self createTableView];
-    
 }
 
 #pragma mark 创建导航栏
@@ -94,6 +92,7 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIView *footView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
     UIButton *btn = [BUYButton creatBtnWithBgColor:NAVCOLOR borderColor:[UIColor lightGrayColor] borderWidth:1 titleColor:[UIColor whiteColor] text:@"确定"];
     [btn addTarget:self action:@selector(clickBtnNextController) forControlEvents:UIControlEventTouchUpInside];
@@ -112,49 +111,65 @@
 #pragma mark 保存数据到数据库
 -(void)clickBtnNextController{
     
-    AskPriceList  *manager = [AskPriceList defaultManager];
-    //查询
-    if ([manager isHasDataIDFromTable:_shopObj.ind]) {
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"此商品给已经添加过" preferredStyle:UIAlertControllerStyleAlert];
-        //确定按钮
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil] ;
-        [alert addAction:action];
-        [self presentViewController:alert animated:YES completion:nil];
+    CustomerProductList  *manager = [CustomerProductList defaultManager];
+    NSString *oneStr = [UserDefaultManager getDataByKey:@"key"];
+    NSString *twoStr = [UserDefaultManager getDataByKey:@"name"];
+    NSString *threeStr = [UserDefaultManager getDataByKey:@"company"];
+    
+    if ([oneStr isEqualToString:@"2"]) {
+        _shopObj.flag = oneStr;
+        _shopObj.customerName = twoStr;
+        _shopObj.companyName = threeStr;
+    if ([manager isHasElement:twoStr and:threeStr productName:_shopObj.shopName index:@"2"]){
+        [self warningView];
     }else{
-        if (self.identifer == 7) {
-        _shopObj.record = @"retention";
-        //进行收藏
         [manager insertDataModel:_shopObj];
-        OneViewController *myVC = [[ OneViewController alloc] init];
-        for (OneViewController * controller in self.navigationController.viewControllers) { //遍历
-            if ([controller isKindOfClass:[OneViewController class]]) { //这里判断是否为你想要跳转的页面
-                myVC = controller;
-            }
+    OneViewController *myVC = [[ OneViewController alloc] init];
+    for (OneViewController * controller in self.navigationController.viewControllers) { //遍历
+    if ([controller isKindOfClass:[OneViewController class]]) { //这里判断是否为你想要跳转的页面
+            myVC = controller;
         }
-        if (myVC) {
+    }
+    if (myVC) {
             [self.navigationController popToViewController:myVC animated:YES]; //跳转
-        }
-        }else if (self.identifer == 8){
-        _shopObj.record = @"reserved";
-        //进行收藏
-        [manager insertDataModel:_shopObj];
-        TwoViewController *myVC = [[ TwoViewController alloc] init];
-        for (TwoViewController * controller in self.navigationController.viewControllers) { //遍历
-            if ([controller isKindOfClass:[TwoViewController class]]) { //这里判断是否为你想要跳转的页面
-                myVC = controller;
+       }
+    }
+    }else if ([oneStr isEqualToString:@"1"]){
+    
+        _shopObj.flag = oneStr;
+        _shopObj.customerName = twoStr;
+        _shopObj.companyName = threeStr;
+    if ([manager isHasElement:twoStr and:threeStr productName:_shopObj.shopName index:@"1"]){
+            [self warningView];
+        }else{
+            [manager insertDataModel:_shopObj];
+            TwoViewController *myVC = [[ TwoViewController alloc] init];
+            for (TwoViewController * controller in self.navigationController.viewControllers) { //遍历
+                if ([controller isKindOfClass:[TwoViewController class]]) { //这里判断是否为你想要跳转的页面
+                    myVC = controller;
+                }
             }
-        }
-        if (myVC) {
-    [self.navigationController popToViewController:myVC animated:YES]; //跳转
+            if (myVC) {
+                [self.navigationController popToViewController:myVC animated:YES]; //跳转
+            }
         }
     }
 }
+
+
+-(void)warningView{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"此商品给已经添加过" preferredStyle:UIAlertControllerStyleAlert];
+            //确定按钮
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil] ;
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
 }
 
+
+
 #pragma mark tableVie的代理方法
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
 }
 
@@ -175,9 +190,9 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+        if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             static NSString *identifer1=@"firstCell";
             firstCell  = [tableView dequeueReusableCellWithIdentifier:identifer1];
@@ -213,7 +228,6 @@
         threeCell.textFTwo.delegate = self;
         threeCell.textFOne.tag = 2600;
         threeCell.textFTwo.tag = 2601;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         threeCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return threeCell;
     }else if (indexPath.section == 2){
@@ -227,7 +241,7 @@
             fourCell.imageArray = [NSArray arrayWithArray:self.picArray];
             [fourCell.collectionView reloadData];
         }
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+       
         return fourCell;
     }else {
         return nil;
@@ -236,7 +250,6 @@
 
 
 #pragma mark textView的代理
-
 - (void)textViewDidEndEditing:(UITextView *)textView{
     if (textView.text.length > 0) {
         _shopObj.shopInfo = textView.text;
@@ -275,7 +288,6 @@
         return 0;
     }
 }
-
 
 #pragma mark tableView每组的组头视图设置
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -401,6 +413,7 @@
         }else{
             _shopObj.shopDescribe = @"";
         }
+        
     }
 }
 
@@ -434,31 +447,22 @@
     //   photoController.roundColor = [UIColor greenColor];
     
     [photoController showIn:self result:^(id responseObject){
+        
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
             ZZPhoto *photo = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:photo.originImage toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+            UIImage *image = photo.originImage;
+            if (i ==  0) {
+                _shopObj.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+                _shopObj.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+                _shopObj.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+                _shopObj.imageFour  = UIImagePNGRepresentation(image);
+            }
         }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture=str;
     }];
 }
 
@@ -471,43 +475,24 @@
         self.picArray = [NSArray array];
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
-        for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
-            ZZCamera *camera = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
-        }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture=str;
         
+        for (int i=0; i< self.picArray.count; i++) {
+            ZZPhoto *photo = self.picArray[i];
+            UIImage *image = photo.originImage;
+            if (i ==  0) {
+                _shopObj.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+                _shopObj.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+                _shopObj.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+                _shopObj.imageFour  = UIImagePNGRepresentation(image);
+            }
+        }
     }];
 }
 
--(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
-    UIGraphicsBeginImageContext(size);
-    
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
-    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return scaledImage;
-}
+
 
 
 

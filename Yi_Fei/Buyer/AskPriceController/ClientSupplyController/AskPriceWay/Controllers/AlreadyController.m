@@ -15,10 +15,12 @@
 #import "EditPriceController.h"
 
 #import "BuyerComeOut.h"
+#import "UserDefaultManager.h"
+#import "UserModel.h"
+#import "UserList.h"
 
 
-@interface AlreadyController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>
-{
+@interface AlreadyController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>{
     BOOL _isPress;
     BOOL _isSelect;
     BuyerComeOut *_outBuyer;
@@ -121,6 +123,7 @@
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
 }
 
+
 -(void)clickBtnSearch{
 
     NSMutableArray *array = [NSMutableArray array];
@@ -128,15 +131,24 @@
         NSString *index = [_circleArray objectAtIndex:i];
         [array addObject:_listArray[[index integerValue]]];
     }
+
+    UserList *manager = [UserList defaultManager];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+  UserModel  * oneModel = [manager getDataName:strOne and:strTwo];
     
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY/MM/dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
     _outBuyer = [[BuyerComeOut alloc] init];
     _outBuyer.objcArray = array;
+    _outBuyer.askCompanyName = oneModel.name;
+    _outBuyer.customerName = oneModel.link;
+    _outBuyer.askTime = dateString;
     [_outBuyer sendToSupplyExcel];
     
-    
 }
-
-
 
 
 #pragma mark 创建tableView视图
@@ -154,7 +166,6 @@
     //触发长按手势的最小时间间隔，秒
     lp.minimumPressDuration = 0.5;
     [self.tableview addGestureRecognizer:lp];
-    
     
     UIView *haderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH-20, 45)];
     haderView.backgroundColor = [UIColor whiteColor];
@@ -203,23 +214,23 @@
         cell = [[BuyerAskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
     OfferPriceModel *dataModel = [[OfferPriceModel alloc] init];
-        dataModel = _listArray[indexPath.row];
-
+    dataModel = _listArray[indexPath.row];
+    
     NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
     cell.iconImageView.image= [UIImage imageWithContentsOfFile:imagePath];
-  
+    
     if (dataModel.shopPrice.length > 0 ) {
         cell.price.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{
         cell.price.text  =  @"";
     }
     if (dataModel.shopName.length > 0 ) {
-    cell.titleLabel.text = dataModel.shopName;
+        cell.titleLabel.text = dataModel.shopName;
     }else{
-    cell.titleLabel.text  =  @"";
+        cell.titleLabel.text  =  @"";
     }
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
@@ -230,6 +241,7 @@
 
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (_isSelect ) {
         BuyerAskCell *cell = [_tableview cellForRowAtIndexPath:indexPath];
         NSString *str = [NSString stringWithFormat:@"%ld",indexPath.row];
@@ -241,13 +253,14 @@
             [_circleArray addObject:str];
         }
     }
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     return 110;
+    
 }
-
-
 
 
 - (void)longPressGesture:(UILongPressGestureRecognizer*)lp{

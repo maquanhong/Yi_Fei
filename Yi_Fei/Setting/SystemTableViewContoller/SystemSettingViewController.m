@@ -13,7 +13,7 @@
 #import "NSBundle+Language.h"
 #import "BUYHomeControl.h"
 #import "NavigationControl.h"
-
+#import "EditPassWordViewController.h"
 
 @interface SystemSettingViewController ()<UITableViewDelegate, UITableViewDataSource,SSPopupDelegate>
 {
@@ -22,6 +22,10 @@
 @property (nonatomic, strong) UITableView  *systemTableView;
 @property (nonatomic, strong) NSArray    *menuArray;
 @property (nonatomic, strong) NSArray    *contentArray;
+
+@property (nonatomic,strong) NSString *language;
+@property (nonatomic,strong) NSString *accountProtectionState;
+@property (nonatomic,strong) NSString *messageReminderState;
 
 @end
 
@@ -176,6 +180,74 @@ headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
             [self clickSecontionOneView];
         }
     }
+    
+    
+    
+    
+    if (indexPath.section == 2) {
+        if (indexPath.row ==1) {
+            EditPassWordViewController *editVc = [[EditPassWordViewController alloc]init];
+            [self.navigationController pushViewController:editVc animated:YES];
+        }
+    }
+    
+    
+    if (indexPath.section == 2) {
+        
+        if (indexPath.row == 0) {
+            UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"账号保护" message:@"" preferredStyle:(UIAlertControllerStyleActionSheet)];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"开启" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                
+                
+            }];
+            
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"未开启" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [actro addAction:action1];
+            [actro addAction:action2];
+            [self presentViewController:actro animated:YES completion:nil];
+            
+            
+            
+            
+            
+        }
+    }
+
+    
+    
+    
+    if (indexPath.section == 2) {
+        if (indexPath.row == 2) {
+            
+            UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"请修改消息提醒" message:@"" preferredStyle:(UIAlertControllerStyleActionSheet)];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"提醒" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                
+                
+            }];
+            
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"不提醒" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [actro addAction:action1];
+            [actro addAction:action2];
+            [self presentViewController:actro animated:YES completion:nil];
+            
+            
+            
+        }
+    }
+    
+    
+    if (indexPath.section == 3) {
+        if (indexPath.row == 1) {
+            TemplateOne  *tempVC = [[TemplateOne alloc] init];
+            [self.navigationController pushViewController:tempVC animated:YES];
+        }
+    }
+    
+    
 }
 
 
@@ -234,6 +306,46 @@ headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
 
 
+//系统设置
+
+- (void)setEditStatusWith:(NSString *)language accountProtectionState:(NSString *)accountProtectionState messageReminderState:(NSString *)messageReminderState{
+    //     获取token
+    NSUserDefaults *tokenDeful = [NSUserDefaults standardUserDefaults];
+    NSString *token = [tokenDeful objectForKey:@"token"];
+    
+    NSString *str=@"/easyfair-webservice/sysExhibition/getExhibitionList";
+    NSString *urlStrinx=[NSString stringWithFormat:@"%@%@",Website,str];
+    
+    NSDictionary  *dicDay= @{
+                             @"token": token,
+                             @"userType": @"ch",
+                             @"language": language,
+                             @"accountProtectionState": accountProtectionState,
+                             @"messageReminderState":messageReminderState
+                             };
+    
+    [[NetWorkingManager getManager]POST:urlStrinx parameters:dicDay success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] isEqualToString:@"200"]) {
+            
+            
+            
+        }
+        
+        
+        
+    }
+     
+     
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    
+                                    
+                                }];
+    
+    
+    
+}
 
 
 

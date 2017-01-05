@@ -9,7 +9,8 @@
 #import "AddOneProductionController.h"
 #import "BUYButton.h"
 #import "ZMJAddGoodsOneCell.h"
-#import "AddTwoProductionController.h"  //增加商品第二页
+#import "AddTwoProductionController.h"
+#import "GetDataFromeSupply.h"
 
 
 @interface AddOneProductionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -59,10 +60,10 @@
     UIBarButtonItem* rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem=rightBtnItem;
     
+    [rightBtn addTarget:self action:@selector(clickRightBtn) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)back
-{
+-(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -175,6 +176,13 @@
     }
 }
 
+
+-(void)clickRightBtn{
+    
+    GetDataFromeSupply * form = [[GetDataFromeSupply alloc ] init];
+    [form getDataFromeForm];
+    
+}
 
 
 

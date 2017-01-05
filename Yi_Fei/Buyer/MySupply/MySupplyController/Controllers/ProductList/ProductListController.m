@@ -155,17 +155,13 @@
     cell = [[[NSBundle mainBundle] loadNibNamed:@"QueryPriceTableViewCell" owner:self options:nil] lastObject];
     }
     ProductionData *dataModel = [[ProductionData alloc] init];
-        dataModel = _listArray[indexPath.row];
-    NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    if ([arrayimg[0] length] > 0)  {
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-    cell.iconImage.image= [UIImage imageWithContentsOfFile:imagePath];
+
+    if (dataModel.imageOne)  {
+    cell.iconImage.image= [UIImage imageWithData:dataModel.imageOne];
     }else{
-  cell.iconImage.image= [UIImage imageNamed:@"Null"];
+   cell.iconImage.image= [UIImage imageNamed:@"Null"];
     }
-  cell.titleLabel.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
+   cell.titleLabel.text=[NSString stringWithFormat:@"%@",dataModel.shopName];
     if (dataModel.shopPrice.length > 0 ) {
         cell.priceLabel.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{

@@ -59,34 +59,19 @@
     NSInteger index = sender.tag - 1000;
     if (index == 1) {
   AddOneController *salerVc = [[AddOneController alloc] init];
-        salerVc.identifer = _identifer;
-        salerVc.name  = self.name;
     [self.navigationController pushViewController:salerVc animated:YES];
         
     } else if (index == 0) {
 AddMyProductionController *clientVc = [[AddMyProductionController alloc] init];
-        clientVc.identify = _identifer;
     [self.navigationController pushViewController:clientVc animated:YES];
     }
-    
 }
 
 
 
 
 
-
-
 @end
-
-
-
-
-
-
-
-
-
 
 
 

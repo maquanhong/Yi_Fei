@@ -13,6 +13,7 @@
 #import "MyProductionController.h"
 #import "Header.h"
 #import "ZMJAddGoodsOneCell.h"
+#import "GetDataForm.h"
 
 
 @interface ZMJNewProductionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -39,15 +40,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shopObjc = [[shopData alloc] init];
-  self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    self.view.backgroundColor = INTERFACECOLOR;
     [self createNaviGationView];
     [self addContentView];
 }
 
 
 #pragma mark 创建导航视图
--(void)createNaviGationView
-{
+-(void)createNaviGationView{
     self.navigationItem.title = @"新建商品";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
@@ -61,8 +61,9 @@
     rightBtn.titleLabel.font=[UIFont systemFontOfSize:12.0];
     UIBarButtonItem* rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem=rightBtnItem;
+    [rightBtn addTarget:self action:@selector(parsingExcel) forControlEvents:UIControlEventTouchUpInside];
+    
 }
-
 
 -(void)back{
     [self.navigationController popViewControllerAnimated:YES];
@@ -93,7 +94,7 @@
  
 }
 
-#pragma Mark -->事件处理
+#pragma Mark  tableView的代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _nameArray.count;
 }
@@ -183,16 +184,18 @@
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             }] ;
             [alert addAction:action];
-            [self presentViewController:alert animated:YES completion:nil];
+        [self presentViewController:alert animated:YES completion:nil];
         }
- 
     }
 }
 
 
+-(void)parsingExcel{
 
-
-
+    GetDataForm * form = [[GetDataForm alloc ] init];
+    [form getDataFromeForm];
+    
+}
 
 
 

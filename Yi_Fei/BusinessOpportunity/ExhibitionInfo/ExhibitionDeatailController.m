@@ -3,8 +3,8 @@
 //  Yi_Fei
 //
 //  Created by yons on 16/11/17.
-//  Copyright © 2016年 ZMJPersonal. All rights reserved
-
+//  Copyright © 2016年 ZMJPersonal. All rights reserved.
+//
 
 #import "ExhibitionDeatailController.h"
 
@@ -18,7 +18,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor purpleColor];
     [self createNavigationView];
+    
+    
+    
 }
+
 
 #pragma mark - 设置导航条
 -(void)createNavigationView
@@ -34,6 +38,35 @@
 -(void)leftButtonClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

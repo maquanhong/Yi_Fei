@@ -15,21 +15,19 @@
 
     self.nextBtn.layer.cornerRadius = 5;
     self.nextBtn.layer.borderWidth = 1.0;
-    [self.nextBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.nextBtn setTitleColor:BACKCOLOR forState:UIControlStateNormal];
     self.nextBtn.tag = 1345;
-    self.nextBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    
-    
+    self.nextBtn.layer.borderColor = BACKCOLOR.CGColor;
+
     self.oneBtn.layer.cornerRadius = 5;
     self.oneBtn.layer.borderWidth = 1.0;
-    [self.oneBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.oneBtn setTitleColor:BACKCOLOR forState:UIControlStateNormal];
     self.oneBtn.tag = 1346;
-    self.oneBtn.layer.borderColor =  [UIColor lightGrayColor].CGColor;
+    self.oneBtn.layer.borderColor = BACKCOLOR.CGColor;
     
     self.lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
 }
-
 
 
 - (IBAction)clickBtnView:(UIButton*)sender {
@@ -37,11 +35,7 @@
     if ([self.delegate respondsToSelector:@selector(clickCell:index:)]) {
     [self.delegate clickCell:self index:sender.tag];
     }
-    
-    
 }
-
-
 
 
 

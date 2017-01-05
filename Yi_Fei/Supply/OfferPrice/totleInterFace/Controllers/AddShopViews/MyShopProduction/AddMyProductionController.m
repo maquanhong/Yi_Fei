@@ -14,11 +14,10 @@
 #import "OneViewController.h"
 #import "TwoViewController.h"
 #import "UserDefaultManager.h"
-#import "AskPriceList.h"
-#import "AskPriceModel.h"
+#import "CustomerProductModel.h"
+#import "CustomerProductList.h"
 
-@interface AddMyProductionController ()<UITableViewDelegate,UITableViewDataSource,ZMJMyProductionCellDelegate,UITextFieldDelegate>
-{
+@interface AddMyProductionController ()<UITableViewDelegate,UITableViewDataSource,ZMJMyProductionCellDelegate,UITextFieldDelegate>{
      AddContinueCell *cell;
 }
 
@@ -55,8 +54,7 @@
 }
 
 #pragma mark 创建navgationView
--(void)createNavigationView
-{
+-(void)createNavigationView{
     self.navigationItem.title = @"商品清单";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
@@ -70,44 +68,57 @@
     self.navigationItem.rightBarButtonItem = item;
     [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
 }
+
 -(void)leftButtonClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)rightButtonClick{
-
-    if (_identify == 7) {
-     for (NSInteger i = 0 ; i < _circleArray.count; i++) {
-        NSString *str = [NSString stringWithFormat:@"%@",_circleArray[i]];
-        shopData *dataModel = [[shopData alloc] init];
-           dataModel = _listArray[[str integerValue]];
-     TranslationObjec *objcVC = [[TranslationObjec alloc] init];
-     NSString *customer = [UserDefaultManager getDataByKey:@"retention"];
-   AskPriceModel *askModel = [objcVC  trams:dataModel type:@"retention" customerName:customer];
-     AskPriceList * askManager = [AskPriceList defaultManager];
-         [askManager insertDataModel:askModel];
-     }
-    OneViewController *myVC = [[ OneViewController alloc] init];
-    for (OneViewController * controller in self.navigationController.viewControllers) { //遍历
+    
+    NSString *oneStr = [UserDefaultManager getDataByKey:@"key"];
+    NSString *twoStr = [UserDefaultManager getDataByKey:@"name"];
+    NSString *threeStr = [UserDefaultManager getDataByKey:@"company"];
+    
+    if ([oneStr isEqualToString:@"2"]) {
+        
+        for (NSInteger i = 0 ; i < _circleArray.count; i++) {
+            NSString *str = [NSString stringWithFormat:@"%@",_circleArray[i]];
+            shopData *dataModel = [[shopData alloc] init];
+            dataModel = _listArray[[str integerValue]];
+            TranslationObjec *objcVC = [[TranslationObjec alloc] init];
+            
+        CustomerProductModel *addModel = [objcVC trams:dataModel customerName:twoStr companyName:threeStr index:oneStr];
+    
+        CustomerProductList   * manager = [CustomerProductList defaultManager];
+            [manager insertDataModel:addModel];
+            
+        }
+        
+        OneViewController *myVC = [[ OneViewController alloc] init];
+        for (OneViewController * controller in self.navigationController.viewControllers) { //遍历
             if ([controller isKindOfClass:[OneViewController class]]) { //这里判断是否
                 myVC = controller;
             }
         }
         if (myVC) {
-        [self.navigationController popToViewController:myVC animated:YES]; //跳转
+            [self.navigationController popToViewController:myVC animated:YES]; //跳转
         }
-    }else if (_identify == 8){
+    }else if ([oneStr isEqualToString:@"1"]){
         
-    for (NSInteger i = 0 ; i < _circleArray.count; i++) {
+        for (NSInteger i = 0 ; i < _circleArray.count; i++) {
+            
         NSString *str = [NSString stringWithFormat:@"%@",_circleArray[i]];
         shopData *dataModel = [[shopData alloc] init];
         dataModel = _listArray[[str integerValue]];
         TranslationObjec *objcVC = [[TranslationObjec alloc] init];
-        NSString *customer = [UserDefaultManager getDataByKey:@"reserved"];
-        AskPriceModel *askModel = [objcVC  trams:dataModel type:@"reserved" customerName:customer];
-        AskPriceList * askManager = [AskPriceList defaultManager];
-        [askManager insertDataModel:askModel];
+        
+        CustomerProductModel *addModel = [objcVC trams:dataModel customerName:twoStr companyName:threeStr index:oneStr];
+        
+        CustomerProductList   * manager = [CustomerProductList defaultManager];
+        [manager insertDataModel:addModel];
+        
     }
+    
     TwoViewController *myVC = [[ TwoViewController alloc] init];
     for (TwoViewController * controller in self.navigationController.viewControllers) { //遍历
         if ([controller isKindOfClass:[TwoViewController class]]) { //这里判断是否
@@ -116,8 +127,8 @@
     }
     if (myVC) {
         [self.navigationController popToViewController:myVC animated:YES]; //跳转
-      }
     }
+  }
 }
 
 
@@ -209,13 +220,9 @@
     }
     shopData *dataModel = [[shopData alloc] init];
     dataModel = _listArray[indexPath.row];
-
-NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    if ([arrayimg[0] length] > 0) {
-NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-   cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    
+    if (dataModel.imageOne) {
+   cell.imgV.image= [UIImage imageWithData:dataModel.imageOne];
     }else{
    cell.imgV.image= [UIImage imageNamed:@"Null"];
     }

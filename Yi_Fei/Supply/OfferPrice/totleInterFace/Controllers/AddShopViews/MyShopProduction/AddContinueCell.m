@@ -81,7 +81,7 @@
         make.height.mas_equalTo(20);
     }];
     
-    NSArray *array=@[@"编辑",@"询价客户"];
+    NSArray *array=@[@"编辑",@"详情"];
     for (int i=0; i<2; i++) {
         
         UIButton *button=[BUYButton creatBtnWithBgColor:[UIColor whiteColor] borderColor:[UIColor lightGrayColor] borderWidth:1.0 titleColor:[UIColor lightGrayColor] text:array[i]];
@@ -89,9 +89,9 @@
         button.tag=5000+i;
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         if (i == 0) {
-            button.frame=CGRectMake(140, 70, 50, 25);
+            button.frame=CGRectMake(140, 70, 60, 25);
         }else{
-            button.frame=CGRectMake(200, 70, 90, 25);
+            button.frame=CGRectMake(220, 70, 60, 25);
         }
         [self.contentView addSubview:button];
     }

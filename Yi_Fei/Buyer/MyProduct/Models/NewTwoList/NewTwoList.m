@@ -30,7 +30,6 @@ static NewTwoList * manager=nil;
     return manager;
 }
 
-
 - (instancetype)init
 {
     if(self=[super init]){
@@ -40,9 +39,8 @@ static NewTwoList * manager=nil;
         _dataBase = [[FMDatabase alloc]initWithPath:path];
         //如果创建成功 打开
         if ([_dataBase open]) {
-       
 
-         NSString *createSql = @"create table if not exists addTwoYiFei(ind integer PRIMARY KEY AUTOINCREMENT,companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000),num varchar(1024),shopSpecific varchar(1024),time varchar(1024))";
+         NSString *createSql = @"create table if not exists addTwoYiFei(ind integer PRIMARY KEY AUTOINCREMENT,companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),imageOne glob(6000),imageTwo glob(6000),imageThree glob(6000),imageFour glob(6000))";
             //integer 数字  varchar字符串   glob 二进制数据NSData
             if ([_dataBase executeUpdate:createSql]){//executeUpdate 返回值是BOOL
                 //executeUpdate 增、删、改、创建 都是使用这个方法
@@ -58,21 +56,21 @@ static NewTwoList * manager=nil;
 
 //插入
 - (void)insertDataModel:(ProductionData *)model{
-    NSString * insertSql = @"insert into addTwoYiFei(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,shopPicture,num,shopSpecific,time) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,model.num,model.shopSpecific];
+    NSString * insertSql = @"insert into addTwoYiFei(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,imageOne,imageTwo,imageThree,imageFour) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.imageOne,model.imageTwo,model.imageThree,model.imageFour];
     if (!success) {
     NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
-    NSLog(@"插入成功");
+        NSLog(@"插入成功");
     }
 }
 
 //修改数据
 - (void)updateDataModel:(ProductionData *)model number:(int)number{
     
-    NSString *sql = [NSString stringWithFormat:@"update addTwoYiFei set companyID = ?, shopName = ?,shopSize = ?, shopMed = ?, shopColor = ? ,shopPrice = ? ,shopHuoBi = ?, shopTiaoK = ?,shopAdderss= ?, shopDescribe = ? , shopInfo = ? ,shopCustom = ?,shopContent = ?,shopPicture = ? ,num= ?,  shopSpecific = ? ,time = ?   where  ind = ?"];
+    NSString *sql = [NSString stringWithFormat:@"update addTwoYiFei set companyID = ?, shopName = ?,shopSize = ?, shopMed = ?, shopColor = ? ,shopPrice = ? ,shopHuoBi = ?, shopTiaoK = ?,shopAdderss= ?, shopDescribe = ? , shopInfo = ? ,shopCustom = ?,shopContent = ?,imageOne = ?,imageTwo = ?,imageThree = ?,imageFour = ? where  ind = ?"];
     NSString *str = [NSString stringWithFormat:@"%d",number];
-    BOOL success = [_dataBase executeUpdate:sql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,model.num,model.shopSpecific,model.time, str];
+    BOOL success = [_dataBase executeUpdate:sql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.imageOne,model.imageTwo,model.imageThree,model.imageFour, str];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -80,10 +78,11 @@ static NewTwoList * manager=nil;
     }
 }
 
+
 //查找
-- (BOOL)isHasDataIDFromTable:(int)dataId
+- (BOOL)isHasDataIDFromTable:(NSString*)dataId
 {
-    NSString * isSql = @"select *from addTwoYiFei where ind=?";
+    NSString * isSql = @"select *from addTwoYiFei where shopName=?";
     //FMResultSet 查询结果的集合类
     FMResultSet * set = [_dataBase executeQuery:isSql,dataId];
     //[set next] 查找当前行 找到继续中查找下一行
@@ -113,9 +112,6 @@ static NewTwoList * manager=nil;
     NSMutableArray * arr = [NSMutableArray array];
     while ([set next]) {
         ProductionData* model = [[ProductionData alloc]init];
-        model.time = [set stringForColumn:@"time"];
-        model.num = [set stringForColumn:@"num"];
-        model.shopSpecific = [set stringForColumn:@"shopSpecific"];
         model.companyID = [set stringForColumn:@"companyID"];
         model.shopName = [set stringForColumn:@"shopName"];
         model.shopSize=[set stringForColumn:@"shopSize"];
@@ -129,12 +125,20 @@ static NewTwoList * manager=nil;
         model.shopInfo = [set stringForColumn:@"shopInfo"];
         model.shopCustom = [set stringForColumn:@"shopCustom"];
         model.shopContent=[set stringForColumn:@"shopContent"];
-        model.shopPicture = [set stringForColumn:@"shopPicture"];
+        model.imageOne = [set dataForColumn:@"imageOne"];
+        model.imageTwo = [set dataForColumn:@"imageTwo"];
+        model.imageThree = [set dataForColumn:@"imageThree"];
+        model.imageFour = [set dataForColumn:@"imageFour"];
         model.ind = [set  intForColumn:@"ind" ];
         [arr addObject:model];
     }
     return arr;
 }
+
+
+
+
+
 
 
 

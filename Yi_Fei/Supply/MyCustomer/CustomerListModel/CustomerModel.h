@@ -27,7 +27,7 @@
 
 @property (nonatomic, copy) NSString *industryType;  //行业类型
 
-@property (nonatomic, copy) NSString *companyLogo;  //公司的logo
+@property (nonatomic, strong) NSData *companyLogo;  //公司的logo
 
 @property (nonatomic, copy) NSString *otherNote;  //备注
 

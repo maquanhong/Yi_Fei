@@ -4,7 +4,6 @@
 //
 //  Created by yons on 16/12/28.
 //  Copyright © 2016年 ZMJPersonal. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 #import "TypeListView.h"
@@ -23,7 +22,6 @@
 @property (nonatomic,strong) UILabel *titleLabel;
 
 @property (nonatomic,strong) TypeListView *typeView;
-
 
 
 @end

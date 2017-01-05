@@ -45,7 +45,7 @@ static SupplyList * manager=nil;
         //如果创建成功 打开
         
         if ([_dataBase open]) {
-            NSString *createSql = @"create table if not exists supply(ind integer PRIMARY KEY AUTOINCREMENT,supplyName varchar(1024),companyName varchar(1024),position varchar(1024),phone varchar(1024),emailAddress varchar(1024),companyAddress varchar(1024),industryType varchar(1024),companyLogo varchar(1024),otherNote varchar(1024) )";
+            NSString *createSql = @"create table if not exists supply(ind integer PRIMARY KEY AUTOINCREMENT,supplyName varchar(1024),companyName varchar(1024),position varchar(1024),phone varchar(1024),emailAddress varchar(1024),companyAddress varchar(1024),industryType varchar(1024),companyLogo glob(6000),otherNote varchar(1024) )";
             //integer 数字  varchar字符串   glob 二进制数据NSData
             if ([_dataBase executeUpdate:createSql]){
                 //executeUpdate 返回值是BOOL
@@ -122,7 +122,7 @@ static SupplyList * manager=nil;
         model.emailAddress=[set stringForColumn:@"emailAddress"];
         model.companyAddress = [set stringForColumn:@"companyAddress"];
         model.industryType = [set stringForColumn:@"industryType"];
-        model.companyLogo=[set stringForColumn:@"companyLogo"];
+        model.companyLogo=[set dataForColumn:@"companyLogo"];
         model.otherNote=[set stringForColumn:@"otherNote"];
         model.ind = [set  intForColumn:@"ind" ];
         [arr addObject:model];

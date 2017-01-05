@@ -26,6 +26,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+         self.selectionStyle =  UITableViewCellSelectionStyleNone;
         [self addViewConstraints];
     }
     return self;
@@ -40,7 +41,7 @@
     [self addSubview:_iconImageView];
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(self).offset(20);
-        make.top.mas_equalTo(self.mas_top).offset(10);
+        make.top.mas_equalTo(self.mas_top).offset(20);
         make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
     _iconImageView.tag = 1500;

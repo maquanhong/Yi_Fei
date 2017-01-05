@@ -117,14 +117,23 @@ static NSString * const kFileExtension = @"xls";
  const char *twoCustom = [_shopObjc.shopContent UTF8String];
  worksheet_write_string(worksheet, num, 11, twoCustom, custom);
  
- 
- NSMutableArray *imageArray = [NSMutableArray array];
- NSArray *arrayimg=[_shopObjc.shopPicture componentsSeparatedByString:@"|"];
- NSString *path_document = NSHomeDirectory();
- //设置一个图片的存储路径
- for (NSInteger i = 0 ; i < arrayimg.count; i++) {
- NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
- [imageArray addObject:imagePath];
+   
+     NSMutableArray  *imageArray = [NSMutableArray array];
+     if (_shopObjc.imageOne) {
+        [imageArray addObject:_shopObjc.imageOne];
+     }
+     if (_shopObjc.imageTwo) {
+         [imageArray addObject:_shopObjc.imageTwo];
+     }
+     if (_shopObjc.imageThree) {
+         [imageArray addObject:_shopObjc.imageThree];
+     }
+     if (_shopObjc.imageFour) {
+         [imageArray addObject:_shopObjc.imageFour];
+     }
+
+
+ for (NSInteger i = 0 ; i < imageArray.count; i++) {
  const char *image = [imageArray[i] UTF8String];
  NSString *str = [NSString stringWithFormat:@"%ld",i];
  int coulm =  [str intValue] + 12;

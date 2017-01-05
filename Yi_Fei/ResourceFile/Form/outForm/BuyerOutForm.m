@@ -103,34 +103,27 @@ static NSString * const kFileExtension = @"xlsx";
     worksheet_merge_range(worksheet1, 2, 6, 2, 8, "", custom);
     worksheet_merge_range(worksheet1, 2, 9, 2, 11, "", custom);
     
-    NSMutableArray *imageArray = [NSMutableArray array];
-    NSArray *arrayimg=[_shopObjc.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
-        [imageArray addObject:imagePath];
-        
-        if (i == 0) {
-            const char *imageOne = [imageArray[i] UTF8String];
-            worksheet_insert_image(worksheet1,  2, 1, imageOne);
-        }else if (i == 1){
-            const char *imageTwo = [imageArray[i] UTF8String];
-            worksheet_insert_image(worksheet1,  2, 4, imageTwo);
-            
-        }else if (i == 2){
-            const char *imageThree = [imageArray[i] UTF8String];
-            worksheet_insert_image(worksheet1,  2, 6, imageThree);
-        }else if (i == 3){
-            const char *imageFour = [imageArray[i] UTF8String];
-            worksheet_insert_image(worksheet1,  2, 9, imageFour);
-        }
+ 
+    if (_shopObjc.imageOne ) {
+    const char *imageOne=(char*)[_shopObjc.imageOne bytes];
+    worksheet_insert_image(worksheet1,  2, 1, imageOne);
+    }
+   
+    if (_shopObjc.imageTwo ) {
+        const char *imageTwo=(char*)[_shopObjc.imageTwo bytes];
+        worksheet_insert_image(worksheet1,  2, 4, imageTwo);
     }
     
-    //第三单元格
-    //第四单元格
-    //第五单元格
-    
+    if (_shopObjc.imageThree ) {
+        const char *imageThree=(char*)[_shopObjc.imageThree bytes];
+        worksheet_insert_image(worksheet1,  2, 6, imageThree);
+    }
+
+    if (_shopObjc.imageFour ) {
+        const char *imageFour=(char*)[_shopObjc.imageFour bytes];
+        worksheet_insert_image(worksheet1,  2, 9, imageFour);
+    }
+
     //第四行
     worksheet_merge_range(worksheet1, 3, 0, 3, 11, "产品参数详情", custom);
     worksheet_set_column(worksheet1, 0, 0, 20, NULL);

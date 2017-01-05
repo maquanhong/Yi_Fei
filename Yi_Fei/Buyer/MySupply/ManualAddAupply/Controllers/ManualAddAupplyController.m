@@ -434,7 +434,6 @@ UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBt
     return 0.000001;
 }
 
-
 #pragma mark tableView每组的组头视图设置
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 44)];
@@ -507,30 +506,13 @@ UIBarButtonItem* leftBtnItem = [[UIBarButtonItem alloc]initWithCustomView:leftBt
     
 ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
     photoController.selectPhotoOfMax = 1;
-    //设置相册中完成按钮旁边小圆点颜色。
-    //   photoController.roundColor = [UIColor greenColor];
-    
     [photoController showIn:self result:^(id responseObject){
         self.picArray = (NSArray *)responseObject;
         [_tableview reloadData];
-        NSString *strTime;
-        for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
-            ZZPhoto *photo = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            _logoImage = [self compressOriginalImage:photo.originImage toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            strTime = [dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [UIImagePNGRepresentation(_logoImage) writeToFile:imagePath atomically:YES];
-        }
-        _model.companyLogo = strTime;
+
+        ZZPhoto *photo = self.picArray[0];
+        UIImage *image = photo.originImage;
+        _model.companyLogo  = UIImagePNGRepresentation(image);
     }];
 }
 
@@ -543,27 +525,9 @@ ZZCameraController *cameraController = [[ZZCameraController alloc]init];
         self.picArray = [NSArray array];
         self.picArray = (NSArray *)responseObject;
         [_tableview reloadData];
-  
-        NSString *strTime;
-        for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
-            ZZCamera *camera = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            _logoImage = [self compressOriginalImage:camera.image toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            strTime = [dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-        
-            [UIImagePNGRepresentation(_logoImage) writeToFile:imagePath atomically:YES];
-        }
-         _model.companyLogo = strTime;
-        
+            ZZCamera *camera = self.picArray[0];
+            UIImage *image = camera.image;
+         _model.companyLogo = UIImagePNGRepresentation(image);
     }];
 }
 

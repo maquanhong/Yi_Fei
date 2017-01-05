@@ -65,14 +65,14 @@ _symView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 200)];
         make.bottom.mas_equalTo(_symView.mas_bottom).offset(-50);
         make.size.mas_equalTo(CGSizeMake(80, 80));
     }];
-    
-    
+
     //获取单例对象
     UserList *manager = [UserList defaultManager];
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
-    NSString *str = [UserDefaultManager getDataByKey:@"user"];
-    oneModel = [manager getDataWith:str];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    oneModel = [manager getDataName:strOne and:strTwo];
     
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径

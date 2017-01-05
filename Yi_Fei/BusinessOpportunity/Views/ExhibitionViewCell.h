@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExibitionModel.h"
 
 @interface ExhibitionViewCell : UITableViewCell
 
 @property (nonatomic,strong) NSDictionary *dict;
+
+@property (nonatomic,strong) ExibitionModel *model;
 
 
 @end

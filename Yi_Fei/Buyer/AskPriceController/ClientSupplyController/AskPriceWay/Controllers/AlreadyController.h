@@ -15,13 +15,11 @@
 @end
 
 
-
 @interface AlreadyController : UIViewController
 
 @property (nonatomic,weak)id<AlreadyControllerDelegate> delegate;
 
 @property (nonatomic,strong)SupplyModel *model;
-
 
 @end
 

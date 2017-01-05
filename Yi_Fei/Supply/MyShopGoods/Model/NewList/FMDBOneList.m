@@ -35,7 +35,7 @@ static FMDBOneList * manager=nil;
         _dataBase = [[FMDatabase alloc]initWithPath:path];
         //如果创建成功 打开
         if ([_dataBase open]) {
-    NSString *createSql = @"create table if not exists addYiFei(ind integer PRIMARY KEY AUTOINCREMENT,companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),shopPicture varchar(6000))";
+    NSString *createSql = @"create table if not exists addYiFei(ind integer PRIMARY KEY AUTOINCREMENT,companyID varchar(1024),shopName varchar(1024),shopSize varchar(1024),shopMed varchar(1024),shopColor varchar(1024),shopPrice varchar(1024),shopHuoBi varchar(1024),shopTiaoK varchar(1024),shopAdderss varchar(1024),shopDescribe varchar(1024),shopInfo varchar(1024),shopCustom varchar(1024),shopContent varchar(1024),imageOne glob(6000),imageTwo glob(6000),imageThree glob(6000),imageFour glob(6000))";
     //integer 数字  varchar字符串   glob 二进制数据NSData
         if ([_dataBase executeUpdate:createSql]){
             //executeUpdate 返回值是BOOL
@@ -51,8 +51,8 @@ static FMDBOneList * manager=nil;
 
 //插入
 - (void)insertDataModel:(shopData *)model{
-    NSString * insertSql = @"insert into addYiFei(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,shopPicture) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture];
+    NSString * insertSql = @"insert into addYiFei(companyID,shopName,shopSize,shopMed,shopColor,shopPrice,shopHuoBi,shopTiaoK,shopAdderss,shopDescribe,shopInfo,shopCustom,shopContent,imageOne,imageTwo,imageThree,imageFour) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    BOOL success=[_dataBase executeUpdate:insertSql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.imageOne,model.imageTwo,model.imageThree,model.imageFour];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -63,9 +63,9 @@ static FMDBOneList * manager=nil;
 //修改数据
 - (void)updateDataModel:(shopData *)model number:(int)number  {
     
-    NSString *sql = [NSString stringWithFormat:@"update addYiFei set companyID = ?, shopName = ?,shopSize = ?, shopMed = ?, shopColor = ? ,shopPrice = ? ,shopHuoBi = ?, shopTiaoK = ?,shopAdderss= ?, shopDescribe = ? , shopInfo = ? ,shopCustom = ?,shopContent = ?,shopPicture = ? where  ind = ?"];
+    NSString *sql = [NSString stringWithFormat:@"update addYiFei set companyID = ?, shopName = ?,shopSize = ?, shopMed = ?, shopColor = ? ,shopPrice = ? ,shopHuoBi = ?, shopTiaoK = ?,shopAdderss= ?, shopDescribe = ? , shopInfo = ? ,shopCustom = ?,shopContent = ?,imageOne = ?,imageTwo = ?,imageThree = ?,imageFour = ? where  ind = ?"];
     NSString *str = [NSString stringWithFormat:@"%d",number];
-    BOOL success = [_dataBase executeUpdate:sql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.shopPicture,str];
+    BOOL success = [_dataBase executeUpdate:sql,model.companyID,model.shopName,model.shopSize,model.shopMed,model.shopColor,model.shopPrice,model.shopHuoBi,model.shopTiaoK,model.shopAdderss,model.shopDescribe,model.shopInfo,model.shopCustom,model.shopContent,model.imageOne,model.imageTwo,model.imageThree,model.imageFour,str];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -118,7 +118,10 @@ static FMDBOneList * manager=nil;
         model.shopInfo = [set stringForColumn:@"shopInfo"];
         model.shopCustom = [set stringForColumn:@"shopCustom"];
         model.shopContent=[set stringForColumn:@"shopContent"];
-        model.shopPicture = [set stringForColumn:@"shopPicture"];
+        model.imageOne = [set dataForColumn:@"imageOne"];
+        model.imageTwo = [set dataForColumn:@"imageTwo"];
+        model.imageThree = [set dataForColumn:@"imageThree"];
+        model.imageFour = [set dataForColumn:@"imageFour"];
         model.ind = [set  intForColumn:@"ind" ];
         [arr addObject:model];
     }

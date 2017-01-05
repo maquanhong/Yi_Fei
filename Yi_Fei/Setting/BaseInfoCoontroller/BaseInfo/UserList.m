@@ -19,6 +19,7 @@
 @implementation UserList
 
 static UserList * manager=nil;
+
 +(UserList *)defaultManager
 {
     //只调用一次，保证线程安全
@@ -30,7 +31,6 @@ static UserList * manager=nil;
     });
     return manager;
 }
-
 
 - (instancetype)init
 {
@@ -64,9 +64,9 @@ static UserList * manager=nil;
 }
 
 //修改数据
-- (void)updateDataModel:(UserModel*)model data:(NSString*)data {
-    NSString *sql = [NSString stringWithFormat:@"update User set picture = ?, name = ?,industry = ?, size = ?, business = ? ,product = ? ,url = ?, adderss = ?,link= ?, phone = ? , email = ? ,position = ?  where  phone = ?"];
-    BOOL success = [_dataBase executeUpdate:sql,model.picture,model.name,model.industry,model.size,model.business,model.product,model.url,model.adderss,model.link,model.phone,model.email,model.position,data];
+-(void)updateDataModel:(UserModel*)model and:(NSString*)name and:(NSString*)companyName{
+    NSString *sql = [NSString stringWithFormat:@"update User set picture = ?, name = ?,industry = ?, size = ?, business = ? ,product = ? ,url = ?, adderss = ?,link= ?, phone = ? , email = ? ,position = ?  where name = ? and link = ?"];
+    BOOL success = [_dataBase executeUpdate:sql,model.picture,model.name,model.industry,model.size,model.business,model.product,model.url,model.adderss,model.link,model.phone,model.email,model.position,name,companyName];
     if (!success) {
         NSLog(@"%@",[_dataBase lastErrorMessage]);
     }else{
@@ -75,11 +75,11 @@ static UserList * manager=nil;
 }
 
 //查找
-- (BOOL)isHasDataIDFromTable:(NSString*)data
+- (BOOL)isHasDataIDFrom:(NSString*)name and:(NSString*)companyName
 {
-    NSString * isSql = @"select *from User where phone =?";
+    NSString * isSql = @"select *from User where name = ? and link = ?";
     //FMResultSet 查询结果的集合类
-    FMResultSet * set = [_dataBase executeQuery:isSql,data];
+    FMResultSet * set = [_dataBase executeQuery:isSql,name,companyName];
     //[set next] 查找当前行 找到继续中查找下一行
     if ([set next]) {
         return YES;
@@ -89,10 +89,10 @@ static UserList * manager=nil;
     return [set next];//next 返回时一个BOOL
 }
 
+- (UserModel *)getDataName:(NSString*)name and:(NSString*)companyName{
 
-- (UserModel *)getDataWith:(NSString*)data{
-    NSString * resultSql = @"select *from User where phone =?";
-    FMResultSet * set = [_dataBase executeQuery:resultSql,data];
+    NSString * resultSql = @"select *from User where name = ? and link = ?";
+    FMResultSet * set = [_dataBase executeQuery:resultSql,name,companyName];
     UserModel* model ;
     while ([set next]) {
       model = [[UserModel alloc]init];
@@ -115,48 +115,7 @@ static UserList * manager=nil;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @end
-
-
-
-
-
-
-
 
 
 

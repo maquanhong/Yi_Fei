@@ -11,6 +11,4 @@
 @interface ExhibitionDeatailController : UIViewController
 
 
-
-
 @end

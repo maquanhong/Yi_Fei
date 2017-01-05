@@ -132,34 +132,22 @@ static NSString * const kFileExtension = @"pdf";
     [CreateBuerPDF drawLineFromPoint:threeOne toPoint:toThreeOne];
     [CreateBuerPDF drawText:@"产品图片" inFrame:CGRectMake(150, 270, 180, 40) fontName:@"Arial" fontSize:24];
     
-    
-    NSMutableArray *imageArray = [NSMutableArray array];
-    NSArray *arrayimg=[_shopObjc.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
-        [imageArray addObject:imagePath];
-        
-        if (i == 0) {
-            UIImage* logoOne = [UIImage imageWithContentsOfFile:imageArray[i]];
-            CGRect frameOne = CGRectMake(280, 170, 145, 160);
-            [CreateBuerPDF drawImage:logoOne inRect:frameOne];
-        }else if (i == 1){
-            UIImage* logoTwo = [UIImage imageWithContentsOfFile:imageArray[i]];
-            CGRect frameTwo = CGRectMake(425, 170, 145, 160);
-            [CreateBuerPDF drawImage:logoTwo inRect:frameTwo];
-            
-        }else if (i == 2){
-            UIImage* logoThree = [UIImage imageWithContentsOfFile:imageArray[i]];
-            CGRect frameThree = CGRectMake(570, 170, 145, 160);
-            [CreateBuerPDF drawImage:logoThree inRect:frameThree];
-        }else if (i == 3){
-            UIImage* logoFour = [UIImage imageWithContentsOfFile:imageArray[i]];
-            CGRect frameFour = CGRectMake(715, 170, 145, 160);
-            [CreateBuerPDF drawImage:logoFour inRect:frameFour];
-        }
-    }
+    UIImage* logoOne = [UIImage imageWithData:_shopObjc.imageOne];
+    CGRect frameOne = CGRectMake(280, 170, 145, 160);
+    [CreateBuerPDF drawImage:logoOne inRect:frameOne];
+
+    UIImage* logoTwo =[UIImage imageWithData:_shopObjc.imageTwo];
+    CGRect frameTwo = CGRectMake(425, 170, 145, 160);
+    [CreateBuerPDF drawImage:logoTwo inRect:frameTwo];
+
+    UIImage* logoThree = [UIImage imageWithData:_shopObjc.imageThree];
+    CGRect frameThree = CGRectMake(570, 170, 145, 160);
+    [CreateBuerPDF drawImage:logoThree inRect:frameThree];
+
+    UIImage* logoFour = [UIImage imageWithData:_shopObjc.imageFour];
+    CGRect frameFour = CGRectMake(715, 170, 145, 160);
+    [CreateBuerPDF drawImage:logoFour inRect:frameFour];
+
     
     
     //第四行

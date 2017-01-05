@@ -17,14 +17,13 @@
 - (void)insertDataModel:(UserModel *)model;
 
 //修改数据
-- (void)updateDataModel:(UserModel*)model data:(NSString*)data;
+- (void)updateDataModel:(UserModel*)model and:(NSString*)name and:(NSString*)companyName;
 
 //查询数据
-- (BOOL)isHasDataIDFromTable:(NSString*)data;
-
+- (BOOL)isHasDataIDFrom:(NSString*)name and:(NSString*)companyName;
 
 //根据字段搜索结果
-- (UserModel *)getDataWith:(NSString*)data;
+- (UserModel *)getDataName:(NSString*)name and:(NSString*)companyName;
 
 
 @end

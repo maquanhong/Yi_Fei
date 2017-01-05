@@ -24,6 +24,8 @@
 //行业类型
 @property (nonatomic,strong) NSArray *industryArray;
 
+
+
 @end
 
 @implementation CardCustomerController
@@ -34,7 +36,7 @@
     _titleArray = [NSMutableArray array];
     _industryArray =[_model.industryType componentsSeparatedByString:@"|"];
     self.navigationController.navigationBar.hidden = YES;
-    _imageArray = @[@"phone",@"youxiang",@"dizhi"];
+    
     if (_model.phone.length > 0 ) {
         [_titleArray addObject:_model.phone];
     }else{
@@ -50,8 +52,10 @@
     }else{
         [_titleArray addObject:@""];
     }
+    
+    _imageArray = @[@"phone",@"youxiang",@"dizhi"];
     _subTitleArray = @[@"联系方式",@"工作邮箱",@"公司地址"];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.view.backgroundColor =  INTERFACECOLOR ;
     [self createTableView];
 }
 
@@ -68,7 +72,12 @@
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
     NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
+    if (_model.companyLogo.length > 0) {
     header.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+    }else{
+    header.iconImageView.image  = [UIImage imageNamed:@"Null"];
+    }
+
     header.nameLabel.text = _model.customerName;
     if (_model.position.length >0) {
         header.titleLabel.text = [NSString stringWithFormat:@"%@",_model.position];

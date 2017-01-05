@@ -13,12 +13,12 @@
 #import "FooterView.h"
 #import "SecondTableViewCell.h"
 #import "ThreeViewCell.h"
-#import "AskPriceModel.h"
-#import "AskPriceList.h"
+#import "CustomerProductList.h"
+#import "UserDefaultManager.h"
 
 @interface CustomerEditController ()<UITableViewDelegate,UITableViewDataSource,FourViewCellDelegate,UITextFieldDelegate,UITextViewDelegate,EditSelectViewCellDelegate,SSPopupDelegate,UWDatePickerViewDelegate,SelectOneViewDelegate,FooterViewDelegate>{
     
-    AskPriceList *_manager;
+    CustomerProductList *_manager;
     UWDatePickerView *_pickerView;
     EditFirstShopCell *firstCell;
     EditSelectViewCell *secondCell;
@@ -28,11 +28,9 @@
     ThreeViewCell  *fiveCell;
     SecondTableViewCell *sixCell;
     FourViewCell  *sevenCell;
-    NSInteger _index;
     NSInteger _flag;
      NSInteger _clickNum;
      NSInteger _number;
-     NSInteger _num;
     
 }
 @property (nonatomic,strong)BackButton *selectBtn;
@@ -62,10 +60,8 @@
     self.view.backgroundColor = INTERFACECOLOR;
     [self setNav];
     _flag = 0;
-    _index = 1;
     _clickNum = 0;
     _number = 0;
-    _num = [_model.record integerValue];
     _customContent = [NSMutableArray array];
     _customType = [NSMutableArray array];
    _customArray =[_model.shopCustom componentsSeparatedByString:@"|"];
@@ -78,8 +74,9 @@
     [self addContentView];
 }
 
-
+#pragma mark 导航栏
 - (void)setNav {
+    
     self.navigationItem.title = @"商品信息修改";
     BackButton* leftBtn= [BackButton buttonWithType:UIButtonTypeCustom];
     [leftBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
@@ -112,16 +109,37 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 
 
 - (void)clickBtn{
+
+    _manager = [CustomerProductList defaultManager];
+    NSString *oneStr = [UserDefaultManager getDataByKey:@"key"];
+    NSString *twoStr = [UserDefaultManager getDataByKey:@"name"];
+    NSString *threeStr = [UserDefaultManager getDataByKey:@"company"];
     
-    _manager = [AskPriceList defaultManager];
-    [_manager updateDataModel:_model number:_model.ind];
+     if ([oneStr isEqualToString:@"2"]) {
+         
+     _model.flag = oneStr;
+     _model.customerName = twoStr;
+     _model.companyName = threeStr;
+     NSString *str = [NSString stringWithFormat:@"%d",_model.ind];
+     [_manager updateMolde:_model Element:twoStr and:threeStr num:@"2" index:str];
     [self.navigationController popViewControllerAnimated:YES];
+         
+     }else if ([oneStr isEqualToString:@"1"]){
+         
+     _model.flag = oneStr;
+     _model.customerName = twoStr;
+     _model.companyName = threeStr;
+     NSString *str = [NSString stringWithFormat:@"%d",_model.ind];
+     [_manager updateMolde:_model Element:twoStr and:threeStr num:@"1" index:str];
+     [self.navigationController popViewControllerAnimated:YES];
+
+     }
 }
 
 
 #pragma Mark -->tableVie的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 7;
+    return 6;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -133,19 +151,16 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
     }else if (section == 2) {
         return 1;
     }else if (section == 3) {
-        return _index;
+            return 2;
     }else if (section == 4) {
-        return 2;
-    }else if (section == 5) {
-    if (_clickNum == 1) {
-        return _number;
+        if (_clickNum == 1) {
+            return _number;
         }else{
-        return _customArray.count;
+            return _customArray.count;
         }
     }else{
         return 1;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -185,31 +200,7 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
         [self getTypeTwoFromModel:threeCell.typeOne];
         return threeCell;
     }else if (indexPath.section == 3){
-    if (indexPath.row == 0) {
-        static NSString *identifer7 =@"addOneCell";
-        fourOneCell = [tableView dequeueReusableCellWithIdentifier:identifer7];
-        if (fourOneCell == nil) {
-            fourOneCell = [[SelectOneView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer7];
-        }
-        fourOneCell.delegate = self;
-        fourOneCell.typeLabel.text = @"询价类型";
-        fourOneCell.typeOne.nameLabel.text =  @"留样报价";
-         [self getTypeViewOneFromModel:fourOneCell.typeOne];
-        return fourOneCell;
-    }else{
-        static NSString *identifer5 =@"addTwoCell";
-        fourTwoCell = [tableView dequeueReusableCellWithIdentifier:identifer5];
-        if (fourTwoCell == nil) {
-            fourTwoCell = [[SelectTwoView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer5];
-        }
-        fourTwoCell.delegate = self;
-        fourTwoCell.typeLabel.text = @"留样询价";
-        fourTwoCell.typeOne.nameLabel.text =@"选择预留询价时间";
-        fourTwoCell.typeOne.tag = 6801;
-        [self getTypeViewTwoFromModel:fourTwoCell.typeOne];
-        return fourTwoCell;
-      }
-    }else if (indexPath.section == 4){
+ 
         static NSString *identifer = @"threeCell";
         fiveCell = [tableView dequeueReusableCellWithIdentifier:identifer];
         if (!fiveCell) {
@@ -220,30 +211,30 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
         fiveCell.nameLabel.text = _textViewArray[indexPath.row];
         [self  getDataFromeModel:fiveCell.textView];
         return fiveCell;
-    
-    }else if (indexPath.section == 5){
+        
+    }else if (indexPath.section == 4){
         static NSString *identifer6 =@"sixCell";
-    sixCell  = [tableView dequeueReusableCellWithIdentifier:identifer6];
+        sixCell  = [tableView dequeueReusableCellWithIdentifier:identifer6];
         if (sixCell == nil) {
-    sixCell = [[SecondTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer6];
+            sixCell = [[SecondTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer6];
         }
         if (_clickNum != 1) {
             if ([_customArray[indexPath.row]  isEqualToString:@"ABC"]  ) {
                 sixCell.textFOne.text  = @"";
             }else{
                 if ([_customArray[indexPath.row] isKindOfClass:[NSNull class]]) {
-                sixCell.textFOne.text = @"";
+                    sixCell.textFOne.text = @"";
                 }else{
-                sixCell.textFOne.text = _customArray[indexPath.row];
+                    sixCell.textFOne.text = _customArray[indexPath.row];
                 }
             }
             if ([_bodyArray[indexPath.row]  isEqualToString:@"ABC"]) {
                 sixCell.textFTwo.text  = @"";
             }else{
                 if ([_bodyArray[indexPath.row] isKindOfClass:[NSNull class]]) {
-                sixCell.textFTwo.text = @"";
+                    sixCell.textFTwo.text = @"";
                 }else{
-                sixCell.textFTwo.text = _bodyArray[indexPath.row];
+                    sixCell.textFTwo.text = _bodyArray[indexPath.row];
                 }
             }
         }
@@ -253,7 +244,7 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
         sixCell.textFTwo.tag = 2601;
         sixCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return sixCell;
-
+    
     }else{
     
         static NSString *identifer = @"fourCell";
@@ -263,29 +254,20 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
         }
      sevenCell.setBtn.hidden = NO;
         if (_flag == 0) {
-            NSArray *arrayimg=[_model.shopPicture componentsSeparatedByString:@"|"];
-            NSString *path_document = NSHomeDirectory();
-        for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-        if (i == 0 ) {
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-            sevenCell.imageOne.image= [UIImage imageWithContentsOfFile:imagePath];
-        }
-        if (i == 1 ) {
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[1]]];
-            sevenCell.imageTwo.image= [UIImage imageWithContentsOfFile:imagePath];
-        }
-        if (i == 2) {
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[2]]];
-            sevenCell.imageThree.image= [UIImage imageWithContentsOfFile:imagePath];
-        }
-        if (i == 3 ) {
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[3]]];
-            sevenCell.imageFour.image= [UIImage imageWithContentsOfFile:imagePath];
-        }
-        }
+            if (_model.imageOne) {
+        sevenCell.imageOne.image = [UIImage imageWithData:_model.imageOne];
+            }
+            if (_model.imageTwo) {
+        sevenCell.imageTwo.image = [UIImage imageWithData:_model.imageTwo];
+            }
+            if (_model.imageThree) {
+        sevenCell.imageThree.image = [UIImage imageWithData:_model.imageThree];
+            }
+            if (_model.imageFour) {
+        sevenCell.imageFour.image = [UIImage imageWithData:_model.imageFour];
+            }
         }else{
-            [self getImage:self.picArray];
+      [self getImage:self.picArray];
         }
         sevenCell.delegate = self;
         return sevenCell;
@@ -348,9 +330,9 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 
 //高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 4) {
+    if (indexPath.section == 3) {
         return 100;
-    }else if (indexPath.section == 6) {
+    }else if (indexPath.section == 5) {
         return 130;
     }else{
         return 44;
@@ -362,18 +344,17 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 5) {
+    if (section == 4) {
         return 44;
     }else{
         return 0.0000001;
     }
 }
 
-
 #pragma mark 自定义组头
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *backView;
-    if (section == 5) {
+    if (section == 4) {
     backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 44)];
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.font = [UIFont systemFontOfSize:14];
@@ -409,6 +390,7 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 #pragma mark 设置参数
 //第一组
 -(void)setDataFromeModel:(UITextField*)textFiled{
+    
     switch (textFiled.tag) {
         case 2610:
         {
@@ -488,6 +470,7 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 
 //第二组
 -(void)getTypeOneFromModel:(ZMJTypeView*)typeView{
+    
     if (_model.shopHuoBi.length > 0) {
         secondCell.typeOne.nameLabel.text = _model.shopHuoBi;
     }else{
@@ -516,36 +499,9 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 }
 
 
-//第四组
--(void)getTypeViewOneFromModel:(ZMJTypeView*)typeView{
-    
-    
-    if ( _num == 1) {
-    fourOneCell.typeOne.nameLabel.text =  @"留样报价";
-        _index = 1 ;
-        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
-        [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-        
-    }else if (_num == 2){
-    fourOneCell.typeOne.nameLabel.text =  @"预留报价";
-        _index = 2 ;
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
-    [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
-
-
--(void)getTypeViewTwoFromModel:(ZMJTypeView*)typeView{
-    
-    if (_model.time.length > 0) {
-        fourTwoCell.typeOne.nameLabel.text = _model.time;
-    }else{
-        fourTwoCell.typeOne.nameLabel.text = @"选择预留询价时间";
-    }
-}
-
 //第五组
 -(void)getDataFromeModel:(UITextView*)textView{
+    
     switch (textView.tag) {
         case 8500:
         {
@@ -567,9 +523,6 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 }
 
 
-
-
-#pragma mark 得到值
 #pragma mark 得到值
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     
@@ -680,8 +633,8 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
     [self.view  addSubview:selection];
     [selection CreateTableview:_rmbArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
     secondCell.typeOne.nameLabel.text = _rmbArray[tag];
+        _model.shopHuoBi = _rmbArray[tag];
     }];
-    
 }
 
 
@@ -696,6 +649,7 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
     [self.view  addSubview:selection];
     [selection CreateTableview:_typeArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
     threeCell.typeOne.nameLabel.text = _typeArray[tag];
+    _model.shopTiaoK = _typeArray[tag];
     if ([_typeArray[tag] isEqualToString:@"FOB"]) {
         threeCell.textFiled.hidden= NO;
         threeCell.textFiled.delegate = self;
@@ -707,69 +661,9 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
 
 
 
-
-//询价类型
-- (void)clicTypeOnekView:(ZMJTypeView *)view{
-    
-    SSPopup* selection=[[SSPopup alloc]init];
-    selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:1.0];
-    selection.index = _askArray.count;
-    selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-    selection.SSPopupDelegate=self;
-    [self.view  addSubview:selection];
-    [selection CreateTableview:_askArray withSender:nil  withTitle:nil setCompletionBlock:^(int tag){
-        if ([_askArray[tag] isEqualToString:@"预留报价"]) {
-        fourOneCell.typeOne.nameLabel.text = @"预留报价";
-            _index = 2 ;
-            _num = 2;
-        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
-    [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-        }else{
-    fourOneCell.typeOne.nameLabel.text = @"留样报价";
-        _index = 1 ;
-        _num = 1;
-    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:3];
-    [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
-    }];
-    
-}
-
-#pragma mark 选择预留方式
--(void)clicTypeTwoView:(ZMJTypeView *)view{
-    
-    _pickerView = [UWDatePickerView instanceDatePickerView];
-    _pickerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    [_pickerView setBackgroundColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:0.3]];
-    _pickerView.delegate = self;
-    _pickerView.type = DateTypeOfStart;
-    [self.view addSubview:_pickerView];
-}
-
-
-
-
-- (void)getSelectDate:(NSString *)date type:(DateType)type {
-    switch (type) {
-        case DateTypeOfStart:
-        {
-            fourTwoCell.typeOne.nameLabel.text = date;
-            _model.time = date;
-        }
-            break;
-        case DateTypeOfEnd:
-            break;
-        default:
-            break;
-    }
-}
-
-
-
-
-
+#pragma mark 选取照片
 - (void)clickView{
+    
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"选择" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self clickPhotoAlbum];
@@ -788,93 +682,51 @@ FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDT
     
 }
 
-
-
-
 -(void)clickPhotoAlbum{
-    
     _flag = 1;
     ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
     photoController.selectPhotoOfMax = 4;
-    //设置相册中完成按钮旁边小圆点颜色。
-    //   photoController.roundColor = [UIColor greenColor];
-    
     [photoController showIn:self result:^(id responseObject){
         
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
             ZZPhoto *photo = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:photo.originImage toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
-        }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _model.shopPicture=str;
-    }];
+            UIImage *image = photo.originImage;
+            if (i ==  0) {
+                _model.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+                _model.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+                _model.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+                _model.imageFour  = UIImagePNGRepresentation(image);
+            }
+        }    }];
 }
 
 - (void)presentCameraSingle {
     _flag = 1;
-    
     ZZCameraController *cameraController = [[ZZCameraController alloc]init];
     cameraController.takePhotoOfMax = 4;
     cameraController.isSaveLocal = NO;
     [cameraController showIn:self result:^(id responseObject){
         self.picArray = [NSArray array];
         self.picArray = (NSArray *)responseObject;
-        [_tableView reloadData];
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
-            ZZCamera *camera = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+             ZZCamera *camera = self.picArray[i];
+            UIImage *image = camera.image;
+            if (i ==  0) {
+            _model.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+            _model.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+            _model.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+            _model.imageFour  = UIImagePNGRepresentation(image);
+            }
         }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _model.shopPicture=str;
-        
     }];
-}
-
--(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
-    UIGraphicsBeginImageContext(size);
-    
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
-    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return scaledImage;
 }
 
 

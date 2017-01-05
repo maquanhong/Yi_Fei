@@ -26,7 +26,8 @@
     askModel.shopInfo = model.shopInfo;
     askModel.shopCustom = model.shopCustom;
     askModel.shopContent = model.shopContent;
-    askModel.shopPicture = model.shopPicture;
+
+    
     askModel.cleintName = supplyName;
     askModel.time = time;
     return askModel;

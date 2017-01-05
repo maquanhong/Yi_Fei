@@ -20,7 +20,9 @@
 
 #pragma mark 数据源
 @property (nonatomic,strong,nonnull) NSArray *objcArray;
-
+@property (nonatomic,copy,nonnull) NSString *askTime;
+@property (nonatomic,copy,nonnull) NSString *askCompanyName;
+@property (nonatomic,copy,nonnull) NSString *customerName;
 
 @property (nonatomic,strong,nonnull) OfferPriceModel *shopObjc;
 

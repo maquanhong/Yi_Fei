@@ -31,6 +31,13 @@
 @property (nonatomic,strong)BUYTypeView *nextView;
 @property (nonatomic,strong)IndustryModel *industryModel;
 
+
+
+@property (nonatomic,strong)NSString *phoneNumber;
+@property (nonatomic,strong)NSString *passWord;
+@property (nonatomic,strong)NSString *yZmassage;
+@property (nonatomic,strong)NSString *Hytype;
+
 @end
 
 @implementation BUYRegisterControl
@@ -86,6 +93,10 @@
     _textOne =[[UITextField alloc] init];
     _textOne.placeholder = NSLocalizedString(@"phone", nil);
     _textOne.font = [UIFont systemFontOfSize:14];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputTextChangeOne:) name:UITextFieldTextDidChangeNotification object:_textOne];
     [view addSubview:_textOne];
     [_textOne mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(view).offset(5);
@@ -111,12 +122,19 @@
     _textTwo =[[UITextField alloc] init];
     _textTwo.placeholder =NSLocalizedString(@"Verification", nil);
     _textTwo.font = [UIFont systemFontOfSize:14];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputTextChangeTwo:) name:UITextFieldTextDidChangeNotification object:_textTwo];
+    
     [backView addSubview:_textTwo];
 
     
     _getBtn  =[[UIButton alloc] init];
     [_getBtn setTitle:NSLocalizedString(@"getpassword", nil) forState:UIControlStateNormal];
     [_getBtn setTitleColor:BACKCOLOR forState:UIControlStateNormal];
+    
+     [_getBtn addTarget:self action:@selector(getMassAge) forControlEvents:(UIControlEventTouchUpInside)];
     _getBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     _getBtn.layer.borderWidth = 1.0;
     _getBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -211,19 +229,9 @@
 }
 
 
--(void)clickBtn{
-
-
-
-
-}
-
-
-
 - (void)clickView:(UIButton *)btn{
     btn.selected = !btn.selected;
 }
-
 
 
 
@@ -347,6 +355,164 @@
 
 
 
+
+//获取验证码xym
+- (void)getMassAge{
+    
+    NSString *str=@"/easyfair-webservice/user/verification";
+    NSString *urlStrinx=[NSString stringWithFormat:@"%@%@",Website,str];
+    
+    //全部回复
+    NSDictionary  *dicDay=@{
+                            @"email":@"970263650@qq.com"
+                            };
+    
+    
+    [[NetWorkingManager getManager]POST:urlStrinx parameters:dicDay success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        
+    }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    
+                                    
+                                }];
+    
+    
+}
+
+
+
+
+
+//获取注册页面内容监听方法xym
+//手机号邮箱
+- (void)inputTextChangeOne:(NSNotification *)obj{
+    UITextField *textField = (UITextField *)obj.object;
+    self.phoneNumber = textField.text;
+    
+}
+
+//验证码
+- (void)inputTextChangeTwo:(NSNotification *)obj{
+    UITextField *textField = (UITextField *)obj.object;
+    self.yZmassage = textField.text;
+}
+//密码
+- (void)inputTextChangeThree:(NSNotification *)obj{
+    UITextField *textField = (UITextField *)obj.object;
+    self.passWord = textField.text;
+    
+}
+
+
+
+//注册按钮事件xym
+-(void)clickBtn{
+    
+    NSLog(@"%@",self.Hytype);
+    
+    if (self.phoneNumber.length != 0) {
+        
+        if (self.yZmassage.length != 0) {
+            
+            if (self.passWord.length != 0) {
+                
+                if (self.Hytype.length != 0) {
+                    
+                    
+                    NSString *str=@"/easyfair-webservice/user/register";
+                    NSString *urlStrinx=[NSString stringWithFormat:@"%@%@",Website,str];
+                    
+                    //全部回复
+                    NSDictionary  *dicDay=@{
+                                            @"email": self.phoneNumber,
+                                            @"code": self.yZmassage,
+                                            @"password": self.passWord,
+                                            @"industryType": self.Hytype,
+                                            @"registerType": @"ch"
+                                            };
+                    
+                    
+                    [[NetWorkingManager getManager]POST:urlStrinx parameters:dicDay success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        
+                        if ([responseObject[@"code"] isEqualToString:@"200"]) {
+                            
+                            
+                            UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message: responseObject[@"message"] preferredStyle:(UIAlertControllerStyleAlert)];
+                            [self presentViewController:actro animated:YES completion:nil];
+                            [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(creatAlert:) userInfo:actro repeats:NO];
+                            
+                            
+                        }else{
+                            
+                            UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message: responseObject[@"message"] preferredStyle:(UIAlertControllerStyleAlert)];
+                            [self presentViewController:actro animated:YES completion:nil];
+                            [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(creatAlert:) userInfo:actro repeats:NO];
+                            
+                        }
+                        
+                    }
+                                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                    
+                                                    
+                                                }];
+                    
+                    
+                    
+                    
+                }else{
+                    UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message:@"请选择行业类型" preferredStyle:(UIAlertControllerStyleAlert)];
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:nil];
+                    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+                    [actro addAction:action1];
+                    [actro addAction:action2];
+                    [self presentViewController:actro animated:YES completion:nil];
+                    
+                }
+                
+                
+            }else{
+                
+                UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入密码" preferredStyle:(UIAlertControllerStyleAlert)];
+                UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:nil];
+                UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+                [actro addAction:action1];
+                [actro addAction:action2];
+                [self presentViewController:actro animated:YES completion:nil];
+            }
+            
+        }else{
+            
+            UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入验证码" preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:nil];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+            [actro addAction:action1];
+            [actro addAction:action2];
+            [self presentViewController:actro animated:YES completion:nil];
+            
+        }
+        
+        
+    }else{
+        UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入手机号或邮箱" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:nil];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+        [actro addAction:action1];
+        [actro addAction:action2];
+        [self presentViewController:actro animated:YES completion:nil];
+    }
+    
+    
+    
+    
+}
+
+- (void)creatAlert:(NSTimer *)timer{
+    UIAlertController *alert = [timer userInfo];
+    [alert dismissViewControllerAnimated:YES completion:nil];
+    alert = nil;
+}
 
 
 

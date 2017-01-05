@@ -12,10 +12,10 @@
 #import "DetailViewSecondCell.h"
 #import "DetailViewThreeCell.h"
 #import "InfoSendViewController.h"
-//#import "ShareActivity.h"
+#import "SGActionSheet.h"
 
 
-@interface ZMJGoodsDetailController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
+@interface ZMJGoodsDetailController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,SGActionSheetDelegate>
 {
     DetailViewFirstCell *firstCell;
     DetailViewSecondCell *secondCell;
@@ -24,6 +24,8 @@
 
 @property(nonatomic,strong)UITableView *tableView;
 @property (nonatomic, strong) HYActivityView *activityView;
+
+@property(copy  ,nonatomic) NSMutableArray *array;
 
 @end
 
@@ -37,8 +39,8 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
 }
 
 #pragma mark 创建导航栏
--(void)createNavigationView
-{
+-(void)createNavigationView{
+    
     self.navigationItem.title = @"商品详情";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
@@ -47,7 +49,7 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
   BackButton *rightBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
-    [rightBtn setTitle:@"发送" forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"点点"] forState:UIControlStateNormal];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     [rightBtn addTarget:self action:@selector(shareProduct) forControlEvents: UIControlEventTouchUpInside];
@@ -59,6 +61,13 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
 }
 
 -(void)shareProduct{
+    
+    SGActionSheet * sheet = [[SGActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitleArray:@[@"发送"]];
+    sheet.cancelButtonTitleColor = [UIColor redColor];
+    [sheet show];
+}
+
+- (void)SGActionSheet:(SGActionSheet *)actionSheet didSelectRowAtIndexPath:(NSInteger)indexPath {
     InfoSendViewController *sendView = [[InfoSendViewController alloc] init];
     sendView.shopData = _shopData;
     [self.navigationController pushViewController:sendView animated:YES];
@@ -76,9 +85,7 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [_tableView reloadData];
 }
 
-#pragma Mark -- 事件处理
-
-#pragma mark -- 代
+#pragma mark -- tableView代理
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -117,7 +124,6 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
         }
         threeCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return threeCell;
-        
     }else{
         return nil;
   }
@@ -139,19 +145,31 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
 //设置section的header
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
   
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 260)];
+  UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 260)];
      backView.backgroundColor  =   [UIColor whiteColor];
-    NSArray *arrayimg=[self.shopData.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    NSMutableArray *imageArray = [NSMutableArray array];
-    for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
-        [imageArray addObject:imagePath];
-        
-    }
-    SDCycleScrollView *cycleScrollView=[SDCycleScrollView   cycleScrollViewWithFrame:CGRectMake(0, 0, WIDTH, 180) imageNamesGroup:imageArray];
     
+    _array = [NSMutableArray array];
+    if (_shopData.imageOne) {
+        UIImage *imageOne = [UIImage imageWithData:_shopData.imageOne];
+        [_array addObject:imageOne];
+    }
+    if (_shopData.imageTwo) {
+        UIImage *imageTwo = [UIImage imageWithData:_shopData.imageTwo];
+        [_array addObject:imageTwo];
+    }
+    
+    if (_shopData.imageThree) {
+        UIImage *imageThree = [UIImage imageWithData:_shopData.imageThree];
+        [_array addObject:imageThree];
+    }
+    
+    if (_shopData.imageFour) {
+        UIImage *imageFour = [UIImage imageWithData:_shopData.imageFour];
+        [_array addObject:imageFour];
+    }
+
+    SDCycleScrollView *cycleScrollView=[SDCycleScrollView   cycleScrollViewWithFrame:CGRectMake(0, 0, WIDTH, 180) imageNamesGroup:_array];
+    cycleScrollView.bannerImageViewContentMode =  UIViewContentModeRedraw;
     [backView addSubview:cycleScrollView];
     
     UILabel *titleLable = [[UILabel alloc] init];
@@ -197,6 +215,8 @@ self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 250;
 }
+
+
 
 
 

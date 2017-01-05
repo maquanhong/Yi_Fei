@@ -30,9 +30,10 @@
 @implementation DetailShopViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     _index=0;
-    self.navigationItem.title=@"新建商品";
+  
     self.view.backgroundColor=[UIColor whiteColor];
     [self createNavigationView];
     [self createViewBackView];
@@ -40,8 +41,9 @@
 
 
 #pragma mark 创建导航栏
--(void)createNavigationView
-{
+-(void)createNavigationView{
+    
+      self.navigationItem.title=@"新建商品";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
@@ -60,15 +62,14 @@
     self.navigationItem.rightBarButtonItem=rightBtnItem;
 }
 
--(void)back
-{
+-(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 #pragma mark 创建视图
--(void)createViewBackView
-{
+-(void)createViewBackView{
+    
     _backView = [[ZMJAddGoodsTwoView alloc]init];
     
     _backView.typeOneView.nameLabel.text = @"人民币";
@@ -97,13 +98,12 @@
 }
 
 #pragma mark 进入最后的页面
-- (void)btnClick:(UIButton*)btn
-{
+- (void)btnClick:(UIButton*)btn{
+    
     ZMJGoodParamViewController *paramVC = [[ ZMJGoodParamViewController alloc] init];
     paramVC.shopObj = _shopObj;
     [self.navigationController pushViewController:paramVC animated:YES];
 }
-
 
 
 #pragma UITextField代理
@@ -132,7 +132,6 @@
             break;
     }
 }
-
 
 - (void)clickViewTag:(NSInteger)tag
 {
@@ -186,6 +185,45 @@
             break;
     }
 }
+
+#pragma mark 解析Excel文件
+-(void)ExcelButtonClick{
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

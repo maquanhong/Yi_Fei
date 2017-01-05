@@ -45,13 +45,15 @@
     //获取单例对象
      UserList *manager = [UserList defaultManager];
     //可变数组初始化
-    NSString *str = [UserDefaultManager getDataByKey:@"user"];
-   oneModel = [manager getDataWith:str];
+NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+   oneModel = [manager getDataName:strOne and:strTwo];
     [self.tableView reloadData];
 }
 
-- (void)btnClick {
-     UserList *manager = [UserList defaultManager];
+- (void)btnClick{
+    
+    UserList *manager = [UserList defaultManager];
     UserModel *model = [[UserModel alloc] init];
     model.picture = [UserDefaultManager getDataByKey:@"path"];
     model.name = [UserDefaultManager getDataByKey:@"name"];
@@ -65,20 +67,25 @@
     model.phone = [UserDefaultManager getDataByKey:@"phone"];
     model.email = [UserDefaultManager getDataByKey:@"email"];
     model.adderss = [UserDefaultManager getDataByKey:@"adderss"];
-        if (model.phone.length > 0 ) {
-            if (model.name.length == 0) {
-        [self setWarning:@"公司名称不能为空"];
-            }
-            if ([manager isHasDataIDFromTable:model.phone]) {
-        [manager updateDataModel:model data:model.phone];
-            }else{
-        [manager insertDataModel:model];
-            }
-    [UserDefaultManager saveDataWithValue:model.phone key:@"user"];
+
+    if ([model.name length] >0 && [model.link length]>0) {
+        if ([manager isHasDataIDFrom:model.name and:model.link]) {
+            [manager updateDataModel:model and:model.name and:model.link];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [self setWarning:@"电话号码不能为空"];
+            [manager insertDataModel:model];
+    [self.navigationController popViewControllerAnimated:YES];
         }
+    }else{
+        if (model.name.length == 0) {
+            [self setWarning:@"公司名称不能为空"];
+        }
+        if (model.link.length == 0) {
+              [self setWarning:@"电话号码不能为空"];
+        }
+    }
+    
+    
 }
 
 -(void)setWarning:(NSString*)identifer{
@@ -195,7 +202,10 @@
     if (secondCell==nil) {
     secondCell = [[[NSBundle mainBundle] loadNibNamed:@"NameTableViewCell" owner:self options:nil] lastObject];
     }
-    secondCell.titleLabel.text = [self.showNameValeArray objectAtIndex:(indexPath.row - 1)];
+secondCell.titleLabel.text = [self.showNameValeArray objectAtIndex:(indexPath.row - 1)];
+    if (indexPath.row == 1 || indexPath.row == 8) {
+        secondCell.textFiled.placeholder = @"(必填项)";
+    }
     secondCell.textFiled.tag = 1690 + indexPath.row - 1;
     secondCell.textFiled.delegate = self;
     secondCell.selectionStyle = UITableViewCellSelectionStyleNone;

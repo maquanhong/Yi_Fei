@@ -49,21 +49,9 @@
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = barItem;
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [rightBtn setTitle:@"Excel导入" forState:UIControlStateNormal];
-    rightBtn.frame = CGRectMake(0, 0, 60, 30);
-    rightBtn.titleLabel.font=[UIFont systemFontOfSize:12.0];
-    UIBarButtonItem* rightBtnItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
-    
-    [rightBtn addTarget:self action:@selector(ExcelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem=rightBtnItem;
 }
 
--(void)back
-{
+-(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -72,7 +60,6 @@
 -(void)createViewBackView
 {
     _backView = [[ZMJAddGoodsTwoView alloc]init];
-    
     _backView.typeOneView.nameLabel.text = @"人民币";
     _backView.typeTwoView.nameLabel.text = @"EXW";
     _shopObj.shopHuoBi = @"人民币";

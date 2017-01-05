@@ -14,7 +14,6 @@
 
 @property (nonatomic, assign) int ind;
 
-
 @property (nonatomic, copy) NSString *flag;    //询价类型
 
 @property (nonatomic, copy) NSString *companyID; //公司货号

@@ -9,9 +9,7 @@
 #import "AddTwoController.h"
 #import "ZMJAddGoodsTwoView.h"
 #import "AddThreeController.h"
-
 #import "BUYButton.h"
-
 
 @interface AddTwoController ()<UITextFieldDelegate,ZMJAddGoodsTwoViewDelegate,SSPopupDelegate>{
     
@@ -19,7 +17,6 @@
     NSArray *_typeArray;
     NSInteger _index;
     UIView *_backGroundView;
-    
 }
 
 @property(nonatomic,strong)UITableView *tableView;
@@ -50,8 +47,7 @@
     [leftBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)back
-{
+-(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -60,7 +56,6 @@
 -(void)createViewBackView
 {
     _backView = [[ZMJAddGoodsTwoView alloc]init];
-    
     _backView.typeOneView.nameLabel.text = @"人民币";
     _backView.typeTwoView.nameLabel.text = @"EXW";
     _shopObj.shopHuoBi = @"人民币";
@@ -91,7 +86,6 @@
 {
     AddThreeController *paramVC = [[ AddThreeController alloc] init];
     paramVC.shopObj = _shopObj;
-    paramVC.identifer = self.identifer;
     [self.navigationController pushViewController:paramVC animated:YES];
 }
 
@@ -103,7 +97,7 @@
     
     switch (textField.tag) {
         case 2000:
-        {
+       {
             
             if (textField.text.length > 0) {
                 _shopObj.shopColor = textField.text;

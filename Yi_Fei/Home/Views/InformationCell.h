@@ -14,4 +14,9 @@
 
 @property (nonatomic, strong) UILabel  *detailLabel;
 
+
+@property (nonatomic, strong) UIImageView  *iconImage;
+@property (nonatomic, strong) UIImageView  *tagImage;
+@property (nonatomic, strong) UILabel  *certainLabel;
+
 @end

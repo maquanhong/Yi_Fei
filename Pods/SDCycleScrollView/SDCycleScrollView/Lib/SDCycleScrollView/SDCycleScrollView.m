@@ -539,9 +539,7 @@ NSString * const ID = @"cycleCell";
 {
     SDCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     long itemIndex = indexPath.item % self.imagePathsGroup.count;
-    
     NSString *imagePath = self.imagePathsGroup[itemIndex];
-    
     if (!self.onlyDisplayText && [imagePath isKindOfClass:[NSString class]]) {
         if ([imagePath hasPrefix:@"http"]) {
             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:self.placeholderImage];
@@ -570,7 +568,6 @@ NSString * const ID = @"cycleCell";
         cell.clipsToBounds = YES;
         cell.onlyDisplayText = self.onlyDisplayText;
     }
-    
     return cell;
 }
 
@@ -616,8 +613,7 @@ NSString * const ID = @"cycleCell";
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [self scrollViewDidEndScrollingAnimation:self.mainView];
 }
 

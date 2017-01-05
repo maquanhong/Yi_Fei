@@ -15,6 +15,9 @@
 #import "BuyerTableViewCell.h"
 #import "DetailCustomerController.h"
 
+
+
+
 @interface SupplyListController ()<DownSheetDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>{;
     BOOL isSelect;
     CustomerList *_manager;
@@ -203,8 +206,6 @@
 
 
 #pragma Mark -- 事件处理
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _listArray.count;
     
@@ -218,11 +219,9 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BuyerTableViewCell" owner:self options:nil]lastObject];
     }
     CustomerModel *model = _listArray[indexPath.row];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    if (model.companyLogo.length > 0) {
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",model.companyLogo]];
-    cell.iconImageView.image  = [UIImage imageWithContentsOfFile:imagePath];
+
+    if (model.companyLogo) {
+    cell.iconImageView.image  = [UIImage imageWithData:model.companyLogo];
     }else{
     cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
     }

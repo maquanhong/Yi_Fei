@@ -47,9 +47,10 @@
     UserList *manager = [UserList defaultManager];
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
-    NSString *str = [UserDefaultManager getDataByKey:@"user"];
-    if (str.length > 0) {
-        oneModel = [manager getDataWith:str];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    if (strOne.length > 0 && strTwo.length > 0) {
+        oneModel = [manager getDataName:strOne and:strTwo];
         [self createQrCodeImage];
     }
 }

@@ -13,12 +13,12 @@
 #import "MyProductionController.h"
 #import "Header.h"
 #import "ZMJAddGoodsOneCell.h"
-#import "AskPriceModel.h"
+#import "CustomerProductModel.h"
 
 
 @interface AddOneController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
-@property(nonatomic,strong)AskPriceModel *shopObjc; //初始化商品对象
+@property(nonatomic,strong)CustomerProductModel *shopObjc; //初始化商品对象
 
 @property(nonatomic,strong)UITableView *tableView; //tableView
 
@@ -36,10 +36,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _shopObjc = [[AskPriceModel alloc] init];
+    _shopObjc = [[CustomerProductModel alloc] init];
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self createNaviGationView];
-    _shopObjc.cleintName = self.name;
     [self addContentView];
 }
 
@@ -157,7 +156,6 @@
     if (textFOne.text.length != 0 && textFTwo.text.length != 0 ) {
         AddTwoController *detailShopVC=[[AddTwoController alloc] init];
         detailShopVC.shopObj = _shopObjc;
-        detailShopVC.identifer = self.identifer;
         [self.navigationController pushViewController:detailShopVC animated:YES];
     }else {
         

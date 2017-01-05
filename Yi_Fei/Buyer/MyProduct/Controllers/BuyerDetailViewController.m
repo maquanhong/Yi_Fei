@@ -25,6 +25,8 @@
 @property(nonatomic,strong)UITableView *tableView;
 @property (nonatomic, strong) HYActivityView *activityView;
 
+@property(copy  ,nonatomic) NSMutableArray *array;
+
 @end
 
 @implementation BuyerDetailViewController
@@ -141,17 +143,28 @@
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 260)];
     backView.backgroundColor  =   [UIColor whiteColor];
-    NSArray *arrayimg=[self.shopData.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    NSMutableArray *imageArray = [NSMutableArray array];
-    for (NSInteger i = 0 ; i < arrayimg.count; i++) {
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[i]]];
-        [imageArray addObject:imagePath];
-        
+    _array = [NSMutableArray array];
+    if (_shopData.imageOne) {
+        UIImage *imageOne = [UIImage imageWithData:_shopData.imageOne];
+        [_array addObject:imageOne];
     }
-    SDCycleScrollView *cycleScrollView=[SDCycleScrollView   cycleScrollViewWithFrame:CGRectMake(0, 0, WIDTH, 180) imageNamesGroup:imageArray];
+    if (_shopData.imageTwo) {
+        UIImage *imageTwo = [UIImage imageWithData:_shopData.imageTwo];
+        [_array addObject:imageTwo];
+    }
     
+    if (_shopData.imageThree) {
+        UIImage *imageThree = [UIImage imageWithData:_shopData.imageThree];
+        [_array addObject:imageThree];
+    }
+    
+    if (_shopData.imageFour) {
+        UIImage *imageFour = [UIImage imageWithData:_shopData.imageFour];
+        [_array addObject:imageFour];
+    }
+
+    SDCycleScrollView *cycleScrollView=[SDCycleScrollView   cycleScrollViewWithFrame:CGRectMake(0, 0, WIDTH, 180) imageNamesGroup:_array];
+    cycleScrollView.bannerImageViewContentMode =  UIViewContentModeRedraw;
     [backView addSubview:cycleScrollView];
     
     UILabel *titleLable = [[UILabel alloc] init];

@@ -42,7 +42,7 @@ static CustomerList * manager=nil;
     _dataBase = [[FMDatabase alloc]  initWithPath:path];
         //如果创建成功 打开
     if ([_dataBase open]) {
-    NSString *createSql = @"create table if not exists Custromer(ind integer PRIMARY KEY AUTOINCREMENT,customerName varchar(1024),companyName varchar(1024),position varchar(1024),phone varchar(1024),emailAddress varchar(1024),companyAddress varchar(1024),industryType varchar(1024),companyLogo varchar(1024),otherNote varchar(1024) )";
+    NSString *createSql = @"create table if not exists Custromer(ind integer PRIMARY KEY AUTOINCREMENT,customerName varchar(1024),companyName varchar(1024),position varchar(1024),phone varchar(1024),emailAddress varchar(1024),companyAddress varchar(1024),industryType varchar(1024),companyLogo glob(1024),otherNote varchar(1024) )";
         if ([_dataBase executeUpdate:createSql]){
                 NSLog(@"创建成功");
             }else{
@@ -116,7 +116,7 @@ static CustomerList * manager=nil;
         model.emailAddress=[set stringForColumn:@"emailAddress"];
         model.companyAddress = [set stringForColumn:@"companyAddress"];
         model.industryType = [set stringForColumn:@"industryType"];
-        model.companyLogo=[set stringForColumn:@"companyLogo"];
+        model.companyLogo=[set dataForColumn:@"companyLogo"];
         model.otherNote=[set stringForColumn:@"otherNote"];
         model.ind = [set  intForColumn:@"ind" ];
         [arr addObject:model];

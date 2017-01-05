@@ -11,7 +11,8 @@
 #import "UserList.h"
 #import "UserModel.h"
 #import "UserDefaultManager.h"
-
+#import "AboutModel.h"
+#import "AboutDetailViewController.h"
 @interface AboutViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     UserModel *oneModel;
@@ -21,6 +22,10 @@
 @property (nonatomic, strong) UIImageView *logoImageView;
 @property (nonatomic, strong) UILabel     *versionLabel;
 @property (nonatomic, strong) NSArray     *menuArray;
+
+
+@property (nonatomic,strong)AboutModel *model;
+
 
 @end
 
@@ -46,6 +51,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self getDate];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self setNav];
     self.title = @"关于EasyFair";
@@ -79,8 +86,9 @@
     UserList *manager = [UserList defaultManager];
     //可变数组初始化
     oneModel = [[ UserModel alloc] init];
-    NSString *str = [UserDefaultManager getDataByKey:@"user"];
-    oneModel = [manager getDataWith:str];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    oneModel = [manager getDataName:strOne and:strTwo];
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
     if (oneModel.picture.length > 0) {
@@ -93,8 +101,8 @@
     _versionLabel.font = [UIFont systemFontOfSize:14];
     _versionLabel.textAlignment = NSTextAlignmentCenter;
     _versionLabel.textColor = BACKCOLOR;
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
-    _versionLabel.text =  [NSString stringWithFormat:@"v%@",version];
+//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    
     [headerView addSubview:_versionLabel];
     [_versionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(_logoImageView.mas_centerX);
@@ -160,9 +168,78 @@
 
 
 
+//xym
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AboutDetailViewController *detaiVC = [[AboutDetailViewController alloc]init];
+    detaiVC.model = _model;
+    if (indexPath.row == 0) {
+        detaiVC.indexStr = @"0";
+        [self.navigationController pushViewController:detaiVC animated:YES];
+    }else if (indexPath.row == 1){
+        detaiVC.indexStr = @"1";
+        [self.navigationController pushViewController:detaiVC animated:YES];
+
+    }else if (indexPath.row == 2){
+        detaiVC.indexStr = @"2";
+        [self.navigationController pushViewController:detaiVC animated:YES];
+
+    }else if (indexPath.row == 3){
+        detaiVC.indexStr = @"3";
+        [self.navigationController pushViewController:detaiVC animated:YES];
+
+    }
+    
+}
 
 
 
+//获取信息 xym
+
+- (void)getDate{
+    
+//     获取token
+    NSUserDefaults *tokenDeful = [NSUserDefaults standardUserDefaults];
+    NSString *token = [tokenDeful objectForKey:@"token"];
+    
+        NSString *str=@"/easyfair-webservice/sysAbout/aboutEasyFair";
+        NSString *urlStrinx=[NSString stringWithFormat:@"%@%@",Website,str];
+        
+    
+        NSDictionary  *dicDay=@{
+        @"token": token,
+        @"userType": @"ch"
+        };
+        
+    NSLog(@"%@",dicDay);
+        [[NetWorkingManager getManager]POST:urlStrinx parameters:dicDay success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"%@",responseObject[@"code"]);
+            
+            if ([responseObject[@"code"] isEqualToString:@"200"]) {
+                _model = [[AboutModel alloc]init];
+                _model.customerService = responseObject[@"customerService"];
+                _model.functionIntro = responseObject[@"functionIntro"];
+                _model.lastVersion = responseObject[@"lastVersion"];
+                _model.privacyPolicy = responseObject[@"privacyPolicy"];
+                _model.sysInform = responseObject[@"sysInform"];
+                _versionLabel.text =  [NSString stringWithFormat:@"v%@",_model.lastVersion];
+                
+            }
+            
+            
+            
+        }
+         
+         
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                        
+                                        
+        }];
+        
+        
+    
+}
 
 
 

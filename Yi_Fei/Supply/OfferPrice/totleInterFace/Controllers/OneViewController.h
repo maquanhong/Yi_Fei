@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AskPriceModel.h"
+#import "CustomerModel.h"
+
 
 @interface OneViewController : UIViewController
 
-@property (nonatomic,strong) NSString *customerName;
+@property (nonatomic,strong) CustomerModel *model;
 
+@property (nonatomic,strong) NSString *seeNum;
 
 @end

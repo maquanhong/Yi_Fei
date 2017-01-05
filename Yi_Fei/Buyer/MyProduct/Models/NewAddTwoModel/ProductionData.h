@@ -20,14 +20,11 @@
 @property (nonatomic, copy) NSString *shopSize;  //商品尺寸
 @property (nonatomic, copy) NSString *shopMed;  //商品材质
 
-
 @property (nonatomic, copy) NSString *shopColor;  //商品的颜色
 @property (nonatomic, copy) NSString *shopPrice;  //商品的价格
 @property(nonatomic,copy)NSString *shopHuoBi;    //货币类型
 @property(nonatomic,copy)NSString *shopTiaoK;    //货币条款
 @property(nonatomic,copy)NSString *shopAdderss;  //码头地址
-
-
 
 
 @property (nonatomic, copy) NSString *shopDescribe;//商品备注
@@ -36,12 +33,82 @@
 @property(nonatomic,copy)NSString *shopCustom;  //自定义的商品类型
 @property(nonatomic,copy)NSString *shopContent; //自定义的商品内容
 
-@property (nonatomic, copy) NSString *shopPicture; //上传图片
 
-@property (nonatomic, copy) NSString *num; //商品数量
+@property (nonatomic, strong ) NSData *imageOne; //上传图片
+@property (nonatomic, strong) NSData *imageTwo; //上传图片
+@property (nonatomic, strong) NSData *imageThree; //上传图片
+@property (nonatomic, strong) NSData *imageFour; //上传图片
 
-@property (nonatomic, copy) NSString *shopSpecific; //商品规格
 
-@property (nonatomic, copy) NSString *time; //商品规格
+
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

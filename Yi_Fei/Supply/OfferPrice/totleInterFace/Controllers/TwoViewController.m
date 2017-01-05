@@ -13,27 +13,26 @@
 #import "UWDatePickerView.h"
 #import "AddController.h"
 #import "CustomerEditController.h"
+#import "CustomerProductList.h"
 #import "UserDefaultManager.h"
-#import "AskPriceModel.h"
-#import "AskPriceList.h"
+#import "SupplySendController.h"
 
+@interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource,BuyerAskCellDelegate,FooterViewDelegate,HeaderOneViewDelegate,UWDatePickerViewDelegate>{
+    
 
-
-@interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource,BuyerAskCellDelegate,FooterViewDelegate,HeaderOneViewDelegate,UWDatePickerViewDelegate>
-{
+    CustomerProductList *_manager;
     UWDatePickerView *_pickerView;
     HeaderOneView *_view;
-    AskPriceList *_manager;
         BOOL _isPress;
         BOOL _isSelect;
+    
 }
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *circleArray;
 
-//数据源
-@property(nonatomic,strong)NSMutableArray *listArray;
-
+#pragma mark 报价数据源
+@property (nonatomic,strong) NSMutableArray *leaveArray;
 
 @end
 
@@ -42,30 +41,22 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _listArray = [NSMutableArray array];
     [self loadData];
 }
 
 -(void)loadData{
     
-    //获取单例对象
-    _manager = [AskPriceList defaultManager];
-    //可变数组初始化
-    NSMutableArray *array = [NSMutableArray arrayWithArray:[_manager getDataWith:_customerName]];
-    for (NSInteger i = 0 ; i < array.count; i++) {
-        AskPriceModel *dataModel = [[AskPriceModel alloc] init];
-        dataModel = array[i];
-        if ([dataModel.record isEqualToString:@"reserved"]  ) {
-            [_listArray addObject:dataModel];
-        }
-    }
+    _manager = [CustomerProductList defaultManager];
+    _leaveArray = [NSMutableArray arrayWithArray: [_manager getDataName:_model.customerName and:_model.companyName and:@"1"]];
     [_tableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = INTERFACECOLOR;
-[UserDefaultManager saveDataWithValue:_customerName key:@"reserved"];
+[UserDefaultManager saveDataWithValue:self.seeNum key:@"key"];
+[UserDefaultManager saveDataWithValue:_model.customerName key:@"name"];
+[UserDefaultManager saveDataWithValue:_model.companyName key:@"company"];
     _circleArray = [NSMutableArray array];
     _isPress = YES;
     [self setNav];
@@ -94,21 +85,17 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)rightButtonClick{
-   
-
-}
 
 -(void)createTableView{
     
-    _view = [[HeaderOneView alloc] initWithFrame:CGRectMake(10, 74, WIDTH - 20, 80)];
+_view = [[HeaderOneView alloc] initWithFrame:CGRectMake(10, 74, WIDTH - 20, 80)];
     _view.backgroundColor = [UIColor whiteColor];
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_view.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(8,8)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = _view.bounds;
     maskLayer.path = maskPath.CGPath;
     _view.layer.mask = maskLayer;
-    _view.titleLabel.text = self.customerName;
+    _view.titleLabel.text = _model.customerName;
     _view.delegate = self;
     [self.view addSubview:_view];
     
@@ -127,19 +114,18 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }
 
+
+
+
 -(void)clickBtn{
-    
   AddController *addVC = [[AddController alloc] init];
-    addVC.identifer = 8;
-    addVC.name = self.customerName;
   [self.navigationController pushViewController:addVC animated:YES];
-    
 }
 
 
 #pragma mark tableView的代理
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _listArray.count;
+    return _leaveArray.count;
 }
 
 
@@ -149,21 +135,17 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     if (!cell) {
         cell = [[BuyerAskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
-    AskPriceModel *dataModel = _listArray[indexPath.row];
-    NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    if ([arrayimg[0] length] > 0) {
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-        cell.iconImageView.image = [UIImage imageWithContentsOfFile:imagePath];
+    CustomerProductModel *dataModel = _leaveArray[indexPath.row];
+    if (dataModel.imageOne) {
+        cell.iconImageView.image = [UIImage imageWithData:dataModel.imageOne];
     }else{
         cell.iconImageView.image = [UIImage imageNamed:@"Null"];
     }
-    cell.titleLabel.text = dataModel.shopName;
-    if (dataModel.shopPrice.length > 0 ) {
+    if (dataModel.shopName) {
+        cell.titleLabel.text = dataModel.shopName;
+    }
+    if (dataModel.shopPrice) {
         cell.price.text = [NSString stringWithFormat:@"¥%@",dataModel.shopPrice];
-    }else{
-        cell.price.text = @"";
     }
     cell.delegate = self;
     return cell;
@@ -173,8 +155,6 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return 100;
 }
 
-
-
 -(void)clickcell:(UITableViewCell *)cell num:(NSInteger)num{
     
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
@@ -182,17 +162,18 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         case 1280:
         {
     CustomerEditController *editVC = [[CustomerEditController alloc] init];
-    editVC.model = _listArray[indexPath.row];
+    editVC.model = _leaveArray[indexPath.row];
     [self.navigationController pushViewController:editVC animated:YES];
         }
             break;
         case 1281:
         {
-    _manager = [AskPriceList defaultManager];
-    AskPriceModel *dataModel = [[AskPriceModel alloc] init];
-    dataModel = _listArray[indexPath.row];
-    [_manager deleteNameFromTable:dataModel.ind];
-    [_listArray removeObjectAtIndex:indexPath.row];
+    _manager = [CustomerProductList defaultManager];
+    CustomerProductModel *dataModel = [[CustomerProductModel alloc] init];
+    dataModel = _leaveArray[indexPath.row];
+        NSString *str = [NSString stringWithFormat:@"%d",dataModel.ind];
+    [_manager deleteElement:dataModel.customerName and:dataModel.companyName index:@"1" num:str];
+    [_leaveArray  removeObjectAtIndex:indexPath.row];
     [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [_tableView reloadData];
         }
@@ -221,7 +202,7 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     switch (type) {
         case DateTypeOfStart:
         {
-            _view.typeTwo.nameLabel.text = date;
+        _view.typeTwo.nameLabel.text = date;
         }
             break;
         case DateTypeOfEnd:
@@ -233,9 +214,30 @@ _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
 
 
-
-
-
+-(void)rightButtonClick{
+    
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY/MM/dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    CustomerProductModel  *model = [[CustomerProductModel alloc] init];
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0 ; i <_circleArray.count ; i++) {
+        NSString *index = [_circleArray objectAtIndex:i];
+        model = _leaveArray[[index integerValue]];
+        model.flag = @"1";
+        [array addObject:model];
+    }
+    SupplySendController * sendVC = [[SupplySendController alloc] init];
+    sendVC.dataArray = [NSArray arrayWithArray:array];
+    sendVC.supplyName = strOne;
+    sendVC.companyName = strTwo;
+    sendVC.offerTime = dateString;
+    sendVC.reverTime = _view.typeTwo.nameLabel.text;
+    [self.navigationController pushViewController:sendVC animated:YES];
+}
 
 
 

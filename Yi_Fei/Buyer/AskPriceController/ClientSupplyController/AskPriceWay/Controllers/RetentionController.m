@@ -14,10 +14,16 @@
 #import "EditPriceController.h"
 #import "BuyerComeOut.h"
 
+#import "BuyerComeOut.h"
+#import "UserDefaultManager.h"
+#import "UserModel.h"
+#import "UserList.h"
+
 @interface RetentionController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,BuyerAskCellDelegate>
 {
     BOOL _isPress;
     BOOL _isSelect;
+    BuyerComeOut *_outBuyer;
 }
 
 @property (nonatomic, strong)NSMutableArray *circleArray; //存放选中的商品
@@ -122,7 +128,31 @@
     [searchBtn addTarget:self action:@selector(clickBtnSearch) forControlEvents:UIControlEventTouchUpInside];
 }
 
+-(void)clickBtnSearch{
 
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0 ; i <_circleArray.count ; i++) {
+        NSString *index = [_circleArray objectAtIndex:i];
+        [array addObject:_listArray[[index integerValue]]];
+    }
+    
+    UserList *manager = [UserList defaultManager];
+    NSString *strOne = [UserDefaultManager getDataByKey:@"name"];
+    NSString *strTwo = [UserDefaultManager getDataByKey:@"link"];
+    UserModel  * oneModel = [manager getDataName:strOne and:strTwo];
+    
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY/MM/dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    _outBuyer = [[BuyerComeOut alloc] init];
+    _outBuyer.objcArray = array;
+    _outBuyer.askCompanyName = oneModel.name;
+    _outBuyer.customerName = oneModel.link;
+    _outBuyer.askTime = dateString;
+    [_outBuyer sendToSupplyExcel];
+
+}
 
 
 #pragma mark 创建tableView视图
@@ -131,7 +161,6 @@
     _tableview=[[UITableView alloc] initWithFrame:CGRectMake(10, 50, WIDTH-20, HEIGHT- 160 )style:UITableViewStylePlain];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    self.tableview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:self.tableview];
     
     UILongPressGestureRecognizer *lp = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGesture:)];
@@ -193,10 +222,10 @@
     NSString *path_document = NSHomeDirectory();
     //设置一个图片的存储路径
     if ([arrayimg[0] length] > 0) {
-    NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-    cell.iconImageView.image= [UIImage imageWithContentsOfFile:imagePath];
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
+        cell.iconImageView.image= [UIImage imageWithContentsOfFile:imagePath];
     }else{
-    cell.iconImageView.image= [UIImage imageNamed:@"Null"];
+        cell.iconImageView.image= [UIImage imageNamed:@"Null"];
     }
     if (dataModel.shopPrice.length > 0 ) {
         cell.price.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
@@ -210,14 +239,23 @@
     }
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
 
 
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (_isSelect ) {
+        BuyerAskCell *cell = [_tableview cellForRowAtIndexPath:indexPath];
+        NSString *str = [NSString stringWithFormat:@"%ld",indexPath.row];
+        if ([_circleArray containsObject:str]) {
+            cell.selectBtn.selected = NO ;
+            [_circleArray removeObject:str];
+        }else{
+            cell.selectBtn.selected = YES ;
+            [_circleArray addObject:str];
+        }
+    }
 }
 
 
@@ -227,10 +265,9 @@
 }
 
 
-
 - (void)longPressGesture:(UILongPressGestureRecognizer*)lp{
-    
     if(lp.state == UIGestureRecognizerStateBegan){
+        
         if (_isPress) {
             NSArray *allCells=[self.tableview visibleCells];
             for(BuyerAskCell *cell in allCells)
@@ -238,7 +275,7 @@
                 cell.selectBtn.hidden=NO;
                 cell.selectBtn.selected=NO;
             }
-        AskWayController *myVC = [[ AskWayController alloc] init];
+            AskWayController *myVC = [[ AskWayController alloc] init];
             for (AskWayController * controller in self.navigationController.viewControllers) {
                 if ([controller isKindOfClass:[AskWayController class]]) {
                     myVC = controller;
@@ -246,8 +283,9 @@
             }
             myVC.rightBtnOne.hidden = YES;
             myVC.rightBtnTwo.hidden = NO;
-    [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
+            [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
             _isPress = NO;
+            _isSelect = YES;
         }else{
             NSArray *allCells=[self.tableview visibleCells];
             for(BuyerAskCell *cell in allCells)
@@ -261,9 +299,52 @@
             myVC.rightBtnOne.hidden = NO;
             myVC.rightBtnTwo.hidden = YES;
             _isPress = YES;
+            _isSelect = NO;
         }
     }
 }
+
+
+
+
+//- (void)longPressGesture:(UILongPressGestureRecognizer*)lp{
+//    
+//    if(lp.state == UIGestureRecognizerStateBegan){
+//        if (_isPress) {
+//            NSArray *allCells=[self.tableview visibleCells];
+//            for(BuyerAskCell *cell in allCells)
+//            {
+//                cell.selectBtn.hidden=NO;
+//                cell.selectBtn.selected=NO;
+//            }
+//        AskWayController *myVC = [[ AskWayController alloc] init];
+//            for (AskWayController * controller in self.navigationController.viewControllers) {
+//                if ([controller isKindOfClass:[AskWayController class]]) {
+//                    myVC = controller;
+//                }
+//            }
+//            myVC.rightBtnOne.hidden = YES;
+//            myVC.rightBtnTwo.hidden = NO;
+//    [myVC.rightBtnTwo addTarget:self action:@selector(sendVC) forControlEvents:UIControlEventTouchUpInside];
+//            _isPress = NO;
+//            _isSelect = YES;
+//        }else{
+//            NSArray *allCells=[self.tableview visibleCells];
+//            for(BuyerAskCell *cell in allCells)
+//                cell.selectBtn.hidden=YES;
+//            AskWayController *myVC = [[ AskWayController alloc] init];
+//            for (AskWayController * controller in self.navigationController.viewControllers) {
+//                if ([controller isKindOfClass:[AskWayController class]]) {
+//                    myVC = controller;
+//                }
+//            }
+//            myVC.rightBtnOne.hidden = NO;
+//            myVC.rightBtnTwo.hidden = YES;
+//            _isPress = YES;
+//            _isSelect = NO;
+//        }
+//    }
+//}
 
 
 

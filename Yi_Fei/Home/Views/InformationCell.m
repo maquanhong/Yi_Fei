@@ -9,9 +9,7 @@
 #import "InformationCell.h"
 
 @interface InformationCell ()
-@property (nonatomic, strong) UIImageView  *iconImage;
-@property (nonatomic, strong) UIImageView  *tagImage;
-@property (nonatomic, strong) UILabel  *certainLabel;
+
 
 @end
 
@@ -50,7 +48,7 @@
     
     _certainLabel=[[UILabel alloc] init];
     _certainLabel.font=[UIFont systemFontOfSize:14.0];
-    _certainLabel.text = @"未读";
+//    _certainLabel.text = @"未读";
     [_certainLabel sizeToFit];
     [self addSubview:_certainLabel];
     [_certainLabel mas_makeConstraints:^(MASConstraintMaker *make) {

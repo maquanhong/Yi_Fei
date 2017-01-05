@@ -9,8 +9,10 @@
 #import "BUYLoginControl.h"
 #import "ZMJTotleHomeController.h"
 #import "LogonView.h"
+#import "DataSecurity.h"
 
-@interface BUYLoginControl ()
+static NSString *isLogin;
+@interface BUYLoginControl ()<UITextFieldDelegate>
 
 @property (nonatomic,strong) UIImageView *logoImgView;
 
@@ -18,6 +20,8 @@
 
 @property (nonatomic, strong) UIButton *loginBtn;
 
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *passWord;
 
 @end
 
@@ -95,6 +99,21 @@
     LogonView *oneView = [[LogonView alloc] init];
     oneView.logoImage.image = [UIImage imageNamed:imgs[0]];
     oneView.textFiled.placeholder = arrs[0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputTextName:) name:UITextFieldTextDidChangeNotification object:oneView.textFiled];
+    oneView.textFiled.delegate = self;
+    oneView.textFiled.tag = 8;
+    
+    //    记住用户名 xym
+    if ([isLogin isEqualToString:@"1"]) {
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        NSString *username = [ user objectForKey:@"usname"];
+        oneView.textFiled.text = username;
+        self.userName = username;
+    }
+    oneView.textFiled.text = @"904178767@qq.com";
+    self.userName = @"904178767@qq.com";
+    
     oneView.layer.cornerRadius = 5;
     oneView.layer.masksToBounds = YES;
     oneView.layer.borderWidth = 1.0 ;
@@ -110,6 +129,12 @@
     LogonView *twoView = [[LogonView alloc] init];
     twoView.logoImage.image = [UIImage imageNamed:imgs[1]];
     twoView.textFiled.placeholder = arrs[1];
+    
+    twoView.textFiled.delegate = self;
+    twoView.textFiled.tag = 7;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputTextPassword:) name:UITextFieldTextDidChangeNotification object:twoView.textFiled];
+    
+    
     twoView.layer.cornerRadius = 5;
     twoView.layer.masksToBounds = YES;
     twoView.layer.borderWidth = 1.0 ;
@@ -140,18 +165,110 @@
 
 
 
-- (void)btnClick
-{
-    ZMJTotleHomeController *vc = [[ZMJTotleHomeController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)viewWillDisappear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = NO;
 }
 
 
+//账号
+- (void)inputTextName:(NSNotification *)obj{
+    UITextField *textField = (UITextField *)obj.object;
+    self.userName = textField.text;
+    
+}
+//密码
+- (void)inputTextPassword:(NSNotification *)obj{
+    UITextField *textField = (UITextField *)obj.object;
+    self.passWord = textField.text;
+    
+}
 
+
+
+
+
+//登录按钮事件xym
+- (void)btnClick
+{
+    
+    if (self.passWord.length != 0) {
+        // 对输入框的文本进行加密
+        self.passWord = [[DataSecurity shareInstance]MD5WithString:self.passWord];
+        // 将加密之后的字符串 显示在输入框内
+        NSLog(@"%@",self.passWord);
+    }
+    if (self.passWord.length == 0) {
+        self.passWord = @"";
+    }
+    if (self.userName.length == 0) {
+        self.userName = @"";
+    }
+    
+    NSString *str=@"/easyfair-webservice/user/login";
+    NSString *urlStrinx=[NSString stringWithFormat:@"%@%@",Website,str];
+    
+    
+    //全部回复
+    NSDictionary  *dicDay=@{
+                            @"username": self.userName,
+                            @"password": self.passWord
+                            };
+    
+    NSLog(@"%@",dicDay);
+    
+    [[NetWorkingManager getManager]POST:urlStrinx parameters:dicDay success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"%@",responseObject);
+        
+        if ([responseObject[@"code"]isEqualToString:@"200"]) {
+            
+            NSString *token = responseObject[@"token"];
+            //存储 token 唯一标识别
+            [[NSUserDefaults standardUserDefaults]setObject:token forKey:@"token"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            //存储  用户名
+            NSString *usname = self.userName;
+            //存储 token 唯一标识别
+            [[NSUserDefaults standardUserDefaults]setObject:usname forKey:@"usname"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            isLogin = @"1";
+            
+            ZMJTotleHomeController *vc = [[ZMJTotleHomeController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+            
+            
+        }else{
+            isLogin = @"2";
+            
+            UIAlertController *actro = [UIAlertController alertControllerWithTitle:@"提示" message:responseObject[@"message"] preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleDefault) handler:nil];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+            [actro addAction:action1];
+            [actro addAction:action2];
+            [self presentViewController:actro animated:YES completion:nil];
+        }
+        
+        
+        
+        
+    }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    
+                                    
+                                    
+                                }];
+    
+    
+    
+    
+    
+    
+}
 
 
 

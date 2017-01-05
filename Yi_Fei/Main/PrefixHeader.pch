@@ -25,7 +25,14 @@
 #import "NewTwoList.h" //建的第二张表
 
 
+//第三方库
+#import "FMDB.h"
+#import "GDataXMLNode.h"
+#import "SVProgressHUD.h"
 #import "Masonry.h"
+#import "MJRefresh.h"
+
+
 #import "BackButton.h"
 #import "UIView+Layout.h"
 #import "SDCycleScrollView.h"
@@ -34,12 +41,12 @@
 #import "UIView+Frame.h"
 #import "HYActivityView.h"
 #import "ZZPhotoKit.h"
-#import "FMDB.h"
-#import "GDataXMLNode.h"
-#import "SVProgressHUD.h"
 #import "PopView.h"
 #import "SupplyModel.h"
 #import "Language.h"
+
+#import "yiFeiUrl.h"
+#import "NetWorkingManager.h"
 
 
 #pragma mark 颜色的的设置

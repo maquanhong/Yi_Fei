@@ -14,9 +14,9 @@
 #import "PeripheralBlueTooth.h"
 #import "ParsingController.h"
 #import "CreateSupplyPDF.h"
+#import "FooterView.h"
 
-
-@interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate,UIDocumentInteractionControllerDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate,PopViewDelegate>
+@interface InfoSendViewController ()<UITableViewDataSource, UITableViewDelegate,SendDataViewCellDelegate,SendDataTwoViewCellDelegate,MFMailComposeViewControllerDelegate,FooterViewDelegate>
 {
     SendDataViewCell *Firstell;
     SendDataTwoViewCell *secondCell;
@@ -25,16 +25,17 @@
     NSInteger _pdf;
     NSInteger _flag ;
 }
-@property (nonatomic, strong) PopView * selection;
+
 @property (nonatomic, strong) UITableView   *tableView;
 @property (nonatomic, strong) NSArray       *sendArray;
 @property (nonatomic, strong) NSArray       *dataArray;
 @property (nonatomic, strong) NSArray  *TitleArray;
-@property (strong, nonatomic) UIDocumentInteractionController *documentController;
+
+@property (strong, nonatomic) UIButton *btn;
+
 @property (strong, nonatomic) SupplyOutForm *singleForm;
 @property (strong, nonatomic) CreateSupplyPDF *createPdf;
-@property (strong, nonatomic) PeripheralBlueTooth *Peripheral;
-@property (strong, nonatomic) UIButton *btn;
+
 
 @end
 
@@ -52,18 +53,14 @@
 }
 
 #pragma mark 创建navgationView
--(void)createNavigationView
-{
+-(void)createNavigationView{
+    
     self.navigationItem.title = @"商品资料发送";
     BackButton *leftBtn = [[BackButton alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     UIBarButtonItem * barItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = barItem;
     [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *searchimage=[UIImage imageNamed:@"点点"];
-    UIBarButtonItem *barbtn=[[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStyleDone target:self action:@selector(sendExcelOrPDF:)];
-    barbtn.image=searchimage;
-    self.navigationItem.rightBarButtonItem=barbtn;
 }
 
 -(void)leftButtonClick{
@@ -79,23 +76,13 @@
     _tableView.scrollEnabled = NO;
     [self.view addSubview:_tableView];
     
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 120)];
-    footerView.userInteractionEnabled = YES;
-    _btn = [[UIButton alloc] init];
-    [_btn setTitle:@"发送" forState:UIControlStateNormal];
-    _btn.layer.cornerRadius = 5;
-    _btn.backgroundColor = NAVCOLOR;
-    [_btn addTarget:self action:@selector(sendClickBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [footerView addSubview:_btn];
-    [_btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(footerView).offset(50);
-        make.trailing.mas_equalTo(footerView).offset(-50);
-        make.centerY.mas_equalTo(footerView.mas_centerY);
-        make.height.mas_equalTo(30);
-    }];
-    _tableView.tableFooterView  = footerView;
+    FooterView *footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 150)];
+    [footerView.footerBtn setTitle:@"发送" forState:UIControlStateNormal];
+    footerView.delegate  = self;
+    _tableView.tableFooterView = footerView;
 
 }
+
 
 #pragma mark tableView 的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -115,7 +102,6 @@
             Firstell = [[SendDataViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer1];
         }
         Firstell.delegate = self;
-       Firstell.selectionStyle =  UITableViewCellSelectionStyleNone;
         return Firstell;
     }else{
         
@@ -168,7 +154,7 @@
 - (UIView *)infoSendTableView:(NSString *)title {
     
 UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
-        headView.backgroundColor = [UIColor grayColor];
+        headView.backgroundColor =  INTERFACECOLOR ;
          UILabel *titleLabel = [[UILabel alloc] init];
          titleLabel.text = title;
          titleLabel.font = [UIFont systemFontOfSize:14];
@@ -190,36 +176,29 @@ UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
 }
 
 #pragma mark 点击发送按钮
--(void)sendClickBtn:(UIButton*)sender{
+-(void)clickBtn{
+    
     if (_index == 1501 && _num == 1600) {  //发送Excel
         _singleForm = [[SupplyOutForm alloc] init];
         _singleForm.shopObjc =  _shopData;
         [_singleForm outExportExcel];
         [self sendExcel:_singleForm.outputFilePath name:_singleForm.outputFileName];
-        
     }else if (_index == 1501 && _num == 1601){  //发送pdf
         _pdf = 1;
         _createPdf = [[CreateSupplyPDF alloc] init];
         _createPdf.shopObjc =  _shopData;
         [_createPdf createPDF];
-    [self sendExcel:_createPdf.outputFilePath name:_createPdf.outputFileName];
+        [self sendExcel:_createPdf.outputFilePath name:_createPdf.outputFileName];
         
     }else if (_index == 1500 && _num == 1600){
         
-//        _singleForm = [[SupplyOutForm alloc] init];
-//        _singleForm.shopObjc =  _shopData;
-//        [_singleForm outExportExcel];
-//        PeripheralBlueTooth *peripheral = [PeripheralBlueTooth shareManager];
-//        peripheral.path = _singleForm.outputFileName;
         
         NSLog(@"发送蓝牙Excel");
     }else if (_index == 1500 && _num == 1601){
         
-    
         NSLog(@"发送蓝牙Pdf");
     }
 }
-
 
 
 #pragma mark 发送邮件
@@ -269,8 +248,10 @@ UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
     [self alertWithMessage:msg];
 }
 
-- (void)alertWithMessage:(NSString *)str
-{
+
+
+- (void)alertWithMessage:(NSString *)str{
+    
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:str preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
     [alertVC addAction:okAction];
@@ -279,49 +260,8 @@ UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
 }
 
 
-#pragma mark 利用系统的 -------  发送QQ，微信等等
--(void)sendExcelOrPDF:(UIBarButtonItem*)sender{
-    if (_flag == 1) {
-        _selection=[[PopView alloc]init];
-        _selection.backgroundColor=[UIColor colorWithWhite:0.00 alpha:0.4];
-        _selection.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-        _selection.delegate=self;
-        [self.view  addSubview:_selection];
-        [_selection CreateTableview:nil withSender:sender  withTitle:@"请选择发送方式" setCompletionBlock:^(int tag){
-            if (tag == 1230) {
-                _singleForm = [[SupplyOutForm alloc] init];
-                _singleForm.shopObjc =  _shopData;
-                [_singleForm outExportExcel];
-                [self sendDataExcelOrPDF:sender path:_singleForm.outputFilePath];
-            }else if (tag == 1231){
-                _createPdf = [[CreateSupplyPDF alloc] init];
-                _createPdf.shopObjc =  _shopData;
-                [_createPdf createPDF];
-    [self sendDataExcelOrPDF:sender path:_createPdf.outputFilePath];
-        }
-    }];
-        _flag = 0;
-    }else{
-        [_selection removeFromSuperview];
-        _flag = 1;
-    
-    }
-}
 
-#pragma mark 调用系统的发送文件
--(void)sendDataExcelOrPDF:(UIBarButtonItem*)sender path:(NSString*)path{
-    NSURL *fileURL = [NSURL fileURLWithPath:path];
-    self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-    self.documentController.delegate = self;
-    [self.documentController presentOptionsMenuFromBarButtonItem:sender animated:YES];
-}
 
-#pragma mark - Document Interaction Controller Delegate
-- (void)documentInteractionControllerDidDismissOptionsMenu:(UIDocumentInteractionController *)controller {
-    if (self.documentController == controller) {
-        self.documentController = nil;
-    }
-}
 
 
 
@@ -330,6 +270,26 @@ UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

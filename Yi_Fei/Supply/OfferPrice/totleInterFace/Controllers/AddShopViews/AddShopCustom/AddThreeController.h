@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AskPriceModel.h"
+#import "CustomerProductModel.h"
 
 @interface AddThreeController : UIViewController
 
-@property(nonatomic,strong)AskPriceModel *shopObj;
-
-@property (nonatomic,assign) NSInteger identifer;
+@property(nonatomic,strong)CustomerProductModel *shopObj;
 
 
 @end

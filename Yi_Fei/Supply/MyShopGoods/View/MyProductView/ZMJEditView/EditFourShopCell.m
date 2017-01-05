@@ -63,13 +63,15 @@
     if (imageView == nil) {
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         imageView.tag = 1000;
-    imageView.image= [UIImage imageWithContentsOfFile:_imageArray[indexPath.item]];
-        [cell.contentView addSubview:imageView];
-    }else{
+        
+        if (_index == 0) {
+    imageView.image= [UIImage imageWithData:_imageArray[indexPath.item]];
+        } else if (_index == 1){
         imageView.image = _imageArray[indexPath.item];
+        }
+        [cell.contentView addSubview:imageView];
     }
     return cell;
-    
 }
 
 

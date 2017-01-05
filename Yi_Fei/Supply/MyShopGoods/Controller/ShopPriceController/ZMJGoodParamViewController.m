@@ -432,29 +432,19 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
         
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        
-         NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
             ZZPhoto *photo = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-    UIImage *image = [self compressOriginalImage:photo.originImage toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+            UIImage *image = photo.originImage;
+            if (i ==  0) {
+        _shopObj.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+           _shopObj.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+           _shopObj.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+           _shopObj.imageFour  = UIImagePNGRepresentation(image);
+            }
         }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture=str;
     }];
 }
 
@@ -467,43 +457,43 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertAction
         self.picArray = [NSArray array];
         self.picArray = (NSArray *)responseObject;
         [_tableView reloadData];
-        NSMutableArray *arrayM=[NSMutableArray array];
-        NSMutableArray  *TimeArray=[NSMutableArray array];
+    
         for (int i=0; i< self.picArray.count; i++) {
-            //拿到图片
             ZZCamera *camera = self.picArray[i];
-            CGSize  size = CGSizeMake(145, 160);
-            UIImage *image = [self compressOriginalImage:camera.image toSize:size ];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0.0];
-            //打印日期：中间的空格可以用‘at’或‘T’等字符划分
-            NSDateFormatter *dateFomtter = [[NSDateFormatter alloc]init];
-            [dateFomtter setDateFormat:@ "yyyy-MM-ddHH:mm:ss SSSS" ];
-            NSString *strTime=[dateFomtter stringFromDate:date];
-            NSString *path_document = NSHomeDirectory();
-            //设置一个图片的存储路径
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",strTime]];
-            //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-            [TimeArray addObject:strTime];
-            [arrayM addObject:imagePath];
-            [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+            UIImage *image = camera.image;
+            if (i ==  0) {
+                _shopObj.imageOne  = UIImagePNGRepresentation(image);
+            }else if (i == 1){
+                _shopObj.imageTwo  = UIImagePNGRepresentation(image);
+            }else if ( i == 2){
+                _shopObj.imageThree  = UIImagePNGRepresentation(image);
+            }else if ( i == 3){
+                _shopObj.imageFour  = UIImagePNGRepresentation(image);
+            }
         }
-        NSString *str=[TimeArray componentsJoinedByString:@"|"];
-        _shopObj.shopPicture=str;
-        
     }];
 }
 
--(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
-    UIGraphicsBeginImageContext(size);
-    
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
-    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return scaledImage;
-}
+
+
+
+
+
+
+
+
+
+//-(UIImage *)compressOriginalImage:(UIImage *)image toSize:(CGSize)size{
+//    UIGraphicsBeginImageContext(size);
+//    
+//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+//    
+//    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//    UIGraphicsEndImageContext();
+//    
+//    return scaledImage;
+//}
 
 
 

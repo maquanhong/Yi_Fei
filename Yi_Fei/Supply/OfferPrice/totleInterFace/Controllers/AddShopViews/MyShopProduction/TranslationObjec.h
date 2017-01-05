@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "shopData.h"
-#import "AskPriceModel.h"
+#import "CustomerProductModel.h"
 
 @interface TranslationObjec : NSObject
 
 
--(AskPriceModel*)trams:(shopData*)model type:(NSString*)type customerName:(NSString*)customerName;
-
+-(CustomerProductModel*)trams:(shopData*)model customerName:(NSString*)customerName companyName:(NSString*)companyName index:(NSString*)index;
 
 
 @end

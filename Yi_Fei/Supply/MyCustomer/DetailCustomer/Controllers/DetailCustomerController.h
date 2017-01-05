@@ -12,10 +12,46 @@
 @interface DetailCustomerController : UIViewController
 
 
+
+
+
 @property (nonatomic,strong) CustomerModel *model;
 
 
 
+
+
+
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

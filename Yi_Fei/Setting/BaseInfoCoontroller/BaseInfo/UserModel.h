@@ -10,7 +10,6 @@
 
 @interface UserModel : NSObject
 
-
 @property (nonatomic,assign) int ind;
 
 @property (nonatomic,copy) NSString *picture;
@@ -38,7 +37,13 @@
 @property (nonatomic,copy) NSString *position;
 
 
+
+
 @end
+
+
+
+
 
 
 

@@ -19,7 +19,7 @@
 @property (nonatomic, copy) NSString *emailAddress;  //邮箱
 @property (nonatomic, copy) NSString *companyAddress;  //公司地址
 @property (nonatomic, copy) NSString *industryType;  //行业类型
-@property (nonatomic, copy) NSString *companyLogo;  //公司的logo
+@property (nonatomic, strong) NSData *companyLogo;  //公司的logo
 @property (nonatomic, copy) NSString *otherNote;  //备注
 
 

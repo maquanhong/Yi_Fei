@@ -66,7 +66,20 @@
 
 
 
-
+//xym
+-(void)setModel:(ExibitionModel *)model{
+    _titleLabel.text = model.title;
+    
+    NSString *  dateStr=[NSString stringWithFormat:@"%@",model.state];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date=[NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)[dateStr doubleValue]/1000];
+    
+    NSString  *timeString=[formatter stringFromDate:date];
+    
+    _timeLabel.text = timeString;
+    
+}
 
 
 

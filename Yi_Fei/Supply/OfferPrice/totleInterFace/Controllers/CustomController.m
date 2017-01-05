@@ -203,8 +203,6 @@ cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
     return 80;
 }
 
-
-
 - (void)clickCell:(UITableViewCell *)cell index:(NSInteger)index{
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     switch (index) {
@@ -212,7 +210,8 @@ cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
         {
     OneViewController *customVC = [[OneViewController alloc] init];
     CustomerModel *model = _listArray[indexPath.row];
-            customVC.customerName = model.customerName;
+    customVC.model = model;
+    customVC.seeNum = @"2";
     [self.navigationController pushViewController:customVC animated:YES];
         }
             break;
@@ -220,20 +219,15 @@ cell.iconImageView.image  = [UIImage imageNamed:@"Null"];
         {
   TwoViewController *ReserveVC = [[TwoViewController alloc] init];
     CustomerModel *model = _listArray[indexPath.row];
-    ReserveVC.customerName = model.customerName;
+    ReserveVC.model = model;
+    ReserveVC.seeNum = @"1";
   [self.navigationController pushViewController:ReserveVC animated:YES];
         }
             break;
-            
         default:
             break;
     }
-
-
-
 }
-
-
 
 
 

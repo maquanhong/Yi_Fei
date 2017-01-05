@@ -11,28 +11,31 @@
 @implementation TranslationObjec
 
 
--(AskPriceModel*)trams:(shopData*)model type:(NSString*)type customerName:(NSString*)customerName{
+-(CustomerProductModel*)trams:(shopData*)model customerName:(NSString*)customerName companyName:(NSString*)companyName index:(NSString*)index{
     
-        AskPriceModel *askModel = [[AskPriceModel alloc] init];
-        askModel.companyID = model.companyID;
-        askModel.shopName = model.shopName;
-        askModel.shopSize = model.shopSize;
-        askModel.shopMed = model.shopMed;
-        askModel.shopColor = model.shopColor;
-        askModel.shopPrice = model.shopPrice;
-        askModel.shopHuoBi = model.shopHuoBi;
-        askModel.shopTiaoK = model.shopTiaoK;
-        askModel.shopAdderss = model.shopAdderss;
-        askModel.shopDescribe = model.shopDescribe;
-        askModel.shopInfo = model.shopInfo;
-        askModel.shopCustom = model.shopCustom;
-        askModel.shopContent = model.shopContent;
-        askModel.shopPicture = model.shopPicture;
-        askModel.cleintName = customerName;
-        askModel.record = type;
-    
-    return askModel;
-    
+        CustomerProductModel *dataModel = [[CustomerProductModel alloc] init];
+
+        dataModel.companyID = model.companyID;
+        dataModel.shopName = model.shopName;
+        dataModel.shopSize = model.shopSize;
+        dataModel.shopMed = model.shopMed;
+        dataModel.shopColor = model.shopColor;
+        dataModel.shopPrice = model.shopPrice;
+        dataModel.shopDescribe = model.shopDescribe;
+        dataModel.shopInfo = model.shopInfo;
+        dataModel.shopHuoBi = model.shopHuoBi;
+        dataModel.shopTiaoK = model.shopTiaoK;
+        dataModel.shopAdderss = model.shopAdderss;
+        dataModel.shopCustom = model.shopCustom;
+        dataModel.shopContent = model.shopContent;
+        dataModel.imageOne = model.imageOne;
+        dataModel.imageTwo = model.imageTwo;
+        dataModel.imageThree = model.imageThree;
+        dataModel.imageFour = model.imageFour;
+        dataModel.flag = index;
+        dataModel.customerName = customerName;
+        dataModel.companyName = companyName;
+    return dataModel;
 }
 
 

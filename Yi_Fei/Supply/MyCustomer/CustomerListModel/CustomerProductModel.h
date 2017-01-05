@@ -34,14 +34,32 @@
 @property(nonatomic,copy)NSString *shopCustom;  //自定义的商品类型
 @property(nonatomic,copy)NSString *shopContent; //自定义的商品内容
 
-@property (nonatomic, copy) NSString *shopPicture; //上传图片
+@property (nonatomic, strong ) NSData *imageOne; //上传图片
+@property (nonatomic, strong) NSData *imageTwo; //上传图片
+@property (nonatomic, strong) NSData *imageThree; //上传图片
+@property (nonatomic, strong) NSData *imageFour; //上传图片
+
+
 @property (nonatomic, copy) NSString *time;       //预留时间
 @property (nonatomic, copy) NSString *count;      //数量
-@property (nonatomic, copy) NSString *cleintName;  //客户名称
+@property (nonatomic, copy) NSString *customerName;  //客户名称
 
 @property (nonatomic, copy) NSString *shopSpecific;  //规格
 
 @property (nonatomic, copy) NSString *askTime;  //询价时间
+
+@property (nonatomic, copy) NSString *companyName;  //客户公司
+
+
+@property (nonatomic, copy) NSString *identify;  //判断是发送的还是添加的
+
+
+
+
+
+
+
+
 
 @end
 

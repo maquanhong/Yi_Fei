@@ -11,9 +11,6 @@
 @interface AddOneController : UIViewController
 
 
-@property (nonatomic,assign) NSInteger identifer;
-
-@property (nonatomic,copy) NSString *name;
 
 
 

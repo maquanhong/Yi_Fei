@@ -180,7 +180,6 @@
         NSRange rangeTpinyin = [tpinyin rangeOfString:_textInput.text];
         if (range.length || rangeTpinyin.length) {
             [_btnResultArr addObject:_listArray[k]];
-            NSLog(@"%@",_btnResultArr);
         }
         k++;
         [_tableview reloadData];
@@ -297,9 +296,6 @@
     
 }
 
-
-
-
 #pragma Mark -- 事件处理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (_isSearch == YES) {
@@ -334,12 +330,9 @@
     }else{
         dataModel = _listArray[indexPath.row];
     }
-    NSArray *arrayimg=[dataModel.shopPicture componentsSeparatedByString:@"|"];
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-    if ([arrayimg[0] length] > 0) {
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",arrayimg[0]]];
-        cell.imgV.image= [UIImage imageWithContentsOfFile:imagePath];
+    
+    if (dataModel.imageOne) {
+        cell.imgV.image= [UIImage imageWithData:dataModel.imageOne];
     }else{
         cell.imgV.image= [UIImage imageNamed:@"Null"];
     }
@@ -348,7 +341,7 @@
     if (dataModel.shopPrice.length > 0 ) {
     cell.priceL.text=[NSString stringWithFormat:@"￥%@",dataModel.shopPrice];
     }else{
-        cell.priceL.text  =  @"";
+    cell.priceL.text  =  @"";
     }
     cell.delegate = self;
     cell.selected = UITableViewCellSelectionStyleNone;
@@ -356,7 +349,6 @@
     _numLabel.text = [NSString stringWithFormat:@"%ld",_listArray.count];
     return cell;
 }
-
 
 #pragma mark 点击页面进行跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

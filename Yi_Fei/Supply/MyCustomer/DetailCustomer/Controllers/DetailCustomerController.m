@@ -12,24 +12,44 @@
 #import "CustomerTwoCell.h"
 #import "CustomerThreeCell.h"
 #import "CustomerFourCell.h"
-#import "CustomerFiveCell.h"
 #import "CardNameController.h"
 #import "CardCustomerController.h"
 #import "CustomerSixCell.h"
-#import "CustomerSevenCell.h"
+#import "CustomerProductList.h"
 
-
-@interface DetailCustomerController ()<ZESegmentedsViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface DetailCustomerController ()<ZESegmentedsViewDelegate,UITableViewDelegate,UITableViewDataSource>{
+    CustomerProductList *_manager;
+    CustomerSixCell *firstCell;
+    CustomerSixCell *secondCell;
+    CustomerSixCell *threeCell;
+}
 
 @property(nonatomic,strong)UITableView *tableView;  //保存的数据
 @property(nonatomic,strong)NSMutableArray *listArray;  //保存的数据
 @property (nonatomic, assign) NSInteger  selectIndexInSection1;
 @property (nonatomic, assign) NSInteger  selectIndexInSection2;
 
+#pragma mark 客户询价
+@property (nonatomic,strong) NSArray *priceArray;
+@property (nonatomic,strong) NSArray *leaveArray;
+@property (nonatomic,strong) NSArray *reservedArray;
 
 @end
 
 @implementation DetailCustomerController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self load];
+}
+
+-(void)load{
+    
+    _manager = [CustomerProductList defaultManager];
+      _priceArray = [NSArray arrayWithArray: [_manager getDataName:_model.customerName and:_model.companyName identify:@"send"]];
+    _leaveArray = [NSArray arrayWithArray: [_manager getDataName:_model.customerName  and:_model.companyName and:@"2" identify:@"send"]];
+     _reservedArray = [NSArray arrayWithArray: [_manager getDataName:_model.customerName and:_model.companyName and:@"1" identify:@"send"]];
+}
 
 - (instancetype)init {
     self = [super init];
@@ -63,7 +83,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 -(void)addContentView{
     
     _tableView=[[UITableView alloc] initWithFrame:CGRectMake(10, 10, WIDTH-20, HEIGHT-10) style:UITableViewStyleGrouped];
@@ -92,11 +111,11 @@
         return 1;
     } else if (section == 2) {
         if (self.selectIndexInSection2 == 0){
-            return 2;
+            return _priceArray.count;
         }else if (self.selectIndexInSection2 == 1){
-           return 2;
+           return _leaveArray.count;
         }else{
-            return 2;
+            return _reservedArray.count;
         }
     }
     return 0;
@@ -114,17 +133,12 @@
             return 60;
         }
     }else{
-        if (self.selectIndexInSection2 == 0) {
-            return 200;
-        } else if (self.selectIndexInSection2 == 1) {
-            return 230;
-        } else {
-            return 70;
-        }
+        return 290;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section == 0) {
     static NSString *cellIdent1=@"cell";
     CustomerFirstCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent1];
@@ -135,17 +149,13 @@
     cell.layer.cornerRadius=5.0;
     cell.backgroundColor=[UIColor whiteColor];
     cell.label.text= _model.companyName;
-    NSString *path_document = NSHomeDirectory();
-    //设置一个图片的存储路径
-        if ([_model.companyLogo length] > 0) {
-            NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",_model.companyLogo]];
-        cell.imagV.image= [UIImage imageWithContentsOfFile:imagePath];
+        if (_model.companyLogo) {
+        cell.imagV.image= [UIImage imageWithData:_model.companyLogo];
         }else{
         cell.imagV.image= [UIImage imageNamed:@"Null"];
         }
     return cell;
     }else if (indexPath.section == 1){
-        
         if (self.selectIndexInSection1 == 0) {
             static NSString *cellIdent2=@"cell2_0";
             CustomerTwoCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent2];
@@ -153,7 +163,6 @@
                 cell=[[CustomerTwoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent2];
             }
             cell.model = _model;
-            
             return cell;
         } else if (self.selectIndexInSection1 == 1) {
             static NSString *cellIdent3=@"cell2_1";
@@ -161,10 +170,8 @@
             if (cell==nil) {
                 cell=[[CustomerThreeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent3];
             }
-            
             cell.titleLabel.text = @"商品名称：复古吊灯";
             cell.contentLabel.text = @"规格：按钮式开关";
-            
             return cell;
         } else if (self.selectIndexInSection1 == 2) {
             static NSString *cellIdent4=@"cell2_2";
@@ -177,53 +184,66 @@
         }
         return nil;
     }else if (indexPath.section == 2){
+        
         if (self.selectIndexInSection2 == 0) {
         static NSString *cellIdent5=@"cell3_0";
-        CustomerFiveCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent5];
-        if (cell==nil) {
-            cell=[[CustomerFiveCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent5];
-        }
-        cell.titleEightLabel.text = @"2017-12-18";
-        cell.detailOneLabel.text = @"复古式台灯绣花等";
-        cell.detailTwoLabel.text = @"60cm";
-        cell.detailThreeLabel.text = @"50";
-        cell.detailFourLabel.text = @"发奖金了；家我怕是否考二级分";
-        cell.detailFiveLabel.text = @"PVC塑料";
-        cell.detailSevenLabel.text = @"米黄色";
-        return cell;
+            firstCell =[tableView dequeueReusableCellWithIdentifier:cellIdent5];
+            if (firstCell==nil) {
+                firstCell = [[CustomerSixCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent5];
+            }
+            [self getDataFormCell:firstCell model:_priceArray[indexPath.row]];
+            return firstCell;
         } else if (self.selectIndexInSection2 == 1) {
         
         static NSString *cellIdent6=@"cell3_1";
-        CustomerSixCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent6];
-        if (cell==nil) {
-            cell=[[CustomerSixCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
+        secondCell =[tableView dequeueReusableCellWithIdentifier:cellIdent6];
+        if (secondCell==nil) {
+            secondCell=[[CustomerSixCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent6];
         }
-     
-    cell.titleEightLabel.text = @"2017-12-18";
-    cell.detailOneLabel.text = @"复古式台灯绣花等";
-    cell.detailTwoLabel.text = @"60cm";
-    cell.detailThreeLabel.text = @"50";
-    cell.detailFourLabel.text = @"发奖金了；家我怕是否考二级分";
-    cell.detailFiveLabel.text = @"PVC塑料";
-    cell.detailSevenLabel.text = @"米黄色";
-            
-            
-        return cell;
+    [self getDataFormCell:secondCell model:_leaveArray[indexPath.row]];
+        return secondCell;
         } else if (self.selectIndexInSection2 == 2) {
-            
     static NSString *cellIdent7=@"cell3_2";
-    CustomerSevenCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdent7];
-    if (cell==nil) {
-    cell=[[CustomerSevenCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent7];
+    threeCell =[tableView dequeueReusableCellWithIdentifier:cellIdent7];
+    if (threeCell==nil) {
+        threeCell =[[CustomerSixCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdent7];
     }
-    cell.titleLabel.text = @"复古吊灯";
-    cell.contentLabel.text = @"按钮式开关";
-    return cell;
+[self getDataFormCell:threeCell model:_reservedArray[indexPath.row]];
+    return threeCell;
         }
         return nil;
     }
       return nil;
 }
+
+
+
+-(void)getDataFormCell:(CustomerSixCell*)cell model:(CustomerProductModel*)model{
+ 
+        cell.titleEightLabel.text = [model.askTime substringToIndex:10] ;
+       cell.detailOneLabel.text = model.shopName;
+        cell.detailTwoLabel.text =model.shopSpecific;
+        cell.detailThreeLabel.text = model.shopSize;
+       cell.detailFourLabel.text = model.count;
+        cell.detailFiveLabel.text = model.shopMed;
+        cell.detailSixLabel.text = model.shopDescribe ;
+       cell.detailSevenLabel.text = model.shopColor;
+        
+        if (model.imageOne) {
+            cell.oneImageView.image = [UIImage imageWithData:model.imageOne];
+        }
+        if (model.imageTwo) {
+            cell.twoImageView.image = [UIImage imageWithData:model.imageTwo];
+        }
+        if (model.imageThree) {
+           cell.ThreeImageView.image = [UIImage imageWithData:model.imageThree];
+        }
+        if (model.imageFour) {
+          cell.FourImageView.image = [UIImage imageWithData:model.imageFour];
+        }
+}
+
+
 
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -258,7 +278,7 @@
     }else if (section == 1){
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
         view.backgroundColor = [UIColor whiteColor];
-        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(10, 10, WIDTH-40, 30) segmentedCount:3 segmentedTitles:@[@"供应商资料",@"交易记录",@"备忘供应商爱好"] selectIndex:self.selectIndexInSection1];
+        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(10, 10, WIDTH-40, 30) segmentedCount:3 segmentedTitles:@[@"客户资料",@"交易记录",@"备  注"] selectIndex:self.selectIndexInSection1];
         segmentView.delegate = self;
         segmentView.tag = 10000 + section;
         [view addSubview:segmentView];
@@ -279,7 +299,7 @@ UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 9, WIDTH, 20)];
 UIView *twoView  = [[UIView alloc] initWithFrame:CGRectMake(0, 50, WIDTH, 50)];
         twoView.backgroundColor = [UIColor whiteColor];
         [view addSubview:twoView];
-        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(20, 10, WIDTH-60, 30) segmentedCount:3 segmentedTitles:@[@"最新报价",@"留样报价",@"预留报价"] selectIndex:self.selectIndexInSection2];
+        ZESegmentedsView *segmentView = [[ZESegmentedsView alloc] initWithFrame:CGRectMake(20, 10, WIDTH-60, 30) segmentedCount:3 segmentedTitles:@[@"最新询价",@"留样询价",@"客户预留询价"] selectIndex:self.selectIndexInSection2];
         segmentView.delegate = self;
         segmentView.tag = 10000 + section;
         [twoView addSubview:segmentView];
@@ -290,11 +310,11 @@ UIView *twoView  = [[UIView alloc] initWithFrame:CGRectMake(0, 50, WIDTH, 50)];
 
 
 -(void)supplyCard{
-
+    
     CardCustomerController *cardVC = [[ CardCustomerController alloc] init];
     cardVC.model = _model;
     [self.navigationController pushViewController:cardVC animated:YES];
-
+    
 }
 
 
@@ -321,8 +341,6 @@ UIView *twoView  = [[UIView alloc] initWithFrame:CGRectMake(0, 50, WIDTH, 50)];
 
 
 
-
-
 #pragma mark ZESegmentedsViewDelegate
 - (void)selectedZESegmentedsViewItemAtIndex:(NSInteger)selectedItemIndex zeView:(ZESegmentedsView *)zeView {
     if ((zeView.tag - 10000) == 1) {
@@ -332,6 +350,24 @@ UIView *twoView  = [[UIView alloc] initWithFrame:CGRectMake(0, 50, WIDTH, 50)];
     }
     [_tableView reloadSections:[NSIndexSet indexSetWithIndex:zeView.tag - 10000] withRowAnimation:UITableViewRowAnimationNone];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

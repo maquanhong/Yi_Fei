@@ -19,17 +19,12 @@
 @property (nonatomic,strong) UILabel *titleSixLabel;
 @property (nonatomic,strong) UILabel *titleSevenLabel;
 @property (nonatomic,strong) UILabel *titleNineLabel;
-@property (nonatomic,strong) UIImageView *oneImageView;
-@property (nonatomic,strong) UIImageView *twoImageView;
-@property (nonatomic,strong) UIImageView *ThreeImageView;
-@property (nonatomic,strong) UIImageView *FourImageView;
 
 
+
+@property (nonatomic,strong) UIButton *returnBtn;
 
 @end
-
-
-
 
 @implementation CustomerSixCell
 
@@ -37,7 +32,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self addViewConstraints];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+      [self addViewConstraints];
     }
     return self;
 }
@@ -48,7 +44,6 @@
     _titleOneLabel.text = @"商品:";
     _titleOneLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_titleOneLabel];
-    
     
     
     _titleTwoLabel  = [[UILabel alloc] init];
@@ -92,9 +87,6 @@
     }];
     
     
-    
-
-    
     _oneImageView = [[UIImageView alloc] init];
     _twoImageView = [[UIImageView alloc] init];
     _ThreeImageView = [[UIImageView alloc] init];
@@ -110,12 +102,14 @@
         make.width.equalTo(@[_twoImageView,_ThreeImageView,_FourImageView]);
         make.height.equalTo(@[_twoImageView,_ThreeImageView,_FourImageView]);
         make.right.mas_equalTo(_twoImageView.mas_left).offset(-10);
+        make.top.mas_equalTo(_titleNineLabel.mas_bottom).offset(10);
         make.width.mas_equalTo((WIDTH - 60) / 4);
         make.height.mas_equalTo((WIDTH - 60) / 4);
     }];
     
     [_twoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_oneImageView.mas_right).offset(10);
+         make.top.equalTo(_oneImageView);
         make.width.equalTo(@[_oneImageView,_ThreeImageView,_FourImageView]);
         make.height.equalTo(@[_oneImageView,_ThreeImageView,_FourImageView]);
         make.right.mas_equalTo(_ThreeImageView.mas_left).offset(-10);
@@ -125,17 +119,18 @@
     
     [_ThreeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_twoImageView.mas_right).offset(10);
+          make.top.equalTo(_twoImageView);
         make.width.equalTo(@[_twoImageView,_oneImageView,_FourImageView]);
         make.height.equalTo(@[_twoImageView,_oneImageView,_FourImageView]);
         make.right.mas_equalTo(_FourImageView.mas_left).offset(-10);
         make.width.mas_equalTo((WIDTH - 60) / 4);
         make.height.mas_equalTo((WIDTH - 60) / 4);
     }];
-    
-    
+
     
     [_FourImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self).offset(-10);
+        make.top.equalTo(_ThreeImageView);
         make.width.equalTo(@[_twoImageView,_ThreeImageView,_oneImageView]);
         make.height.equalTo(@[_twoImageView,_ThreeImageView,_oneImageView]);
         make.right.mas_equalTo(_ThreeImageView.mas_left).offset(-10);
@@ -143,14 +138,13 @@
         make.height.mas_equalTo((WIDTH - 60) / 4);
     }];
     
-    
     _titleFiveLabel  = [[UILabel alloc] init];
     _titleFiveLabel.text = @"备注:";
     _titleFiveLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_titleFiveLabel];
     [_titleFiveLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(_titleFourLabel);
-        make.top.mas_equalTo(_titleFourLabel.mas_bottom).offset(10);
+
         make.size.mas_equalTo(CGSizeMake(40, 20));
         make.bottom.mas_equalTo(self.mas_bottom).offset(-10);
     }];
@@ -159,9 +153,6 @@
     _titleSixLabel.text = @"材质:";
     _titleSixLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_titleSixLabel];
-    
-    
-    
     
     
     _titleSevenLabel  = [[UILabel alloc] init];
@@ -266,9 +257,7 @@
         make.height.mas_equalTo( 20);
     }];
     
-    
-    
-    
+
     _returnBtn  = [[UIButton alloc] init];
     [_returnBtn setTitle:@"回复" forState:UIControlStateNormal];
     _returnBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -283,8 +272,6 @@
         make.size.mas_equalTo(CGSizeMake(60, 25));
     }];
     
-    
-    
     _detailFiveLabel  = [[UILabel alloc] init];
     _detailFiveLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_detailFiveLabel];
@@ -295,8 +282,6 @@
         make.height.mas_equalTo( 20);
     }];
     
-    
-    
     _detailSixLabel  = [[UILabel alloc] init];
     _detailSixLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:_detailSixLabel];
@@ -306,8 +291,6 @@
         make.trailing.equalTo(self).offset(-10);
         make.height.mas_equalTo( 20);
     }];
-    
-    
     
     _detailSevenLabel  = [[UILabel alloc] init];
     _detailSevenLabel.font = [UIFont systemFontOfSize:14];
@@ -337,30 +320,9 @@
 
 
 
-- (void)setModel:(CustomerModel *)model{
-
-
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-}
-
-
-
-
-
+ 
 
 
 
